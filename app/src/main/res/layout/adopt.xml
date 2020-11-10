@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/colorLightGreen"
+    tools:context=".Adopt">
+
+    <TextView
+        android:id="@+id/animal_adopt"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:textSize="40sp"
+        android:textColor="@color/colorBlack"
+        android:text="Animal:"
+        />
+
+    <EditText
+        android:id="@+id/animal_adopt_field"
+        android:layout_toEndOf="@+id/animal_adopt"
+        android:layout_above="@id/age"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:layout_alignEnd="@id/adoption_request_button"
+        android:layout_width="wrap_content"
+        android:autofillHints="animal"
+        android:inputType="text" />
+
+    <TextView
+        android:id="@+id/age"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/animal_adopt"
+        android:textSize="40sp"
+        android:textColor="@color/colorBlack"
+        android:text="Age:"
+        />
+
+    <EditText
+        android:id="@+id/age_field"
+        android:layout_toEndOf="@+id/animal_adopt"
+        android:layout_below="@+id/animal_adopt"
+        android:layout_above="@id/notes_field"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:layout_alignEnd="@id/adoption_request_button"
+        android:layout_width="wrap_content"
+        android:autofillHints="age"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/notes_field"
+        android:textSize="30sp"
+        android:layout_alignEnd="@id/adoption_request_button"
+        android:inputType="textMultiLine"
+        android:lines="6"
+        android:minLines="4"
+        android:gravity="top|start"
+        android:maxLines="10"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:scrollbars="vertical"
+        android:layout_below="@id/age"
+        android:background="@color/colorWhite"
+        android:layout_marginTop="15dp"
+        android:hint="Enter additional notes here..."
+        />
+
+
+    <Switch
+        android:id="@+id/switch6"
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:layout_below="@id/notes_field"
+        android:background="@color/colorYellow"
+        android:text="I consent to a Background Check"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+    <Switch
+        android:id="@+id/switch7"
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:layout_below="@id/switch6"
+        android:background="@color/colorYellow"
+        android:text="I agree to receive emails from adoption centers about my request and preferences"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+    <Button
+        android:id="@+id/adoption_request_button"
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@id/switch7"
+        android:text="Submit Adoption Interest"
+        android:textSize="40dp"
+        android:background="@color/colorBlue"
+        android:textColor="@color/colorYellow"
+        android:onClick="notifyShelters"
+        />
+
+    <TextView
+        android:id="@+id/animal_adopt_notes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/adoption_request_button"
+        android:textSize="24sp"
+        android:textColor="@color/colorBlack"
+        android:textStyle="italic"
+        android:text="Note: Please allow up to 7 days for background check processing before receiving communications from shelters."
+        />
+
+</RelativeLayout>

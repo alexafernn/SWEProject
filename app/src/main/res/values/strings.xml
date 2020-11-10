@@ -1,0 +1,46 @@
+<resources>
+    <string name="app_name">SWEProject</string>
+    <string name="rewards_deliver_str">Note: Gift card requests will be reviewed and delivered electronically to the email in your profile. Please allow 24-48 hours processing time.</string>
+    <string name="subscription_note">Note: Please allow 24-48 hours processing time for account information to be updated after submitting a request.</string>
+    <string name="feedback_notes">Feel free to share anonymous feedback about your experience with the app or service below. For feedback specific to other users, use the link under \'Past Sittings\'.</string>
+    <string name="feedback_note_bottom">Note: All feedback will remain private between users and company representatives.</string>
+
+
+    <string-array name="gift_card_choices">
+        <item>Starbucks</item>
+        <item>Target</item>
+        <item>PetSmart</item>
+        <item>iTunes</item>
+        <item>Google Play</item>
+    </string-array>
+
+    <string-array name="gift_card_amounts">
+        <item>$10 – 1000 points</item>
+        <item>$15 – 1500 points</item>
+        <item>$20 – 2000 points</item>
+        <item>$25 – 2500 points</item>
+        <item>$50 – 5000 points</item>
+    </string-array>
+
+    <string-array name="plan_choices">
+        <item>Renew Annual Membership ($200)</item>
+        <item>Extend Membership 1 Month ($20)</item>
+        <item>Cancel Membership</item>
+        <item>Request Refund</item>
+        <item>Make a Donation</item>
+    </string-array>
+
+    <string-array name="payment_choices">
+        <item>PayPal</item>
+        <item>Pay another Way</item>
+        <item>Not Applicable</item>
+    </string-array>
+
+    <string-array name="feedback_star_rating">
+        <item>5 - Excellent</item>
+        <item>4 - Good</item>
+        <item>3 - Fair</item>
+        <item>2 - Poor</item>
+        <item>1 - Awful</item>
+    </string-array>
+</resources>

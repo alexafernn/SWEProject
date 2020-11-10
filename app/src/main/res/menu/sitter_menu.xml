@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/home"
+        android:title="Home"
+        app:showAsAction="ifRoom"/>
+    <item android:id="@+id/action_favorite"
+        android:title="Current Sittings"
+        app:showAsAction="ifRoom" />
+    <item android:id="@+id/sitter_Availability"
+        android:title="Manage Availability" />
+    <item android:id="@+id/rewards_menu"
+        android:title="My Rewards" />
+    <item android:id="@+id/past_sittings_menu"
+        android:title="Past Sittings" />
+    <item android:id="@+id/feedback_menu"
+        android:title="Give Feedback" />
+</menu>

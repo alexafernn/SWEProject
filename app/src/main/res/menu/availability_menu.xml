@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/home_from_availability"
+        android:title="Back"
+        app:showAsAction="ifRoom"/>
+    <item android:id="@+id/add_availability"
+        android:title="New Availability(+)"
+        app:showAsAction="always"/>
+
+</menu>

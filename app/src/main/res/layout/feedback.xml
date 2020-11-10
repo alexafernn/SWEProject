@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorLightGreen">
+
+    <TextView
+        android:id="@+id/feedback_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="24dp"
+        android:textColor="@color/colorBlack"
+        android:text="@string/feedback_notes"
+        />
+
+    <EditText
+        android:id="@+id/feedback_text_field"
+        android:inputType="textMultiLine"
+        android:lines="8"
+        android:minLines="6"
+        android:gravity="top|start"
+        android:maxLines="10"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:scrollbars="vertical"
+        android:layout_below="@id/feedback_text"
+        android:background="@color/colorWhite"
+        android:layout_marginTop="15dp"
+        android:hint="Enter feedback here..."
+        />
+
+    <TextView
+        android:id="@+id/rating_select"
+        android:layout_below="@id/feedback_text_field"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="15dp"
+        android:text="Rating:"
+        android:textSize="30sp"
+        android:textColor="@color/colorBlack"
+        android:gravity="center"
+        />
+
+    <Spinner
+        android:id="@+id/star_rating_spinner"
+        android:layout_below="@id/feedback_text_field"
+        android:layout_toEndOf="@+id/rating_select"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="15dp"/>
+
+    <Button
+        android:id="@+id/feedback_button"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@id/star_rating_spinner"
+        android:background="@color/colorBlue"
+        android:textColor="@color/colorYellow"
+        android:textSize="30dp"
+        android:text="Share Feedback"
+        android:layout_marginTop="15dp"
+        android:onClick="doSendFeedback"
+        />
+
+    <TextView
+        android:id="@+id/feedback_notes"
+        android:layout_below="@id/feedback_button"
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="24dp"
+        android:textColor="@color/colorBlack"
+        android:text="@string/feedback_note_bottom"
+        />
+
+</RelativeLayout>

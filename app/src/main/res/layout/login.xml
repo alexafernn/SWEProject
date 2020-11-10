@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:paddingTop="60dp"
+    android:paddingLeft="10dp"
+    >
+
+    <TextView
+        android:layout_width = "wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome Please Login:"
+        android:textSize="35dp"
+        android:id="@+id/loginText"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Username:"
+        android:id="@+id/username"
+        android:layout_marginTop="110dp"
+        android:textSize ="30dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Password:"
+        android:id="@+id/password"
+        android:textSize="30dp"
+        android:layout_marginTop="220dp"
+        />
+
+    <EditText
+       android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:id="@+id/usernameEditText"
+        android:ems="10"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@id/username"
+        android:layout_marginRight="15dp"
+        />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:id="@+id/passwordEditText"
+        android:ems="10"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@id/password"
+        android:layout_marginRight="15dp"
+    />
+
+    <Button
+    android:layout_width="150dp"
+    android:layout_height="75dp"
+    android:id="@+id/loginButton"
+    style= "@style/ButtonStyle"
+    android:text="LOGIN"
+    android:onClick="verifyLogin"
+
+    />
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="75dp"
+        android:id="@+id/signUpButton"
+        style = "@style/ButtonStyle"
+        android:text="SIGN UP"
+        android:onClick="signUp"
+        android:layout_marginTop="430dp"
+        />
+
+</RelativeLayout>

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/colorLightGreen">
+
+    <TextView
+        android:id="@+id/pet_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pet Info"
+        android:textSize="40sp" />
+
+    <TextView
+        android:id="@+id/pet_name"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/pet_info"
+        android:textSize="40sp"
+        android:textColor="@color/colorBlack"
+        android:text="NAME:"
+        />
+
+    <EditText
+        android:id="@+id/pet_name_field"
+        android:layout_toEndOf="@+id/pet_name"
+        android:layout_below="@+id/pet_info"
+        android:layout_above="@id/animal"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:layout_alignEnd="@id/pet_info"
+        android:layout_width="wrap_content"
+        android:autofillHints="name"
+        android:inputType="text" />
+
+    <TextView
+        android:id="@+id/animal"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/pet_name"
+        android:textSize="40sp"
+        android:textColor="@color/colorBlack"
+        android:text="Animal:"
+        />
+
+    <EditText
+        android:id="@+id/animal_field"
+        android:layout_toEndOf="@+id/pet_name"
+        android:layout_below="@+id/pet_name"
+        android:layout_above="@id/add_photo_button"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:layout_alignEnd="@id/pet_info"
+        android:layout_width="wrap_content"
+        android:autofillHints="phone"
+        android:inputType="text" />
+
+    <Button
+        android:id="@+id/add_photo_button"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="15dp"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/colorBlack"
+        android:layout_below="@+id/animal"
+        android:text="Add a Photo"
+        android:onClick="addPhoto"
+        />
+
+    <TextView
+        android:id="@+id/pet_qualities"
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="My pet is..."
+        android:layout_below="@id/add_photo_button"
+        android:textSize="40sp" />
+
+    <Switch
+        android:id="@+id/switch3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Energetic"
+        android:textSize="40sp"
+        android:layout_below="@id/pet_qualities"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+    <Switch
+        android:id="@+id/switch4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="40sp"
+        android:layout_below="@id/switch3"
+        android:text="Noisy"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+    <Switch
+        android:id="@+id/switch5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="40sp"
+        android:layout_below="@id/switch4"
+        android:text="Trained"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+    <Switch
+        android:id="@+id/switch6"
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="40sp"
+        android:layout_below="@id/other_quality"
+        android:text="Inside Only"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+    <TextView
+        android:id="@+id/other_quality"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Other"
+        android:textColor="@color/colorBlack"
+        android:layout_below="@id/switch5"
+        android:textSize="40sp" />
+
+    <EditText
+        android:id="@+id/other_quality_field"
+        android:layout_toEndOf="@+id/pet_name"
+        android:layout_below="@+id/switch5"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:layout_alignEnd="@id/pet_info"
+        android:layout_width="wrap_content"
+        android:autofillHints="phone"
+        android:inputType="text" />
+
+    <Button
+        android:id="@+id/settings_save_button"
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@id/switch6"
+        android:text="Add Pet"
+        android:textSize="40dp"
+        android:background="@color/colorBlue"
+        android:textColor="@color/colorYellow"
+        android:onClick="goToPets"
+        />
+
+</RelativeLayout>

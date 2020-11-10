@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorLightGreen">
+
+    <TextView
+        android:id="@+id/sitter_request_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30dp"
+        android:text="New Sitting Request:"
+        />
+
+    <Button
+        android:id="@+id/sitter_request_button"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@id/sitter_request_label"
+        android:background="@color/colorBlue"
+        android:textColor="@color/colorYellow"
+        android:text="Request A Sitter"
+        android:textSize="30dp"
+        android:onClick="onRequestSitterEvent"
+        />
+
+    <TextView
+        android:id="@+id/sitter_event_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/sitter_request_button"
+        android:textSize="30dp"
+        android:text="Existing Sitting Requests:"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sitter_event_label"
+        android:textColor="@color/colorBlack"
+        android:textSize="28dp"
+        android:text="This screen will show owners the different sitterRequests they created, which will have a list of accepted sitters under each event when clicked."
+        />
+
+
+</RelativeLayout>
