@@ -11,6 +11,7 @@
         android:text="No pets? Add a pet to get started."
         android:textSize="24sp"
         android:gravity="center"
+        android:id="@+id/noPets"
         />
 
 </RelativeLayout>

@@ -56,6 +56,12 @@ public class Pets extends AppCompatActivity {
          */
     }
 
+    public void addPettoList(Pet p)
+    {
+        petList.add(p);
+    }
+
+
 
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
