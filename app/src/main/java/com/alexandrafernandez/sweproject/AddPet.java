@@ -74,7 +74,7 @@ public class AddPet extends AppCompatActivity {
         //System.out.println("animal name entered is " + strAnimalName);
 
         finish();
-        //when you go back need to make the text with id no pets invisible  
+        //when you go back need to make the text with id no pets invisible
     }
 
     public void addPhoto(View view) {
