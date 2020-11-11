@@ -2,7 +2,7 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorLightGreen">
+    android:background="@color/colorWhite">
 
     <TextView
         android:id="@+id/rewards_menu_top"
@@ -22,7 +22,7 @@
         android:layout_height="150dp"
         android:text="0"
         android:textSize="129sp"
-        android:textColor="@color/colorBlue"
+        android:textColor="@color/colorPrimary"
         android:gravity="center"
         />
 
@@ -78,7 +78,8 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_below="@id/amount_spinner"
-        android:background="@color/colorYellow"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/colorWhite"
         android:text="Request gift card"
         android:textSize="30sp"
         android:onClick="onRequestReward"/>

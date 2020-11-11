@@ -3,14 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/colorLightGreen">
+    android:background="@color/colorWhite">
 
     <TextView
         android:id="@+id/pet_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Pet Info"
-        android:textSize="40sp" />
+        android:textSize="40sp"
+        android:textColor="@color/colorBlack"
+        android:background="@color/colorPrimary"/>
 
     <TextView
         android:id="@+id/pet_name"
@@ -75,7 +77,9 @@
         android:layout_height="wrap_content"
         android:text="My pet is..."
         android:layout_below="@id/add_photo_button"
-        android:textSize="40sp" />
+        android:background="@color/colorPrimary"
+        android:textSize="40sp"
+        android:textColor="@color/colorBlack"/>
 
     <Switch
         android:id="@+id/switch3"
@@ -142,8 +146,8 @@
         android:layout_below="@id/switch6"
         android:text="Add Pet"
         android:textSize="40dp"
-        android:background="@color/colorBlue"
-        android:textColor="@color/colorYellow"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/colorWhite"
         android:onClick="goToPets"
         />
 

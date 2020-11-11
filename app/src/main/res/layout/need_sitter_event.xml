@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/colorLightGreen">
+    android:background="@color/colorWhite">
 
     <TextView
         android:id="@+id/calendar_title_info"
@@ -58,7 +58,7 @@
         android:id="@+id/switch8"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorLightBlue"
+        android:background="@color/colorWhite"
         android:text="All my Pets"
         android:textSize="40sp"
         android:layout_below="@id/which_pets_title_info2"
@@ -72,7 +72,7 @@
         android:layout_marginTop="5dp"
         android:text="Or Select Specific Pets"
         android:textSize="24sp"
-        android:background="@color/colorLightBlue"
+        android:background="@color/colorPrimary"
         android:onClick="doPetSelection"
         />
 
@@ -108,8 +108,8 @@
         android:layout_height="100dp"
         android:layout_below="@id/additional_info_text_field"
         android:layout_marginTop="15dp"
-        android:background="@color/colorBlue"
-        android:textColor="@color/colorYellow"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/colorWhite"
         android:text="Confirm Request"
         android:textSize="30sp"
         android:onClick="onCreateRequestSitterEvent"

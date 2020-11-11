@@ -2,13 +2,14 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorLightGreen">
+    android:background="@color/colorWhite">
 
     <TextView
         android:id="@+id/sitter_request_label"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="30dp"
+        android:textColor="@color/colorBlack"
         android:text="New Sitting Request:"
         />
 
@@ -17,8 +18,8 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_below="@id/sitter_request_label"
-        android:background="@color/colorBlue"
-        android:textColor="@color/colorYellow"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/colorWhite"
         android:text="Request A Sitter"
         android:textSize="30dp"
         android:onClick="onRequestSitterEvent"
@@ -31,6 +32,8 @@
         android:layout_marginTop="20dp"
         android:layout_below="@id/sitter_request_button"
         android:textSize="30dp"
+        android:textColor="@color/colorBlack"
+        android:background="@color/colorWhite"
         android:text="Existing Sitting Requests:"
         />
 

@@ -2,7 +2,7 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorLightGreen">
+    android:background="@color/colorWhite">
 
     <TextView
         android:id="@+id/feedback_text"
@@ -27,6 +27,7 @@
         android:background="@color/colorWhite"
         android:layout_marginTop="15dp"
         android:hint="Enter feedback here..."
+        android:textColorHint="@color/colorBlack"
         />
 
     <TextView
@@ -54,8 +55,8 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_below="@id/star_rating_spinner"
-        android:background="@color/colorBlue"
-        android:textColor="@color/colorYellow"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/colorWhite"
         android:textSize="30dp"
         android:text="Share Feedback"
         android:layout_marginTop="15dp"

@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorLightGreen"
+    android:background="@color/colorWhite"
     tools:context=".MainActivity">
 
     <TextView
@@ -41,7 +41,7 @@
         android:layout_height="130dp"
         android:text="I need a Sitter"
         android:textSize="40dp"
-        android:background="@color/colorYellow"
+        android:background="@color/colorPrimary"
         android:onClick="toOwnerProfile"
         />
 
@@ -53,7 +53,7 @@
         android:layout_height="120dp"
         android:text="I want to Sit"
         android:textSize="40dp"
-        android:background="@color/colorYellow"
+        android:background="@color/colorPrimary"
         android:onClick="toSitterProfile"
         />
 
@@ -65,7 +65,7 @@
         android:layout_height="100dp"
         android:text="Adoption"
         android:textSize="40dp"
-        android:background="@color/colorYellow"
+        android:background="@color/colorPrimary"
         android:onClick="toAdoptionPage"
         />
 

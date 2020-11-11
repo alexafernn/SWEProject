@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/colorLightGreen"
+    android:background="@color/colorWhite"
     tools:context=".Adopt">
 
     <TextView
@@ -64,6 +64,7 @@
         android:background="@color/colorWhite"
         android:layout_marginTop="15dp"
         android:hint="Enter additional notes here..."
+        android:textColorHint="@color/colorBlack"
         />
 
 
@@ -74,7 +75,7 @@
         android:layout_height="wrap_content"
         android:textSize="24sp"
         android:layout_below="@id/notes_field"
-        android:background="@color/colorYellow"
+        android:background="@color/colorWhite"
         android:text="I consent to a Background Check"
         tools:ignore="UseSwitchCompatOrMaterialXml" />
 
@@ -85,7 +86,7 @@
         android:layout_height="wrap_content"
         android:textSize="24sp"
         android:layout_below="@id/switch6"
-        android:background="@color/colorYellow"
+        android:background="@color/colorWhite"
         android:text="I agree to receive emails from adoption centers about my request and preferences"
         tools:ignore="UseSwitchCompatOrMaterialXml" />
 
@@ -97,8 +98,8 @@
         android:layout_below="@id/switch7"
         android:text="Submit Adoption Interest"
         android:textSize="40dp"
-        android:background="@color/colorBlue"
-        android:textColor="@color/colorYellow"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/colorWhite"
         android:onClick="notifyShelters"
         />
 
