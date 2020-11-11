@@ -4,47 +4,44 @@
     android:layout_height="match_parent"
     android:background="@color/colorWhite">
 
-    <TextView
-        android:id="@+id/sitter_request_label"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="30dp"
-        android:textColor="@color/colorBlack"
-        android:text="New Sitting Request:"
-        />
-
     <Button
         android:id="@+id/sitter_request_button"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_below="@id/sitter_request_label"
+        android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
         android:textColor="@color/colorWhite"
-        android:text="Request A Sitter"
+        android:text="New Sitting Request"
         android:textSize="30dp"
         android:onClick="onRequestSitterEvent"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
         />
 
     <TextView
-        android:id="@+id/sitter_event_label"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_below="@id/sitter_request_button"
-        android:textSize="30dp"
+        android:layout_marginTop="15dp"
+        android:textSize="24sp"
+        android:gravity="center"
+        android:id="@+id/sitter_request_label"
         android:textColor="@color/colorBlack"
-        android:background="@color/colorWhite"
-        android:text="Existing Sitting Requests:"
+        android:text="Current Sitting Requests:"
+        android:layout_below="@id/sitter_request_button"
         />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/sitter_event_label"
+        android:layout_marginTop="15dp"
+        android:textSize="24sp"
+        android:gravity="center"
+        android:id="@+id/noSittings"
         android:textColor="@color/colorBlack"
-        android:textSize="28dp"
-        android:text="This screen will show owners the different sitterRequests they created, which will have a list of accepted sitters under each event when clicked."
+        android:background="@color/colorPrimary"
+        android:text="No Sittings? Create one above."
+        android:layout_below="@id/sitter_request_label"
         />
-
 
 </RelativeLayout>

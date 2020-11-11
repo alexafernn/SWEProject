@@ -20,4 +20,5 @@
     <color name="colorLightGreen">#90FF90</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorLightBlue">#add8ff</color>
+    <color name="colorGray">#D3D3D3</color>
 </resources>

@@ -10,9 +10,9 @@
         android:id="@+id/animal_adopt"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:textSize="40sp"
         android:textColor="@color/colorBlack"
         android:text="Animal:"
+        android:layout_marginTop="10dp"
         />
 
     <EditText
@@ -20,18 +20,18 @@
         android:layout_toEndOf="@+id/animal_adopt"
         android:layout_above="@id/age"
         android:layout_height="wrap_content"
-        android:textSize="30sp"
         android:layout_alignEnd="@id/adoption_request_button"
         android:layout_width="wrap_content"
         android:autofillHints="animal"
-        android:inputType="text" />
+        android:inputType="text"
+        android:layout_toRightOf="@+id/animal_adopt"
+        android:layout_alignRight="@id/adoption_request_button" />
 
     <TextView
         android:id="@+id/age"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/animal_adopt"
-        android:textSize="40sp"
         android:textColor="@color/colorBlack"
         android:text="Age:"
         />
@@ -42,15 +42,15 @@
         android:layout_below="@+id/animal_adopt"
         android:layout_above="@id/notes_field"
         android:layout_height="wrap_content"
-        android:textSize="30sp"
         android:layout_alignEnd="@id/adoption_request_button"
         android:layout_width="wrap_content"
         android:autofillHints="age"
-        android:inputType="text" />
+        android:inputType="text"
+        android:layout_toRightOf="@+id/animal_adopt"
+        android:layout_alignRight="@id/adoption_request_button" />
 
     <EditText
         android:id="@+id/notes_field"
-        android:textSize="30sp"
         android:layout_alignEnd="@id/adoption_request_button"
         android:inputType="textMultiLine"
         android:lines="6"
@@ -61,11 +61,10 @@
         android:layout_width="match_parent"
         android:scrollbars="vertical"
         android:layout_below="@id/age"
-        android:background="@color/colorWhite"
+        android:background="@color/colorGray"
         android:layout_marginTop="15dp"
         android:hint="Enter additional notes here..."
-        android:textColorHint="@color/colorBlack"
-        />
+        android:layout_alignRight="@id/adoption_request_button" />
 
 
     <Switch
@@ -73,7 +72,6 @@
         android:layout_marginTop="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="24sp"
         android:layout_below="@id/notes_field"
         android:background="@color/colorWhite"
         android:text="I consent to a Background Check"
@@ -84,7 +82,6 @@
         android:layout_marginTop="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="24sp"
         android:layout_below="@id/switch6"
         android:background="@color/colorWhite"
         android:text="I agree to receive emails from adoption centers about my request and preferences"
@@ -94,10 +91,9 @@
         android:id="@+id/adoption_request_button"
         android:layout_marginTop="15dp"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         android:layout_below="@id/switch7"
         android:text="Submit Adoption Interest"
-        android:textSize="40dp"
         android:background="@color/colorPrimary"
         android:textColor="@color/colorWhite"
         android:onClick="notifyShelters"
@@ -108,9 +104,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/adoption_request_button"
-        android:textSize="24sp"
         android:textColor="@color/colorBlack"
         android:textStyle="italic"
+        android:layout_marginTop="5dp"
         android:text="Note: Please allow up to 7 days for background check processing before receiving communications from shelters."
         />
 
