@@ -1,5 +1,6 @@
 package com.alexandrafernandez.sweproject;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -8,7 +9,7 @@ import android.widget.Switch;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class Profile extends AppCompatActivity {
+public class Profile extends Activity {
     EditText name, phone, address;
     Button save, payPal;
     Switch owner, sitter;

@@ -15,7 +15,7 @@
         android:text="Account Info"
         android:textColor="@color/colorBlack"
         android:background="@color/colorWhite"
-        android:textSize="40sp" />
+        android:textSize="30sp" />
 
     <TextView
         android:id="@+id/name"
@@ -100,7 +100,7 @@
         android:text="I am a..."
         android:textColor="@color/colorBlack"
         android:layout_below="@id/paypal_link_button"
-        android:textSize="40sp" />
+        android:textSize="30sp" />
 
     <Switch
         android:id="@+id/switch1"
