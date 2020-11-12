@@ -15,7 +15,6 @@ import androidx.appcompat.app.AppCompatActivity;
 public class Owner extends AppCompatActivity {
 
     Button sitter_request_button;
-    int height, width;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,19 +22,10 @@ public class Owner extends AppCompatActivity {
         setContentView(R.layout.owner);
         setTitle("OWNER");
 
-        Point size = new Point();
-        getWindowManager().getDefaultDisplay().getSize(size);
-        Resources res = getResources();
-        int statusBarHeight = 0;
-        int statusBarID = res.getIdentifier("status_bar_height", "dimen", "android" );
-        if(statusBarID > 0){
-            statusBarHeight = res.getDimensionPixelSize(statusBarID);
-        }
-        width = size.x;
-        height = size.y - statusBarHeight;
+        ScreenSize view = new ScreenSize(this);
 
         sitter_request_button = findViewById(R.id.sitter_request_button);
-        sitter_request_button.setTextSize(height/60);
+        sitter_request_button.setTextSize(view.getButtonTextSize());
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {

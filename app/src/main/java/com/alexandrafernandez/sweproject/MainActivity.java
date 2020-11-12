@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
@@ -66,6 +67,11 @@ public class MainActivity extends Activity {
 
         public void verifyLogin(View v)
         {
+            if(usernameEditText.getText().toString().equals("") || passwordEditText.getText().toString().equals("") ) {
+                Toast.makeText(this, "Username/Password cannot be empty", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
             if(loginSwitch.isChecked()) {
                 SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
                 SharedPreferences.Editor editor = pref.edit();
