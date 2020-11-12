@@ -15,16 +15,17 @@
         android:text="Account Info"
         android:textColor="@color/colorBlack"
         android:background="@color/colorWhite"
-        android:textSize="30sp" />
+        android:textStyle="italic"
+        />
 
     <TextView
         android:id="@+id/name"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/account_info"
-        android:textSize="40sp"
         android:textColor="@color/colorBlack"
         android:text="NAME:"
+        android:layout_marginTop="10dp"
         />
 
     <EditText
@@ -33,20 +34,22 @@
         android:layout_below="@+id/account_info"
         android:layout_above="@id/phone"
         android:layout_height="wrap_content"
-        android:textSize="30sp"
         android:layout_alignEnd="@id/account_info"
         android:layout_width="wrap_content"
         android:autofillHints="name"
-        android:inputType="text" />
+        android:inputType="text"
+        android:layout_toRightOf="@+id/name"
+        android:layout_alignRight="@id/account_info"
+        />
 
     <TextView
         android:id="@+id/phone"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/name"
-        android:textSize="40sp"
         android:textColor="@color/colorBlack"
         android:text="Phone:"
+        android:layout_marginTop="10dp"
         />
 
     <EditText
@@ -55,20 +58,21 @@
         android:layout_below="@+id/name"
         android:layout_above="@id/address"
         android:layout_height="wrap_content"
-        android:textSize="30sp"
         android:layout_alignEnd="@id/account_info"
         android:layout_width="wrap_content"
         android:autofillHints="phone"
-        android:inputType="text" />
+        android:inputType="text"
+        android:layout_toRightOf="@+id/name"
+        android:layout_alignRight="@id/account_info" />
 
     <TextView
         android:id="@+id/address"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/phone"
-        android:textSize="35sp"
         android:textColor="@color/colorBlack"
         android:text="Address:"
+        android:layout_marginTop="10dp"
         />
 
     <EditText
@@ -77,20 +81,22 @@
         android:layout_below="@+id/phone"
         android:layout_above="@id/paypal_link_button"
         android:layout_height="wrap_content"
-        android:textSize="30sp"
         android:layout_alignEnd="@id/account_info"
         android:layout_width="wrap_content"
         android:autofillHints="address"
-        android:inputType="text" />
+        android:inputType="text"
+        android:layout_toRightOf="@+id/name"
+        android:layout_alignRight="@id/account_info"
+        />
 
     <Button
         android:id="@+id/paypal_link_button"
         android:layout_below="@id/address"
         android:layout_marginTop="15dp"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
         android:text="Add Paypal Information"
-        android:onClick="doPaypalLink"/>
+        android:onClick="doPaypalLink"
+        android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/profile_types"
@@ -100,7 +106,7 @@
         android:text="I am a..."
         android:textColor="@color/colorBlack"
         android:layout_below="@id/paypal_link_button"
-        android:textSize="30sp" />
+        android:textStyle="italic" />
 
     <Switch
         android:id="@+id/switch1"
@@ -108,7 +114,6 @@
         android:layout_height="wrap_content"
         android:background="@color/colorWhite"
         android:text="Pet Owner"
-        android:textSize="40sp"
         android:layout_below="@id/profile_types"
         tools:ignore="UseSwitchCompatOrMaterialXml" />
 
@@ -117,7 +122,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorWhite"
-        android:textSize="40sp"
         android:layout_below="@id/switch1"
         android:text="Pet Sitter"
         tools:ignore="UseSwitchCompatOrMaterialXml" />
@@ -126,7 +130,6 @@
         android:id="@+id/switch3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="30sp"
         android:layout_below="@id/switch2"
         android:background="@color/colorWhite"
         android:text="I'm interested in Adoption"
@@ -136,10 +139,9 @@
         android:id="@+id/settings_save_button"
         android:layout_marginTop="15dp"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         android:layout_below="@id/switch3"
         android:text="Save Settings"
-        android:textSize="40dp"
         android:background="@color/colorPrimary"
         android:textColor="@color/colorWhite"
         android:onClick="goHome"

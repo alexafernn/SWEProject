@@ -8,7 +8,6 @@
         android:id="@+id/feedback_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="24dp"
         android:textColor="@color/colorBlack"
         android:text="@string/feedback_notes"
         />
@@ -16,25 +15,27 @@
     <EditText
         android:id="@+id/feedback_text_field"
         android:inputType="textMultiLine"
-        android:lines="8"
-        android:minLines="6"
+        android:lines="6"
+        android:minLines="4"
         android:gravity="top|start"
         android:maxLines="10"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:scrollbars="vertical"
         android:layout_below="@id/feedback_text"
-        android:background="@color/colorWhite"
         android:layout_marginTop="15dp"
         android:hint="Enter feedback here..."
         android:textColorHint="@color/colorBlack"
-        />
+        android:background="@color/colorGray"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginLeft="5dp" />
 
     <TextView
         android:id="@+id/rating_select"
         android:layout_below="@id/feedback_text_field"
         android:layout_width="120dp"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:text="Rating:"
         android:textSize="30sp"
@@ -48,16 +49,16 @@
         android:layout_toEndOf="@+id/rating_select"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="15dp"/>
+        android:layout_marginTop="15dp"
+        android:layout_toRightOf="@+id/rating_select" />
 
     <Button
         android:id="@+id/feedback_button"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_below="@id/star_rating_spinner"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rating_select"
         android:background="@color/colorPrimary"
         android:textColor="@color/colorWhite"
-        android:textSize="30dp"
         android:text="Share Feedback"
         android:layout_marginTop="15dp"
         android:onClick="doSendFeedback"
@@ -69,7 +70,6 @@
         android:layout_marginTop="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="24dp"
         android:textColor="@color/colorBlack"
         android:text="@string/feedback_note_bottom"
         />

@@ -34,6 +34,7 @@
         android:layout_below="@id/animal_adopt"
         android:textColor="@color/colorBlack"
         android:text="Age:"
+        android:layout_marginTop="10dp"
         />
 
     <EditText

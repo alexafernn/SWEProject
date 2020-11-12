@@ -2,14 +2,17 @@ package com.alexandrafernandez.sweproject;
 
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Point;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,43 +21,40 @@ public class Intro extends AppCompatActivity {
 
     TextView greeting, status_messages;
     Button owner, sitter, adoption;
-    int width, height;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //setTitle("Current Sittings");
+        setTitle("HOME");
 
-        Point size = new Point();
-        getWindowManager().getDefaultDisplay().getSize(size);
-        Resources res = getResources();
-        int statusBarHeight = 0;
-        int statusBarID = res.getIdentifier("status_bar_height", "dimen", "android" );
-        if(statusBarID > 0){
-            statusBarHeight = res.getDimensionPixelSize(statusBarID);
-        }
-        width = size.x;
-        height = size.y - statusBarHeight;
+        ScreenSize view = new ScreenSize(this);
 
-        String name = "<username>";
-        String greetMe = "Hi, " + name;
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
+        String myName = pref.getString("username", "username");
+        String greetMe = "Hi, " + myName;
         greeting = (TextView) findViewById(R.id.greeting);
         greeting.setText(greetMe);
-        greeting.setTextSize(height/70);
+        greeting.setTextSize(view.getLabelTextSize());
 
         status_messages = (TextView) findViewById(R.id.status_messages);
-        status_messages.setTextSize(height/85);
-        status_messages.setHeight(height/3);
+        status_messages.setTextSize(view.getLabelTextSize());
+        status_messages.setHeight(view.getHeight()/3);
 
         owner = findViewById(R.id.owner_main_button);
-        owner.setTextSize(height/50);
+        owner.setTextSize(view.getButtonTextSize());
+        if(pref.getBoolean("ownerProfileSwitch", false))
+            owner.setVisibility(View.INVISIBLE);
 
         sitter = findViewById(R.id.sitter_main_button);
-        sitter.setTextSize(height/50);
+        sitter.setTextSize(view.getButtonTextSize());
+        if(pref.getBoolean("sitterProfileSwitch", false))
+            sitter.setVisibility(View.INVISIBLE);
 
         adoption = findViewById(R.id.adoption_main_button);
-        adoption.setTextSize(height/50);
+        adoption.setTextSize(view.getButtonTextSize());
+        if(pref.getBoolean("adoptionProfileSwitch", false))
+            adoption.setVisibility(View.INVISIBLE);
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -70,9 +70,21 @@ public class Intro extends AppCompatActivity {
                 return true;
             case R.id.profile:
                 startActivity(new Intent(this, Profile.class));
+                finish();
                 return true;
             case R.id.feedback:
                 startActivity(new Intent(this, Feedback.class));
+                return true;
+            case R.id.logout:
+                SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
+                SharedPreferences.Editor editor = pref.edit();
+                editor.putBoolean("loginSwitchChecked", false);
+                editor.commit();
+                startActivity(new Intent(this, MainActivity.class));
+
+                //clear all profile data
+
+                finish();
             default:
                 return super.onOptionsItemSelected(item);
         }

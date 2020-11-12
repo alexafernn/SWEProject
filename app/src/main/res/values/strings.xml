@@ -2,7 +2,7 @@
     <string name="app_name">SWEProject</string>
     <string name="rewards_deliver_str">Note: Gift card requests will be reviewed and delivered electronically to the email in your profile. Please allow 24-48 hours processing time.</string>
     <string name="subscription_note">Note: Please allow 24-48 hours processing time for account information to be updated after submitting a request.</string>
-    <string name="feedback_notes">Feel free to share anonymous feedback about your experience with the app or service below. For feedback specific to other users, use the link under \'Past Sittings\'.</string>
+    <string name="feedback_notes">Use this form to help improve the service. For feedback specific to other users, use the link under \'Past Sittings\'.</string>
     <string name="feedback_note_bottom">Note: All feedback will remain private between users and company representatives.</string>
 
 

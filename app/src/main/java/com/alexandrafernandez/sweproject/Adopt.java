@@ -28,35 +28,35 @@ public class Adopt extends AppCompatActivity {
         setContentView(R.layout.adopt);
         setTitle("Adopt");
 
-        int labelTextSize = (new ScreenSize(this).height)/60;
+        ScreenSize view = new ScreenSize(this);
 
         animal_adopt = (TextView) findViewById(R.id.animal_adopt);
-        animal_adopt.setTextSize(labelTextSize);
+        animal_adopt.setTextSize(view.getLabelTextSize());
 
         age = (TextView) findViewById(R.id.age);
-        age.setTextSize(labelTextSize);
+        age.setTextSize(view.getLabelTextSize());
 
         animal_adopt_field = (EditText) findViewById(R.id.animal_adopt_field);
-        animal_adopt_field.setTextSize(labelTextSize);
+        animal_adopt_field.setTextSize(view.getEditTextSize());
 
         age_field = (EditText) findViewById(R.id.age_field);
-        age_field.setTextSize(labelTextSize);
+        age_field.setTextSize(view.getEditTextSize());
 
         notes_field = (EditText) findViewById(R.id.notes_field);
-        notes_field.setTextSize((float) (0.8*labelTextSize));
-        notes_field.setHeight(10*labelTextSize);
+        notes_field.setTextSize(view.getEditTextSize());
+        notes_field.setHeight(10*view.getEditTextSize());
 
         background_check_switch = (Switch) findViewById(R.id.switch6);
-        background_check_switch.setTextSize((float) (0.6*labelTextSize));
+        background_check_switch.setTextSize(view.getSwitchTextSize());
 
         emails_switch = (Switch) findViewById(R.id.switch7);
-        emails_switch.setTextSize((float) (0.6*labelTextSize));
+        emails_switch.setTextSize(view.getSwitchTextSize());
 
         adoption_request_button = (Button) findViewById(R.id.adoption_request_button);
-        adoption_request_button.setTextSize((float) (0.7*labelTextSize));
+        adoption_request_button.setTextSize(view.getButtonTextSize());
 
         animal_adopt_notes = (TextView) findViewById(R.id.animal_adopt_notes);
-        animal_adopt_notes.setTextSize((float) (0.6*labelTextSize));
+        animal_adopt_notes.setTextSize((float) (0.6*view.getLabelTextSize()));
 
     }
 
