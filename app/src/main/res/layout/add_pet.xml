@@ -6,69 +6,71 @@
     android:background="@color/colorWhite">
 
     <TextView
-        android:id="@+id/pet_info"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Pet Info"
-        android:textSize="40sp"
-        android:textColor="@color/colorBlack"
-        android:background="@color/colorPrimary"/>
-
-    <TextView
         android:id="@+id/pet_name"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/pet_info"
-        android:textSize="40sp"
         android:textColor="@color/colorBlack"
         android:text="NAME:"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
         />
 
     <EditText
         android:id="@+id/pet_name_field"
         android:layout_toEndOf="@+id/pet_name"
-        android:layout_below="@+id/pet_info"
         android:layout_above="@id/animal"
         android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:layout_alignEnd="@id/pet_info"
+        android:layout_alignEnd="@id/settings_save_button"
         android:layout_width="wrap_content"
         android:autofillHints="name"
-        android:inputType="text" />
+        android:inputType="text"
+        android:layout_toRightOf="@+id/pet_name"
+        android:layout_alignRight="@id/settings_save_button" />
 
     <TextView
         android:id="@+id/animal"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/pet_name"
-        android:textSize="40sp"
         android:textColor="@color/colorBlack"
         android:text="Animal:"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        />
+
+    <Spinner
+        android:id="@+id/pet_type_spinner"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_below="@id/pet_name"
+        android:layout_toEndOf="@id/animal"
+        android:layout_toRightOf="@id/animal"
+        android:layout_marginTop="10dp"
         />
 
     <EditText
-        android:id="@+id/animal_field"
-        android:layout_toEndOf="@+id/pet_name"
-        android:layout_below="@+id/pet_name"
-        android:layout_above="@id/add_photo_button"
+        android:id="@+id/other_animal_type_field"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:layout_alignEnd="@id/pet_info"
-        android:layout_width="wrap_content"
-        android:autofillHints="phone"
-        android:inputType="text" />
+        android:layout_margin="10dp"
+        android:layout_marginTop="15dp"
+        android:hint="Other Animal (if applicable)"
+        android:layout_below="@id/animal"
+        />
 
     <Button
         android:id="@+id/add_photo_button"
-        android:layout_width="350dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:layout_centerHorizontal="true"
         android:textColor="@color/colorBlack"
-        android:layout_below="@+id/animal"
+        android:layout_below="@+id/other_animal_type_field"
         android:text="Add a Photo"
         android:onClick="addPhoto"
-        />
+        android:layout_marginStart="10dp" />
 
     <TextView
         android:id="@+id/pet_qualities"
@@ -76,79 +78,76 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="My pet is..."
+        android:textStyle="italic"
         android:layout_below="@id/add_photo_button"
-        android:background="@color/colorPrimary"
-        android:textSize="40sp"
-        android:textColor="@color/colorBlack"/>
+        android:textColor="@color/colorBlack"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"/>
 
     <Switch
-        android:id="@+id/switch3"
+        android:id="@+id/switch_energetic"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Energetic"
-        android:textSize="40sp"
         android:layout_below="@id/pet_qualities"
-        tools:ignore="UseSwitchCompatOrMaterialXml" />
+        tools:ignore="UseSwitchCompatOrMaterialXml"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp" />
 
     <Switch
-        android:id="@+id/switch4"
+        android:id="@+id/switch_noisy"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="40sp"
-        android:layout_below="@id/switch3"
+        android:layout_below="@id/switch_energetic"
         android:text="Noisy"
-        tools:ignore="UseSwitchCompatOrMaterialXml" />
+        tools:ignore="UseSwitchCompatOrMaterialXml"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"/>
 
     <Switch
-        android:id="@+id/switch5"
+        android:id="@+id/switch_trained"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="40sp"
-        android:layout_below="@id/switch4"
+        android:layout_below="@id/switch_noisy"
         android:text="Trained"
-        tools:ignore="UseSwitchCompatOrMaterialXml" />
+        tools:ignore="UseSwitchCompatOrMaterialXml"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"/>
 
-    <Switch
-        android:id="@+id/switch6"
+    <TextView
+        android:id="@+id/pet_sitting_logistics"
         android:layout_marginTop="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="40sp"
-        android:layout_below="@id/other_quality"
-        android:text="Inside Only"
-        tools:ignore="UseSwitchCompatOrMaterialXml" />
+        android:text="Sitting Logistics..."
+        android:textStyle="italic"
+        android:layout_below="@id/switch_trained"
+        android:textColor="@color/colorBlack"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"/>
 
-    <TextView
-        android:id="@+id/other_quality"
+    <Switch
+        android:id="@+id/switch_inside_only"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Other"
-        android:textColor="@color/colorBlack"
-        android:layout_below="@id/switch5"
-        android:textSize="40sp" />
-
-    <EditText
-        android:id="@+id/other_quality_field"
-        android:layout_toEndOf="@+id/pet_name"
-        android:layout_below="@+id/switch5"
-        android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:layout_alignEnd="@id/pet_info"
-        android:layout_width="wrap_content"
-        android:autofillHints="phone"
-        android:inputType="text" />
+        android:layout_below="@id/pet_sitting_logistics"
+        android:text="My pet must stay at my address"
+        tools:ignore="UseSwitchCompatOrMaterialXml"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginStart="10dp"/>
 
     <Button
         android:id="@+id/settings_save_button"
         android:layout_marginTop="15dp"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_below="@id/switch6"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/switch_inside_only"
         android:text="Add Pet"
-        android:textSize="40dp"
         android:background="@color/colorPrimary"
         android:textColor="@color/colorWhite"
         android:onClick="goToPets"
+        android:layout_margin="10dp"
         />
 
 </RelativeLayout>

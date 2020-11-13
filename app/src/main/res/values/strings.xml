@@ -43,4 +43,12 @@
         <item>2 - Poor</item>
         <item>1 - Awful</item>
     </string-array>
+
+    <string-array name="pet_type_choices">
+        <item>Dog - Small</item>
+        <item>Dog - Medium</item>
+        <item>Dog - Large</item>
+        <item>Cat</item>
+        <item>Other (please specify)</item>
+    </string-array>
 </resources>
