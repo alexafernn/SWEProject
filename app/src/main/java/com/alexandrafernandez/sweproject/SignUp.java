@@ -30,6 +30,9 @@ public class SignUp extends AppCompatActivity {
         signupName = (TextView) findViewById(R.id.signupName);
         signupName.setTextSize(view.getLabelTextSize());
 
+        nameEditText = (EditText) findViewById(R.id.usernameEditText);
+        nameEditText.setTextSize(view.getEditTextSize());
+
         phoneNumber = (TextView) findViewById(R.id.phoneNumber);
         phoneNumber.setTextSize(view.getLabelTextSize());
 

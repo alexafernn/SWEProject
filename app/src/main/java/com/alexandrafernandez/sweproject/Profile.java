@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class Profile extends Activity {
+public class Profile extends AppCompatActivity {
     EditText name_field, phone_field, address_field;
     Button save, payPal;
     Switch owner, sitter, adoption;

@@ -7,9 +7,8 @@
     <TextView
         android:id="@+id/rewards_menu_top"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:text="YOUR POINTS BALANCE IS"
-        android:textSize="30sp"
         android:textColor="@color/colorBlack"
         android:gravity="center"
         />
@@ -19,9 +18,8 @@
         android:layout_below="@id/rewards_menu_top"
         android:layout_marginBottom="20dp"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="wrap_content"
         android:text="0"
-        android:textSize="129sp"
         android:textColor="@color/colorPrimary"
         android:gravity="center"
         />
@@ -30,9 +28,9 @@
         android:id="@+id/reward_types"
         android:layout_below="@id/rewards_points_total"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:text="Redeem Gift Cards"
-        android:textSize="30sp"
+        android:textStyle="bold"
         android:textColor="@color/colorBlack"
         android:gravity="center"
         />
@@ -41,11 +39,11 @@
         android:id="@+id/reward_select"
         android:layout_below="@id/reward_types"
         android:layout_width="120dp"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:text="Store:"
-        android:textSize="30sp"
         android:textColor="@color/colorBlack"
         android:gravity="center"
+        android:layout_marginTop="10dp"
         />
 
     <Spinner
@@ -53,17 +51,20 @@
         android:layout_below="@id/reward_types"
         android:layout_toEndOf="@+id/reward_select"
         android:layout_width="match_parent"
-        android:layout_height="50dp" />
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/reward_select"
+        android:layout_marginTop="20dp"
+        />
 
     <TextView
         android:id="@+id/amount_select"
-        android:layout_below="@id/reward_select"
+        android:layout_below="@id/gift_card_spinner"
         android:layout_width="120dp"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:text="Amount:"
-        android:textSize="30sp"
         android:textColor="@color/colorBlack"
         android:gravity="center"
+        android:layout_marginTop="10dp"
         />
 
     <Spinner
@@ -71,17 +72,20 @@
         android:layout_below="@id/gift_card_spinner"
         android:layout_toEndOf="@+id/reward_select"
         android:layout_width="match_parent"
-        android:layout_height="50dp" />
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/reward_select"
+        android:layout_marginTop="20dp"
+        />
 
     <Button
         android:id="@+id/rewards_request_button"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         android:layout_below="@id/amount_spinner"
         android:background="@color/colorPrimary"
         android:textColor="@color/colorWhite"
         android:text="Request gift card"
-        android:textSize="30sp"
+        android:layout_marginTop="15dp"
         android:onClick="onRequestReward"/>
 
     <TextView
@@ -90,10 +94,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/rewards_deliver_str"
-        android:textSize="30sp"
         android:textStyle="italic"
         android:textColor="@color/colorBlack"
         android:gravity="center"
+        android:layout_marginTop="5dp"
         />
 
 </RelativeLayout>
