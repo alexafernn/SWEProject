@@ -8,22 +8,10 @@
     android:paddingTop="30dp">
 
     <TextView
-        android:layout_width = "match_parent"
-        android:layout_height="wrap_content"
-        android:text="Account Sign Up "
-        android:id="@+id/loginText"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:textColor="@color/colorBlack"
-        android:background="@color/colorPrimary"
-        />
-
-    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Full Name:"
         android:id="@+id/signupName"
-        android:layout_marginTop="60dp"
         android:paddingBottom="5dp"
         android:textColor="@color/colorBlack"
         android:paddingLeft="10dp"
@@ -102,7 +90,7 @@
         />
 
     <Switch
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/profile_types_signup"
         android:text="Pet Owner:"
@@ -112,7 +100,7 @@
         />
 
     <Switch
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/userTypePetOwner"
         android:text="Pet Sitter:"
@@ -126,20 +114,19 @@
         android:layout_below="@id/userTypeSitter"
         android:layout_width="300dp"
         android:layout_centerHorizontal="true"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:text="Add PayPal Information"
         android:onClick="payPalConnection"
         />
 
-
     <Button
-        android:layout_width="150dp"
-        android:layout_height="75dp"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
         android:id="@+id/saveButton"
-        style = "@style/ButtonStyle"
         android:text="Save"
+        android:layout_centerHorizontal="true"
         android:onClick="save"
-        android:layout_marginTop="450dp"
+        android:layout_below="@id/paypal_link_button"
         />
 
     <EditText

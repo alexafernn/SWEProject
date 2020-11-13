@@ -21,8 +21,11 @@ public class SignUp extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.signup);
+        setTitle("New Account Sign Up");
 
         ScreenSize view = new ScreenSize(this);
+
+        /*
 
         loginText = (TextView) findViewById(R.id.loginText);
         loginText.setTextSize(view.getLabelTextSize());
@@ -50,6 +53,8 @@ public class SignUp extends AppCompatActivity {
 
         profile_types = (TextView) findViewById(R.id.profile_types_signup);
         profile_types.setTextSize(view.getLabelTextSize());
+
+         */
 
     }
 

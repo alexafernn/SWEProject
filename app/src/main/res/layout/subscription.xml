@@ -7,9 +7,8 @@
     <TextView
         android:id="@+id/subscription_menu_top"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:text="YOUR SUBSCRIPTION IS"
-        android:textSize="30sp"
         android:textColor="@color/colorBlack"
         android:gravity="center"
         />
@@ -19,9 +18,8 @@
         android:layout_below="@id/subscription_menu_top"
         android:layout_marginBottom="20dp"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         android:text="ACTIVE"
-        android:textSize="50sp"
         android:textColor="@color/colorPrimary"
         android:gravity="center"
         />
@@ -31,9 +29,8 @@
         android:layout_below="@id/subscription_status"
         android:layout_marginBottom="20dp"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:text="Good thru: 12/31/2020"
-        android:textSize="30sp"
         android:textColor="@color/colorPrimary"
         android:gravity="center"
         />
@@ -42,9 +39,9 @@
         android:id="@+id/extend_title"
         android:layout_below="@id/subscription_expiration"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:text="Manage My Subscription"
-        android:textSize="30sp"
+        android:textStyle="bold"
         android:textColor="@color/colorBlack"
         android:gravity="center"
         />
@@ -53,11 +50,11 @@
         android:id="@+id/plan_select"
         android:layout_below="@id/extend_title"
         android:layout_width="130dp"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:text="Plan:"
-        android:textSize="30sp"
         android:textColor="@color/colorBlack"
         android:gravity="center"
+        android:layout_marginTop="10dp"
         />
 
     <Spinner
@@ -65,17 +62,20 @@
         android:layout_below="@id/extend_title"
         android:layout_toEndOf="@+id/plan_select"
         android:layout_width="match_parent"
-        android:layout_height="50dp" />
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/plan_select"
+        android:layout_marginTop="20dp"
+        />
 
     <TextView
         android:id="@+id/payment_select"
         android:layout_below="@id/plan_select"
         android:layout_width="130dp"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:text="Payment:"
-        android:textSize="30sp"
         android:textColor="@color/colorBlack"
         android:gravity="center"
+        android:layout_marginTop="10dp"
         />
 
     <Spinner
@@ -83,18 +83,22 @@
         android:layout_below="@id/plan_spinner"
         android:layout_toEndOf="@+id/payment_select"
         android:layout_width="match_parent"
-        android:layout_height="50dp" />
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/payment_select"
+        android:layout_marginTop="20dp"
+        />
 
     <Button
         android:id="@+id/subscription_extend_button"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         android:layout_below="@id/payment_spinner"
         android:background="@color/colorPrimary"
         android:text="Update Subscription"
-        android:textSize="30sp"
         android:textColor="@color/colorWhite"
-        android:onClick="doSubscriptionUpdate"/>
+        android:onClick="doSubscriptionUpdate"
+        android:layout_marginTop="20dp"
+        />
 
     <TextView
         android:id="@+id/subscription_payment_info"
@@ -102,7 +106,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/subscription_note"
-        android:textSize="30sp"
         android:textStyle="italic"
         android:textColor="@color/colorBlack"
         android:gravity="center"
