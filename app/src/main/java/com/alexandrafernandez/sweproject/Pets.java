@@ -1,26 +1,37 @@
 package com.alexandrafernandez.sweproject;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Point;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Display;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.ImageView;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.nio.channels.InterruptedByTimeoutException;
 import java.util.ArrayList;
 
 public class Pets extends AppCompatActivity {
     ArrayList<Pet> petList;
     TextView[] pets;
+    ListView pet_listview;
+    Pet pet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,9 +39,33 @@ public class Pets extends AppCompatActivity {
         setContentView(R.layout.pets);
         setTitle("My Pets");
 
+        petList = new ArrayList<Pet>(); //change this to pull from server initially
+        petList.add(new Pet("test1", "animal1"));
+        petList.add(new Pet("test2", "animal2"));
+
+        pet_listview = (ListView) findViewById(R.id.pet_listview);
+        ArrayAdapter<Pet> adapter = new ArrayAdapter<Pet>(this, android.R.layout.simple_list_item_1, petList);
+        pet_listview.setAdapter(adapter);
+
+        pet_listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                pet = petList.get(i);
+
+                //TODO code below causes a crash when launching pet activity
+                Intent intent = new Intent(getActivity(), Pet.class);
+                intent.putExtra(pet.petName, "petToView.petName");
+                intent.putExtra(pet.animalType, "petToView.animalType");
+                //add more data here
+                startActivity(intent);
+                finish();
+
+            }
+        });
+
+
         /*
-        petList = new ArrayList<Pet>();
-        petList.add(new Pet("test"));
+        petList.add(new Pet("test", null, null, null, null, null, null));
         pets = new TextView[petList.size()];
 
         GridLayout gridLayout = new GridLayout( this );
@@ -54,6 +89,19 @@ public class Pets extends AppCompatActivity {
         setContentView(gridLayout);
 
          */
+    }
+
+    public Activity getActivity(){
+        return this;
+    }
+
+    public void goToPet(View view) {
+        Intent i = new Intent(this, Pet.class);
+        i.putExtra(pet.petName, "petToView.petName");
+        i.putExtra(pet.animalType, "petToView.animalType");
+        //add more data here
+        startActivity(i);
+        finish();
     }
 
     public void addPettoList(Pet p)

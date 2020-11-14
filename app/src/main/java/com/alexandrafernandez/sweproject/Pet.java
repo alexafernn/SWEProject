@@ -1,6 +1,13 @@
 package com.alexandrafernandez.sweproject;
 
-public class Pet {
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class Pet extends AppCompatActivity {
     public String petName;
     public String animalType;
     //gonna need something to store the image of pet
@@ -9,6 +16,28 @@ public class Pet {
     boolean trained;
     boolean insideOnly;
     String otherInfo;
+
+    TextView pet_view_name_field, pet_view_animal_field;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.pet);
+        setTitle("View My Pet");
+
+        ScreenSize view = new ScreenSize(this);
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
+
+        pet_view_name_field = (TextView) findViewById(R.id.pet_view_name_field);
+        pet_view_name_field.setTextSize(view.getLabelTextSize());
+        pet_view_name_field.setText(pref.getString("petToView.petName","null"));
+
+        pet_view_animal_field = (TextView) findViewById(R.id.pet_view_animal_field);
+        pet_view_animal_field.setTextSize(view.getLabelTextSize());
+        pet_view_animal_field.setText(pref.getString("petToView.animalType", "null"));
+
+
+    }
 
     public Pet(String petName, String animalType, boolean energetic, boolean noisy, boolean trained, boolean insideOnly, String otherInfo)
     {
@@ -21,10 +50,17 @@ public class Pet {
         this.otherInfo = otherInfo;
     }
 
+    //test constructor
+    public Pet(String name, String animal) {
+        petName = name;
+        animalType = animal;
+    }
 
     @Override
     public String toString()
     {
+        return petName;
+        /*
         return("Pet Name:"+this.petName+
                 " animal Type:"+this.animalType +
                 " Energetic:"+ this.energetic+
@@ -32,6 +68,8 @@ public class Pet {
                 " trained:"+this.trained+
                 " insideOnly:"+this.insideOnly+
                 " otherInfo:"+this.otherInfo);
+
+         */
     }
 
     public String getPetName()
