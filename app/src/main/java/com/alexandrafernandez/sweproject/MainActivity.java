@@ -27,9 +27,16 @@ public class MainActivity extends Activity {
     EditText usernameEditText, passwordEditText;
     Switch loginSwitch;
 
+    //adding
+    public static Sitting sitting;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //adding
+        sitting = new Sitting(this);
+
         setContentView(R.layout.login);
 
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);

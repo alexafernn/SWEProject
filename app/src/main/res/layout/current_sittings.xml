@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Request a sitter to get started."
+        android:layout_margin="10dp"
+        android:textSize="24sp"
+        android:gravity="center"
+        android:id="@+id/noSittings"
+        android:textColor="@color/colorBlack"
+        />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_margin="10dp"
+        android:text="No pets? Add a pet to get started."
+        android:textSize="24sp"
+        android:gravity="center"
+        android:id="@+id/sitting_listview"
+        android:textColor="@color/colorBlack"
+        android:background="@color/colorPrimary"
+        android:dividerHeight="10.0sp"
+        android:divider="@color/colorWhite"
+        />
+
+</RelativeLayout>

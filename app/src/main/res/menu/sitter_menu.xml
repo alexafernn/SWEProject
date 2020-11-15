@@ -7,7 +7,7 @@
         android:title="Home"
         app:showAsAction="ifRoom"/>
     <item android:id="@+id/action_favorite"
-        android:title="Current Sittings"
+        android:title="My Sittings"
         app:showAsAction="ifRoom" />
     <item android:id="@+id/sitter_Availability"
         android:title="Manage Availability" />

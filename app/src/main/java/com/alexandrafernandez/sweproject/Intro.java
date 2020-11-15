@@ -41,17 +41,17 @@ public class Intro extends AppCompatActivity {
         status_messages.setTextSize(view.getLabelTextSize());
         status_messages.setHeight(view.getHeight()/3);
 
-        owner = findViewById(R.id.owner_main_button);
+        owner = findViewById(R.id.owner_main_button); //i need a sitter
         owner.setTextSize(view.getButtonTextSize());
         if(pref.getBoolean("ownerProfileSwitch", false))
             owner.setVisibility(View.INVISIBLE);
 
-        sitter = findViewById(R.id.sitter_main_button);
+        sitter = findViewById(R.id.sitter_main_button); //i want to sit
         sitter.setTextSize(view.getButtonTextSize());
         if(pref.getBoolean("sitterProfileSwitch", false))
             sitter.setVisibility(View.INVISIBLE);
 
-        adoption = findViewById(R.id.adoption_main_button);
+        adoption = findViewById(R.id.adoption_main_button); //adoption
         adoption.setTextSize(view.getButtonTextSize());
         if(pref.getBoolean("adoptionProfileSwitch", false))
             adoption.setVisibility(View.INVISIBLE);
@@ -81,7 +81,6 @@ public class Intro extends AppCompatActivity {
                 editor.putBoolean("loginSwitchChecked", false);
                 editor.commit();
                 startActivity(new Intent(this, MainActivity.class));
-
                 //clear all profile data
 
                 finish();

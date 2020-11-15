@@ -18,6 +18,8 @@ import java.util.Locale;
 
 public class NeedSitterEvent extends AppCompatActivity {
 
+    private int sittingsRequest;
+
     TextView start_date_label, end_date_label, which_pets_title_info2, other_notes_info;
     EditText start_date, end_date, additional_info_text_field;
     Switch switch8;
@@ -68,10 +70,15 @@ public class NeedSitterEvent extends AppCompatActivity {
         startActivity(new Intent(this, PetPicker.class));
     }
 
-    public void onCreateRequestSitterEvent(View view) {
+    public void onCreateRequestSitterEvent(View view)
+    {
 
-
+        Sitting sitting = MainActivity.sitting; //not sure if this is creating new one?
+        sitting.updateNumberOfSittings();
         finish();
     }
+
+
+
 }
 
