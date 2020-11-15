@@ -1,6 +1,7 @@
 package com.alexandrafernandez.sweproject;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -78,10 +79,25 @@ public class AddPet extends AppCompatActivity {
 
     public void goToPets(View view)
     {
+        System.out.println("in go topets");
         Boolean energeticBoolean;
         Boolean noisyBoolean;
         Boolean trainedBoolean;
         Boolean insideOnlyBoolean;
+
+        String choice = petTypeSpinner.getSelectedItem().toString();
+
+
+        if(choice.equals("Other (please specify)") && (TextUtils.isEmpty(other_animal_type_field.getText())))
+        {
+            other_animal_type_field.setError("Type of animal and size is required!");
+
+        }
+        else
+        {
+             finish();
+            //start activity
+        }
 
         //do something with entered info, then go back to pets menu
         //EditText animalName = (EditText) findViewById(R.id.pet_name_field);
@@ -110,8 +126,8 @@ public class AddPet extends AppCompatActivity {
 
          */
         //p = new Pet(strAnimalName, strAnimalType, energeticBoolean, noisyBoolean, trainedBoolean, insideOnlyBoolean, strOtherInfo);
-        System.out.println("the pet u just made is " + p.toString());
-        pets.addPettoList(p);
+        //System.out.println("the pet u just made is " + p.toString());
+       // pets.addPettoList(p);
 
 
 
@@ -119,7 +135,7 @@ public class AddPet extends AppCompatActivity {
         //System.out.println("the boolean for energetic is " + energeticBoolean);
         //System.out.println("animal name entered is " + strAnimalName);
 
-        finish();
+
         //when you go back need to make the text with id no pets invisible
     }
 
