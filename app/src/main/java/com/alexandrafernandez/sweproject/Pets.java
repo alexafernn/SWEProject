@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.Display;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -26,12 +27,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.nio.channels.InterruptedByTimeoutException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Pets extends AppCompatActivity {
-    ArrayList<Pet> petList;
+    ArrayList<PetData> petList;
     TextView[] pets;
     ListView pet_listview;
-    Pet pet;
+    PetData pet;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,77 +42,41 @@ public class Pets extends AppCompatActivity {
         setContentView(R.layout.pets);
         setTitle("My Pets");
 
-        petList = new ArrayList<Pet>(); //change this to pull from server initially
-        petList.add(new Pet("test1", "animal1"));
-        petList.add(new Pet("test2", "animal2"));
+        petList = new ArrayList<PetData>(); //change this to pull from server initially
+        petList.add(new PetData("test1", "animal1"));
+        petList.add(new PetData("test2", "animal2"));
+        Log.w("MA", "test print");
+        Log.w("MA", petList.toString());
 
         pet_listview = (ListView) findViewById(R.id.pet_listview);
-        ArrayAdapter<Pet> adapter = new ArrayAdapter<Pet>(this, android.R.layout.simple_list_item_1, petList);
+        ArrayAdapter<PetData> adapter = new ArrayAdapter<PetData>(this, android.R.layout.simple_list_item_1, petList);
         pet_listview.setAdapter(adapter);
+
+        context = this;
 
         pet_listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Log.w("MA", Integer.toString(i));
+
                 pet = petList.get(i);
+                Log.w("MA", "pet data");
+                Log.w("MA", pet.toString());
 
                 //TODO code below causes a crash when launching pet activity
-                Intent intent = new Intent(getActivity(), Pet.class);
-                intent.putExtra(pet.petName, "petToView.petName");
-                intent.putExtra(pet.animalType, "petToView.animalType");
+                Intent intent = new Intent(context, Pet.class);
+                Log.w("MA", "intent created");
+                intent.putExtra(pet.name, "petToView.name");
+                intent.putExtra(pet.animal, "petToView.animal");
+                Log.w("MA", "successful puts");
                 //add more data here
                 startActivity(intent);
+                Log.w("MA", "activity started");
                 finish();
 
             }
         });
-
-
-        /*
-        petList.add(new Pet("test", null, null, null, null, null, null));
-        pets = new TextView[petList.size()];
-
-        GridLayout gridLayout = new GridLayout( this );
-        gridLayout.setRowCount(8);
-        gridLayout.setColumnCount(8);
-
-        int x=0,y=0;
-
-        for( int row = 0; row < 8; row++ ) {
-            pets[row]= new TextView(this);
-            pets[row].setHeight(50);
-            pets[row].setWidth(300);
-            pets[row].setTextSize((int) 30);
-            pets[row].setText(petList.get(row).petName);
-            pets[row].setEnabled(true);
-            pets[row].setVisibility(View.VISIBLE);
-            gridLayout.addView(pets[row], x, y);
-            y+=50;
-        }
-
-        setContentView(gridLayout);
-
-         */
     }
-
-    public Activity getActivity(){
-        return this;
-    }
-
-    public void goToPet(View view) {
-        Intent i = new Intent(this, Pet.class);
-        i.putExtra(pet.petName, "petToView.petName");
-        i.putExtra(pet.animalType, "petToView.animalType");
-        //add more data here
-        startActivity(i);
-        finish();
-    }
-
-    public void addPettoList(Pet p)
-    {
-        petList.add(p);
-    }
-
-
 
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();

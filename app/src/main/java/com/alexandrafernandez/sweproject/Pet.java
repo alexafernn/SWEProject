@@ -3,6 +3,7 @@ package com.alexandrafernandez.sweproject;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,17 +29,18 @@ public class Pet extends AppCompatActivity {
         ScreenSize view = new ScreenSize(this);
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
 
+        Log.w("MA", "made it to Pet");
+
         pet_view_name_field = (TextView) findViewById(R.id.pet_view_name_field);
         pet_view_name_field.setTextSize(view.getLabelTextSize());
-        pet_view_name_field.setText(pref.getString("petToView.petName","null"));
+        pet_view_name_field.setText(pref.getString("petToView.name","null"));
 
         pet_view_animal_field = (TextView) findViewById(R.id.pet_view_animal_field);
         pet_view_animal_field.setTextSize(view.getLabelTextSize());
-        pet_view_animal_field.setText(pref.getString("petToView.animalType", "null"));
-
-
+        pet_view_animal_field.setText(pref.getString("petToView.animal", "null"));
     }
 
+    /*
     public Pet(String petName, String animalType, boolean energetic, boolean noisy, boolean trained, boolean insideOnly, String otherInfo)
     {
         this.petName = petName;
@@ -50,17 +52,22 @@ public class Pet extends AppCompatActivity {
         this.otherInfo = otherInfo;
     }
 
+     */
+
     //test constructor
+    /*
     public Pet(String name, String animal) {
         petName = name;
         animalType = animal;
     }
 
+     */
+
+    /*
     @Override
     public String toString()
     {
         return petName;
-        /*
         return("Pet Name:"+this.petName+
                 " animal Type:"+this.animalType +
                 " Energetic:"+ this.energetic+
@@ -68,13 +75,15 @@ public class Pet extends AppCompatActivity {
                 " trained:"+this.trained+
                 " insideOnly:"+this.insideOnly+
                 " otherInfo:"+this.otherInfo);
-
-         */
     }
+    */
 
+    /*
     public String getPetName()
     {
         return this.petName;
     }
+
+    */
 }
 
