@@ -42,11 +42,9 @@ public class Pets extends AppCompatActivity {
         setContentView(R.layout.pets);
         setTitle("My Pets");
 
-        petList = new ArrayList<PetData>(); //change this to pull from server initially
+        petList = new ArrayList<PetData>(); //replace with server pull
         petList.add(new PetData("test1", "animal1"));
         petList.add(new PetData("test2", "animal2"));
-        Log.w("MA", "test print");
-        Log.w("MA", petList.toString());
 
         pet_listview = (ListView) findViewById(R.id.pet_listview);
         ArrayAdapter<PetData> adapter = new ArrayAdapter<PetData>(this, android.R.layout.simple_list_item_1, petList);
@@ -57,23 +55,12 @@ public class Pets extends AppCompatActivity {
         pet_listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Log.w("MA", Integer.toString(i));
-
                 pet = petList.get(i);
-                Log.w("MA", "pet data");
-                Log.w("MA", pet.toString());
 
-                //TODO code below causes a crash when launching pet activity
                 Intent intent = new Intent(context, Pet.class);
-                Log.w("MA", "intent created");
-                intent.putExtra(pet.name, "petToView.name");
-                intent.putExtra(pet.animal, "petToView.animal");
-                Log.w("MA", "successful puts");
-                //add more data here
+                intent.putExtra("petToView.name", pet.name);
+                intent.putExtra("petToView.animal", pet.animal);
                 startActivity(intent);
-                Log.w("MA", "activity started");
-                finish();
-
             }
         });
     }

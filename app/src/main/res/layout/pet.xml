@@ -1,21 +1,152 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <TextView
-        android:id="@+id/pet_view_name_field"
-        android:layout_width="wrap_content"
+        android:id="@+id/pet_name_edit"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:text="test"
+        android:textColor="@color/colorBlack"
+        android:text="NAME:"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
         />
 
-    <TextView
-        android:id="@+id/pet_view_animal_field"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/pet_name_field_edit"
+        android:layout_toEndOf="@+id/pet_name_edit"
+        android:layout_above="@id/animal_edit"
         android:layout_height="wrap_content"
-        android:layout_below="@id/pet_view_name_field"
-        android:text="test"
+        android:layout_alignEnd="@id/settings_save_button_edit"
+        android:layout_width="wrap_content"
+        android:autofillHints="name"
+        android:inputType="text"
+        android:layout_toRightOf="@+id/pet_name_edit"
+        android:layout_alignRight="@id/settings_save_button_edit" />
+
+    <TextView
+        android:id="@+id/animal_edit"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/pet_name_edit"
+        android:textColor="@color/colorBlack"
+        android:text="Animal:"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        />
+
+    <Spinner
+        android:id="@+id/pet_type_spinner_edit"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_below="@id/pet_name_edit"
+        android:layout_toEndOf="@id/animal_edit"
+        android:layout_toRightOf="@id/animal_edit"
+        android:layout_marginTop="10dp"
+        />
+
+    <EditText
+        android:id="@+id/other_animal_type_field_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginTop="15dp"
+        android:hint="Other Animal + Size (if applicable)"
+        android:layout_below="@id/animal_edit"
+        />
+
+    <Button
+        android:id="@+id/add_photo_button_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/colorBlack"
+        android:layout_below="@+id/other_animal_type_field_edit"
+        android:text="Add a Photo"
+        android:onClick="addPhoto"
+        android:layout_marginStart="10dp" />
+
+    <TextView
+        android:id="@+id/pet_qualities_edit"
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="My pet is..."
+        android:textStyle="italic"
+        android:layout_below="@id/add_photo_button_edit"
+        android:textColor="@color/colorBlack"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"/>
+
+    <Switch
+        android:id="@+id/switch_energetic_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Energetic"
+        android:layout_below="@id/pet_qualities_edit"
+        tools:ignore="UseSwitchCompatOrMaterialXml"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp" />
+
+    <Switch
+        android:id="@+id/switch_noisy_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/switch_energetic_edit"
+        android:text="Noisy"
+        tools:ignore="UseSwitchCompatOrMaterialXml"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"/>
+
+    <Switch
+        android:id="@+id/switch_trained_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/switch_noisy_edit"
+        android:text="Trained"
+        tools:ignore="UseSwitchCompatOrMaterialXml"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"/>
+
+    <TextView
+        android:id="@+id/pet_sitting_logistics_edit"
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sitting Logistics..."
+        android:textStyle="italic"
+        android:layout_below="@id/switch_trained_edit"
+        android:textColor="@color/colorBlack"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"/>
+
+    <Switch
+        android:id="@+id/switch_inside_only_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/pet_sitting_logistics_edit"
+        android:text="My pet must stay at my address"
+        tools:ignore="UseSwitchCompatOrMaterialXml"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginStart="10dp"/>
+
+    <Button
+        android:id="@+id/settings_save_button_edit"
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/switch_inside_only_edit"
+        android:text="Back (Save Changes)"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/colorWhite"
+        android:onClick="goToPets"
+        android:layout_margin="10dp"
         />
 
 </RelativeLayout>
