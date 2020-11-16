@@ -43,8 +43,8 @@ public class Pets extends AppCompatActivity {
         setTitle("My Pets");
 
         petList = new ArrayList<PetData>(); //replace with server pull
-        petList.add(new PetData("test1", "animal1"));
-        petList.add(new PetData("test2", "animal2"));
+        petList.add(new PetData("test1", "animal1", "", true, false, true, false));
+        petList.add(new PetData("test2", "animal2","", false, true, false, true));
 
         pet_listview = (ListView) findViewById(R.id.pet_listview);
         ArrayAdapter<PetData> adapter = new ArrayAdapter<PetData>(this, android.R.layout.simple_list_item_1, petList);
@@ -60,7 +60,13 @@ public class Pets extends AppCompatActivity {
                 Intent intent = new Intent(context, Pet.class);
                 intent.putExtra("petToView.name", pet.name);
                 intent.putExtra("petToView.animal", pet.animal);
+                intent.putExtra("petToView.other_type", pet.other_type);
+                intent.putExtra("petToView.energetic", pet.energetic);
+                intent.putExtra("petToView.noisy", pet.noisy);
+                intent.putExtra("petToView.trained", pet.trained);
+                intent.putExtra("petToView.inside_only", pet.inside_only);
                 startActivity(intent);
+                finish();
             }
         });
     }

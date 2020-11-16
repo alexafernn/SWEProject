@@ -1,9 +1,7 @@
 package com.alexandrafernandez.sweproject;
 
-import android.content.SharedPreferences;
+import android.content.Intent;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -17,17 +15,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 
 public class Pet extends AppCompatActivity {
-    public String petName;
-    public String animalType;
-    //gonna need something to store the image of pet
-    boolean energetic;
-    boolean noisy;
-    boolean trained;
-    boolean insideOnly;
-    String otherInfo;
-    ArrayList<PetData> petList;
 
-    TextView pet_view_name_field, pet_view_animal_field;
+    ArrayList<PetData> petList;
 
     Spinner petTypeSpinner;
     TextView pet_name, animal, pet_qualities, pet_sitting_logistics;
@@ -44,8 +33,8 @@ public class Pet extends AppCompatActivity {
         ScreenSize view = new ScreenSize(this);
 
         petList = new ArrayList<PetData>(); //replace with server pull
-        petList.add(new PetData("test1", "animal1"));
-        petList.add(new PetData("test2", "animal2"));
+        petList.add(new PetData("test1", "animal1", "", true, false, true, false));
+        petList.add(new PetData("test2", "animal2","", false, true, false, true));
 
         pet_name = (TextView) findViewById(R.id.pet_name_edit);
         pet_name.setTextSize(view.getLabelTextSize());
@@ -64,7 +53,7 @@ public class Pet extends AppCompatActivity {
 
         other_animal_type_field = (EditText) findViewById(R.id.other_animal_type_field_edit);
         other_animal_type_field.setTextSize(view.getEditTextSize());
-        other_animal_type_field.setText(getIntent().getStringExtra("petToView.animal"));
+        other_animal_type_field.setText(getIntent().getStringExtra("petToView.other_type"));
 
         add_photo_button = (Button) findViewById(R.id.add_photo_button_edit);
         add_photo_button.setTextSize(view.getButtonTextSize());
@@ -74,18 +63,22 @@ public class Pet extends AppCompatActivity {
 
         switch_energetic = (Switch) findViewById(R.id.switch_energetic_edit);
         switch_energetic.setTextSize(view.getSwitchTextSize());
+        switch_energetic.setChecked(getIntent().getBooleanExtra("petToView.energetic", false));
 
         switch_noisy = (Switch) findViewById(R.id.switch_noisy_edit);
         switch_noisy.setTextSize(view.getSwitchTextSize());
+        switch_noisy.setChecked(getIntent().getBooleanExtra("petToView.noisy", false));
 
         switch_trained = (Switch) findViewById(R.id.switch_trained_edit);
         switch_trained.setTextSize(view.getSwitchTextSize());
+        switch_trained.setChecked(getIntent().getBooleanExtra("petToView.trained", false));
 
         pet_sitting_logistics = (TextView) findViewById(R.id.pet_sitting_logistics_edit);
         pet_sitting_logistics.setTextSize(view.getLabelTextSize());
 
         switch_inside_only = (Switch) findViewById(R.id.switch_inside_only_edit);
         switch_inside_only.setTextSize(view.getSwitchTextSize());
+        switch_inside_only.setChecked(getIntent().getBooleanExtra("petToView.inside_only", false));
 
         settings_save_button = (Button) findViewById(R.id.settings_save_button_edit);
         settings_save_button.setTextSize(view.getButtonTextSize());
@@ -95,44 +88,8 @@ public class Pet extends AppCompatActivity {
 
         //write all pet data to server here
 
+        startActivity(new Intent(this, Pets.class));
         finish();
     }
-
-    /*
-    public Pet(String petName, String animalType, boolean energetic, boolean noisy, boolean trained, boolean insideOnly, String otherInfo)
-    {
-        this.petName = petName;
-        this.animalType=animalType;
-        this.energetic= energetic;
-        this.noisy=noisy;
-        this.trained = trained;
-        this.insideOnly = insideOnly;
-        this.otherInfo = otherInfo;
-    }
-
-     */
-
-    /*
-    @Override
-    public String toString()
-    {
-        return petName;
-        return("Pet Name:"+this.petName+
-                " animal Type:"+this.animalType +
-                " Energetic:"+ this.energetic+
-                " Noisy:"+ this.noisy+
-                " trained:"+this.trained+
-                " insideOnly:"+this.insideOnly+
-                " otherInfo:"+this.otherInfo);
-    }
-    */
-
-    /*
-    public String getPetName()
-    {
-        return this.petName;
-    }
-
-    */
 }
 
