@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ScrollView01"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:scrollbars="none" >
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -31,6 +38,7 @@
         android:textColor="@color/colorBlack"
         />
 
+
     <EditText
         android:id="@+id/end_date"
         android:layout_width="match_parent"
@@ -41,10 +49,43 @@
         />
 
     <TextView
+        android:id="@+id/start_time_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Select Start Time"
+        android:layout_below="@id/end_date"
+        android:textColor="@color/colorBlack"
+        />
+
+    <EditText
+        android:id="@+id/start_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/start_time_info"
+        android:hint="Enter Start Time"
+        />
+
+    <TextView
+        android:id="@+id/end_time_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Select End Time"
+        android:layout_below="@id/start_time"
+        android:textColor="@color/colorBlack"
+        />
+
+    <EditText
+        android:id="@+id/end_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/end_time_info"
+        android:hint="Enter End Time"
+        />
+    <TextView
         android:id="@+id/which_pets_title_info2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/end_date"
+        android:layout_below="@id/end_time"
         android:text="Select Pets"
         android:textColor="@color/colorBlack"
         />
@@ -84,7 +125,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/custom_pet_selection_button"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="5dp"
         android:text="What should the sitter expect?"
         android:textColor="@color/colorBlack"
         />
@@ -109,7 +150,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/additional_info_text_field"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="5dp"
         android:background="@color/colorPrimary"
         android:textColor="@color/colorWhite"
         android:text="Confirm Request"
@@ -118,3 +159,4 @@
         />
 
 </RelativeLayout>
+</ScrollView>
