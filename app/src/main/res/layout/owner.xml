@@ -13,10 +13,7 @@
         android:text="New Sitting Request"
         android:textSize="30dp"
         android:onClick="onRequestSitterEvent"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp"
+        android:layout_margin="10dp"
         />
 
     <TextView
@@ -39,9 +36,24 @@
         android:gravity="center"
         android:id="@+id/noSittings"
         android:textColor="@color/colorBlack"
-        android:background="@color/colorPrimary"
         android:text="No Sittings? Create one above."
         android:layout_below="@id/sitter_request_label"
+        />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
+        android:layout_below="@id/sitter_request_label"
+        android:layout_marginTop="15dp"
+        android:layout_margin="10dp"
+        android:text="No pets? Add a pet to get started."
+        android:textSize="24sp"
+        android:gravity="center"
+        android:id="@+id/owner_listview"
+        android:textColor="@color/colorBlack"
+        android:background="@color/colorPrimary"
+        android:dividerHeight="10.0sp"
+        android:divider="@color/colorWhite"
         />
 
 </RelativeLayout>

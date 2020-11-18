@@ -8,13 +8,22 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.ArrayList;
 
 public class Owner extends AppCompatActivity {
 
     Button sitter_request_button;
+    TextView requestLabel, noSittingsLabel;
+    ListView owner_listview;
+
+    ArrayList<SittingRequestData> requestList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +35,16 @@ public class Owner extends AppCompatActivity {
 
         sitter_request_button = findViewById(R.id.sitter_request_button);
         sitter_request_button.setTextSize(view.getButtonTextSize());
+
+        requestLabel = (TextView) findViewById(R.id.sitter_request_label);
+        requestLabel.setTextSize(view.getLabelTextSize());
+
+        noSittingsLabel = (TextView) findViewById(R.id.noSittings);
+        noSittingsLabel.setTextSize(view.getLabelTextSize());
+
+        owner_listview = (ListView) findViewById(R.id.owner_listview);
+        ArrayAdapter<SittingRequestData> adapter = new ArrayAdapter<SittingRequestData>(this, android.R.layout.simple_list_item_1, requestList);
+        owner_listview.setAdapter(adapter);
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
