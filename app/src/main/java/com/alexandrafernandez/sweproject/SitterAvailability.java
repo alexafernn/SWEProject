@@ -52,16 +52,7 @@ public class SitterAvailability extends AppCompatActivity {
         });
     }
 
-    /*
-    public void onCreateAvailabilityEvent(View view) {
 
-        //write all availability data to server here
-
-        startActivity(new Intent(this, SitterAvailability.class));
-        finish();
-    }
-
-     */
 
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
