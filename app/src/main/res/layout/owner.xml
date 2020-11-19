@@ -36,7 +36,8 @@
         android:gravity="center"
         android:id="@+id/noSittings"
         android:textColor="@color/colorBlack"
-        android:text="No Sittings? Create one above."
+        android:text="No Sittings."
+        android:textStyle="italic"
         android:layout_below="@id/sitter_request_label"
         />
 

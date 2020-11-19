@@ -1,5 +1,6 @@
 package com.alexandrafernandez.sweproject;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Point;
@@ -8,6 +9,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -23,7 +26,9 @@ public class Owner extends AppCompatActivity {
     TextView requestLabel, noSittingsLabel;
     ListView owner_listview;
 
-    ArrayList<SittingRequestData> requestList;
+    ArrayList<NeedSitterEventData> requestList;
+    NeedSitterEventData event;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,9 +47,33 @@ public class Owner extends AppCompatActivity {
         noSittingsLabel = (TextView) findViewById(R.id.noSittings);
         noSittingsLabel.setTextSize(view.getLabelTextSize());
 
+        requestList = new ArrayList<NeedSitterEventData>(); //replace with server pull
+        requestList.add(new NeedSitterEventData("01/01/2021","12:00", "02/02/2021", "1:00", true, false, ""));
+
         owner_listview = (ListView) findViewById(R.id.owner_listview);
-        ArrayAdapter<SittingRequestData> adapter = new ArrayAdapter<SittingRequestData>(this, android.R.layout.simple_list_item_1, requestList);
+        ArrayAdapter<NeedSitterEventData> adapter = new ArrayAdapter<NeedSitterEventData>(this, android.R.layout.simple_list_item_1, requestList);
         owner_listview.setAdapter(adapter);
+
+        context = this;
+
+        owner_listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                event = requestList.get(i);
+
+                Intent intent = new Intent(context, NeedSitterEvent.class);
+                intent.putExtra("viewRequest.dateStart", event.start_date);
+                intent.putExtra("viewRequest.dateEnd", event.end_date);
+                intent.putExtra("viewRequest.notes", event.other_notes);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        ViewGroup.LayoutParams params = owner_listview.getLayoutParams();
+        params.height = (int) (requestList.size()*view.getLabelTextSize()*4.5);
+        owner_listview.setLayoutParams(params);
+        owner_listview.requestLayout();
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
