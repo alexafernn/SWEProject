@@ -42,6 +42,12 @@ public class NeedSitterEvent extends AppCompatActivity {
         start_date.setTextSize(view.getEditTextSize());
         start_date.setText(getIntent().getStringExtra("viewRequest.dateStart"));
 
+        start_time_info = (TextView) findViewById(R.id.start_time_info);
+        start_time_info.setTextSize((float) (0.5*view.getLabelTextSize()));
+
+        start_time = (EditText) findViewById(R.id.start_time);
+        start_time.setTextSize(view.getEditTextSize());
+
         end_date_label = (TextView) findViewById(R.id.calendar_title_info2);
         end_date_label.setTextSize((float) (0.5*view.getLabelTextSize()));
 
@@ -49,14 +55,8 @@ public class NeedSitterEvent extends AppCompatActivity {
         end_date.setTextSize(view.getEditTextSize());
         end_date.setText(getIntent().getStringExtra("viewRequest.dateEnd"));
 
-        start_time_info = (TextView) findViewById(R.id.start_time_info);
-        start_time_info.setTextSize(view.getLabelTextSize());
-
-        start_time = (EditText) findViewById(R.id.start_time);
-        start_time.setTextSize(view.getEditTextSize());
-
         end_time_info = (TextView) findViewById(R.id.end_time_info);
-        end_time_info.setTextSize(view.getLabelTextSize());
+        end_time_info.setTextSize((float) (0.5*view.getLabelTextSize()));
 
         end_time = (EditText) findViewById(R.id.end_time);
         end_time.setTextSize(view.getEditTextSize());
