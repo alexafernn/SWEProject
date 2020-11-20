@@ -6,12 +6,36 @@
     android:background="@color/colorWhite"
     tools:context=".Sitter">
 
+
+<!--        android:text="Requests from Pet Owners will appear on this screen based on your availability."-->
+
+
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Choose which reservation you would like to sit for:"
+        android:layout_margin="10dp"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:id="@+id/sittingRequests"
         android:textColor="@color/colorBlack"
-        android:textSize="28dp"
-        android:text="Requests from Pet Owners will appear on this screen based on your availability."
+        />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_margin="10dp"
+        android:text="No pets? Add a pet to get started."
+        android:textSize="24sp"
+        android:gravity="center"
+        android:id="@+id/sitting2_listview"
+        android:layout_below="@+id/sittingRequests"
+        android:textColor="@color/colorBlack"
+        android:background="@color/colorPrimary"
+        android:dividerHeight="10.0sp"
+        android:divider="@color/colorWhite"
         />
 
 </RelativeLayout>

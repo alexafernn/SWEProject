@@ -36,6 +36,7 @@
         <activity android:name=".SitterAvailability" />
         <activity android:name=".NeedSitterEvent" />
         <activity android:name=".PetPicker" />
+        <activity android:name=".approveSitting" />
         <activity android:name=".SitterAvailabilityEvent" />
         <activity android:name=".SignUp"/>
     </application>
