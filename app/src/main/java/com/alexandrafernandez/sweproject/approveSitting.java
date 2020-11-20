@@ -73,7 +73,10 @@ public class approveSitting extends AppCompatActivity {
 
     public void onConfirm(View v)
     {
-        this.finish();
+        Intent i = new Intent(this, HomeActivity.class);
+        startActivity(i);
+        //need to actually pass the confirmed sitting 
+        //this.finish();
         //change this to a confirmed page
     }
 
