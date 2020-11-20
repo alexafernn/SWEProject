@@ -34,8 +34,8 @@ public class SignUp extends AppCompatActivity {
         userInfo.start();
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
         String json = pref.getString("signUp.userInfo", "");
+        Log.w("MA", "json: ");
         Log.w("MA", json);
-        Log.w("MA", "hi");
 
         String first_name = ""; String last_name = ""; int type = 0; String myEmail = "";
         try {

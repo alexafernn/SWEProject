@@ -5,7 +5,9 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
+import java.io.BufferedInputStream;
 import java.io.InputStream;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Scanner;
 
@@ -19,10 +21,11 @@ public class UrlGet extends Thread {
         this.my_url = url;
         this.dataLocation = dataLocation;
         this.context = context;
-        Log.w("MA", "launched get:");
     }
 
     public void run( ) {
+
+        Log.w("MA", "get: " + my_url);
 
         try {
             URL url = new URL(my_url);
@@ -41,6 +44,8 @@ public class UrlGet extends Thread {
             editor.putString(dataLocation, s);
             editor.commit();
 
-        } catch( Exception e ) { }
+        } catch( Exception e ) {
+            Log.w("MA", e.toString());
+        }
     }
 }
