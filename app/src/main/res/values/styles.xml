@@ -6,6 +6,12 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+
+    <style name="MarginStyle" parent="AppTheme">
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+    </style>
+
     <style name="BasicStyle" parent="@android:style/TextAppearance">
         <item name="android:layout_width">200dp</item>
         <item name="android:layout_height">75dp</item>

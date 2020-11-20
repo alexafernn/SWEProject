@@ -8,19 +8,23 @@
         android:id="@+id/calendar_title_info3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="30sp"
         android:text="Select Start Date"
         android:textColor="@color/colorBlack"
-        />
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp" />
 
     <EditText
         android:id="@+id/availability_start_date"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/calendar_title_info3"
-        android:textSize="40sp"
         android:hint="Enter Start Date"
         android:inputType="date"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
         />
 
     <TextView
@@ -28,20 +32,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/availability_start_date"
-        android:textSize="30sp"
         android:text="Select End Date"
         android:textColor="@color/colorBlack"
-        />
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp" />
 
     <EditText
         android:id="@+id/availability_end_date"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/calendar_title_info4"
-        android:textSize="40sp"
         android:hint="Enter End Date"
         android:inputType="date"
-        />
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp" />
 
     <TextView
         android:id="@+id/other_notes_info2"
@@ -49,16 +56,16 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/availability_end_date"
         android:layout_marginTop="15dp"
-        android:textSize="30sp"
         android:text="Note(s) to owners:"
         android:textColor="@color/colorBlack"
-        />
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp" />
 
     <EditText
         android:id="@+id/additional_info_text_field2"
         android:inputType="textMultiLine"
-        android:lines="6"
-        android:minLines="4"
+        android:lines="3"
+        android:minLines="3"
         android:gravity="top|start"
         android:maxLines="10"
         android:layout_height="wrap_content"
@@ -67,19 +74,20 @@
         android:layout_below="@id/other_notes_info2"
         android:background="@color/colorWhite"
         android:hint="Enter details here..."
+        android:layout_margin="10dp"
         />
 
     <Button
         android:id="@+id/confirm_availability_button"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         android:layout_below="@id/additional_info_text_field2"
         android:layout_marginTop="15dp"
         android:background="@color/colorPrimary"
         android:textColor="@color/colorWhite"
         android:text="Confirm Availability"
-        android:textSize="30sp"
         android:onClick="onCreateAvailabilityEvent"
+        android:layout_margin="10dp"
         />
 
 </RelativeLayout>

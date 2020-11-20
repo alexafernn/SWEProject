@@ -18,6 +18,7 @@
         android:layout_height="wrap_content"
         android:text="Select Start Date"
         android:textColor="@color/colorBlack"
+        style="@style/MarginStyle"
         />
 
     <EditText
@@ -27,25 +28,7 @@
         android:layout_below="@+id/calendar_title_info"
         android:hint="Enter Start Date"
         android:inputType="date"
-        />
-
-    <TextView
-        android:id="@+id/calendar_title_info2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/start_date"
-        android:text="Select End Date"
-        android:textColor="@color/colorBlack"
-        />
-
-
-    <EditText
-        android:id="@+id/end_date"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/calendar_title_info2"
-        android:hint="Enter End Date"
-        android:inputType="date"
+        style="@style/MarginStyle"
         />
 
     <TextView
@@ -53,8 +36,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Select Start Time"
-        android:layout_below="@id/end_date"
+        android:layout_below="@id/start_date"
         android:textColor="@color/colorBlack"
+        style="@style/MarginStyle"
         />
 
     <EditText
@@ -63,6 +47,27 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/start_time_info"
         android:hint="Enter Start Time"
+        style="@style/MarginStyle"
+        />
+
+    <TextView
+        android:id="@+id/calendar_title_info2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/start_time"
+        android:text="Select End Date"
+        android:textColor="@color/colorBlack"
+        style="@style/MarginStyle"
+        />
+
+    <EditText
+        android:id="@+id/end_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/calendar_title_info2"
+        android:hint="Enter End Date"
+        android:inputType="date"
+        style="@style/MarginStyle"
         />
 
     <TextView
@@ -70,8 +75,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Select End Time"
-        android:layout_below="@id/start_time"
+        android:layout_below="@id/end_date"
         android:textColor="@color/colorBlack"
+        style="@style/MarginStyle"
         />
 
     <EditText
@@ -80,6 +86,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/end_time_info"
         android:hint="Enter End Time"
+        style="@style/MarginStyle"
         />
     <TextView
         android:id="@+id/which_pets_title_info2"
@@ -88,6 +95,7 @@
         android:layout_below="@id/end_time"
         android:text="Select Pets"
         android:textColor="@color/colorBlack"
+        style="@style/MarginStyle"
         />
 
     <Switch
@@ -97,7 +105,9 @@
         android:background="@color/colorWhite"
         android:text="All my Pets"
         android:layout_below="@id/which_pets_title_info2"
-        tools:ignore="UseSwitchCompatOrMaterialXml" />
+        tools:ignore="UseSwitchCompatOrMaterialXml"
+        style="@style/MarginStyle"
+        />
 
     <Switch
         android:id="@+id/switch9"
@@ -106,7 +116,9 @@
         android:background="@color/colorWhite"
         android:text="Pet Sitting Must Occur At My Location"
         android:layout_below="@id/switch8"
-        tools:ignore="UseSwitchCompatOrMaterialXml" />
+        tools:ignore="UseSwitchCompatOrMaterialXml"
+        style="@style/MarginStyle"
+        />
 
     <Button
         android:id="@+id/custom_pet_selection_button"
@@ -118,6 +130,7 @@
         android:background="@color/colorPrimary"
         android:onClick="doPetSelection"
         android:layout_margin="10dp"
+        style="@style/MarginStyle"
         />
 
     <TextView
@@ -128,6 +141,7 @@
         android:layout_marginTop="5dp"
         android:text="What should the sitter expect?"
         android:textColor="@color/colorBlack"
+        style="@style/MarginStyle"
         />
 
     <EditText
@@ -143,6 +157,7 @@
         android:layout_below="@id/other_notes_info"
         android:background="@color/colorWhite"
         android:hint="Enter details here..."
+        style="@style/MarginStyle"
         />
 
     <Button
@@ -156,6 +171,7 @@
         android:text="Confirm Request"
         android:onClick="onCreateRequestSitterEvent"
         android:layout_margin="10dp"
+        style="@style/MarginStyle"
         />
 
 </RelativeLayout>
