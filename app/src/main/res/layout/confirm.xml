@@ -30,7 +30,7 @@
         />
 
 
-    <EditText
+    <TextView
         android:id="@+id/start_date_label"
         android:layout_toEndOf="@+id/start_date"
         android:layout_height="wrap_content"
@@ -54,7 +54,7 @@
         android:layout_marginLeft="10dp"
         />
 
-    <EditText
+    <TextView
         android:id="@+id/end_date_label"
         android:layout_toEndOf="@+id/end_date"
         android:layout_height="wrap_content"
@@ -78,7 +78,7 @@
         />
 
 
-    <EditText
+    <TextView
         android:id="@+id/all_my_pet_label"
         android:layout_toEndOf="@+id/all_my_pets"
         android:layout_height="wrap_content"
@@ -102,7 +102,7 @@
         />
 
 
-    <EditText
+    <TextView
         android:id="@+id/must_occur_at_my_location_label"
         android:layout_toEndOf="@+id/must_occur_at_my_location"
         android:layout_height="wrap_content"
@@ -126,7 +126,7 @@
         />
 
 
-    <EditText
+    <TextView
         android:id="@+id/notes_for_sitter_label"
         android:layout_toEndOf="@+id/notes_for_sitter"
         android:layout_height="wrap_content"
@@ -145,7 +145,6 @@
         android:background="@color/colorPrimary"
         android:textColor="@color/colorWhite"
         android:text="Confirm Sitting"
-        android:onClick="onCreateAvailabilityEvent"
         android:layout_margin="10dp"
         />
 

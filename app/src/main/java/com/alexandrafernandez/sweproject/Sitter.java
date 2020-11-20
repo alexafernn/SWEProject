@@ -27,6 +27,7 @@ public class Sitter extends AppCompatActivity {
         setContentView(R.layout.sitter);
         setTitle("SITTER");
 
+        Bundle b;
         final Sitting[] sitting = {MainActivity.sitting};
         final Sitting test = new Sitting("04/03/2021", "04/04/2022", false,true, "sheds a lot ");
 
@@ -51,12 +52,16 @@ public class Sitter extends AppCompatActivity {
                 @Override
                 public void onItemClick(AdapterView parent, View v, int position, long id)
                 {
-                    Sitting list_row = sittingList.get(position);
-                    //if position = 0
-                    Intent intent = new Intent(Sitter.this, approveSitting.class); //idk
-                    intent.putExtra("Myobject", String.valueOf(test));
-                    startActivity(intent);
-                    //else if postion == 1
+//                    Sitting list_row = sittingList.get(position);
+//                    //if position = 0
+//                    Intent intent = new Intent(Sitter.this, approveSitting.class); //idk
+//                    intent.putExtra("Myobject", test);
+//                    startActivity(intent);
+//                    //else if postion == 1
+
+                    Intent i = new Intent(Sitter.this, approveSitting.class);
+                    i.putExtra("Test", test);
+                    startActivity(i);
 
                 }
             });

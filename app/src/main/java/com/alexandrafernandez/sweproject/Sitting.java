@@ -3,9 +3,15 @@ package com.alexandrafernandez.sweproject;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Build;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.preference.PreferenceManager;
 
-public class Sitting {
+import androidx.annotation.RequiresApi;
+
+import java.io.Serializable;
+
+public class Sitting implements Serializable/*implements Parcelable*/ {
 
     private int numberOfSittings;
     private String startDate;
@@ -27,6 +33,27 @@ public class Sitting {
         this.mustOccurAtMyLocation = mustOccurAtMyLocation;
         this.notesForSitter=notesForSitter;
     }
+
+    protected Sitting(Parcel in) {
+        numberOfSittings = in.readInt();
+        startDate = in.readString();
+        endDate = in.readString();
+        allMyPets = in.readByte() != 0;
+        mustOccurAtMyLocation = in.readByte() != 0;
+        notesForSitter = in.readString();
+    }
+
+//    public static final Creator<Sitting> CREATOR = new Creator<Sitting>() {
+//        @Override
+//        public Sitting createFromParcel(Parcel in) {
+//            return new Sitting(in);
+//        }
+//
+//        @Override
+//        public Sitting[] newArray(int size) {
+//            return new Sitting[size];
+//        }
+//    };
 
     public void updateNumberOfSittings()
     {
@@ -67,14 +94,39 @@ public class Sitting {
 
     @Override
     public String toString() {
-        return startDate;
-//        return "Sitting{" +
-//                "numberOfSittings=" + numberOfSittings +
-//                ", startDate='" + startDate + '\'' +
-//                ", endDate='" + endDate + '\'' +
-//                ", allMyPets=" + allMyPets +
+        StringBuilder sb = new StringBuilder();
+        sb.append("Start Date: ").append(startDate).append(System.getProperty("line.separator"));
+        sb.append("End Date: ").append(endDate).append(System.getProperty("line.separator"));
+        sb.append("All of Owners Pets: ").append(allMyPets).append(System.getProperty("line.separator"));
+        sb.append("Must Occur at Owner's House: ").append(mustOccurAtMyLocation).append(System.getProperty("line.separator"));
+        sb.append("Notes for Sitter: ").append(notesForSitter);
+        return sb.toString();
+        //return startDate;
+//        return
+////                "numberOfSittings=" + numberOfSittings +
+//                "start Date='" + startDate + '\'' +
+//                "end Date='" + endDate + '\'' +
+//                ", all My Pets=" + allMyPets +
 //                ", mustOccurAtMyLocation=" + mustOccurAtMyLocation +
-//                ", notesForSitter='" + notesForSitter + '\'' +
-//                '}';
+//                ", notesForSitter='" + notesForSitter + '\''
+//                ;
     }
+
+
+//    @Override
+//    public int describeContents() {
+//        return 0;
+//    }
+//
+//   // @RequiresApi(api = Build.VERSION_CODES.Q)
+//    @Override
+//    public void writeToParcel(Parcel dest, int flags) {
+//        dest.writeString(this.startDate);
+//        dest.writeString(this.endDate);
+//        dest.writeByte((byte) (allMyPets ? 1:0));
+//        dest.writeByte((byte) (mustOccurAtMyLocation ?1:0));
+//        //dest.writeBoolean(this.allMyPets);
+//        //dest.writeBoolean(this.mustOccurAtMyLocation);
+//        dest.writeString(this.notesForSitter);
+//    }
 }
