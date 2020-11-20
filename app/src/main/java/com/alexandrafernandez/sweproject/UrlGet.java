@@ -3,8 +3,11 @@ package com.alexandrafernandez.sweproject;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.util.Log;
 
+import java.io.BufferedInputStream;
 import java.io.InputStream;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Scanner;
 
@@ -22,20 +25,27 @@ public class UrlGet extends Thread {
 
     public void run( ) {
 
+        Log.w("MA", "get: " + my_url);
+
         try {
             URL url = new URL(my_url);
-            InputStream is = url.openStream();
+            InputStream is = url.openStream(); //failing on this line
             Scanner scan = new Scanner( is );
             String s = "";
             while(scan.hasNext()) {
                 s += scan.nextLine();
             }
 
+            Log.w("MA", "received from server:");
+            Log.w("MA", s);
+
             SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
             SharedPreferences.Editor editor = pref.edit();
             editor.putString(dataLocation, s);
             editor.commit();
 
-        } catch( Exception e ) { }
+        } catch( Exception e ) {
+            Log.w("MA", e.toString());
+        }
     }
 }
