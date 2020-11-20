@@ -20,8 +20,8 @@ public class NeedSitterEvent extends AppCompatActivity {
 
     private int sittingsRequest;
 
-    TextView start_date_label, end_date_label, which_pets_title_info2, other_notes_info;
-    EditText start_date, end_date, additional_info_text_field;
+    TextView start_date_label, end_date_label, which_pets_title_info2, other_notes_info, start_time_label, end_time_label;
+    EditText start_date, end_date, additional_info_text_field, start_time, end_time;
     Switch switch8;
     Button custom_pet_selection_button, confirm_sitter_request_button;
 
@@ -42,8 +42,20 @@ public class NeedSitterEvent extends AppCompatActivity {
         end_date_label = (TextView) findViewById(R.id.calendar_title_info2);
         end_date_label.setTextSize((float) (0.5*view.getLabelTextSize()));
 
+        start_time_label = (TextView) findViewById(R.id.start_time_info);
+        start_time_label .setTextSize((float)(0.5*view.getLabelTextSize()));
+
+        start_time = (EditText) findViewById(R.id.start_time);
+        start_time.setTextSize(view.getEditTextSize());
+
         end_date = (EditText) findViewById(R.id.end_date);
         end_date.setTextSize(view.getEditTextSize());
+
+        end_time_label = (TextView) findViewById(R.id.end_time_info);
+        end_time_label.setTextSize((float)(0.5*view.getLabelTextSize()));
+
+        end_time = (EditText) findViewById(R.id.end_time);
+        end_time.setTextSize(view.getEditTextSize());
 
         which_pets_title_info2 = (TextView) findViewById(R.id.which_pets_title_info2);
         which_pets_title_info2.setTextSize(view.getLabelTextSize());
