@@ -1,7 +1,9 @@
 package com.alexandrafernandez.sweproject;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -9,6 +11,10 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class SignUp extends AppCompatActivity {
 
@@ -23,6 +29,21 @@ public class SignUp extends AppCompatActivity {
         setContentView(R.layout.signup);
         setTitle("New Account Sign Up");
 
+        UrlGet userInfo = new UrlGet("http://aiji.cs.loyola.edu/accountinfo/1","signUp.userInfo", this);
+        userInfo.start();
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
+        String json = pref.getString("signUp.userInfo", "");
+
+        String first_name = ""; String last_name = ""; int type = 0; String myEmail = "";
+        try {
+            JSONArray jsonArray = new JSONArray(json);
+            JSONObject jsonObject1 = jsonArray.getJSONObject( 1 );
+            first_name = jsonObject1.getString( "first_name" );
+            last_name = jsonObject1.getString("last_name");
+            type = jsonObject1.getInt("type");
+            myEmail = jsonObject1.getString("email");
+        } catch( JSONException json_e ) { }
+
         ScreenSize view = new ScreenSize(this);
 
         signupName = (TextView) findViewById(R.id.signupName);
@@ -30,6 +51,7 @@ public class SignUp extends AppCompatActivity {
 
         nameEditText = (EditText) findViewById(R.id.NameEditText);
         nameEditText.setTextSize((float) (0.5*view.getEditTextSize()));
+        nameEditText.setText(first_name);
 
         phoneNumber = (TextView) findViewById(R.id.phoneNumber);
         phoneNumber.setTextSize((float) (0.5*view.getLabelTextSize()));
@@ -42,6 +64,7 @@ public class SignUp extends AppCompatActivity {
 
         emailEditText = (EditText) findViewById(R.id.EmailEditText);
         emailEditText.setTextSize((float) (0.5*view.getEditTextSize()));
+        emailEditText.setText(myEmail);
 
         address = (TextView) findViewById(R.id.addressSignup);
         address.setTextSize((float) (0.5*view.getLabelTextSize()));
@@ -69,6 +92,15 @@ public class SignUp extends AppCompatActivity {
 
         userTypeSitter = (Switch) findViewById(R.id.userTypeSitter);
         userTypeSitter.setTextSize(view.getSwitchTextSize());
+
+        if(type == 1)
+            userTypePetOwner.setChecked(true);
+        else if(type == 2)
+            userTypeSitter.setChecked(true);
+        else if(type == 3) {
+            userTypePetOwner.setChecked(true);
+            userTypeSitter.setChecked(true);
+        }
 
         paypal_link_button = (Button) findViewById(R.id.paypal_link_button);
         paypal_link_button.setTextSize(view.getButtonTextSize());
