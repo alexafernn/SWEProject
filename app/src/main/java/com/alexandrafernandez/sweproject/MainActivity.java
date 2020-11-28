@@ -2,6 +2,7 @@ package com.alexandrafernandez.sweproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
@@ -19,17 +20,46 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+/**
+ * Main Activity Class
+ * This class allows users to select from and navigate to the owner/sitter/adoption options
+ * CS482 Software Engineering
+ * Prof. Mehri
+ * @author Jack Cannon
+ * @author Alexandra Fernandez
+ * @version 3.0 Final Release
+ */
 public class MainActivity extends Activity {
 
-    int height, width;
+    /**
+     * Text Views for identifying field components
+     */
     TextView login_text, username, password;
+
+    /**
+     * Buttons used to confirm data and/or move to another activity
+     */
     Button loginButton, signUpButton;
+
+    /**
+     * Edit Text Views for user input of relevant information
+     */
     EditText usernameEditText, passwordEditText;
+
+    /**
+     * Switches used to request saving of login details
+     */
+    @SuppressLint("UseSwitchCompatOrMaterialCode")
     Switch loginSwitch;
 
     //adding
     public static Sitting sitting;
 
+    /**
+     * On Create Method
+     * Initializes the add pet View and instantiates other view objects for later use
+     * @param savedInstanceState android system parameter
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,8 +102,13 @@ public class MainActivity extends Activity {
 
     }
 
-        public void verifyLogin(View v)
-        {
+    /**
+     * Verify Login method
+     * Performs appropriate actions and completes activity
+     * @param view the reference object calling this method
+     */
+    public void verifyLogin(View v)
+    {
             if(usernameEditText.getText().toString().equals("") || passwordEditText.getText().toString().equals("") ) {
                 Toast.makeText(this, "Username/Password cannot be empty", Toast.LENGTH_SHORT).show();
                 return;
@@ -96,9 +131,14 @@ public class MainActivity extends Activity {
             //else
                 //error message
 
-        }
+    }
 
-        public void signUp(View v)
+    /**
+     * Verify Login method
+     * Sends user to activity for signUp
+     * @param view the reference object calling this method
+     */
+    public void signUp(View v)
         {
             startActivity(new Intent(this, SignUp.class));
         }

@@ -1,6 +1,5 @@
 package com.alexandrafernandez.sweproject;
 
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
@@ -17,11 +16,32 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+/**
+ * Intro Class
+ * This class allows users to add pets to their profile
+ * CS482 Software Engineering
+ * Prof. Mehri
+ * @author Jack Cannon
+ * @author Alexandra Fernandez
+ * @version 3.0 Final Release
+ */
 public class Intro extends AppCompatActivity {
 
+    /**
+     * Text Views for identifying field components
+     */
     TextView greeting, status_messages;
+
+    /**
+     * Buttons used to confirm data and/or move to another activity
+     */
     Button owner, sitter, adoption;
 
+    /**
+     * On Create Method
+     * Initializes the add pet View and instantiates other view objects for later use
+     * @param savedInstanceState android system parameter
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,12 +77,23 @@ public class Intro extends AppCompatActivity {
             adoption.setVisibility(View.INVISIBLE);
     }
 
+    /**
+     * on Create Options Menu
+     * Initialize and connect the menu for this class
+     * @param menu the appropriate menu object for this view (app_menu.xml)
+     * @return true if successful creation of menu
+     */
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.app_menu, menu);
         return true;
     }
 
+    /**
+     * On Options Item Selected method
+     * @param item the option selected by the user
+     * @return true once an action is taken regarding this selection
+     */
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_favorite:
@@ -89,14 +120,29 @@ public class Intro extends AppCompatActivity {
         }
     }
 
+    /**
+     * To Owner Profile method
+     * Sends to owner activity
+     * @param view the reference object calling this method
+     */
     public void toOwnerProfile(View view) {
         startActivity(new Intent(this, Owner.class));
     }
 
+    /**
+     * To Sitter Profile method
+     * Sends to sitter activity
+     * @param view the reference object calling this method
+     */
     public void toSitterProfile(View view) {
         startActivity(new Intent(this, Sitter.class));
     }
 
+    /**
+     * To Adoption Page method
+     * Sends to adoption activity
+     * @param view the reference object calling this method
+     */
     public void toAdoptionPage(View view) {
         startActivity(new Intent(this, Adopt.class));
     }

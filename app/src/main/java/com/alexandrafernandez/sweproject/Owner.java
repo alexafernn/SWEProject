@@ -20,16 +20,52 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
+/**
+ * Owner Class
+ * This class allows serves as the main activity for Pet Owner usage
+ * CS482 Software Engineering
+ * Prof. Mehri
+ * @author Jack Cannon
+ * @author Alexandra Fernandez
+ * @version 3.0 Final Release
+ */
 public class Owner extends AppCompatActivity {
 
+    /**
+     * Buttons used to confirm data and/or move to another activity
+     */
     Button sitter_request_button;
+
+    /**
+     * Text Views for identifying field components
+     */
     TextView requestLabel, noSittingsLabel;
+
+    /**
+     * List View for managing multiple content instances of sitting requests
+     */
     ListView owner_listview;
 
+    /**
+     * List managing the sittings an owner has requested
+     */
     ArrayList<NeedSitterEventData> requestList;
+
+    /**
+     * Event to be selected and accessed after assignment
+     */
     NeedSitterEventData event;
+
+    /**
+     * Activity and View data
+     */
     private Context context;
 
+    /**
+     * On Create Method
+     * Initializes the add pet View and instantiates other view objects for later use
+     * @param savedInstanceState android system parameter
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,12 +112,23 @@ public class Owner extends AppCompatActivity {
         owner_listview.requestLayout();
     }
 
+    /**
+     * on Create Options Menu
+     * Initialize and connect the menu for this class
+     * @param menu the appropriate menu object for this view (owner_menu.xml)
+     * @return true if successful creation of menu
+     */
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.owner_menu, menu);
         return true;
     }
 
+    /**
+     * On Options Item Selected method
+     * @param item the option selected by the user
+     * @return true once an action is taken regarding this selection
+     */
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.home:
@@ -107,6 +154,11 @@ public class Owner extends AppCompatActivity {
         }
     }
 
+    /**
+     * Request Sitter Event method
+     * Performs appropriate actions and completes activity
+     * @param view the reference object calling this method
+     */
     public void onRequestSitterEvent(View view) {
         startActivity(new Intent(this, NeedSitterEvent.class));
     }

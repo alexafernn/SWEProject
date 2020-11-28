@@ -1,5 +1,6 @@
 package com.alexandrafernandez.sweproject;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Point;
@@ -15,13 +16,43 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+/**
+ * Adopt Class
+ * This class allows users to express interest in adopting a pet
+ * CS482 Software Engineering
+ * Prof. Mehri
+ * @author Jack Cannon
+ * @author Alexandra Fernandez
+ * @version 3.0 Final Release
+ */
 public class Adopt extends AppCompatActivity {
 
+    /**
+     * Text Views for identifying field components
+     */
     TextView animal_adopt, age, animal_adopt_notes;
+
+    /**
+     * Edit Text Views for user input of relevant information
+     */
     EditText animal_adopt_field, age_field, notes_field;
+
+    /**
+     * Buttons used to confirm data and/or move to another activity
+     */
     Button adoption_request_button;
+
+    /**
+     * Switches used to characteristics of adoption interest
+     */
+    @SuppressLint("UseSwitchCompatOrMaterialCode")
     Switch background_check_switch, emails_switch;
 
+    /**
+     * On Create Method
+     * Initializes the adopt View and instantiates other view objects for later use
+     * @param savedInstanceState android system parameter
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,12 +91,23 @@ public class Adopt extends AppCompatActivity {
 
     }
 
+    /**
+     * on Create Options Menu
+     * Initialize and connect the menu for this class
+     * @param menu the appropriate menu object for this view (adopt_menu.xml)
+     * @return true if successful creation of menu
+     */
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.adopt_menu, menu);
         return true;
     }
 
+    /**
+     * On Options Item Selected method
+     * @param item the option selected by the user
+     * @return true once an action is taken regarding this selection
+     */
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.check_status:
@@ -79,9 +121,14 @@ public class Adopt extends AppCompatActivity {
         }
     }
 
-
+    /**
+     * Notify Shelters method
+     * Performs appropriate actions and completes activity
+     * @param view the reference object calling this method
+     */
     public void notifyShelters(View view) {
 
+        //TODO implement post to website if time allows
 
         finish();
     }
