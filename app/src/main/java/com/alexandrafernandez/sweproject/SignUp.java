@@ -17,12 +17,15 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Map;
+
 public class SignUp extends AppCompatActivity {
 
     TextView signupName, phoneNumber, email, address, username, password, profile_types;
     Switch userTypePetOwner, userTypeSitter;
     Button paypal_link_button, saveButton;
     EditText nameEditText, phoneEditText, emailEditText, addyEditText, usernameEditText, passwordEditText;
+    String first_name = ""; String last_name = ""; int type = 0; String myEmail = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,19 +36,21 @@ public class SignUp extends AppCompatActivity {
         UrlGet userInfo = new UrlGet("http://aiji.cs.loyola.edu/accountinfo/1","signUp.userInfo", this);
         userInfo.start();
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
+
         String json = pref.getString("signUp.userInfo", "");
         Log.w("MA", "json: ");
         Log.w("MA", json);
 
-        String first_name = ""; String last_name = ""; int type = 0; String myEmail = "";
         try {
-            JSONArray jsonArray = new JSONArray(json);
-            JSONObject jsonObject1 = jsonArray.getJSONObject( 1 );
+            JSONObject jsonObject1 = new JSONObject(json);
             first_name = jsonObject1.getString( "first_name" );
             last_name = jsonObject1.getString("last_name");
             type = jsonObject1.getInt("type");
             myEmail = jsonObject1.getString("email");
-        } catch( JSONException json_e ) { }
+            Log.w("MA", myEmail);
+        } catch( JSONException json_e ) {
+            Log.w("MA", json_e.toString());
+        }
 
         ScreenSize view = new ScreenSize(this);
 
@@ -116,6 +121,25 @@ public class SignUp extends AppCompatActivity {
     public void save(View v)
     {
         startActivity(new Intent(this, MainActivity.class));
+
+        if(userTypePetOwner.isChecked())
+            type = 1;
+        if(userTypeSitter.isChecked())
+            type = 2;
+        if(userTypePetOwner.isChecked() && userTypeSitter.isChecked())
+            type = 3;
+
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = pref.edit(); //usernameEditText.toString().hashCode()
+        editor.putString("signUp.createInfo", "id=" + "3"
+                + "&type=" + type + "&first_name=" + nameEditText.getText().toString() + "&last_name=" + "Test"
+                + "&email=" + emailEditText.getText().toString() + "&password=" + passwordEditText.getText().toString());
+        editor.commit();
+
+        Log.w("MA", "Creating post");
+        UrlPost saveInfo = new UrlPost("http://aiji.cs.loyola.edu/accountcreate", "signUp.createInfo", this);
+        Log.w("MA", "Initiating post");
+        saveInfo.start();
 
         //make sure to save account to the server and be able to verify if user name already exist
 
