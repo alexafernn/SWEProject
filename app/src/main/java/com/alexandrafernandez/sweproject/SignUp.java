@@ -1,5 +1,6 @@
 package com.alexandrafernandez.sweproject;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -19,14 +20,48 @@ import org.json.JSONObject;
 
 import java.util.Map;
 
+/**
+ * SignUp Class
+ * This class allows a sitter to sign up for an account if they don't have one already
+ * CS482 Software Engineering
+ * Prof. Mehri
+ * @author Jack Cannon
+ * @author Alexandra Fernandez
+ * @version 3.0 Final Release
+ */
 public class SignUp extends AppCompatActivity {
 
+    /**
+     * Text Views for identifying field components
+     */
     TextView signupName, phoneNumber, email, address, username, password, profile_types;
+
+    /**
+     * Switches used to indicate profile type
+     */
+    @SuppressLint("UseSwitchCompatOrMaterialCode")
     Switch userTypePetOwner, userTypeSitter;
+
+    /**
+     * Buttons used to confirm data and/or move to another activity
+     */
     Button paypal_link_button, saveButton;
+
+    /**
+     * Edit Text Views for user input of relevant information
+     */
     EditText nameEditText, phoneEditText, emailEditText, addyEditText, usernameEditText, passwordEditText;
+
+    /**
+     * Initialize components of a sign up request
+     */
     String first_name = ""; String last_name = ""; int type = 0; String myEmail = "";
 
+    /**
+     * On Create Method
+     * Initializes the signup View and instantiates other view objects for later use
+     * @param savedInstanceState android system parameter
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -118,6 +153,11 @@ public class SignUp extends AppCompatActivity {
 
     }
 
+    /**
+     * Save method
+     * Saves the user's input information and requests that server requests account creation
+     * @param v the reference object calling this method
+     */
     public void save(View v)
     {
         startActivity(new Intent(this, MainActivity.class));
@@ -141,13 +181,18 @@ public class SignUp extends AppCompatActivity {
         Log.w("MA", "Initiating post");
         saveInfo.start();
 
-        //make sure to save account to the server and be able to verify if user name already exist
+        //todo make sure to save account to the server and be able to verify if user name already exist
 
         finish();
     }
 
+    /**
+     * Paypal Connection method
+     * Used to link paypal information to new user profile
+     * @param v the reference object calling this method
+     */
     public void payPalConnection(View v)
     {
-        //make sure we connect with PayPal
+        //TODO implement if time allows (secondary feature)
     }
 }

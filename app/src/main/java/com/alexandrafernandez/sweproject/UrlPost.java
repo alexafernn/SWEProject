@@ -13,12 +13,33 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 
+/**
+ * UrlPost Class
+ * This class allows the app to send data to the server
+ * CS482 Software Engineering
+ * Prof. Mehri
+ * @author Jack Cannon
+ * @author Alexandra Fernandez
+ * @version 3.0 Final Release
+ */
 public class UrlPost extends Thread {
 
-    String my_url;
-    String dataLocation;
+    /**
+     * Strings for managing changing url and data
+     */
+    String my_url, dataLocation;
+
+    /**
+     * Activity and View data
+     */
     Context context;
 
+    /**
+     * UrlPost constructor
+     * @param url the url to send data to
+     * @param dataLocation the location to pull the request from
+     * @param context the relevant activity / view calling sending data
+     */
     public UrlPost(String url, String dataLocation, Context context) {
         this.my_url = url;
         this.dataLocation = dataLocation;
@@ -26,6 +47,10 @@ public class UrlPost extends Thread {
         Log.w("MA", my_url + " " + dataLocation);
     }
 
+    /**
+     * Run method
+     * Performs the url connection and post request
+     */
     public void run( ) {
 
         OutputStream out = null;

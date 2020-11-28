@@ -1,5 +1,6 @@
 package com.alexandrafernandez.sweproject;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -13,12 +14,43 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+/**
+ * Profile Class
+ * This class allows a user to view and modify their profile settings
+ * CS482 Software Engineering
+ * Prof. Mehri
+ * @author Jack Cannon
+ * @author Alexandra Fernandez
+ * @version 3.0 Final Release
+ */
 public class Profile extends AppCompatActivity {
+
+    /**
+     * Edit Text Views for user input of relevant information
+     */
     EditText name_field, phone_field, address_field;
+
+    /**
+     * Buttons used to confirm data and/or move to another activity
+     */
     Button save, payPal;
+
+    /**
+     * Switches used to assign profile type
+     */
+    @SuppressLint("UseSwitchCompatOrMaterialCode")
     Switch owner, sitter, adoption;
+
+    /**
+     * Text Views for identifying field components
+     */
     TextView account_info, name, phone, address, profile_types;
 
+    /**
+     * On Create Method
+     * Initializes the profile View and instantiates other view objects for later use
+     * @param savedInstanceState android system parameter
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,8 +105,14 @@ public class Profile extends AppCompatActivity {
 
     }
 
+    /**
+     * Go Home Method
+     * After saving data to device/server, returns to the main view
+     * @param view  the reference object calling this method
+     */
     public void goHome(View view) {
-        //add persistent data, do all updating here
+
+        //TODO add server connections in addition to persistent data (mandatory feature)
 
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor editor = pref.edit();
@@ -96,7 +134,12 @@ public class Profile extends AppCompatActivity {
         finish();
     }
 
+    /**
+     * Paypal Link method
+     * Used to link paypal information to user profile
+     * @param view the reference object calling this method
+     */
     public void doPaypalLink(View view) {
-
+        //TODO implement if time allows (secondary feature)
     }
 }

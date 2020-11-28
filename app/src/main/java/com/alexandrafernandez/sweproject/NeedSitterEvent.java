@@ -51,7 +51,7 @@ public class NeedSitterEvent extends AppCompatActivity {
 
     /**
      * On Create Method
-     * Initializes the add pet View and instantiates other view objects for later use
+     * Initializes the need sitter event View and instantiates other view objects for later use
      * @param savedInstanceState android system parameter
      */
     @Override

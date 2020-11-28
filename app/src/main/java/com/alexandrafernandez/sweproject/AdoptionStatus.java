@@ -17,7 +17,7 @@ public class AdoptionStatus extends AppCompatActivity {
 
     /**
      * On Create Method
-     * Initializes the adopt View and instantiates other view objects for later use
+     * Initializes the adoption status View and instantiates other view objects for later use
      * @param savedInstanceState android system parameter
      */
     @Override

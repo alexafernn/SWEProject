@@ -26,7 +26,7 @@ public class approveSitting extends AppCompatActivity {
 
     /**
      * On Create Method
-     * Initializes the adopt View and instantiates other view objects for later use
+     * Initializes the approve sitting View and instantiates other view objects for later use
      * @param savedInstanceState android system parameter
      */
     @Override

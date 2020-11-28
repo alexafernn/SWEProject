@@ -39,7 +39,7 @@ public class Intro extends AppCompatActivity {
 
     /**
      * On Create Method
-     * Initializes the add pet View and instantiates other view objects for later use
+     * Initializes the intro View and instantiates other view objects for later use
      * @param savedInstanceState android system parameter
      */
     @Override

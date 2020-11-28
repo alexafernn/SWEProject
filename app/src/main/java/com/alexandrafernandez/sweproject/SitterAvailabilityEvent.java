@@ -13,14 +13,42 @@ import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
+/**
+ * Sitter Availability Event Class
+ * This class serves allows Sitters to create an availability event
+ * CS482 Software Engineering
+ * Prof. Mehri
+ * @author Jack Cannon
+ * @author Alexandra Fernandez
+ * @version 3.0 Final Release
+ */
 public class SitterAvailabilityEvent extends AppCompatActivity {
 
+    /**
+     * Text Views for identifying field components
+     */
     TextView dateStart, dateEnd, notesInfo;
+
+    /**
+     * Edit Text Views for user input of relevant information
+     */
     EditText dateStartField, dateEndField, notesInfoField;
+
+    /**
+     * Buttons used to confirm data and/or move to another activity
+     */
     Button confirmAvailability;
 
+    /**
+     * List of data from sitter availability events
+     */
     ArrayList<SitterAvailabilityData> availabilityList;
 
+    /**
+     * On Create Method
+     * Initializes the sitter availability event View and instantiates other view objects for later use
+     * @param savedInstanceState android system parameter
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,9 +85,14 @@ public class SitterAvailabilityEvent extends AppCompatActivity {
         confirmAvailability.setTextSize(view.getButtonTextSize());
     }
 
+    /**
+     * Create Availability Event method
+     * After saving data to device/server, returns to the main Sitter view
+     * @param view the reference object calling this method
+     */
     public void onCreateAvailabilityEvent(View view) {
 
-        //write all availability data to server here
+        //TODO write all availability data to server here (mandatory feature)
 
         startActivity(new Intent(this, SitterAvailability.class));
         finish();
