@@ -1,5 +1,6 @@
 package com.alexandrafernandez.sweproject;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -14,16 +15,53 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
+/**
+ * Pet Class
+ * This class allows create and/or modify a pet
+ * CS482 Software Engineering
+ * Prof. Mehri
+ * @author Jack Cannon
+ * @author Alexandra Fernandez
+ * @version 3.0 Final Release
+ */
 public class Pet extends AppCompatActivity {
 
+    /**
+     * List managing the pets an owner has
+     */
     ArrayList<PetData> petList;
 
+    /**
+     * Spinner for selecting pet Type
+     */
     Spinner petTypeSpinner;
+
+    /**
+     * Text Views for identifying field components
+     */
     TextView pet_name, animal, pet_qualities, pet_sitting_logistics;
+
+    /**
+     * Edit Text Views for user input of relevant information
+     */
     EditText pet_name_field, other_animal_type_field;
+
+    /**
+     * Buttons used to confirm data and/or move to another activity
+     */
     Button add_photo_button, settings_save_button;
+
+    /**
+     * Switches used to characteristics of adoption interest
+     */
+    @SuppressLint("UseSwitchCompatOrMaterialCode")
     Switch switch_energetic, switch_noisy, switch_trained, switch_inside_only;
 
+    /**
+     * On Create Method
+     * Initializes the pet View and instantiates other view objects for later use
+     * @param savedInstanceState android system parameter
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,9 +122,14 @@ public class Pet extends AppCompatActivity {
         settings_save_button.setTextSize(view.getButtonTextSize());
     }
 
+    /**
+     * Go To Pets method
+     * After saving data to device/server, returns to the main My Pets view
+     * @param view the reference object calling this method
+     */
     public void goToPets(View view) {
 
-        //write all pet data to server here
+        //TODO write all pet data to server here (mandatory feature)
 
         startActivity(new Intent(this, Pets.class));
         finish();

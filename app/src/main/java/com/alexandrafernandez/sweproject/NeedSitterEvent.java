@@ -1,5 +1,6 @@
 package com.alexandrafernandez.sweproject;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,15 +17,43 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
+/**
+ * Need Sitter Event Class
+ * This class allows owners to generate a request for sitter
+ * CS482 Software Engineering
+ * Prof. Mehri
+ * @author Jack Cannon
+ * @author Alexandra Fernandez
+ * @version 3.0 Final Release
+ */
 public class NeedSitterEvent extends AppCompatActivity {
 
-    private int sittingsRequest;
-
+    /**
+     * Text Views for identifying field components
+     */
     TextView start_date_label, end_date_label, which_pets_title_info2, other_notes_info;
+
+    /**
+     * Edit Text Views for user input of relevant information
+     */
     EditText start_date, end_date, additional_info_text_field;
+
+    /**
+     * Switches used to characteristics of need sitter events
+     */
+    @SuppressLint("UseSwitchCompatOrMaterialCode")
     Switch switch8;
+
+    /**
+     * Buttons used to confirm data and/or move to another activity
+     */
     Button custom_pet_selection_button, confirm_sitter_request_button;
 
+    /**
+     * On Create Method
+     * Initializes the need sitter event View and instantiates other view objects for later use
+     * @param savedInstanceState android system parameter
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,15 +93,25 @@ public class NeedSitterEvent extends AppCompatActivity {
         confirm_sitter_request_button.setTextSize(view.getButtonTextSize());
     }
 
+    /**
+     * Pet Selection method
+     * Allows users to only select relevant pets, rather than needing a sitter for all pets
+     * @param view the reference object calling this method
+     */
     public void doPetSelection(View view) {
 
-
+        //TODO add selection functionality if the Pet Picker activity is completed in time
         startActivity(new Intent(this, PetPicker.class));
     }
 
+    /**
+     * Request Sitter Event method
+     * Performs appropriate actions and completes activity
+     * @param view the reference object calling this method
+     */
     public void onCreateRequestSitterEvent(View view)
     {
-
+        //TODO connect to server (this is a mandatory feature)
         Sitting sitting = MainActivity.sitting; //not sure if this is creating new one?
         sitting.updateNumberOfSittings();
         finish();

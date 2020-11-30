@@ -11,7 +11,18 @@ import androidx.annotation.RequiresApi;
 
 import java.io.Serializable;
 
+/**
+ * Sitting Class
+ * This class acts as a model which represents a confirmed sitting
+ * CS482 Software Engineering
+ * Prof. Mehri
+ * @author Jack Cannon
+ * @author Alexandra Fernandez
+ * @version 3.0 Final Release
+ */
 public class Sitting implements Serializable/*implements Parcelable*/ {
+
+    //TODO insert javadoc comments when this class design is complete
 
     private int numberOfSittings;
     private String startDate;

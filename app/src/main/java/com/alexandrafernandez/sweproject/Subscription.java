@@ -11,12 +11,37 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import org.w3c.dom.Text;
 
+/**
+ * Subscription Class
+ * This class allows a sitter to view and redeem their rewards
+ * CS482 Software Engineering
+ * Prof. Mehri
+ * @author Jack Cannon
+ * @author Alexandra Fernandez
+ * @version 3.0 Final Release
+ */
 public class Subscription extends AppCompatActivity {
 
+    /**
+     * Text Views for identifying field components
+     */
     TextView subscription_menu_top, subscription_status, subscription_expiration, extend_title, plan_select, payment_select, subscription_payment_info;
+
+    /**
+     * Spinner for selecting payment Type
+     */
     Spinner spinner3, spinner4;
+
+    /**
+     * Buttons used to confirm data and/or move to another activity
+     */
     Button subscription_extend_button;
 
+    /**
+     * On Create Method
+     * Initializes the subscription View and instantiates other view objects for later use
+     * @param savedInstanceState android system parameter
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,9 +85,14 @@ public class Subscription extends AppCompatActivity {
         subscription_payment_info.setTextSize((float) (0.8*view.getLabelTextSize()));
     }
 
+    /**
+     * Subscription Update method
+     * After saving data to device/server, returns to the main Owner view
+     * @param view the reference object calling this method
+     */
     public void doSubscriptionUpdate(View view) {
 
-
+        //TODO implement if time allows (low priority feature)
 
         finish();
     }

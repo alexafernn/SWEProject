@@ -13,8 +13,22 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+/**
+ * Approve Sitting Class
+ * This class allows users to add pets to their profile
+ * CS482 Software Engineering
+ * Prof. Mehri
+ * @author Jack Cannon
+ * @author Alexandra Fernandez
+ * @version 3.0 Final Release
+ */
 public class approveSitting extends AppCompatActivity {
 
+    /**
+     * On Create Method
+     * Initializes the approve sitting View and instantiates other view objects for later use
+     * @param savedInstanceState android system parameter
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -60,17 +74,31 @@ public class approveSitting extends AppCompatActivity {
 
     }
 
+    /**
+     * On Start method
+     * Called each time activity is used
+     */
     public void onStart()
     {
         super.onStart();
         //updateView();
     }
 
+    /**
+     * On Cancel
+     * Returns to the previous activity
+     * @param view the reference object calling this method
+     */
     public void onCancel(View v)
     {
         this.finish();
     }
 
+    /**
+     * On Confirm
+     * Return to the prvious activity after saving data
+     * @param view the reference object calling this method
+     */
     public void onConfirm(View v)
     {
         Intent i = new Intent(this, HomeActivity.class);

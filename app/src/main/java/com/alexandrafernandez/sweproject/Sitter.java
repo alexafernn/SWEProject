@@ -17,10 +17,32 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
+/**
+ * Sitter Class
+ * This class allows a sitter to perform actions sitters must access
+ * CS482 Software Engineering
+ * Prof. Mehri
+ * @author Jack Cannon
+ * @author Alexandra Fernandez
+ * @version 3.0 Final Release
+ */
 public class Sitter extends AppCompatActivity {
+
+    /**
+     * List managing the sittings nearby owners have requested
+     */
     ArrayList<Sitting> sittingList;
+
+    /**
+     * List View for managing multiple content instances of sitting requests
+     */
     ListView sittings_listView;
 
+    /**
+     * On Create Method
+     * Initializes the sitter View and instantiates other view objects for later use
+     * @param savedInstanceState android system parameter
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,17 +89,28 @@ public class Sitter extends AppCompatActivity {
             });
             // do something when u click on the sitting
 
+            //TODO clean up / add server connections
         }
 
     }
 
-
+    /**
+     * on Create Options Menu
+     * Initialize and connect the menu for this class
+     * @param menu the appropriate menu object for this view (sitter_menu.xml)
+     * @return true if successful creation of menu
+     */
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.sitter_menu, menu);
         return true;
     }
 
+    /**
+     * On Options Item Selected method
+     * @param item the option selected by the user
+     * @return true once an action is taken regarding this selection
+     */
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.home:

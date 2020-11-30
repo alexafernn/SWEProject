@@ -1,5 +1,6 @@
 package com.alexandrafernandez.sweproject;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -16,20 +17,51 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import org.w3c.dom.Text;
 
+/**
+ * Add Pet Class
+ * This class allows users to add pets to their profile
+ * CS482 Software Engineering
+ * Prof. Mehri
+ * @author Jack Cannon
+ * @author Alexandra Fernandez
+ * @version 3.0 Final Release
+ */
 public class AddPet extends AppCompatActivity {
 
-    public static Pet p;
-    public static Pets pets;
-    Spinner petTypeSpinner;
+    /**
+     * Text Views for identifying field components
+     */
     TextView pet_name, animal, pet_qualities, pet_sitting_logistics;
+
+    /**
+     * Edit Text Views for user input of relevant information
+     */
     EditText pet_name_field, other_animal_type_field;
+
+    /**
+     * Buttons used to confirm data and/or move to another activity
+     */
     Button add_photo_button, settings_save_button;
+
+    /**
+     * Spinner for selecting pet Type
+     */
+    Spinner petTypeSpinner;
+
+    /**
+     * Switches used to characteristics of pets
+     */
+    @SuppressLint("UseSwitchCompatOrMaterialCode")
     Switch switch_energetic, switch_noisy, switch_trained, switch_inside_only;
 
+    /**
+     * On Create Method
+     * Initializes the add pet View and instantiates other view objects for later use
+     * @param savedInstanceState android system parameter
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        pets = new Pets();
         setContentView(R.layout.add_pet);
         setTitle("Add a New Pet");
 
@@ -77,6 +109,11 @@ public class AddPet extends AppCompatActivity {
         settings_save_button.setTextSize(view.getButtonTextSize());
     }
 
+    /**
+     * Go To Pets method
+     * After saving data to device/server, returns to the main My Pets view
+     * @param view the reference object calling this method
+     */
     public void goToPets(View view)
     {
         System.out.println("in go topets");
@@ -139,7 +176,12 @@ public class AddPet extends AppCompatActivity {
         //when you go back need to make the text with id no pets invisible
     }
 
+    /**
+     * Add Photo method
+     * Adds a photo to the pet profile and updates data appropriately
+     * @param view
+     */
     public void addPhoto(View view) {
-
+        //TODO implement if time allows
     }
 }

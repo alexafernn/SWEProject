@@ -14,11 +14,32 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+/**
+ * Home Activity Class
+ * This class allows users to see the sittings they are scheduled for
+ * CS482 Software Engineering
+ * Prof. Mehri
+ * @author Jack Cannon
+ * @author Alexandra Fernandez
+ * @version 3.0 Final Release
+ */
 public class HomeActivity extends AppCompatActivity {
-    ArrayList<Sitting> sittingList;
-    ListView sittings_listView;
-    Sitting sit;
 
+    /**
+     * List managing the sittings a user is scheduled for
+     */
+    ArrayList<Sitting> sittingList;
+
+    /**
+     * List View for managing multiple content instances of sittings
+     */
+    ListView sittings_listView;
+
+    /**
+     * On Create Method
+     * Initializes the home activity View and instantiates other view objects for later use
+     * @param savedInstanceState android system parameter
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -50,7 +71,5 @@ public class HomeActivity extends AppCompatActivity {
          }
     }
 
-    public Activity getActivity(){
-        return this;
-    }
+    //todo implement intent/finish()
 }

@@ -11,18 +11,43 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Scanner;
 
+/**
+ * UrlGet Class
+ * This class allows the app to request data from the server
+ * CS482 Software Engineering
+ * Prof. Mehri
+ * @author Jack Cannon
+ * @author Alexandra Fernandez
+ * @version 3.0 Final Release
+ */
 public class UrlGet extends Thread {
 
-    String my_url;
-    String dataLocation;
+    /**
+     * Strings for managing changing url and data
+     */
+    String my_url, dataLocation;
+
+    /**
+     * Activity and View data
+     */
     Context context;
 
+    /**
+     * UrlGet constructor
+     * @param url the url to request data from
+     * @param dataLocation the location to save the response to
+     * @param context the relevant activity / view calling requesting data
+     */
     public UrlGet(String url, String dataLocation, Context context) {
         this.my_url = url;
         this.dataLocation = dataLocation;
         this.context = context;
     }
 
+    /**
+     * Run method
+     * Performs the url connection, request and encapsulates the server response
+     */
     public void run( ) {
 
         Log.w("MA", "get: " + my_url);

@@ -9,12 +9,37 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+/**
+ * Rewards Class
+ * This class allows a sitter to view and redeem their rewards
+ * CS482 Software Engineering
+ * Prof. Mehri
+ * @author Jack Cannon
+ * @author Alexandra Fernandez
+ * @version 3.0 Final Release
+ */
 public class Rewards extends AppCompatActivity {
 
+    /**
+     * Text Views for identifying field components
+     */
     TextView rewards_menu_top, rewards_points_total, reward_types, reward_select, amount_select, rewards_delivery_info;
+
+    /**
+     * Spinner for selecting pet Type
+     */
     Spinner spinner, spinner2;
+
+    /**
+     * Buttons used to confirm data and/or move to another activity
+     */
     Button rewards_request_button;
 
+    /**
+     * On Create Method
+     * Initializes the rewards View and instantiates other view objects for later use
+     * @param savedInstanceState android system parameter
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,9 +80,14 @@ public class Rewards extends AppCompatActivity {
         rewards_delivery_info.setTextSize((float) (0.8*view.getLabelTextSize()));
     }
 
+    /**
+     * Request Reward method
+     * After saving data to device/server, returns to the main Sitter view
+     * @param view the reference object calling this method
+     */
     public void onRequestReward(View view) {
 
-
+        //TODO implement if time allows (low priority feature)
 
         finish();
     }
