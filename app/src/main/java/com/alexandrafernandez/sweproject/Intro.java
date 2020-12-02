@@ -1,5 +1,7 @@
 package com.alexandrafernandez.sweproject;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
@@ -14,6 +16,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 /**
@@ -26,7 +29,6 @@ import androidx.appcompat.app.AppCompatActivity;
  * @version 3.0 Final Release
  */
 public class Intro extends AppCompatActivity {
-
     /**
      * Text Views for identifying field components
      */
@@ -53,7 +55,8 @@ public class Intro extends AppCompatActivity {
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
         String myName = pref.getString("username", "username");
 
-        // need to get myName from the
+        // need to get myName from the server
+
 
         String greetMe = "Hi, " + myName;
         greeting = (TextView) findViewById(R.id.greeting);
@@ -100,7 +103,22 @@ public class Intro extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_favorite:
-                startActivity(new Intent(this, HomeActivity.class));
+                DialogInterface.OnClickListener dClickListener = new DialogInterface.OnClickListener()
+                {
+                    @Override
+                    public void onClick(DialogInterface dialog, int choice) {
+                        switch(choice) {
+                            case DialogInterface.BUTTON_POSITIVE:
+                                startActivity(new Intent(Intro.this, HomeActivity.class)); // i am sitter
+                                break;
+                            case DialogInterface.BUTTON_NEGATIVE:
+                                startActivity(new Intent(Intro.this, Rewards.class)); //my pet being sitted //need to change 
+                        }
+                    }
+                };
+                AlertDialog.Builder builder = new AlertDialog.Builder(Intro.this);
+                builder.setMessage("Which sitting appointments would you like to see?").setPositiveButton("I am Sitter", dClickListener).setNegativeButton("My pet being sitted", dClickListener).show();
+
                 return true;
             case R.id.profile:
                 startActivity(new Intent(this, Profile.class));

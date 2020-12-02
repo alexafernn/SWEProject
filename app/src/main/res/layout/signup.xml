@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:text="First Name:"
         android:id="@+id/signupFirstName"
-        android:paddingBottom="5dp"
+        android:paddingBottom="15dp"
         android:textColor="@color/colorBlack"
         android:layout_marginLeft="10dp"
         android:layout_marginStart="10dp" />
