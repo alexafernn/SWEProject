@@ -105,7 +105,7 @@ public class MainActivity extends Activity {
     /**
      * Verify Login method
      * Performs appropriate actions and completes activity
-     * @param view the reference object calling this method
+     * @param v the reference object calling this method
      */
     public void verifyLogin(View v)
     {
@@ -117,13 +117,9 @@ public class MainActivity extends Activity {
             if(loginSwitch.isChecked()) {
                 SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
                 SharedPreferences.Editor editor = pref.edit();
-                String username = usernameEditText.getText().toString();
-                editor.putString("username", username);
-                String password = passwordEditText.getText().toString();
-                editor.putString("password", password);
                 boolean loginSwitchChecked = loginSwitch.isChecked();
                 editor.putBoolean("loginSwitchChecked", loginSwitchChecked);
-                editor.commit();
+                editor.apply();
             }
 
             //if login verified
@@ -134,9 +130,9 @@ public class MainActivity extends Activity {
     }
 
     /**
-     * Verify Login method
+     * Sign Up method
      * Sends user to activity for signUp
-     * @param view the reference object calling this method
+     * @param v the reference object calling this method
      */
     public void signUp(View v)
         {

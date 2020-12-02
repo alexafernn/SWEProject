@@ -133,7 +133,27 @@ public class AddPet extends AppCompatActivity {
         else
         {
              finish();
-            //start activity
+             /*
+            JSONObject data = new JSONObject();
+            try {
+                data.put("is_owner",userTypePetOwner.isChecked());
+                data.put("is_sitter", userTypeSitter.isChecked());
+                data.put("is_admin",false);
+                data.put("is_shelter",false);
+                data.put("first_name", firstNameEditText.getText().toString());
+                data.put("last_name", lastNameEditText.getText().toString());
+                data.put("email", emailEditText.getText().toString());
+                data.put("password", passwordEditText.getText().toString());
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            Log.w("MA", "Creating post");
+            UrlPost saveInfo = new UrlPost("http://aiji.cs.loyola.edu/accountcreate", data.toString(), this);
+            Log.w("MA", "--------URL POST------------");
+            saveInfo.start();
+
+             */
         }
 
         //do something with entered info, then go back to pets menu

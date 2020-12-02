@@ -72,6 +72,8 @@ public class Owner extends AppCompatActivity {
         setContentView(R.layout.owner);
         setTitle("OWNER");
 
+
+
         ScreenSize view = new ScreenSize(this);
 
         sitter_request_button = findViewById(R.id.sitter_request_button);

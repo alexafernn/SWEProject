@@ -187,26 +187,6 @@ public class SignUp extends AppCompatActivity {
     {
         startActivity(new Intent(this, MainActivity.class));
 
-        if(userTypePetOwner.isChecked())
-            type = 1;
-        if(userTypeSitter.isChecked())
-            type = 2;
-        if(userTypePetOwner.isChecked() && userTypeSitter.isChecked())
-            type = 3;
-
-        /*
-        String str = "is_owner=" + Boolean.toString(userTypePetOwner.isChecked())
-                + "&is_sitter=" + Boolean.toString(userTypeSitter.isChecked())
-                + "&is_admin=" + Boolean.toString(false)
-                + "&is_shelter=" + Boolean.toString(false)
-                + "&first_name=" + nameEditText.getText().toString()
-                + "&last_name=" + "test"
-                + "&email=" + emailEditText.getText().toString()
-                + "&password=" + passwordEditText.getText().toString();
-
-         */
-
-
         JSONObject data = new JSONObject();
         try {
             System.out.println("the name is "+ first_name); // printing out john
@@ -214,13 +194,10 @@ public class SignUp extends AppCompatActivity {
             data.put("is_sitter", userTypeSitter.isChecked());
             data.put("is_admin",false);
             data.put("is_shelter",false);
-            //data.put("first_name", nameEditText.getText().toString());
-            //data.put("last_name", "test");
             data.put("first_name", firstNameEditText.getText().toString());
             data.put("last_name", lastNameEditText.getText().toString());
             data.put("email", emailEditText.getText().toString());
             data.put("password", passwordEditText.getText().toString());
-
         } catch (JSONException e) {
             e.printStackTrace();
         }

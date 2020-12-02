@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,6 +14,9 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * Profile Class
@@ -57,8 +61,34 @@ public class Profile extends AppCompatActivity {
         setContentView(R.layout.profile);
         setTitle("Profile Settings");
 
-        ScreenSize view = new ScreenSize(this);
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
+        String clientID = pref.getString("clientID", "16211ef1-141a-4ba0-a677-da209f7c5c58");
+
+        UrlGet userInfo = new UrlGet("http://aiji.cs.loyola.edu/accountinfo?id="+clientID,"profile.userInfo", this);
+        Log.w("MA", "--------URL GET------------");
+        userInfo.start();
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        String json = pref.getString("profile.userInfo", "");
+        Log.w("MA", "json: " + json);
+
+        /*
+        try {
+            JSONObject jsonObject1 = new JSONObject(json);
+            first_name = jsonObject1.getString( "first_name" );
+            last_name = jsonObject1.getString("last_name");
+            myEmail = jsonObject1.getString("email"); //john ?
+        } catch( JSONException json_e ) {
+            Log.w("MA", json_e.toString());
+        }
+
+         */
+
+        ScreenSize view = new ScreenSize(this);
 
         account_info = (TextView) findViewById(R.id.account_info);
         account_info.setTextSize(view.getLabelTextSize());
@@ -113,7 +143,30 @@ public class Profile extends AppCompatActivity {
     public void goHome(View view) {
 
         //TODO add server connections in addition to persistent data (mandatory feature)
+        /*
+        JSONObject data = new JSONObject();
+        try {
+            data.put("is_owner",userTypePetOwner.isChecked());
+            data.put("is_sitter", userTypeSitter.isChecked());
+            data.put("is_admin",false);
+            data.put("is_shelter",false);
+            data.put("first_name", firstNameEditText.getText().toString());
+            data.put("last_name", lastNameEditText.getText().toString());
+            data.put("email", emailEditText.getText().toString());
+            data.put("password", passwordEditText.getText().toString());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
+
+        Log.w("MA", "Creating post");
+        UrlPost saveInfo = new UrlPost("http://aiji.cs.loyola.edu/accountcreate", data.toString(), this);
+        Log.w("MA", "--------URL POST------------");
+        saveInfo.start();
+
+         */
+
+        //TODO comment this section out when server connected
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor editor = pref.edit();
         String name = name_field.getText().toString();
@@ -128,7 +181,7 @@ public class Profile extends AppCompatActivity {
         editor.putBoolean("sitterProfileSwitch", !sitterSwitch);
         boolean adoptionSwitch = adoption.isChecked();
         editor.putBoolean("adoptionProfileSwitch", !adoptionSwitch);
-        editor.commit();
+        editor.apply();
 
         startActivity(new Intent(this, Intro.class));
         finish();
