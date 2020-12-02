@@ -80,13 +80,13 @@ public class MainActivity extends Activity {
         login_text.setTextSize((float) (1.2*view.getLabelTextSize()));
 
         username = (TextView) findViewById(R.id.username);
-        username.setTextSize((float) (0.5*view.getLabelTextSize()));
+        username.setTextSize((float) (0.8*view.getLabelTextSize()));
 
         usernameEditText = (EditText) findViewById(R.id.usernameEditText);
         usernameEditText.setTextSize(view.getEditTextSize());
 
         password = (TextView) findViewById(R.id.password);
-        password.setTextSize((float) (0.5*view.getLabelTextSize()));
+        password.setTextSize((float) (0.6*view.getLabelTextSize()));
 
         passwordEditText = (EditText) findViewById(R.id.passwordEditText);
         passwordEditText.setTextSize(view.getEditTextSize());

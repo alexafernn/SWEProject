@@ -34,7 +34,8 @@ public class SignUp extends AppCompatActivity {
     /**
      * Text Views for identifying field components
      */
-    TextView signupName, phoneNumber, email, address, username, password, profile_types;
+    //TextView signupName, phoneNumber, email, address, username, password, profile_types;
+    TextView  signupFirstName, signupLastName, phoneNumber, email, address, password, profile_types;
 
     /**
      * Switches used to indicate profile type
@@ -50,7 +51,8 @@ public class SignUp extends AppCompatActivity {
     /**
      * Edit Text Views for user input of relevant information
      */
-    EditText nameEditText, phoneEditText, emailEditText, addyEditText, usernameEditText, passwordEditText;
+    //EditText nameEditText, phoneEditText, emailEditText, addyEditText, usernameEditText, passwordEditText;
+    EditText firstNameEditText, lastNameEditText, phoneEditText, emailEditText, addyEditText, usernameEditText, passwordEditText;
 
     /**
      * Initialize components of a sign up request
@@ -93,12 +95,31 @@ public class SignUp extends AppCompatActivity {
 
         ScreenSize view = new ScreenSize(this);
 
-        signupName = (TextView) findViewById(R.id.signupName);
-        signupName.setTextSize((float) (0.5*view.getLabelTextSize()));
+//        signupName = (TextView) findViewById(R.id.signupName);
+//        signupName.setTextSize((float) (0.5*view.getLabelTextSize()));
 
-        nameEditText = (EditText) findViewById(R.id.NameEditText);
-        nameEditText.setTextSize((float) (0.5*view.getEditTextSize()));
-        nameEditText.setText(first_name);
+
+//        nameEditText = (EditText) findViewById(R.id.NameEditText);
+//        nameEditText.setTextSize((float) (0.5*view.getEditTextSize()));
+//        nameEditText.setText(first_name);
+
+        //sign up
+        signupFirstName = (TextView) findViewById(R.id.signupFirstName);
+        signupFirstName.setTextSize((float) (0.5*view.getLabelTextSize()));
+
+        signupLastName = (TextView) findViewById(R.id.signupLastName);
+        signupLastName.setTextSize((float) (0.5*view.getLabelTextSize()));
+
+
+        //first name
+        firstNameEditText = (EditText) findViewById(R.id.FirstNameEditText);
+        firstNameEditText.setTextSize((float) (0.5*view.getEditTextSize()));
+        firstNameEditText.setText(first_name);
+
+        //last name
+        lastNameEditText = (EditText) findViewById(R.id.LastNameEditText);
+        lastNameEditText.setTextSize((float) (0.5*view.getEditTextSize()));
+        lastNameEditText.setText(last_name);
 
         phoneNumber = (TextView) findViewById(R.id.phoneNumber);
         phoneNumber.setTextSize((float) (0.5*view.getLabelTextSize()));
@@ -119,11 +140,11 @@ public class SignUp extends AppCompatActivity {
         addyEditText = (EditText) findViewById(R.id.AddyEditText);
         addyEditText.setTextSize((float) (0.5*view.getEditTextSize()));
 
-        username = (TextView) findViewById(R.id.usernameSignUp);
-        username.setTextSize((float) (0.5*view.getLabelTextSize()));
-
-        usernameEditText = (EditText) findViewById(R.id.UserNameEditText);
-        usernameEditText.setTextSize((float) (0.5*view.getEditTextSize()));
+//        username = (TextView) findViewById(R.id.usernameSignUp);
+//        username.setTextSize((float) (0.5*view.getLabelTextSize()));
+//
+//        usernameEditText = (EditText) findViewById(R.id.UserNameEditText);
+//        usernameEditText.setTextSize((float) (0.5*view.getEditTextSize()));
 
         password = (TextView) findViewById(R.id.passwordSignUp);
         password.setTextSize((float) (0.5*view.getLabelTextSize()));
@@ -193,12 +214,12 @@ public class SignUp extends AppCompatActivity {
             data.put("is_sitter", userTypeSitter.isChecked());
             data.put("is_admin",false);
             data.put("is_shelter",false);
-            data.put("first_name", nameEditText.getText().toString());
-            data.put("last_name", "test");
+            //data.put("first_name", nameEditText.getText().toString());
+            //data.put("last_name", "test");
+            data.put("first_name", firstNameEditText.getText().toString());
+            data.put("last_name", lastNameEditText.getText().toString());
             data.put("email", emailEditText.getText().toString());
             data.put("password", passwordEditText.getText().toString());
-            // do we need to put user?
-            //data.put("username", usernameEditText.getText().toString()); -- doesnt work as expected
 
         } catch (JSONException e) {
             e.printStackTrace();
