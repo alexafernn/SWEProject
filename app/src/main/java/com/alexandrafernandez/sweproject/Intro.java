@@ -52,6 +52,9 @@ public class Intro extends AppCompatActivity {
 
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
         String myName = pref.getString("username", "username");
+
+        // need to get myName from the
+
         String greetMe = "Hi, " + myName;
         greeting = (TextView) findViewById(R.id.greeting);
         greeting.setText(greetMe);

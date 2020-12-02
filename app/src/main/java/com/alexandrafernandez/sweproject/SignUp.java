@@ -86,7 +86,7 @@ public class SignUp extends AppCompatActivity {
             JSONObject jsonObject1 = new JSONObject(json);
             first_name = jsonObject1.getString( "first_name" );
             last_name = jsonObject1.getString("last_name");
-            myEmail = jsonObject1.getString("email");
+            myEmail = jsonObject1.getString("email"); //john ?
         } catch( JSONException json_e ) {
             Log.w("MA", json_e.toString());
         }
@@ -188,6 +188,7 @@ public class SignUp extends AppCompatActivity {
 
         JSONObject data = new JSONObject();
         try {
+            System.out.println("the name is "+ first_name); // printing out john
             data.put("is_owner",userTypePetOwner.isChecked());
             data.put("is_sitter", userTypeSitter.isChecked());
             data.put("is_admin",false);
@@ -196,6 +197,8 @@ public class SignUp extends AppCompatActivity {
             data.put("last_name", "test");
             data.put("email", emailEditText.getText().toString());
             data.put("password", passwordEditText.getText().toString());
+            // do we need to put user?
+            //data.put("username", usernameEditText.getText().toString()); -- doesnt work as expected
 
         } catch (JSONException e) {
             e.printStackTrace();
