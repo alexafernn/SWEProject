@@ -11,30 +11,45 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Full Name:"
-        android:id="@+id/signupName"
+        android:id="@+id/signupFirstName"
         android:paddingBottom="5dp"
         android:textColor="@color/colorBlack"
         android:layout_marginLeft="10dp"
         android:layout_marginStart="10dp" />
 
+
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/signupName"
+        android:text="Last Name:"
+        android:id="@+id/signupLastName"
+        android:layout_marginTop="20dp"
+        android:paddingBottom="5dp"
+        android:textColor="@color/colorBlack"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_below="@+id/signupFirstName"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Phone Number:"
         android:id="@+id/phoneNumber"
         android:paddingBottom="5dp"
         android:textColor="@color/colorBlack"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginStart="10dp"  />
+        android:layout_marginStart="10dp"
+        android:layout_below="@id/signupLastName"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Email:"
         android:id="@+id/email"
-        android:layout_below="@id/phoneNumber"
+        android:layout_below="@id/addressSignup"
         android:paddingBottom="5dp"
         android:textColor="@color/colorBlack"
         android:layout_marginTop="20dp"
@@ -46,31 +61,21 @@
         android:layout_height="wrap_content"
         android:text="Address:"
         android:id="@+id/addressSignup"
-        android:layout_below="@id/email"
+        android:layout_below="@id/phoneNumber"
         android:paddingBottom="5dp"
         android:textColor="@color/colorBlack"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="10dp"
         android:layout_marginStart="10dp"  />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Username:"
-        android:id="@+id/usernameSignUp"
-        android:layout_below="@id/addressSignup"
-        android:paddingBottom="5dp"
-        android:textColor="@color/colorBlack"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginStart="10dp"  />
+
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Password:"
         android:id="@+id/passwordSignUp"
-        android:layout_below="@id/usernameSignUp"
+        android:layout_below="@id/email"
         android:paddingBottom="5dp"
         android:textColor="@color/colorBlack"
         android:layout_marginTop="20dp"
@@ -133,10 +138,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="text"
-        android:id="@+id/NameEditText"
+        android:id="@+id/FirstNameEditText"
         android:ems="13"
         android:layout_alignParentRight="true"
-        android:layout_alignTop="@id/signupName"
+        android:layout_alignBottom="@id/signupFirstName"
+        android:layout_marginRight="10dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="10dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:id="@+id/LastNameEditText"
+        android:ems="13"
+        android:layout_alignParentRight="true"
+        android:layout_alignBottom="@id/signupLastName"
         android:layout_marginRight="10dp"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="10dp" />
@@ -146,9 +163,9 @@
         android:layout_height="wrap_content"
         android:inputType="phone"
         android:id="@+id/PhoneEditText"
-        android:ems="10"
+        android:ems="13"
         android:layout_alignParentRight="true"
-        android:layout_alignTop="@id/phoneNumber"
+        android:layout_alignBottom="@id/phoneNumber"
         android:layout_marginRight="10dp"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="10dp" />
@@ -158,7 +175,7 @@
         android:layout_height="wrap_content"
         android:inputType="textEmailAddress"
         android:id="@+id/EmailEditText"
-        android:ems="15"
+        android:ems="13"
         android:layout_alignParentRight="true"
         android:layout_alignTop="@id/email"
         android:layout_marginRight="10dp"
@@ -177,17 +194,7 @@
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="10dp" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="text"
-        android:id="@+id/UserNameEditText"
-        android:ems="12"
-        android:layout_alignParentRight="true"
-        android:layout_alignTop="@id/usernameSignUp"
-        android:layout_marginRight="10dp"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="10dp" />
+
 
     <EditText
         android:layout_width="wrap_content"
