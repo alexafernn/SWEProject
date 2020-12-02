@@ -22,6 +22,7 @@
         </activity>
         <activity android:name=".Intro"/>
         <activity android:name=".HomeActivity" />
+        <activity android:name=".sittingsForMyPet"/>
         <activity android:name=".Profile" />
         <activity android:name=".Sitter" />
         <activity android:name=".Owner" />

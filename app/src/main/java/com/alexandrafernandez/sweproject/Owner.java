@@ -137,7 +137,8 @@ public class Owner extends AppCompatActivity {
                 finish();
                 return true;
             case R.id.action_favorite:
-                startActivity(new Intent(this, HomeActivity.class));
+                //startActivity(new Intent(this, HomeActivity.class));
+                startActivity(new Intent(this, sittingsForMyPet.class));
                 return true;
             case R.id.my_pets_menu:
                 startActivity(new Intent(this, Pets.class));

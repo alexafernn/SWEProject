@@ -112,12 +112,12 @@ public class Intro extends AppCompatActivity {
                                 startActivity(new Intent(Intro.this, HomeActivity.class)); // i am sitter
                                 break;
                             case DialogInterface.BUTTON_NEGATIVE:
-                                startActivity(new Intent(Intro.this, Rewards.class)); //my pet being sitted //need to change 
+                                startActivity(new Intent(Intro.this, sittingsForMyPet.class)); // i am owner
                         }
                     }
                 };
                 AlertDialog.Builder builder = new AlertDialog.Builder(Intro.this);
-                builder.setMessage("Which sitting appointments would you like to see?").setPositiveButton("I am Sitter", dClickListener).setNegativeButton("My pet being sitted", dClickListener).show();
+                builder.setMessage("Which sitting appointments would you like to see?").setPositiveButton("I am Sitter", dClickListener).setNegativeButton("I am owner", dClickListener).show();
 
                 return true;
             case R.id.profile:

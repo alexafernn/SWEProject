@@ -5,7 +5,6 @@
     android:background="@color/colorWhite">
 
 
-
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,9 +23,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:layout_margin="10dp"
+        android:text="No pets? Add a pet to get started."
         android:textSize="24sp"
         android:gravity="center"
-        android:id="@+id/sitting_listview"
+        android:id="@+id/sittingForMyPet_listview"
         android:textColor="@color/colorBlack"
         android:background="@color/colorPrimary"
         android:dividerHeight="10.0sp"

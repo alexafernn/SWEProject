@@ -49,6 +49,7 @@ public class HomeActivity extends AppCompatActivity {
         setTitle("My Sittings");
         TextView noSittings = (TextView) findViewById(R.id.noSittings);
 
+
         final Sitting[] sitting = {MainActivity.sitting};
 
         System.out.println("number of sittings created is " + sitting[0].getNumberOfSittings());
@@ -56,10 +57,15 @@ public class HomeActivity extends AppCompatActivity {
         if (sitting[0].getNumberOfSittings() == 0)
         {
             noSittings.setVisibility(View.VISIBLE);
+
+
+
         }
         else
         {
+
             noSittings.setVisibility(View.INVISIBLE);
+
             sittingList = new ArrayList<Sitting>();
             sittingList.add(new Sitting("04/03/2021", "04/04/2022", false,true, "sheds a lot "));
             sittings_listView = (ListView) findViewById(R.id.sitting_listview);
