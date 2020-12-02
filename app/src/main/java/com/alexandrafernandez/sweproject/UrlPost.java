@@ -6,7 +6,10 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 
 import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
@@ -27,7 +30,7 @@ public class UrlPost extends Thread {
     /**
      * Strings for managing changing url and data
      */
-    String my_url, dataLocation;
+    String my_url, data;
 
     /**
      * Activity and View data
@@ -37,14 +40,14 @@ public class UrlPost extends Thread {
     /**
      * UrlPost constructor
      * @param url the url to send data to
-     * @param dataLocation the location to pull the request from
+     * @param data the location to pull the request from
      * @param context the relevant activity / view calling sending data
      */
-    public UrlPost(String url, String dataLocation, Context context) {
+    public UrlPost(String url, String data, Context context) {
         this.my_url = url;
-        this.dataLocation = dataLocation;
+        this.data = data;
         this.context = context;
-        Log.w("MA", my_url + " " + dataLocation);
+        Log.w("MA", my_url + " " + data);
     }
 
     /**
@@ -53,24 +56,33 @@ public class UrlPost extends Thread {
      */
     public void run( ) {
 
-        OutputStream out = null;
-        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
-        String finalData = pref.getString(dataLocation, "");
         Log.w("MA", "POST:");
-        Log.w("MA", "postString: " + finalData);
+        Log.w("MA", "postString: " + data);
 
         try {
+
             URL url = new URL(my_url);
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            out = new BufferedOutputStream(connection.getOutputStream());
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("POST");
+            conn.setRequestProperty("Accept", "application/json");
+            conn.setDoOutput(true);
+            conn.setDoInput(true);
+            conn.setRequestProperty("Content-Type", "application/json; utf-8");
+            String params = data;
+            OutputStream os = conn.getOutputStream();
+            byte[] input = params.getBytes("utf-8");
+            os.write(input, 0, input.length);
+            BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+            String line;
+            StringBuilder s= new StringBuilder();
+            while ((line = rd.readLine()) != null) {
+                Log.w("MA", "--------LINE:" + line);
+                s.append(line);
+            }
+            Log.w("MA", "Post request complete");
+            Log.w("MA", s.toString());
 
-            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out, "UTF-8"));
-            writer.write(finalData);
-            writer.flush();
-            writer.close();
-            out.close();
-            connection.connect();
 
-        } catch( Exception e ) { }
+        } catch( Exception e ) { Log.w("MA" , e.getMessage());}
     }
 }

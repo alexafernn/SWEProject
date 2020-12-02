@@ -6,7 +6,9 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 
 import java.io.BufferedInputStream;
+import java.io.BufferedReader;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Scanner;
@@ -32,6 +34,8 @@ public class UrlGet extends Thread {
      */
     Context context;
 
+    public String data_get;
+
     /**
      * UrlGet constructor
      * @param url the url to request data from
@@ -53,6 +57,7 @@ public class UrlGet extends Thread {
         Log.w("MA", "get: " + my_url);
 
         try {
+            /*
             URL url = new URL(my_url);
             InputStream is = url.openStream(); //failing on this line
             Scanner scan = new Scanner( is );
@@ -61,13 +66,29 @@ public class UrlGet extends Thread {
                 s += scan.nextLine();
             }
 
+             */
+
+            URL url = new URL(my_url);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+            BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+            String line;
+            StringBuilder s= new StringBuilder();
+            while ((line = rd.readLine()) != null) {
+                s.append(line);
+            }
+
             Log.w("MA", "received from server:");
-            Log.w("MA", s);
+            Log.w("MA", s.toString());
+
+            data_get = s.toString();
+
 
             SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
             SharedPreferences.Editor editor = pref.edit();
-            editor.putString(dataLocation, s);
+            editor.putString(dataLocation, s.toString());
             editor.commit();
+
 
         } catch( Exception e ) {
             Log.w("MA", e.toString());

@@ -68,8 +68,14 @@ public class SignUp extends AppCompatActivity {
         setContentView(R.layout.signup);
         setTitle("New Account Sign Up");
 
-        UrlGet userInfo = new UrlGet("http://aiji.cs.loyola.edu/accountinfo/1","signUp.userInfo", this);
+        UrlGet userInfo = new UrlGet("http://aiji.cs.loyola.edu/accountinfo?id=16211ef1-141a-4ba0-a677-da209f7c5c58","signUp.userInfo", this);
+        Log.w("MA", "--------URL GET------------");
         userInfo.start();
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
 
         String json = pref.getString("signUp.userInfo", "");
@@ -80,9 +86,7 @@ public class SignUp extends AppCompatActivity {
             JSONObject jsonObject1 = new JSONObject(json);
             first_name = jsonObject1.getString( "first_name" );
             last_name = jsonObject1.getString("last_name");
-            type = jsonObject1.getInt("type");
             myEmail = jsonObject1.getString("email");
-            Log.w("MA", myEmail);
         } catch( JSONException json_e ) {
             Log.w("MA", json_e.toString());
         }
@@ -169,19 +173,39 @@ public class SignUp extends AppCompatActivity {
         if(userTypePetOwner.isChecked() && userTypeSitter.isChecked())
             type = 3;
 
-        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
-        SharedPreferences.Editor editor = pref.edit(); //usernameEditText.toString().hashCode()
-        editor.putString("signUp.createInfo", "id=" + "3"
-                + "&type=" + type + "&first_name=" + nameEditText.getText().toString() + "&last_name=" + "Test"
-                + "&email=" + emailEditText.getText().toString() + "&password=" + passwordEditText.getText().toString());
-        editor.commit();
+        /*
+        String str = "is_owner=" + Boolean.toString(userTypePetOwner.isChecked())
+                + "&is_sitter=" + Boolean.toString(userTypeSitter.isChecked())
+                + "&is_admin=" + Boolean.toString(false)
+                + "&is_shelter=" + Boolean.toString(false)
+                + "&first_name=" + nameEditText.getText().toString()
+                + "&last_name=" + "test"
+                + "&email=" + emailEditText.getText().toString()
+                + "&password=" + passwordEditText.getText().toString();
+
+         */
+
+
+        JSONObject data = new JSONObject();
+        try {
+            data.put("is_owner",userTypePetOwner.isChecked());
+            data.put("is_sitter", userTypeSitter.isChecked());
+            data.put("is_admin",false);
+            data.put("is_shelter",false);
+            data.put("first_name", nameEditText.getText().toString());
+            data.put("last_name", "test");
+            data.put("email", emailEditText.getText().toString());
+            data.put("password", passwordEditText.getText().toString());
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
 
         Log.w("MA", "Creating post");
-        UrlPost saveInfo = new UrlPost("http://aiji.cs.loyola.edu/accountcreate", "signUp.createInfo", this);
-        Log.w("MA", "Initiating post");
+        UrlPost saveInfo = new UrlPost("http://aiji.cs.loyola.edu/accountcreate", data.toString(), this);
+        Log.w("MA", "--------URL POST------------");
         saveInfo.start();
-
-        //todo make sure to save account to the server and be able to verify if user name already exist
 
         finish();
     }
