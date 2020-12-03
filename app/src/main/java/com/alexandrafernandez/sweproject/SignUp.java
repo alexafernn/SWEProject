@@ -69,6 +69,8 @@ public class SignUp extends AppCompatActivity {
         setContentView(R.layout.signup);
         setTitle("New Account Sign Up");
 
+        //TODO remove this after another get request is fully tested
+        /*
         UrlGet userInfo = new UrlGet("http://aiji.cs.loyola.edu/accountinfo?id=16211ef1-141a-4ba0-a677-da209f7c5c58","signUp.userInfo", this); // this is the specific john test
         Log.w("MA", "--------URL GET------------");
         userInfo.start();
@@ -91,6 +93,8 @@ public class SignUp extends AppCompatActivity {
         } catch( JSONException json_e ) {
             Log.w("MA", json_e.toString());
         }
+
+         */
 
         ScreenSize view = new ScreenSize(this);
 

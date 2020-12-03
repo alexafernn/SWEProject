@@ -2,7 +2,10 @@ package com.alexandrafernandez.sweproject;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -12,6 +15,10 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -27,11 +34,6 @@ import java.util.ArrayList;
 public class Pet extends AppCompatActivity {
 
     /**
-     * List managing the pets an owner has
-     */
-    ArrayList<PetData> petList;
-
-    /**
      * Spinner for selecting pet Type
      */
     Spinner petTypeSpinner;
@@ -39,7 +41,7 @@ public class Pet extends AppCompatActivity {
     /**
      * Text Views for identifying field components
      */
-    TextView pet_name, animal, pet_qualities, pet_sitting_logistics;
+    TextView pet_name, animal, pet_qualities;
 
     /**
      * Edit Text Views for user input of relevant information
@@ -55,7 +57,7 @@ public class Pet extends AppCompatActivity {
      * Switches used to characteristics of adoption interest
      */
     @SuppressLint("UseSwitchCompatOrMaterialCode")
-    Switch switch_energetic, switch_noisy, switch_trained, switch_inside_only;
+    Switch switch_energetic, switch_noisy, switch_trained;
 
     /**
      * On Create Method
@@ -68,20 +70,57 @@ public class Pet extends AppCompatActivity {
         setContentView(R.layout.pet);
         setTitle("View My Pet");
 
-        // pet info: http://aiji.cs.loyola.edu/petinfo?id=1&auth=1&pet_id=1
+        //GET Request - get id/auth
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
+        String clientID = pref.getString("id", "");
+        String clientAuth = pref.getString("auth", "");
+
+        //Url connection
+        UrlGet userInfo = new UrlGet("http://aiji.cs.loyola.edu/petinfo?id=" + clientID + "&auth=" + clientAuth ,"pet.userInfo", this);
+        Log.w("MA", "--------URL GET------------");
+        userInfo.start();
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        //Save response
+        String json = pref.getString("pet.userInfo", "");
+        Log.w("MA", "json: " + json);
+        String name="", attributes="";
+        try {
+            JSONObject jsonObject1 = new JSONObject(json);
+            name = jsonObject1.getString( "name" );
+            attributes = jsonObject1.getString("attributes");
+        } catch( JSONException json_e ) {
+            Log.w("MA", json_e.toString());
+        }
+
+        //Parse attributes
+        String other_type="";
+        int pet_type = 0;
+        boolean energetic=false, noisy=false, trained=false;
+        try {
+            JSONObject data = new JSONObject(attributes);
+            pet_type = data.getInt("pet_type");
+            other_type = data.getString("other_type");
+            energetic = data.getBoolean("energetic");
+            noisy = data.getBoolean("noisy");
+            trained = data.getBoolean("trained");
+
+        } catch (JSONException json_e2) {
+            Log.w("MA", json_e2.toString());
+        }
 
         ScreenSize view = new ScreenSize(this);
-
-        petList = new ArrayList<PetData>(); //replace with server pull
-        petList.add(new PetData("test1", "animal1", "", true, false, true, false));
-        petList.add(new PetData("test2", "animal2","", false, true, false, true));
 
         pet_name = (TextView) findViewById(R.id.pet_name_edit);
         pet_name.setTextSize(view.getLabelTextSize());
 
         pet_name_field = (EditText) findViewById(R.id.pet_name_field_edit);
         pet_name_field.setTextSize(view.getEditTextSize());
-        pet_name_field.setText(getIntent().getStringExtra("petToView.name"));
+        pet_name_field.setText(name);
 
         animal = (TextView) findViewById(R.id.animal_edit);
         animal.setTextSize(view.getLabelTextSize());
@@ -90,35 +129,27 @@ public class Pet extends AppCompatActivity {
         ArrayAdapter<CharSequence> adapter4 = ArrayAdapter.createFromResource(this, R.array.pet_type_choices, android.R.layout.simple_spinner_item);
         adapter4.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         petTypeSpinner.setAdapter(adapter4);
+        petTypeSpinner.setSelection(pet_type);
 
         other_animal_type_field = (EditText) findViewById(R.id.other_animal_type_field_edit);
         other_animal_type_field.setTextSize(view.getEditTextSize());
-        other_animal_type_field.setText(getIntent().getStringExtra("petToView.other_type"));
-
-
+        other_animal_type_field.setText(other_type);
 
         pet_qualities = (TextView) findViewById(R.id.pet_qualities_edit);
         pet_qualities.setTextSize(view.getLabelTextSize());
 
         switch_energetic = (Switch) findViewById(R.id.switch_energetic_edit);
         switch_energetic.setTextSize(view.getSwitchTextSize());
-        switch_energetic.setChecked(getIntent().getBooleanExtra("petToView.energetic", false));
+        switch_energetic.setChecked(energetic);
 
         switch_noisy = (Switch) findViewById(R.id.switch_noisy_edit);
         switch_noisy.setTextSize(view.getSwitchTextSize());
-        switch_noisy.setChecked(getIntent().getBooleanExtra("petToView.noisy", false));
+        switch_noisy.setChecked(noisy);
 
         switch_trained = (Switch) findViewById(R.id.switch_trained_edit);
         switch_trained.setTextSize(view.getSwitchTextSize());
-        switch_trained.setChecked(getIntent().getBooleanExtra("petToView.trained", false));
+        switch_trained.setChecked(trained);
 
-//        pet_sitting_logistics = (TextView) findViewById(R.id.pet_sitting_logistics_edit);
-//        pet_sitting_logistics.setTextSize(view.getLabelTextSize());
-//
-//        switch_inside_only = (Switch) findViewById(R.id.switch_inside_only_edit);
-//        switch_inside_only.setTextSize(view.getSwitchTextSize());
-//        switch_inside_only.setChecked(getIntent().getBooleanExtra("petToView.inside_only", false));
-//        System.out.println("good to here");
         settings_save_button = (Button) findViewById(R.id.settings_save_button_edit);
         settings_save_button.setTextSize(view.getButtonTextSize());
     }
@@ -130,7 +161,30 @@ public class Pet extends AppCompatActivity {
      */
     public void goToPets(View view) {
 
-        //TODO write all pet data to server here (mandatory feature)
+        String attributes = "";
+        JSONObject attr = new JSONObject();
+        try {
+            attr.put("pet_name", pet_name_field.getText().toString());
+            attr.put("pet_type", petTypeSpinner.getSelectedItemPosition());
+            attr.put("other_type", other_animal_type_field.getText().toString());
+            attr.put("energetic", switch_energetic.isChecked());
+            attr.put("noisy", switch_noisy.isChecked());
+            attr.put("trained", switch_trained.isChecked());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        attributes = attr.toString();
+
+        JSONObject data = new JSONObject();
+        try {
+            data.put("name", pet_name_field.getText().toString());
+            data.put("attributes", attributes);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        UrlPut saveInfo = new UrlPut("http://aiji.cs.loyola.edu/petmodify", data.toString(), this, "pet.response");
+        saveInfo.start();
 
         startActivity(new Intent(this, Pets.class));
         finish();
