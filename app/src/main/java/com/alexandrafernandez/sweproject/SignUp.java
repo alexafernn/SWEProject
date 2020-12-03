@@ -69,33 +69,6 @@ public class SignUp extends AppCompatActivity {
         setContentView(R.layout.signup);
         setTitle("New Account Sign Up");
 
-        //TODO remove this after another get request is fully tested
-        /*
-        UrlGet userInfo = new UrlGet("http://aiji.cs.loyola.edu/accountinfo?id=16211ef1-141a-4ba0-a677-da209f7c5c58","signUp.userInfo", this); // this is the specific john test
-        Log.w("MA", "--------URL GET------------");
-        userInfo.start();
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
-
-        String json = pref.getString("signUp.userInfo", "");
-        Log.w("MA", "json: ");
-        Log.w("MA", json);
-
-        try {
-            JSONObject jsonObject1 = new JSONObject(json);
-            first_name = jsonObject1.getString( "first_name" );
-            last_name = jsonObject1.getString("last_name");
-            myEmail = jsonObject1.getString("email"); //john ?
-        } catch( JSONException json_e ) {
-            Log.w("MA", json_e.toString());
-        }
-
-         */
-
         ScreenSize view = new ScreenSize(this);
 
         //sign up

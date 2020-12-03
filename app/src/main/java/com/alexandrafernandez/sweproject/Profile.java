@@ -37,7 +37,7 @@ public class Profile extends AppCompatActivity {
     /**
      * Buttons used to confirm data and/or move to another activity
      */
-    Button save, payPal;
+    Button save;
 
     /**
      * Switches used to assign profile type
@@ -48,7 +48,7 @@ public class Profile extends AppCompatActivity {
     /**
      * Text Views for identifying field components
      */
-    TextView account_info, first_name, last_name, phone, address, profile_types;
+    TextView account_info, profile_types;
 
     /**
      * On Create Method
@@ -100,9 +100,6 @@ public class Profile extends AppCompatActivity {
         account_info = (TextView) findViewById(R.id.account_info);
         account_info.setTextSize(view.getLabelTextSize());
 
-        //first_name = (TextView) findViewById(R.id.firstName);
-//        first_name.setTextSize(view.getLabelTextSize());
-
         first_name_field = (EditText) findViewById(R.id.first_name_field_editText);
         first_name_field.setTextSize(view.getEditTextSize());
         //adding the information from server
@@ -119,30 +116,9 @@ public class Profile extends AppCompatActivity {
         //adding info from the server
         email_field.setText(email);
 
-        password_field = (EditText) findViewById(R.id.passwordEditText);
-        password_field.setTextSize(view.getEditTextSize());
-        //what do we do with password ? can we get that back not encrypted from the server
-
-        //first_name_field.setText(pref.getString("username", ""));
-//
-//        name = (TextView) findViewById(R.id.name);
-//        name.setTextSize(view.getLabelTextSize());
-//        name.setText(first_name + " " + last_name);
-
-//        name_field = (EditText) findViewById(R.id.name_field);
-//        name_field.setTextSize(view.getEditTextSize());
-//        name_field.setText(pref.getString("username", ""));
-
-
-       // phone = (TextView) findViewById(R.id.phone);
-       // phone.setTextSize(view.getLabelTextSize());
-
         phone_field = (EditText) findViewById(R.id.phoneFieldEditText);
         phone_field.setTextSize(view.getEditTextSize());
         phone_field.setText(phone_number);
-
-        //address = (TextView) findViewById(R.id.address);
-        //address.setTextSize(view.getLabelTextSize());
 
         address_field = (EditText) findViewById(R.id.addressEditText);
         address_field.setTextSize(view.getEditTextSize());
@@ -161,7 +137,6 @@ public class Profile extends AppCompatActivity {
         sitter = (Switch) findViewById(R.id.switch2);
         sitter.setTextSize(view.getSwitchTextSize());
         sitter.setChecked(is_sitter);
-
     }
 
     /**
@@ -179,10 +154,9 @@ public class Profile extends AppCompatActivity {
             data.put("is_shelter",false);
             data.put("address", address_field.getText().toString());
             data.put("phone_number", phone_field.getText().toString());
-            //data.put("first_name", firstNameEditText.getText().toString());
-            //data.put("last_name", lastNameEditText.getText().toString());   //TODO add these later
-            //data.put("email", emailEditText.getText().toString());
-            //data.put("password", passwordEditText.getText().toString());
+            data.put("first_name", first_name_field.getText().toString());
+            data.put("last_name", last_name_field.getText().toString());
+            data.put("email", email_field.getText().toString());
         } catch (JSONException e) {
             e.printStackTrace();
         }
