@@ -86,10 +86,10 @@ public class Profile extends AppCompatActivity {
             first_name = jsonObject1.getString( "first_name" );
             last_name = jsonObject1.getString("last_name");
             email = jsonObject1.getString("email");
-            is_owner = jsonObject1.getBoolean("is_owner");
-            is_sitter = jsonObject1.getBoolean("is_sitter");
             phone_number = jsonObject1.getString("phone_number");
             my_address = jsonObject1.getString("address");
+            is_owner = jsonObject1.getBoolean("is_owner");
+            is_sitter = jsonObject1.getBoolean("is_sitter");
             //can we get password back ?
         } catch( JSONException json_e ) {
             Log.w("MA", json_e.toString());
