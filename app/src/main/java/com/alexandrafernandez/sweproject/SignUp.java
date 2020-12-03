@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -34,7 +35,6 @@ public class SignUp extends AppCompatActivity {
     /**
      * Text Views for identifying field components
      */
-    //TextView signupName, phoneNumber, email, address, username, password, profile_types;
     TextView  signupFirstName, signupLastName, phoneNumber, email, address, password, profile_types;
 
     /**
@@ -46,18 +46,17 @@ public class SignUp extends AppCompatActivity {
     /**
      * Buttons used to confirm data and/or move to another activity
      */
-    Button paypal_link_button, saveButton;
+    Button saveButton;
 
     /**
      * Edit Text Views for user input of relevant information
      */
-    //EditText nameEditText, phoneEditText, emailEditText, addyEditText, usernameEditText, passwordEditText;
-    EditText firstNameEditText, lastNameEditText, phoneEditText, emailEditText, addyEditText, usernameEditText, passwordEditText;
+    EditText firstNameEditText, lastNameEditText, phoneEditText, emailEditText, addyEditText, passwordEditText;
 
     /**
      * Initialize components of a sign up request
      */
-    String first_name = ""; String last_name = ""; int type = 0; String myEmail = "";
+    String first_name = ""; String last_name = ""; String myEmail = "";
 
     /**
      * On Create Method
@@ -94,14 +93,6 @@ public class SignUp extends AppCompatActivity {
         }
 
         ScreenSize view = new ScreenSize(this);
-
-//        signupName = (TextView) findViewById(R.id.signupName);
-//        signupName.setTextSize((float) (0.5*view.getLabelTextSize()));
-
-
-//        nameEditText = (EditText) findViewById(R.id.NameEditText);
-//        nameEditText.setTextSize((float) (0.5*view.getEditTextSize()));
-//        nameEditText.setText(first_name);
 
         //sign up
         signupFirstName = (TextView) findViewById(R.id.signupFirstName);
@@ -140,12 +131,6 @@ public class SignUp extends AppCompatActivity {
         addyEditText = (EditText) findViewById(R.id.AddyEditText);
         addyEditText.setTextSize((float) (0.5*view.getEditTextSize()));
 
-//        username = (TextView) findViewById(R.id.usernameSignUp);
-//        username.setTextSize((float) (0.5*view.getLabelTextSize()));
-//
-//        usernameEditText = (EditText) findViewById(R.id.UserNameEditText);
-//        usernameEditText.setTextSize((float) (0.5*view.getEditTextSize()));
-
         password = (TextView) findViewById(R.id.passwordSignUp);
         password.setTextSize((float) (0.5*view.getLabelTextSize()));
 
@@ -161,18 +146,6 @@ public class SignUp extends AppCompatActivity {
         userTypeSitter = (Switch) findViewById(R.id.userTypeSitter);
         userTypeSitter.setTextSize(view.getSwitchTextSize());
 
-        if(type == 1)
-            userTypePetOwner.setChecked(true);
-        else if(type == 2)
-            userTypeSitter.setChecked(true);
-        else if(type == 3) {
-            userTypePetOwner.setChecked(true);
-            userTypeSitter.setChecked(true);
-        }
-
-//        paypal_link_button = (Button) findViewById(R.id.paypal_link_button);
-//        paypal_link_button.setTextSize(view.getButtonTextSize());
-
         saveButton = (Button) findViewById(R.id.saveButton);
         saveButton.setTextSize(view.getButtonTextSize());
 
@@ -187,9 +160,9 @@ public class SignUp extends AppCompatActivity {
     {
         startActivity(new Intent(this, MainActivity.class));
 
+        //POST REQUEST - json
         JSONObject data = new JSONObject();
         try {
-            System.out.println("the name is "+ first_name); // printing out john
             data.put("is_owner",userTypePetOwner.isChecked());
             data.put("is_sitter", userTypeSitter.isChecked());
             data.put("is_admin",false);
@@ -198,26 +171,36 @@ public class SignUp extends AppCompatActivity {
             data.put("last_name", lastNameEditText.getText().toString());
             data.put("email", emailEditText.getText().toString());
             data.put("password", passwordEditText.getText().toString());
+            data.put("address", addyEditText.getText().toString());
+            data.put("phone_number", phoneEditText.getText().toString());
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-
-        Log.w("MA", "Creating post");
-        UrlPost saveInfo = new UrlPost("http://aiji.cs.loyola.edu/accountcreate", data.toString(), this);
+        //Url Connection
+        UrlPost saveInfo = new UrlPost("http://aiji.cs.loyola.edu/accountcreate", data.toString(), this, "signup.response");
         Log.w("MA", "--------URL POST------------");
         saveInfo.start();
 
-        finish();
-    }
+        //Save Response
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
+        String response = pref.getString("signup.response", "");
+        boolean success = false;
+        try {
+            JSONObject jsonObject1 = new JSONObject(response);
+            success = jsonObject1.getBoolean("success");
+        } catch( JSONException json_e ) {
+            if(!success) {
+                Toast.makeText(this, "Unable to complete request.", Toast.LENGTH_LONG).show();
+                return;
+            }
+        }
 
-    /**
-     * Paypal Connection method
-     * Used to link paypal information to new user profile
-     * @param v the reference object calling this method
-     */
-    public void payPalConnection(View v)
-    {
-        //TODO implement if time allows (secondary feature)
+        finish();
     }
 }

@@ -10,6 +10,7 @@ import android.graphics.Point;
 import android.os.Bundle;
 import android.content.Intent;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -19,6 +20,9 @@ import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * Main Activity Class
@@ -122,11 +126,50 @@ public class MainActivity extends Activity {
                 editor.apply();
             }
 
-            //if login verified
-            startActivity(new Intent(this, Intro.class));
-            //else
-                //error message
+        //POST REQUEST - json
+        JSONObject data = new JSONObject();
+        try {
+            data.put("email",usernameEditText.getText().toString());
+            data.put("password", passwordEditText.getText().toString());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
+        //Url Connection
+        UrlPost saveInfo = new UrlPost("http://aiji.cs.loyola.edu/account/login", data.toString(), this, "login.response");
+        saveInfo.start();
+
+        //Save Response
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
+        String response = pref.getString("login.response", "");
+        String id="";
+        String auth="";
+        try {
+            JSONObject jsonObject1 = new JSONObject(response);
+            id = jsonObject1.getString("id");
+            auth = jsonObject1.getString("auth");
+        } catch( JSONException json_e ) {
+            Toast.makeText(this, "Username/Password don't match an existing account", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        //Save identification for use throughout app
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putString("id", id);
+        editor.putString("auth", auth);
+        editor.apply();
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        startActivity(new Intent(this, Intro.class));
     }
 
     /**
@@ -135,8 +178,7 @@ public class MainActivity extends Activity {
      * @param v the reference object calling this method
      */
     public void signUp(View v)
-        {
-            startActivity(new Intent(this, SignUp.class));
-        }
-
+    {
+        startActivity(new Intent(this, SignUp.class));
+    }
 }
