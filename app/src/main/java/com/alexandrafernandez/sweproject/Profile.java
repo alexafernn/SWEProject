@@ -62,7 +62,7 @@ public class Profile extends AppCompatActivity {
         setTitle("Profile Settings");
 
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
-        String clientID = pref.getString("clientID", "16211ef1-141a-4ba0-a677-da209f7c5c58");
+        String clientID = pref.getString("id", "16211ef1-141a-4ba0-a677-da209f7c5c58");
 
         UrlGet userInfo = new UrlGet("http://aiji.cs.loyola.edu/accountinfo?id="+clientID,"profile.userInfo", this);
         Log.w("MA", "--------URL GET------------");
@@ -158,10 +158,7 @@ public class Profile extends AppCompatActivity {
             e.printStackTrace();
         }
 
-
-        Log.w("MA", "Creating post");
-        UrlPost saveInfo = new UrlPost("http://aiji.cs.loyola.edu/accountcreate", data.toString(), this);
-        Log.w("MA", "--------URL POST------------");
+        UrlPut saveInfo = new UrlPost("http://aiji.cs.loyola.edu/accountcreate", data.toString(), this);
         saveInfo.start();
 
          */

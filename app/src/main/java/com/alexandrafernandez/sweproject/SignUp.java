@@ -35,7 +35,6 @@ public class SignUp extends AppCompatActivity {
     /**
      * Text Views for identifying field components
      */
-    //TextView signupName, phoneNumber, email, address, username, password, profile_types;
     TextView  signupFirstName, signupLastName, phoneNumber, email, address, password, profile_types;
 
     /**
@@ -53,12 +52,12 @@ public class SignUp extends AppCompatActivity {
      * Edit Text Views for user input of relevant information
      */
     //EditText nameEditText, phoneEditText, emailEditText, addyEditText, usernameEditText, passwordEditText;
-    EditText firstNameEditText, lastNameEditText, phoneEditText, emailEditText, addyEditText, usernameEditText, passwordEditText;
+    EditText firstNameEditText, lastNameEditText, phoneEditText, emailEditText, addyEditText, passwordEditText;
 
     /**
      * Initialize components of a sign up request
      */
-    String first_name = ""; String last_name = ""; int type = 0; String myEmail = "";
+    String first_name = ""; String last_name = ""; String myEmail = "";
 
     /**
      * On Create Method
@@ -95,14 +94,6 @@ public class SignUp extends AppCompatActivity {
         }
 
         ScreenSize view = new ScreenSize(this);
-
-//        signupName = (TextView) findViewById(R.id.signupName);
-//        signupName.setTextSize((float) (0.5*view.getLabelTextSize()));
-
-
-//        nameEditText = (EditText) findViewById(R.id.NameEditText);
-//        nameEditText.setTextSize((float) (0.5*view.getEditTextSize()));
-//        nameEditText.setText(first_name);
 
         //sign up
         signupFirstName = (TextView) findViewById(R.id.signupFirstName);
@@ -141,12 +132,6 @@ public class SignUp extends AppCompatActivity {
         addyEditText = (EditText) findViewById(R.id.AddyEditText);
         addyEditText.setTextSize((float) (0.5*view.getEditTextSize()));
 
-//        username = (TextView) findViewById(R.id.usernameSignUp);
-//        username.setTextSize((float) (0.5*view.getLabelTextSize()));
-//
-//        usernameEditText = (EditText) findViewById(R.id.UserNameEditText);
-//        usernameEditText.setTextSize((float) (0.5*view.getEditTextSize()));
-
         password = (TextView) findViewById(R.id.passwordSignUp);
         password.setTextSize((float) (0.5*view.getLabelTextSize()));
 
@@ -161,15 +146,6 @@ public class SignUp extends AppCompatActivity {
 
         userTypeSitter = (Switch) findViewById(R.id.userTypeSitter);
         userTypeSitter.setTextSize(view.getSwitchTextSize());
-
-        if(type == 1)
-            userTypePetOwner.setChecked(true);
-        else if(type == 2)
-            userTypeSitter.setChecked(true);
-        else if(type == 3) {
-            userTypePetOwner.setChecked(true);
-            userTypeSitter.setChecked(true);
-        }
 
         paypal_link_button = (Button) findViewById(R.id.paypal_link_button);
         paypal_link_button.setTextSize(view.getButtonTextSize());

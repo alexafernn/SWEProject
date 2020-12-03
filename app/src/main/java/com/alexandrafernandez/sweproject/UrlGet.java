@@ -34,9 +34,6 @@ public class UrlGet extends Thread {
      */
     Context context;
 
-    public String data_get;
-
-
     /**
      * UrlGet constructor
      * @param url the url to request data from
@@ -58,16 +55,6 @@ public class UrlGet extends Thread {
         Log.w("MA", "get: " + my_url);
 
         try {
-            /*
-            URL url = new URL(my_url);
-            InputStream is = url.openStream(); //failing on this line
-            Scanner scan = new Scanner( is );
-            String s = "";
-            while(scan.hasNext()) {
-                s += scan.nextLine();
-            }
-
-             */
 
             URL url = new URL(my_url);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -82,14 +69,10 @@ public class UrlGet extends Thread {
             Log.w("MA", "received from server:");
             Log.w("MA", s.toString());
 
-            data_get = s.toString();
-
-
             SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
             SharedPreferences.Editor editor = pref.edit();
             editor.putString(dataLocation, s.toString());
-            editor.commit();
-
+            editor.apply();
 
         } catch( Exception e ) {
             Log.w("MA", e.toString());
