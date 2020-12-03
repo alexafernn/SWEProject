@@ -79,7 +79,7 @@
         android:id="@+id/address_field"
         android:layout_toEndOf="@+id/name"
         android:layout_below="@+id/phone"
-        android:layout_above="@id/paypal_link_button"
+        android:layout_above="@id/profile_types"
         android:layout_height="wrap_content"
         android:layout_alignEnd="@id/account_info"
         android:layout_width="wrap_content"
@@ -89,15 +89,6 @@
         android:layout_alignRight="@id/account_info"
         />
 
-    <Button
-        android:id="@+id/paypal_link_button"
-        android:layout_below="@id/address"
-        android:layout_marginTop="15dp"
-        android:layout_width="match_parent"
-        android:text="Add Paypal Information"
-        android:onClick="doPaypalLink"
-        android:layout_height="wrap_content" />
-
     <TextView
         android:id="@+id/profile_types"
         android:layout_marginTop="15dp"
@@ -105,7 +96,7 @@
         android:layout_height="wrap_content"
         android:text="I am a..."
         android:textColor="@color/colorBlack"
-        android:layout_below="@id/paypal_link_button"
+        android:layout_below="@id/address"
         android:textStyle="italic" />
 
     <Switch
@@ -126,21 +117,13 @@
         android:text="Pet Sitter"
         tools:ignore="UseSwitchCompatOrMaterialXml" />
 
-    <Switch
-        android:id="@+id/switch3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/switch2"
-        android:background="@color/colorWhite"
-        android:text="I'm interested in Adoption"
-        tools:ignore="UseSwitchCompatOrMaterialXml" />
 
     <Button
         android:id="@+id/settings_save_button"
         android:layout_marginTop="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/switch3"
+        android:layout_below="@id/switch2"
         android:text="Save Settings"
         android:background="@color/colorPrimary"
         android:textColor="@color/colorWhite"

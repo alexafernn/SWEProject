@@ -46,12 +46,11 @@ public class SignUp extends AppCompatActivity {
     /**
      * Buttons used to confirm data and/or move to another activity
      */
-    Button paypal_link_button, saveButton;
+    Button saveButton;
 
     /**
      * Edit Text Views for user input of relevant information
      */
-    //EditText nameEditText, phoneEditText, emailEditText, addyEditText, usernameEditText, passwordEditText;
     EditText firstNameEditText, lastNameEditText, phoneEditText, emailEditText, addyEditText, passwordEditText;
 
     /**
@@ -147,9 +146,6 @@ public class SignUp extends AppCompatActivity {
         userTypeSitter = (Switch) findViewById(R.id.userTypeSitter);
         userTypeSitter.setTextSize(view.getSwitchTextSize());
 
-        paypal_link_button = (Button) findViewById(R.id.paypal_link_button);
-        paypal_link_button.setTextSize(view.getButtonTextSize());
-
         saveButton = (Button) findViewById(R.id.saveButton);
         saveButton.setTextSize(view.getButtonTextSize());
 
@@ -164,6 +160,7 @@ public class SignUp extends AppCompatActivity {
     {
         startActivity(new Intent(this, MainActivity.class));
 
+        //POST REQUEST - json
         JSONObject data = new JSONObject();
         try {
             data.put("is_owner",userTypePetOwner.isChecked());
@@ -174,15 +171,19 @@ public class SignUp extends AppCompatActivity {
             data.put("last_name", lastNameEditText.getText().toString());
             data.put("email", emailEditText.getText().toString());
             data.put("password", passwordEditText.getText().toString());
+            data.put("address", addyEditText.getText().toString());
+            data.put("phone_number", phoneEditText.getText().toString());
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
+        //Url Connection
         Log.w("MA", "Creating post");
         UrlPost saveInfo = new UrlPost("http://aiji.cs.loyola.edu/accountcreate", data.toString(), this, "signup.response");
         Log.w("MA", "--------URL POST------------");
         saveInfo.start();
 
+        //Save Response
         try {
             Thread.sleep(500);
         } catch (InterruptedException e) {
@@ -194,7 +195,6 @@ public class SignUp extends AppCompatActivity {
         try {
             JSONObject jsonObject1 = new JSONObject(response);
             success = jsonObject1.getBoolean("success");
-
         } catch( JSONException json_e ) {
             if(!success) {
                 Toast.makeText(this, "Unable to complete request.", Toast.LENGTH_LONG).show();
@@ -203,15 +203,5 @@ public class SignUp extends AppCompatActivity {
         }
 
         finish();
-    }
-
-    /**
-     * Paypal Connection method
-     * Used to link paypal information to new user profile
-     * @param v the reference object calling this method
-     */
-    public void payPalConnection(View v)
-    {
-        //TODO implement if time allows (secondary feature)
     }
 }

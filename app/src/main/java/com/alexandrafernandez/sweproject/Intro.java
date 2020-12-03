@@ -76,11 +76,6 @@ public class Intro extends AppCompatActivity {
         sitter.setTextSize(view.getButtonTextSize());
         if(pref.getBoolean("sitterProfileSwitch", false))
             sitter.setVisibility(View.INVISIBLE);
-
-        adoption = findViewById(R.id.adoption_main_button); //adoption
-        adoption.setTextSize(view.getButtonTextSize());
-        if(pref.getBoolean("adoptionProfileSwitch", false))
-            adoption.setVisibility(View.INVISIBLE);
     }
 
     /**
@@ -131,7 +126,7 @@ public class Intro extends AppCompatActivity {
                 SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
                 SharedPreferences.Editor editor = pref.edit();
                 editor.putBoolean("loginSwitchChecked", false);
-                editor.commit();
+                editor.apply();
                 startActivity(new Intent(this, MainActivity.class));
                 //clear all profile data
 
@@ -157,14 +152,5 @@ public class Intro extends AppCompatActivity {
      */
     public void toSitterProfile(View view) {
         startActivity(new Intent(this, Sitter.class));
-    }
-
-    /**
-     * To Adoption Page method
-     * Sends to adoption activity
-     * @param view the reference object calling this method
-     */
-    public void toAdoptionPage(View view) {
-        startActivity(new Intent(this, Adopt.class));
     }
 }

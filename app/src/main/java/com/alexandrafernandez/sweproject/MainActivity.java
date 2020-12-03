@@ -162,12 +162,7 @@ public class MainActivity extends Activity {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
-        //if login verified
         startActivity(new Intent(this, Intro.class));
-        //else
-        //error message
-
     }
 
     /**

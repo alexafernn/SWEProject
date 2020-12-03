@@ -43,7 +43,7 @@ public class Profile extends AppCompatActivity {
      * Switches used to assign profile type
      */
     @SuppressLint("UseSwitchCompatOrMaterialCode")
-    Switch owner, sitter, adoption;
+    Switch owner, sitter;
 
     /**
      * Text Views for identifying field components
@@ -62,9 +62,10 @@ public class Profile extends AppCompatActivity {
         setTitle("Profile Settings");
 
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
-        String clientID = pref.getString("id", "16211ef1-141a-4ba0-a677-da209f7c5c58");
+        String clientID = pref.getString("id", "");
+        String clientAuth = pref.getString("auth", "");
 
-        UrlGet userInfo = new UrlGet("http://aiji.cs.loyola.edu/accountinfo?id="+clientID,"profile.userInfo", this);
+        UrlGet userInfo = new UrlGet("http://aiji.cs.loyola.edu/accountinfo?id=" + clientID + "&auth=" + clientAuth ,"profile.userInfo", this);
         Log.w("MA", "--------URL GET------------");
         userInfo.start();
         try {
@@ -76,17 +77,21 @@ public class Profile extends AppCompatActivity {
         String json = pref.getString("profile.userInfo", "");
         Log.w("MA", "json: " + json);
 
-        /*
+        Boolean is_owner=false, is_sitter=false;
+        String first_name="", last_name="", email="", phone_number="", my_address="";
+
         try {
             JSONObject jsonObject1 = new JSONObject(json);
             first_name = jsonObject1.getString( "first_name" );
             last_name = jsonObject1.getString("last_name");
-            myEmail = jsonObject1.getString("email"); //john ?
+            email = jsonObject1.getString("email");
+            is_owner = jsonObject1.getBoolean("is_owner");
+            is_sitter = jsonObject1.getBoolean("is_sitter");
+            phone_number = jsonObject1.getString("phone_number");
+            my_address = jsonObject1.getString("address");
         } catch( JSONException json_e ) {
             Log.w("MA", json_e.toString());
         }
-
-         */
 
         ScreenSize view = new ScreenSize(this);
 
@@ -95,6 +100,7 @@ public class Profile extends AppCompatActivity {
 
         name = (TextView) findViewById(R.id.name);
         name.setTextSize(view.getLabelTextSize());
+        name.setText(first_name + " " + last_name); //TODO Split into first and last name
 
         name_field = (EditText) findViewById(R.id.name_field);
         name_field.setTextSize(view.getEditTextSize());
@@ -117,8 +123,6 @@ public class Profile extends AppCompatActivity {
         save = (Button) findViewById(R.id.settings_save_button);
         save.setTextSize(view.getButtonTextSize());
 
-        payPal = (Button) findViewById(R.id.paypal_link_button);
-
         profile_types = (TextView) findViewById(R.id.profile_types);
         profile_types.setTextSize(view.getLabelTextSize());
 
@@ -129,9 +133,6 @@ public class Profile extends AppCompatActivity {
         sitter = (Switch) findViewById(R.id.switch2);
         sitter.setTextSize(view.getSwitchTextSize());
         sitter.setChecked(!pref.getBoolean("sitterProfileSwitch", false));
-
-        adoption = (Switch) findViewById(R.id.switch3);
-        adoption.setChecked(!pref.getBoolean("adoptionProfileSwitch", false));
 
     }
 
@@ -176,20 +177,9 @@ public class Profile extends AppCompatActivity {
         editor.putBoolean("ownerProfileSwitch", !ownerSwitch);
         boolean sitterSwitch = sitter.isChecked();
         editor.putBoolean("sitterProfileSwitch", !sitterSwitch);
-        boolean adoptionSwitch = adoption.isChecked();
-        editor.putBoolean("adoptionProfileSwitch", !adoptionSwitch);
         editor.apply();
 
         startActivity(new Intent(this, Intro.class));
         finish();
-    }
-
-    /**
-     * Paypal Link method
-     * Used to link paypal information to user profile
-     * @param view the reference object calling this method
-     */
-    public void doPaypalLink(View view) {
-        //TODO implement if time allows (secondary feature)
     }
 }
