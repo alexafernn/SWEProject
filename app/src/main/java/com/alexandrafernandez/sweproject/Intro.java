@@ -77,10 +77,10 @@ public class Intro extends AppCompatActivity {
         if(pref.getBoolean("sitterProfileSwitch", false))
             sitter.setVisibility(View.INVISIBLE);
 
-        adoption = findViewById(R.id.adoption_main_button); //adoption
-        adoption.setTextSize(view.getButtonTextSize());
-        if(pref.getBoolean("adoptionProfileSwitch", false))
-            adoption.setVisibility(View.INVISIBLE);
+//        adoption = findViewById(R.id.adoption_main_button); //adoption
+//        adoption.setTextSize(view.getButtonTextSize());
+//        if(pref.getBoolean("adoptionProfileSwitch", false))
+//            adoption.setVisibility(View.INVISIBLE);
     }
 
     /**

@@ -49,7 +49,7 @@ public class Pet extends AppCompatActivity {
     /**
      * Buttons used to confirm data and/or move to another activity
      */
-    Button add_photo_button, settings_save_button;
+    Button  settings_save_button;
 
     /**
      * Switches used to characteristics of adoption interest
@@ -93,8 +93,7 @@ public class Pet extends AppCompatActivity {
         other_animal_type_field.setTextSize(view.getEditTextSize());
         other_animal_type_field.setText(getIntent().getStringExtra("petToView.other_type"));
 
-        add_photo_button = (Button) findViewById(R.id.add_photo_button_edit);
-        add_photo_button.setTextSize(view.getButtonTextSize());
+
 
         pet_qualities = (TextView) findViewById(R.id.pet_qualities_edit);
         pet_qualities.setTextSize(view.getLabelTextSize());
@@ -111,13 +110,13 @@ public class Pet extends AppCompatActivity {
         switch_trained.setTextSize(view.getSwitchTextSize());
         switch_trained.setChecked(getIntent().getBooleanExtra("petToView.trained", false));
 
-        pet_sitting_logistics = (TextView) findViewById(R.id.pet_sitting_logistics_edit);
-        pet_sitting_logistics.setTextSize(view.getLabelTextSize());
-
-        switch_inside_only = (Switch) findViewById(R.id.switch_inside_only_edit);
-        switch_inside_only.setTextSize(view.getSwitchTextSize());
-        switch_inside_only.setChecked(getIntent().getBooleanExtra("petToView.inside_only", false));
-
+//        pet_sitting_logistics = (TextView) findViewById(R.id.pet_sitting_logistics_edit);
+//        pet_sitting_logistics.setTextSize(view.getLabelTextSize());
+//
+//        switch_inside_only = (Switch) findViewById(R.id.switch_inside_only_edit);
+//        switch_inside_only.setTextSize(view.getSwitchTextSize());
+//        switch_inside_only.setChecked(getIntent().getBooleanExtra("petToView.inside_only", false));
+//        System.out.println("good to here");
         settings_save_button = (Button) findViewById(R.id.settings_save_button_edit);
         settings_save_button.setTextSize(view.getButtonTextSize());
     }

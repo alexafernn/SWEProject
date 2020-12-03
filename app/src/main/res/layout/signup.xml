@@ -112,17 +112,9 @@
         android:id="@+id/userTypeSitter"
         tools:ignore="UseSwitchCompatOrMaterialXml"
         android:layout_marginLeft="10dp"
-        android:layout_marginStart="10dp"  />
+        android:layout_marginStart="10dp" />
 
-    <Button
-        android:id="@+id/paypal_link_button"
-        android:layout_below="@id/userTypeSitter"
-        android:layout_width="300dp"
-        android:layout_centerHorizontal="true"
-        android:layout_height="wrap_content"
-        android:text="Add PayPal Information"
-        android:onClick="payPalConnection"
-        />
+
 
     <Button
         android:layout_width="300dp"
@@ -131,7 +123,8 @@
         android:text="Save"
         android:layout_centerHorizontal="true"
         android:onClick="save"
-        android:layout_below="@id/paypal_link_button"
+        android:layout_below="@id/userTypeSitter"
+
         />
 
     <EditText

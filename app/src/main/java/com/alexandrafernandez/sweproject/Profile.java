@@ -117,7 +117,7 @@ public class Profile extends AppCompatActivity {
         save = (Button) findViewById(R.id.settings_save_button);
         save.setTextSize(view.getButtonTextSize());
 
-        payPal = (Button) findViewById(R.id.paypal_link_button);
+//        payPal = (Button) findViewById(R.id.paypal_link_button);
 
         profile_types = (TextView) findViewById(R.id.profile_types);
         profile_types.setTextSize(view.getLabelTextSize());

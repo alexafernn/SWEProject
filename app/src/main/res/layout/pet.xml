@@ -58,18 +58,7 @@
         android:layout_below="@id/animal_edit"
         />
 
-    <Button
-        android:id="@+id/add_photo_button_edit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_centerHorizontal="true"
-        android:textColor="@color/colorBlack"
-        android:layout_below="@+id/other_animal_type_field_edit"
-        android:text="Add a Photo"
-        android:onClick="addPhoto"
-        android:layout_marginStart="10dp" />
+
 
     <TextView
         android:id="@+id/pet_qualities_edit"
@@ -78,7 +67,7 @@
         android:layout_height="wrap_content"
         android:text="My pet is..."
         android:textStyle="italic"
-        android:layout_below="@id/add_photo_button_edit"
+        android:layout_below="@id/other_animal_type_field_edit"
         android:textColor="@color/colorBlack"
         android:layout_marginLeft="10dp"
         android:layout_marginStart="10dp"/>
@@ -114,34 +103,35 @@
         android:layout_marginStart="10dp"/>
 
     <TextView
-        android:id="@+id/pet_sitting_logistics_edit"
+        android:id="@+id/other_pet_info"
         android:layout_marginTop="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Sitting Logistics..."
+        android:text="Other information..."
         android:textStyle="italic"
         android:layout_below="@id/switch_trained_edit"
         android:textColor="@color/colorBlack"
         android:layout_marginLeft="10dp"
         android:layout_marginStart="10dp"/>
 
-    <Switch
-        android:id="@+id/switch_inside_only_edit"
+    <EditText
+        android:id="@+id/other_animal_type_field_TextEdit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/pet_sitting_logistics_edit"
-        android:text="My pet must stay at my address"
-        tools:ignore="UseSwitchCompatOrMaterialXml"
-        android:layout_marginLeft="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginStart="10dp"/>
+        android:layout_margin="10dp"
+        android:layout_marginTop="15dp"
+        android:hint="Ex: barks a lot, doesn't like being pet, etc."
+        android:layout_below="@id/other_pet_info"
+        />
+
+
 
     <Button
         android:id="@+id/settings_save_button_edit"
         android:layout_marginTop="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/switch_inside_only_edit"
+        android:layout_below="@id/other_animal_type_field_TextEdit"
         android:text="Back (Save Changes)"
         android:background="@color/colorPrimary"
         android:textColor="@color/colorWhite"

@@ -170,8 +170,8 @@ public class SignUp extends AppCompatActivity {
             userTypeSitter.setChecked(true);
         }
 
-        paypal_link_button = (Button) findViewById(R.id.paypal_link_button);
-        paypal_link_button.setTextSize(view.getButtonTextSize());
+//        paypal_link_button = (Button) findViewById(R.id.paypal_link_button);
+//        paypal_link_button.setTextSize(view.getButtonTextSize());
 
         saveButton = (Button) findViewById(R.id.saveButton);
         saveButton.setTextSize(view.getButtonTextSize());
