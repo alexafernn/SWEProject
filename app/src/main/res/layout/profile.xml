@@ -19,51 +19,69 @@
         />
 
     <TextView
-        android:id="@+id/name"
+        android:id="@+id/firstName"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/account_info"
         android:textColor="@color/colorBlack"
-        android:text="NAME:"
+        android:text="First Name :"
         android:layout_marginTop="10dp"
         />
 
     <EditText
-        android:id="@+id/name_field"
-        android:layout_toEndOf="@+id/name"
-        android:layout_below="@+id/account_info"
-        android:layout_above="@id/phone"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@id/account_info"
         android:layout_width="wrap_content"
-        android:autofillHints="name"
+        android:layout_height="wrap_content"
         android:inputType="text"
-        android:layout_toRightOf="@+id/name"
-        android:layout_alignRight="@id/account_info"
+        android:id="@+id/first_name_field_editText"
+        android:ems="10"
+        android:layout_alignParentRight="true"
+        android:layout_alignBottom="@id/firstName"
+        android:layout_marginRight="10dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="10dp" />
+    <TextView
+        android:id="@+id/last_name"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/firstName"
+        android:textColor="@color/colorBlack"
+        android:text="Last Name :"
+        android:layout_marginTop="10dp"
         />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:id="@+id/LastNameEditText"
+        android:ems="10"
+        android:layout_alignParentRight="true"
+        android:layout_alignBottom="@id/last_name"
+        android:layout_marginRight="10dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="10dp" />
 
     <TextView
         android:id="@+id/phone"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/name"
+        android:layout_below="@id/last_name"
         android:textColor="@color/colorBlack"
         android:text="Phone:"
         android:layout_marginTop="10dp"
         />
 
     <EditText
-        android:id="@+id/phone_field"
-        android:layout_toEndOf="@+id/name"
-        android:layout_below="@+id/name"
-        android:layout_above="@id/address"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@id/account_info"
         android:layout_width="wrap_content"
-        android:autofillHints="phone"
+        android:layout_height="wrap_content"
         android:inputType="text"
-        android:layout_toRightOf="@+id/name"
-        android:layout_alignRight="@id/account_info" />
+        android:id="@+id/phoneFieldEditText"
+        android:ems="10"
+        android:layout_alignParentRight="true"
+        android:layout_alignBottom="@id/phone"
+        android:layout_marginRight="10dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="10dp" />
 
     <TextView
         android:id="@+id/address"
@@ -76,18 +94,16 @@
         />
 
     <EditText
-        android:id="@+id/address_field"
-        android:layout_toEndOf="@+id/name"
-        android:layout_below="@+id/phone"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@id/account_info"
         android:layout_width="wrap_content"
-        android:autofillHints="address"
+        android:layout_height="wrap_content"
         android:inputType="text"
-        android:layout_toRightOf="@+id/name"
-        android:layout_alignRight="@id/account_info"
-        />
-
+        android:id="@+id/addressEditText"
+        android:ems="10"
+        android:layout_alignParentRight="true"
+        android:layout_alignBottom="@id/address"
+        android:layout_marginRight="10dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="10dp" />
 
     <TextView
         android:id="@+id/profile_types"
@@ -96,7 +112,7 @@
         android:layout_height="wrap_content"
         android:text="I am a..."
         android:textColor="@color/colorBlack"
-        android:layout_below="@id/address_field"
+        android:layout_below="@id/address"
         android:textStyle="italic" />
 
     <Switch

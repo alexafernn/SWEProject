@@ -32,7 +32,7 @@ public class Profile extends AppCompatActivity {
     /**
      * Edit Text Views for user input of relevant information
      */
-    EditText name_field, phone_field, address_field;
+    EditText first_name_field, last_name_field, phone_field, address_field;
 
     /**
      * Buttons used to confirm data and/or move to another activity
@@ -48,7 +48,7 @@ public class Profile extends AppCompatActivity {
     /**
      * Text Views for identifying field components
      */
-    TextView account_info, name, phone, address, profile_types;
+    TextView account_info, first_name, last_name, phone, address, profile_types;
 
     /**
      * On Create Method
@@ -98,27 +98,39 @@ public class Profile extends AppCompatActivity {
         account_info = (TextView) findViewById(R.id.account_info);
         account_info.setTextSize(view.getLabelTextSize());
 
-        name = (TextView) findViewById(R.id.name);
-        name.setTextSize(view.getLabelTextSize());
-        name.setText(first_name + " " + last_name); //TODO Split into first and last name
+        //first_name = (TextView) findViewById(R.id.firstName);
+//        first_name.setTextSize(view.getLabelTextSize());
 
-        name_field = (EditText) findViewById(R.id.name_field);
-        name_field.setTextSize(view.getEditTextSize());
-        name_field.setText(pref.getString("username", ""));
+        first_name_field = (EditText) findViewById(R.id.first_name_field_editText);
+        first_name_field.setTextSize(view.getEditTextSize());
+
+
+        last_name_field = (EditText) findViewById(R.id.LastNameEditText);
+        last_name_field.setTextSize(view.getEditTextSize());
+
+        //first_name_field.setText(pref.getString("username", ""));
+//
+//        name = (TextView) findViewById(R.id.name);
+//        name.setTextSize(view.getLabelTextSize());
+//        name.setText(first_name + " " + last_name); //TODO Split into first and last name
+
+//        name_field = (EditText) findViewById(R.id.name_field);
+//        name_field.setTextSize(view.getEditTextSize());
+//        name_field.setText(pref.getString("username", ""));
 
         //TODO add email field
 
         phone = (TextView) findViewById(R.id.phone);
         phone.setTextSize(view.getLabelTextSize());
 
-        phone_field = (EditText) findViewById(R.id.phone_field);
+        phone_field = (EditText) findViewById(R.id.phoneFieldEditText);
         phone_field.setTextSize(view.getEditTextSize());
         phone_field.setText(phone_number);
 
         address = (TextView) findViewById(R.id.address);
         address.setTextSize(view.getLabelTextSize());
 
-        address_field = (EditText) findViewById(R.id.address_field);
+        address_field = (EditText) findViewById(R.id.addressEditText);
         address_field.setTextSize(view.getEditTextSize());
         address_field.setText(my_address);
 

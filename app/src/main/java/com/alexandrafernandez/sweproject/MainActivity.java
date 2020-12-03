@@ -155,7 +155,7 @@ public class MainActivity extends Activity {
             auth = jsonObject1.getString("auth");
         } catch( JSONException json_e ) {
             Toast.makeText(this, "Username/Password don't match an existing account", Toast.LENGTH_LONG).show();
-            return;
+          //  return;
         }
 
         //Save identification for use throughout app
