@@ -90,6 +90,7 @@ public class Profile extends AppCompatActivity {
             is_sitter = jsonObject1.getBoolean("is_sitter");
             phone_number = jsonObject1.getString("phone_number");
             my_address = jsonObject1.getString("address");
+            //can we get password back ?
         } catch( JSONException json_e ) {
             Log.w("MA", json_e.toString());
         }
@@ -104,28 +105,34 @@ public class Profile extends AppCompatActivity {
 
         first_name_field = (EditText) findViewById(R.id.first_name_field_editText);
         first_name_field.setTextSize(view.getEditTextSize());
+        //adding the information from server
+        first_name_field.setText(first_name);
 
 
         last_name_field = (EditText) findViewById(R.id.LastNameEditText);
         last_name_field.setTextSize(view.getEditTextSize());
+        //adding the information from server
+        last_name_field.setText(last_name);
 
         email_field = (EditText) findViewById(R.id.emailEditText);
         email_field.setTextSize(view.getEditTextSize());
+        //adding info from the server
+        email_field.setText(email);
 
         password_field = (EditText) findViewById(R.id.passwordEditText);
         password_field.setTextSize(view.getEditTextSize());
+        //what do we do with password ? can we get that back not encrypted from the server
 
         //first_name_field.setText(pref.getString("username", ""));
 //
 //        name = (TextView) findViewById(R.id.name);
 //        name.setTextSize(view.getLabelTextSize());
-//        name.setText(first_name + " " + last_name); //TODO Split into first and last name
+//        name.setText(first_name + " " + last_name);
 
 //        name_field = (EditText) findViewById(R.id.name_field);
 //        name_field.setTextSize(view.getEditTextSize());
 //        name_field.setText(pref.getString("username", ""));
 
-        //TODO add email field
 
        // phone = (TextView) findViewById(R.id.phone);
        // phone.setTextSize(view.getLabelTextSize());
