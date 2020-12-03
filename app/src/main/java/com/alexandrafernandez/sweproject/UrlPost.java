@@ -30,7 +30,7 @@ public class UrlPost extends Thread {
     /**
      * Strings for managing changing url and data
      */
-    String my_url, data;
+    String my_url, data, responseLocation;
 
     /**
      * Activity and View data
@@ -43,11 +43,11 @@ public class UrlPost extends Thread {
      * @param data the location to pull the request from
      * @param context the relevant activity / view calling sending data
      */
-    public UrlPost(String url, String data, Context context) {
+    public UrlPost(String url, String data, Context context, String responseLocation) {
         this.my_url = url;
         this.data = data;
         this.context = context;
-        Log.w("MA", my_url + " " + data);
+        this.responseLocation = responseLocation;
     }
 
     /**
@@ -81,6 +81,11 @@ public class UrlPost extends Thread {
             }
             Log.w("MA", "Post request complete");
             Log.w("MA", s.toString());
+
+            SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
+            SharedPreferences.Editor editor = pref.edit();
+            editor.putString(responseLocation, s.toString());
+            editor.apply();
 
 
         } catch( Exception e ) { Log.w("MA" , e.getMessage());}

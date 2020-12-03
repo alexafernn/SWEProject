@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -189,7 +190,6 @@ public class SignUp extends AppCompatActivity {
 
         JSONObject data = new JSONObject();
         try {
-            System.out.println("the name is "+ first_name); // printing out john
             data.put("is_owner",userTypePetOwner.isChecked());
             data.put("is_sitter", userTypeSitter.isChecked());
             data.put("is_admin",false);
@@ -202,11 +202,29 @@ public class SignUp extends AppCompatActivity {
             e.printStackTrace();
         }
 
-
         Log.w("MA", "Creating post");
-        UrlPost saveInfo = new UrlPost("http://aiji.cs.loyola.edu/accountcreate", data.toString(), this);
+        UrlPost saveInfo = new UrlPost("http://aiji.cs.loyola.edu/accountcreate", data.toString(), this, "signup.response");
         Log.w("MA", "--------URL POST------------");
         saveInfo.start();
+
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
+        String response = pref.getString("signup.response", "");
+        boolean success = false;
+        try {
+            JSONObject jsonObject1 = new JSONObject(response);
+            success = jsonObject1.getBoolean("success");
+
+        } catch( JSONException json_e ) {
+            if(!success) {
+                Toast.makeText(this, "Unable to complete request.", Toast.LENGTH_LONG).show();
+                return;
+            }
+        }
 
         finish();
     }

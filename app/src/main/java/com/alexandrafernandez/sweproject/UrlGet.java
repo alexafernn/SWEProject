@@ -36,6 +36,7 @@ public class UrlGet extends Thread {
 
     public String data_get;
 
+
     /**
      * UrlGet constructor
      * @param url the url to request data from
