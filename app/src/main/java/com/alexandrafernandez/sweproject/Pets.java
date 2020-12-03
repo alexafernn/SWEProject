@@ -56,6 +56,8 @@ public class Pets extends AppCompatActivity {
         setContentView(R.layout.pets);
         setTitle("My Pets");
 
+
+
         petList = new ArrayList<PetData>(); //replace with server pull
         petList.add(new PetData("test1", "animal1", "", true, false, true, false));
         petList.add(new PetData("test2", "animal2","", false, true, false, true));

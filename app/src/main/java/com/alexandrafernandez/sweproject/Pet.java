@@ -68,6 +68,8 @@ public class Pet extends AppCompatActivity {
         setContentView(R.layout.pet);
         setTitle("View My Pet");
 
+        // pet info: http://aiji.cs.loyola.edu/petinfo?id=1&auth=1&pet_id=1
+
         ScreenSize view = new ScreenSize(this);
 
         petList = new ArrayList<PetData>(); //replace with server pull
