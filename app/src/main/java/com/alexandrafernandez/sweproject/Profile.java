@@ -61,10 +61,12 @@ public class Profile extends AppCompatActivity {
         setContentView(R.layout.profile);
         setTitle("Profile Settings");
 
+        //GET Request - get id/auth
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
         String clientID = pref.getString("id", "");
         String clientAuth = pref.getString("auth", "");
 
+        //Url connection
         UrlGet userInfo = new UrlGet("http://aiji.cs.loyola.edu/accountinfo?id=" + clientID + "&auth=" + clientAuth ,"profile.userInfo", this);
         Log.w("MA", "--------URL GET------------");
         userInfo.start();
@@ -74,12 +76,11 @@ public class Profile extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        //Save response
         String json = pref.getString("profile.userInfo", "");
         Log.w("MA", "json: " + json);
-
         boolean is_owner=false, is_sitter=false;
         String first_name="", last_name="", email="", phone_number="", my_address="";
-
         try {
             JSONObject jsonObject1 = new JSONObject(json);
             first_name = jsonObject1.getString( "first_name" );
