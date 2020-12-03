@@ -32,7 +32,7 @@ public class Profile extends AppCompatActivity {
     /**
      * Edit Text Views for user input of relevant information
      */
-    EditText first_name_field, last_name_field, phone_field, address_field;
+    EditText first_name_field, last_name_field, phone_field, address_field,email_field, password_field;
 
     /**
      * Buttons used to confirm data and/or move to another activity
@@ -109,6 +109,12 @@ public class Profile extends AppCompatActivity {
         last_name_field = (EditText) findViewById(R.id.LastNameEditText);
         last_name_field.setTextSize(view.getEditTextSize());
 
+        email_field = (EditText) findViewById(R.id.emailEditText);
+        email_field.setTextSize(view.getEditTextSize());
+
+        password_field = (EditText) findViewById(R.id.passwordEditText);
+        password_field.setTextSize(view.getEditTextSize());
+
         //first_name_field.setText(pref.getString("username", ""));
 //
 //        name = (TextView) findViewById(R.id.name);
@@ -121,15 +127,15 @@ public class Profile extends AppCompatActivity {
 
         //TODO add email field
 
-        phone = (TextView) findViewById(R.id.phone);
-        phone.setTextSize(view.getLabelTextSize());
+       // phone = (TextView) findViewById(R.id.phone);
+       // phone.setTextSize(view.getLabelTextSize());
 
         phone_field = (EditText) findViewById(R.id.phoneFieldEditText);
         phone_field.setTextSize(view.getEditTextSize());
         phone_field.setText(phone_number);
 
-        address = (TextView) findViewById(R.id.address);
-        address.setTextSize(view.getLabelTextSize());
+        //address = (TextView) findViewById(R.id.address);
+        //address.setTextSize(view.getLabelTextSize());
 
         address_field = (EditText) findViewById(R.id.addressEditText);
         address_field.setTextSize(view.getEditTextSize());
