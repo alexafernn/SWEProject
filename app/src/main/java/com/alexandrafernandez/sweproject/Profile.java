@@ -77,7 +77,7 @@ public class Profile extends AppCompatActivity {
         String json = pref.getString("profile.userInfo", "");
         Log.w("MA", "json: " + json);
 
-        Boolean is_owner=false, is_sitter=false;
+        boolean is_owner=false, is_sitter=false;
         String first_name="", last_name="", email="", phone_number="", my_address="";
 
         try {
@@ -106,19 +106,21 @@ public class Profile extends AppCompatActivity {
         name_field.setTextSize(view.getEditTextSize());
         name_field.setText(pref.getString("username", ""));
 
+        //TODO add email field
+
         phone = (TextView) findViewById(R.id.phone);
         phone.setTextSize(view.getLabelTextSize());
 
         phone_field = (EditText) findViewById(R.id.phone_field);
         phone_field.setTextSize(view.getEditTextSize());
-        phone_field.setText(pref.getString("phone", ""));
+        phone_field.setText(phone_number);
 
         address = (TextView) findViewById(R.id.address);
         address.setTextSize(view.getLabelTextSize());
 
         address_field = (EditText) findViewById(R.id.address_field);
         address_field.setTextSize(view.getEditTextSize());
-        address_field.setText(pref.getString("address", ""));
+        address_field.setText(my_address);
 
         save = (Button) findViewById(R.id.settings_save_button);
         save.setTextSize(view.getButtonTextSize());
@@ -128,11 +130,11 @@ public class Profile extends AppCompatActivity {
 
         owner = (Switch) findViewById(R.id.switch1);
         owner.setTextSize(view.getSwitchTextSize());
-        owner.setChecked(!pref.getBoolean("ownerProfileSwitch", false));
+        owner.setChecked(is_owner);
 
         sitter = (Switch) findViewById(R.id.switch2);
         sitter.setTextSize(view.getSwitchTextSize());
-        sitter.setChecked(!pref.getBoolean("sitterProfileSwitch", false));
+        sitter.setChecked(is_sitter);
 
     }
 
@@ -143,41 +145,24 @@ public class Profile extends AppCompatActivity {
      */
     public void goHome(View view) {
 
-        //TODO add server connections in addition to persistent data (mandatory feature)
-        /*
         JSONObject data = new JSONObject();
         try {
-            data.put("is_owner",userTypePetOwner.isChecked());
-            data.put("is_sitter", userTypeSitter.isChecked());
+            data.put("is_owner", owner.isChecked());
+            data.put("is_sitter", sitter.isChecked());
             data.put("is_admin",false);
             data.put("is_shelter",false);
-            data.put("first_name", firstNameEditText.getText().toString());
-            data.put("last_name", lastNameEditText.getText().toString());
-            data.put("email", emailEditText.getText().toString());
-            data.put("password", passwordEditText.getText().toString());
+            data.put("address", address_field.getText().toString());
+            data.put("phone_number", phone_field.getText().toString());
+            //data.put("first_name", firstNameEditText.getText().toString());
+            //data.put("last_name", lastNameEditText.getText().toString());   //TODO add these later
+            //data.put("email", emailEditText.getText().toString());
+            //data.put("password", passwordEditText.getText().toString());
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        UrlPut saveInfo = new UrlPost("http://aiji.cs.loyola.edu/accountcreate", data.toString(), this);
+        UrlPut saveInfo = new UrlPut("http://aiji.cs.loyola.edu/accountmodify", data.toString(), this, "profile.response");
         saveInfo.start();
-
-         */
-
-        //TODO comment this section out when server connected
-        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
-        SharedPreferences.Editor editor = pref.edit();
-        String name = name_field.getText().toString();
-        editor.putString("username", name);
-        String phone = phone_field.getText().toString();
-        editor.putString("phone", phone);
-        String address = address_field.getText().toString();
-        editor.putString("address", address);
-        boolean ownerSwitch = owner.isChecked();
-        editor.putBoolean("ownerProfileSwitch", !ownerSwitch);
-        boolean sitterSwitch = sitter.isChecked();
-        editor.putBoolean("sitterProfileSwitch", !sitterSwitch);
-        editor.apply();
 
         startActivity(new Intent(this, Intro.class));
         finish();

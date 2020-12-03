@@ -126,6 +126,7 @@ public class MainActivity extends Activity {
                 editor.apply();
             }
 
+        //POST REQUEST - json
         JSONObject data = new JSONObject();
         try {
             data.put("email",usernameEditText.getText().toString());
@@ -134,8 +135,11 @@ public class MainActivity extends Activity {
             e.printStackTrace();
         }
 
+        //Url Connection
         UrlPost saveInfo = new UrlPost("http://aiji.cs.loyola.edu/account/login", data.toString(), this, "login.response");
         saveInfo.start();
+
+        //Save Response
         try {
             Thread.sleep(500);
         } catch (InterruptedException e) {
@@ -153,6 +157,8 @@ public class MainActivity extends Activity {
             Toast.makeText(this, "Username/Password don't match an existing account", Toast.LENGTH_LONG).show();
             return;
         }
+
+        //Save identification for use throughout app
         SharedPreferences.Editor editor = pref.edit();
         editor.putString("id", id);
         editor.putString("auth", auth);
@@ -162,6 +168,7 @@ public class MainActivity extends Activity {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
         startActivity(new Intent(this, Intro.class));
     }
 
@@ -171,8 +178,7 @@ public class MainActivity extends Activity {
      * @param v the reference object calling this method
      */
     public void signUp(View v)
-        {
-            startActivity(new Intent(this, SignUp.class));
-        }
-
+    {
+        startActivity(new Intent(this, SignUp.class));
+    }
 }

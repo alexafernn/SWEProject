@@ -178,7 +178,6 @@ public class SignUp extends AppCompatActivity {
         }
 
         //Url Connection
-        Log.w("MA", "Creating post");
         UrlPost saveInfo = new UrlPost("http://aiji.cs.loyola.edu/accountcreate", data.toString(), this, "signup.response");
         Log.w("MA", "--------URL POST------------");
         saveInfo.start();
