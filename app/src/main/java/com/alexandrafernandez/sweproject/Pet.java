@@ -75,9 +75,10 @@ public class Pet extends AppCompatActivity {
         String clientID = pref.getString("id", "");
         String clientAuth = pref.getString("auth", "");
 
+        String pet_id = getIntent().getStringExtra("pet_id");
+
         //Url connection
-        UrlGet userInfo = new UrlGet("http://aiji.cs.loyola.edu/petinfo?id=" + clientID + "&auth=" + clientAuth ,"pet.userInfo", this);
-        Log.w("MA", "--------URL GET------------");
+        UrlGet userInfo = new UrlGet("http://aiji.cs.loyola.edu/petinfo?id=" + clientID + "&pet_id=" + pet_id +"&auth=" + clientAuth ,"pet.userInfo", this);
         userInfo.start();
         try {
             Thread.sleep(500);
@@ -161,7 +162,6 @@ public class Pet extends AppCompatActivity {
      */
     public void goToPets(View view) {
 
-        String attributes = "";
         JSONObject attr = new JSONObject();
         try {
             attr.put("pet_name", pet_name_field.getText().toString());
@@ -173,7 +173,7 @@ public class Pet extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        attributes = attr.toString();
+        String attributes = attr.toString();
 
         JSONObject data = new JSONObject();
         try {
@@ -183,6 +183,7 @@ public class Pet extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        //TODO check this link later
         UrlPut saveInfo = new UrlPut("http://aiji.cs.loyola.edu/petmodify", data.toString(), this, "pet.response");
         saveInfo.start();
 
