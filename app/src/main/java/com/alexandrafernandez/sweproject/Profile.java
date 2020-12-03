@@ -68,7 +68,7 @@ public class Profile extends AppCompatActivity {
 
         //Url connection
         UrlGet userInfo = new UrlGet("http://aiji.cs.loyola.edu/accountinfo?id=" + clientID + "&auth=" + clientAuth ,"profile.userInfo", this);
-        Log.w("MA", "--------URL GET------------");
+        Log.w("MA", "--------Profile URL GET------------");
         userInfo.start();
         try {
             Thread.sleep(500);
