@@ -85,24 +85,15 @@ public class Pets extends AppCompatActivity {
         boolean is_owner=false, is_sitter=false;
         String first_name="", last_name="", email="", phone_number="", my_address="";
         try {
-            JSONObject jsonObject1 = new JSONObject(json);
-            first_name = jsonObject1.getString( "first_name" );
-            last_name = jsonObject1.getString("last_name");
-            email = jsonObject1.getString("email");
-            is_owner = jsonObject1.getBoolean("is_owner");
-            is_sitter = jsonObject1.getBoolean("is_sitter");
-            phone_number = jsonObject1.getString("phone_number");
-            my_address = jsonObject1.getString("address");
-            //can we get password back ?
+            //TODO json stuff
         } catch( JSONException json_e ) {
             Log.w("MA", json_e.toString());
         }
 
-         */
 
-        petList = new ArrayList<PetData>(); //replace with server pull
-        petList.add(new PetData("test1", "animal1", "", true, false, true, false, "0"));
-        petList.add(new PetData("test2", "animal2","", false, true, false, true, "0"));
+         */
+        petList = new ArrayList<PetData>();
+        //replace with server pull
 
         pet_listview = (ListView) findViewById(R.id.pet_listview);
         ArrayAdapter<PetData> adapter = new ArrayAdapter<PetData>(this, android.R.layout.simple_list_item_1, petList);

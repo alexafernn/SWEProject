@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -146,6 +147,10 @@ public class Profile extends AppCompatActivity {
      */
     public void goHome(View view) {
 
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
+        String clientID = pref.getString("id", "");
+        String clientAuth = pref.getString("auth", "");
+
         JSONObject data = new JSONObject();
         try {
             data.put("is_owner", owner.isChecked());
@@ -157,12 +162,31 @@ public class Profile extends AppCompatActivity {
             data.put("first_name", first_name_field.getText().toString());
             data.put("last_name", last_name_field.getText().toString());
             data.put("email", email_field.getText().toString());
+            data.put("auth", clientAuth);
+            data.put("id", clientID);
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
         UrlPut saveInfo = new UrlPut("http://aiji.cs.loyola.edu/accountmodify", data.toString(), this, "profile.response");
         saveInfo.start();
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        SharedPreferences pref2 = PreferenceManager.getDefaultSharedPreferences(this);
+        String response = pref2.getString("profile.response", "");
+        boolean success = false;
+        try {
+            JSONObject jsonObject1 = new JSONObject(response);
+            success = jsonObject1.getBoolean("success");
+        } catch( JSONException json_e ) {
+            if(!success) {
+                Toast.makeText(this, "Unable to complete request.", Toast.LENGTH_LONG).show();
+                return;
+            }
+        }
 
         startActivity(new Intent(this, Intro.class));
         finish();
