@@ -56,11 +56,10 @@ public class UrlPost extends Thread {
      */
     public void run( ) {
 
-        Log.w("MA", "POST:");
-        Log.w("MA", "postString: " + data);
+        Log.w("MA", "POST: " + my_url + " --> " + data);
 
         try {
-
+            //Request
             URL url = new URL(my_url);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("POST");
@@ -68,6 +67,8 @@ public class UrlPost extends Thread {
             conn.setDoOutput(true);
             conn.setDoInput(true);
             conn.setRequestProperty("Content-Type", "application/json; utf-8");
+
+            //Response
             String params = data;
             OutputStream os = conn.getOutputStream();
             byte[] input = params.getBytes("utf-8");
@@ -76,18 +77,15 @@ public class UrlPost extends Thread {
             String line;
             StringBuilder s= new StringBuilder();
             while ((line = rd.readLine()) != null) {
-                Log.w("MA", "--------LINE:" + line);
                 s.append(line);
             }
-            Log.w("MA", "Post request complete");
-            Log.w("MA", s.toString());
+            Log.w("MA", "POST SUCCESSFUL - response: " + s.toString());
 
             SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
             SharedPreferences.Editor editor = pref.edit();
             editor.putString(responseLocation, s.toString());
             editor.apply();
 
-
-        } catch( Exception e ) { Log.w("MA" , e.getMessage());}
+        } catch( Exception e ) { Log.w("MA" , "POST FAILED: " + e.getMessage());}
     }
 }

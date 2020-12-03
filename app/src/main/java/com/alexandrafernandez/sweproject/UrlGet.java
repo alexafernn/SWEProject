@@ -52,10 +52,9 @@ public class UrlGet extends Thread {
      */
     public void run( ) {
 
-        Log.w("MA", "get: " + my_url);
+        Log.w("MA", "GET: " + my_url);
 
         try {
-
             URL url = new URL(my_url);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
@@ -65,9 +64,7 @@ public class UrlGet extends Thread {
             while ((line = rd.readLine()) != null) {
                 s.append(line);
             }
-
-            Log.w("MA", "received from server:");
-            Log.w("MA", s.toString());
+            Log.w("MA", "GET SUCCESSFUL - response: " + s.toString());
 
             SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
             SharedPreferences.Editor editor = pref.edit();
@@ -75,7 +72,7 @@ public class UrlGet extends Thread {
             editor.apply();
 
         } catch( Exception e ) {
-            Log.w("MA", e.toString());
+            Log.w("MA" , "GET FAILED: " + e.getMessage());
         }
     }
 }

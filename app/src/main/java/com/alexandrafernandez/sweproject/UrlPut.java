@@ -51,6 +51,8 @@ public class UrlPut extends Thread{
      */
     public void run( ) {
 
+        Log.w("MA", "PUT: " + my_url + " --> " + data);
+
         try {
             URL url = new URL(my_url);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -67,17 +69,15 @@ public class UrlPut extends Thread{
             String line;
             StringBuilder s= new StringBuilder();
             while ((line = rd.readLine()) != null) {
-                Log.w("MA", "--------LINE:" + line);
                 s.append(line);
             }
-            Log.w("MA", "Put request complete");
-            Log.w("MA", s.toString());
+            Log.w("MA", "PUT SUCCESSFUL - response: " + s.toString());
 
             SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
             SharedPreferences.Editor editor = pref.edit();
             editor.putString(responseLocation, s.toString());
             editor.apply();
 
-        } catch( Exception e ) { Log.w("MA" , e.getMessage());}
+        } catch( Exception e ) { Log.w("MA" , "PUT FAILED: " + e.getMessage());}
     }
 }
