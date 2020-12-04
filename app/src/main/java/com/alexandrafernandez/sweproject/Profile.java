@@ -138,11 +138,11 @@ public class Profile extends AppCompatActivity {
         profile_types.setTextSize(view.getLabelTextSize());
 
         owner = (Switch) findViewById(R.id.switch1);
-        owner.setTextSize(view.getSwitchTextSize());
+        owner.setTextSize((float) (0.85* view.getSwitchTextSize()));
         owner.setChecked(is_owner);
 
         sitter = (Switch) findViewById(R.id.switch2);
-        sitter.setTextSize(view.getSwitchTextSize());
+        sitter.setTextSize((float) (0.85 * view.getSwitchTextSize()));
         sitter.setChecked(is_sitter);
     }
 
