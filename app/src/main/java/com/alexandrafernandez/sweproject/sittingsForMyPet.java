@@ -24,6 +24,13 @@ public class sittingsForMyPet extends AppCompatActivity
     ListView sittings_listView;
 
     /**
+     * Text Views for identifying field components
+     */
+    TextView noAppointments;
+
+
+
+    /**
      * On Create Method
      * Initializes the home activity View and instantiates other view objects for later use
      * @param savedInstanceState android system parameter
@@ -36,6 +43,14 @@ public class sittingsForMyPet extends AppCompatActivity
         //setContentView(R.layout.activity_home);
         setContentView(R.layout.current_sitting_for_pet_being_sitted);
         TextView noSittings = (TextView) findViewById(R.id.noSittings);
+
+        ScreenSize view = new ScreenSize(this);
+
+
+        noAppointments = (TextView) findViewById(R.id.noSittings);
+        noAppointments.setTextSize((float) (0.7 * view.getLabelTextSize()));
+
+
 
 
         final Sitting[] sitting = {MainActivity.sitting};

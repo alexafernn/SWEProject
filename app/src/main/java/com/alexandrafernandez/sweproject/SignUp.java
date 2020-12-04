@@ -115,13 +115,13 @@ public class SignUp extends AppCompatActivity {
         passwordEditText.setTextSize((float) (0.5*view.getEditTextSize()));
 
         profile_types = (TextView) findViewById(R.id.profile_types_signup);
-        profile_types.setTextSize((float) (0.5*view.getLabelTextSize()));
+        profile_types.setTextSize((float) (0.70*view.getLabelTextSize()));
 
         userTypePetOwner = (Switch) findViewById(R.id.userTypePetOwner);
-        userTypePetOwner.setTextSize(view.getSwitchTextSize());
+        userTypePetOwner.setTextSize((float) (0.85 * view.getSwitchTextSize()));
 
         userTypeSitter = (Switch) findViewById(R.id.userTypeSitter);
-        userTypeSitter.setTextSize(view.getSwitchTextSize());
+        userTypeSitter.setTextSize((float) (.85 * view.getSwitchTextSize()));
 
         saveButton = (Button) findViewById(R.id.saveButton);
         saveButton.setTextSize(view.getButtonTextSize());

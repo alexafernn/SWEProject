@@ -47,7 +47,9 @@ public class HomeActivity extends AppCompatActivity {
         //setContentView(R.layout.activity_home);
         setContentView(R.layout.current_sittings);
         setTitle("My Sittings");
+        ScreenSize view = new ScreenSize(this);
         TextView noSittings = (TextView) findViewById(R.id.noSittings);
+        noSittings.setTextSize((float) (0.7 * view.getLabelTextSize()));
 
 
         final Sitting[] sitting = {MainActivity.sitting};
