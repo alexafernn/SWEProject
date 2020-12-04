@@ -7,7 +7,8 @@
         android:title="Home"
         app:showAsAction="ifRoom"/>
     <item android:id="@+id/action_favorite"
-        android:title="My Sittings" />
+        android:title="My Sittings"
+        app:showAsAction="always"/>
     <item android:id="@+id/my_pets_menu"
         android:title="My Pets"
         app:showAsAction="always"/>

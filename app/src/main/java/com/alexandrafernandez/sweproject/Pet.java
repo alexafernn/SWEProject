@@ -51,7 +51,7 @@ public class Pet extends AppCompatActivity {
     /**
      * Buttons used to confirm data and/or move to another activity
      */
-    Button settings_save_button;
+    Button settings_save_button, pet_delete_button;
 
     /**
      * Switches used to characteristics of adoption interest
@@ -75,6 +75,11 @@ public class Pet extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pet);
         setTitle("View My Pet");
+
+        ScreenSize view = new ScreenSize(this);
+
+        pet_delete_button = (Button) findViewById(R.id.pet_delete_button);
+        pet_delete_button.setTextSize(view.getButtonTextSize());
 
         //GET Request - get id/auth
         pref = PreferenceManager.getDefaultSharedPreferences(this);
@@ -125,8 +130,9 @@ public class Pet extends AppCompatActivity {
                 Log.w("MA", json_e2.toString());
             }
         }
-
-        ScreenSize view = new ScreenSize(this);
+        else {
+            pet_delete_button.setVisibility(View.INVISIBLE);
+        }
 
         pet_name = (TextView) findViewById(R.id.pet_name_edit);
         pet_name.setTextSize(view.getLabelTextSize());
@@ -172,6 +178,9 @@ public class Pet extends AppCompatActivity {
 
         settings_save_button = (Button) findViewById(R.id.settings_save_button_edit);
         settings_save_button.setTextSize(view.getButtonTextSize());
+
+        pet_delete_button = (Button) findViewById(R.id.pet_delete_button);
+        pet_delete_button.setTextSize(view.getButtonTextSize());
     }
 
     /**
@@ -213,7 +222,7 @@ public class Pet extends AppCompatActivity {
 
         //Put - modify an existing pet
         else {
-            //TODO check this link later
+            //TODO finish setting up petmodify when done
             UrlPut saveInfo = new UrlPut("http://aiji.cs.loyola.edu/petmodify", data.toString(), this, "pet.response");
             saveInfo.start();
         }
@@ -224,6 +233,19 @@ public class Pet extends AppCompatActivity {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
+        startActivity(new Intent(this, Pets.class));
+        finish();
+    }
+
+    /**
+     * Delete Pet method
+     * After deleting pet from server, returns to the main My Pets view
+     * @param view the reference object calling this method
+     */
+    public void deletePet(View view) {
+
+        //TODO implement server connection to delete pet here
 
         startActivity(new Intent(this, Pets.class));
         finish();

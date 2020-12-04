@@ -124,8 +124,6 @@
         android:layout_below="@id/other_pet_info"
         />
 
-
-
     <Button
         android:id="@+id/settings_save_button_edit"
         android:layout_marginTop="15dp"
@@ -136,6 +134,19 @@
         android:background="@color/colorPrimary"
         android:textColor="@color/colorWhite"
         android:onClick="goToPets"
+        android:layout_margin="10dp"
+        />
+
+    <Button
+        android:id="@+id/pet_delete_button"
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/settings_save_button_edit"
+        android:text="Delete Pet"
+        android:background="#F13B14"
+        android:textColor="@color/colorWhite"
+        android:onClick="deletePet"
         android:layout_margin="10dp"
         />
 
