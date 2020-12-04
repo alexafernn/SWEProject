@@ -14,6 +14,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import org.json.JSONArray;
@@ -86,6 +88,7 @@ public class Pets extends AppCompatActivity {
         }
 
         petList = new ArrayList<PetData>();
+        boolean success = false;
 
         //Save response
         String json = pref.getString("pets.list", "");
@@ -98,9 +101,14 @@ public class Pets extends AppCompatActivity {
                 petName = jsonObject.getString(id);
                 if(!id.equals("success"))
                     petList.add(new PetData(petName, id));
+                else success = true;
             }
         } catch( JSONException json_e ) {
             Log.w("MA", json_e.toString());
+        }
+
+        if(!success) {
+            Toast.makeText(this, "No pets found.", Toast.LENGTH_SHORT).show();
         }
 
         pet_listview = (ListView) findViewById(R.id.pet_listview);

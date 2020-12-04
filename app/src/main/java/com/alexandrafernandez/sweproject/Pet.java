@@ -304,7 +304,7 @@ public class Pet extends AppCompatActivity {
                             success = jsonObject1.getBoolean("success");
                         } catch( JSONException json_e ) {
                             if(!success) {
-                                //showError();
+                                showError();
                                 //return;
                             }
                         }
