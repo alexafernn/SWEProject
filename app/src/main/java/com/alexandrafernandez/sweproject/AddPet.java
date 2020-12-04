@@ -188,13 +188,4 @@ public class AddPet extends AppCompatActivity {
 
         //when you go back need to make the text with id no pets invisible
     }
-
-    /**
-     * Add Photo method
-     * Adds a photo to the pet profile and updates data appropriately
-     * @param view
-     */
-    public void addPhoto(View view) {
-        //TODO implement if time allows
-    }
 }

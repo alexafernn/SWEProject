@@ -194,6 +194,8 @@ public class Pet extends AppCompatActivity {
      */
     public void goToPets(View view) {
 
+        Intent i = new Intent(this, Pets.class);
+
         JSONObject attr = new JSONObject();
         try {
             attr.put("pet_name", pet_name_field.getText().toString());
@@ -246,11 +248,10 @@ public class Pet extends AppCompatActivity {
         } catch( JSONException json_e ) {
             if(!success) {
                 showError();
-                return;
+                //return;
             }
         }
-
-        startActivity(new Intent(this, Pets.class));
+        startActivity(i);
         finish();
     }
 
@@ -302,7 +303,6 @@ public class Pet extends AppCompatActivity {
                                 return;
                             }
                         }
-
                         startActivity(i);
                         finish();
                     }

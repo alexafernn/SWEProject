@@ -24,15 +24,15 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
- * Pets Class
- * This class allows an owner to view a list of their pets
+ * View Pets Class
+ * This class allows a sitter to view a list of the owner's pets
  * CS482 Software Engineering
  * Prof. Mehri
  * @author Jack Cannon
  * @author Alexandra Fernandez
  * @version 3.0 Final Release
  */
-public class Pets extends AppCompatActivity {
+public class ViewPets extends AppCompatActivity {
 
     /**
      * List managing the pets an owner has
@@ -68,8 +68,8 @@ public class Pets extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.pets);
-        setTitle("My Pets");
+        setContentView(R.layout.view_pets);
+        setTitle("Owner's Pets");
 
         //GET Request - get id/auth
         pref = PreferenceManager.getDefaultSharedPreferences(this);
@@ -102,7 +102,7 @@ public class Pets extends AppCompatActivity {
             Log.w("MA", json_e.toString());
         }
 
-        pet_listview = (ListView) findViewById(R.id.pet_listview);
+        pet_listview = (ListView) findViewById(R.id.pet_listview2);
         ArrayAdapter<PetData> adapter = new ArrayAdapter<PetData>(this, android.R.layout.simple_list_item_1, petList);
         pet_listview.setAdapter(adapter);
 
@@ -121,37 +121,9 @@ public class Pets extends AppCompatActivity {
         });
     }
 
-    /**
-     * on Create Options Menu
-     * Initialize and connect the menu for this class
-     * @param menu the appropriate menu object for this view (pets_menu.xml)
-     * @return true if successful creation of menu
-     */
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.pets_menu, menu);
-        return true;
-    }
-
-    /**
-     * On Options Item Selected method
-     * @param item the option selected by the user
-     * @return true once an action is taken regarding this selection
-     */
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.home:
-                finish();
-                return true;
-            case R.id.action_favorite:
-                startActivity(new Intent(this, HomeActivity.class));
-                return true;
-            case R.id.add_pet_menu:
-                startActivity(new Intent(this, Pet.class)); //change back to AddPet if needed
-                finish();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
+    @Override
+    protected void onStop() {
+        super.onStop();
+        finish();
     }
 }
