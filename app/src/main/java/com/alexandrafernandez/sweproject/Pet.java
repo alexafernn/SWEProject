@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -225,7 +226,6 @@ public class Pet extends AppCompatActivity {
 
         //Put - modify an existing pet
         else {
-            //TODO finish setting up petmodify when done
             UrlPut saveInfo = new UrlPut("http://aiji.cs.loyola.edu/petmodify", data.toString(), this, "pet.response");
             saveInfo.start();
         }
@@ -235,6 +235,19 @@ public class Pet extends AppCompatActivity {
             Thread.sleep(500);
         } catch (InterruptedException e) {
             e.printStackTrace();
+        }
+
+        //check response
+        String response = pref.getString("pet.response", "");
+        boolean success = false;
+        try {
+            JSONObject jsonObject1 = new JSONObject(response);
+            success = jsonObject1.getBoolean("success");
+        } catch( JSONException json_e ) {
+            if(!success) {
+                showError();
+                return;
+            }
         }
 
         startActivity(new Intent(this, Pets.class));
@@ -256,7 +269,7 @@ public class Pet extends AppCompatActivity {
                 .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
 
-                        //TODO implement server connection to delete pet here
+                        //TODO finish server connection to delete pet here
 
                         JSONObject data = new JSONObject();
                         try {
@@ -269,6 +282,26 @@ public class Pet extends AppCompatActivity {
 
                         UrlPost saveInfo = new UrlPost("http://aiji.cs.loyola.edu/petdelete", data.toString(), getContext(), "pet.response");
                         saveInfo.start();
+
+                        //give persistent data time to write
+                        try {
+                            Thread.sleep(500);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+
+                        //check response
+                        String response = pref.getString("pet.response", "");
+                        boolean success = false;
+                        try {
+                            JSONObject jsonObject1 = new JSONObject(response);
+                            success = jsonObject1.getBoolean("success");
+                        } catch( JSONException json_e ) {
+                            if(!success) {
+                                showError();
+                                return;
+                            }
+                        }
 
                         startActivity(i);
                         finish();
@@ -290,6 +323,14 @@ public class Pet extends AppCompatActivity {
      */
     public Context getContext(){
         return this;
+    }
+
+    /**
+     * Show error method
+     * Shows a toast with the issue
+     */
+    public void showError() {
+        Toast.makeText(this, "Unable to complete request.", Toast.LENGTH_LONG).show();
     }
 }
 
