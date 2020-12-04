@@ -35,7 +35,7 @@ public class UrlPut extends Thread{
     /**
      * UrlPost constructor
      * @param url the url to send data to
-     * @param data the location to pull the request from
+     * @param data the data to put
      * @param context the relevant activity / view calling sending data
      */
     public UrlPut(String url, String data, Context context, String responseLocation) {

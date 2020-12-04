@@ -247,6 +247,18 @@ public class Pet extends AppCompatActivity {
 
         //TODO implement server connection to delete pet here
 
+        JSONObject data = new JSONObject();
+        try {
+            data.put("id", clientID);
+            data.put("auth", clientAuth);
+            data.put("pet_id", pet_id);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        UrlPost saveInfo = new UrlPost("http://aiji.cs.loyola.edu/petdelete", data.toString(), this, "pet.response");
+        saveInfo.start();
+
         startActivity(new Intent(this, Pets.class));
         finish();
     }
