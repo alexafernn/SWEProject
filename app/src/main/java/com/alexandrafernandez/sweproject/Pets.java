@@ -16,6 +16,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -77,23 +78,24 @@ public class Pets extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        //TODO update this when documentation correct
-        /*
+        petList = new ArrayList<PetData>();
+
         //Save response
         String json = pref.getString("pets.list", "");
-        Log.w("MA", "json: " + json);
-        boolean is_owner=false, is_sitter=false;
-        String first_name="", last_name="", email="", phone_number="", my_address="";
+        JSONArray json_array;
+        JSONObject json_obj;
+        String id="", petName="";
         try {
-            //TODO json stuff
+            json_array = new JSONArray(json);
+            for(int i=0; i<json_array.length(); i++) {
+                json_obj = (JSONObject) json_array.get(i);
+                id = json_obj.keys().next();
+                petName = json_obj.getString(id);
+                petList.add(new PetData(petName, null,null, false, false, false, false, id));
+            }
         } catch( JSONException json_e ) {
             Log.w("MA", json_e.toString());
         }
-
-
-         */
-        petList = new ArrayList<PetData>();
-        //replace with server pull
 
         pet_listview = (ListView) findViewById(R.id.pet_listview);
         ArrayAdapter<PetData> adapter = new ArrayAdapter<PetData>(this, android.R.layout.simple_list_item_1, petList);
