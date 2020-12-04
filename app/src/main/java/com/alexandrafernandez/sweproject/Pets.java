@@ -54,6 +54,12 @@ public class Pets extends AppCompatActivity {
     private Context context;
 
     /**
+     * Server interaction objects
+     */
+    SharedPreferences pref;
+    String clientID, clientAuth;
+
+    /**
      * On Create Method
      * Initializes the pets View and instantiates other view objects for later use
      * @param savedInstanceState android system parameter
@@ -65,9 +71,9 @@ public class Pets extends AppCompatActivity {
         setTitle("My Pets");
 
         //GET Request - get id/auth
-        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
-        String clientID = pref.getString("id", "");
-        String clientAuth = pref.getString("auth", "");
+        pref = PreferenceManager.getDefaultSharedPreferences(this);
+        clientID = pref.getString("id", "");
+        clientAuth = pref.getString("auth", "");
 
         //Url connection
         UrlGet userInfo = new UrlGet("http://aiji.cs.loyola.edu/petlist?id" + clientID + "&auth=" + clientAuth,"pets.list", this);
@@ -91,7 +97,7 @@ public class Pets extends AppCompatActivity {
                 json_obj = (JSONObject) json_array.get(i);
                 id = json_obj.keys().next();
                 petName = json_obj.getString(id);
-                petList.add(new PetData(petName, null,null, false, false, false, false, id));
+                petList.add(new PetData(petName, id));
             }
         } catch( JSONException json_e ) {
             Log.w("MA", json_e.toString());
@@ -142,7 +148,7 @@ public class Pets extends AppCompatActivity {
                 startActivity(new Intent(this, HomeActivity.class));
                 return true;
             case R.id.add_pet_menu:
-                startActivity(new Intent(this, AddPet.class));
+                startActivity(new Intent(this, Pet.class)); //change back to AddPet if needed
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

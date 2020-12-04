@@ -52,6 +52,12 @@ public class Profile extends AppCompatActivity {
     TextView account_info, profile_types;
 
     /**
+     * Server interaction objects
+     */
+    SharedPreferences pref;
+    String clientID, clientAuth;
+
+    /**
      * On Create Method
      * Initializes the profile View and instantiates other view objects for later use
      * @param savedInstanceState android system parameter
@@ -63,9 +69,9 @@ public class Profile extends AppCompatActivity {
         setTitle("Profile Settings");
 
         //GET Request - get id/auth
-        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
-        String clientID = pref.getString("id", "");
-        String clientAuth = pref.getString("auth", "");
+        pref = PreferenceManager.getDefaultSharedPreferences(this);
+        clientID = pref.getString("id", "");
+        clientAuth = pref.getString("auth", "");
 
         //Url connection
         UrlGet userInfo = new UrlGet("http://aiji.cs.loyola.edu/accountinfo?id=" + clientID + "&auth=" + clientAuth ,"profile.userInfo", this);
@@ -146,10 +152,6 @@ public class Profile extends AppCompatActivity {
      * @param view  the reference object calling this method
      */
     public void goHome(View view) {
-
-        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
-        String clientID = pref.getString("id", "");
-        String clientAuth = pref.getString("auth", "");
 
         JSONObject data = new JSONObject();
         try {

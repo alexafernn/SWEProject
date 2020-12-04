@@ -132,7 +132,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/other_animal_type_field_TextEdit"
-        android:text="Back (Save Changes)"
+        android:text="Save Pet"
         android:background="@color/colorPrimary"
         android:textColor="@color/colorWhite"
         android:onClick="goToPets"

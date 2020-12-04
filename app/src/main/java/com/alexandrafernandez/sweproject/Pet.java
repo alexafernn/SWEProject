@@ -41,23 +41,29 @@ public class Pet extends AppCompatActivity {
     /**
      * Text Views for identifying field components
      */
-    TextView pet_name, animal, pet_qualities;
+    TextView pet_name, animal, pet_qualities, other_pet_info;
 
     /**
      * Edit Text Views for user input of relevant information
      */
-    EditText pet_name_field, other_animal_type_field;
+    EditText pet_name_field, other_animal_type_field, other_info_field;
 
     /**
      * Buttons used to confirm data and/or move to another activity
      */
-    Button  settings_save_button;
+    Button settings_save_button;
 
     /**
      * Switches used to characteristics of adoption interest
      */
     @SuppressLint("UseSwitchCompatOrMaterialCode")
     Switch switch_energetic, switch_noisy, switch_trained;
+
+    /**
+     * Server interaction objects
+     */
+    SharedPreferences pref;
+    String clientID, clientAuth, pet_id;
 
     /**
      * On Create Method
@@ -71,11 +77,11 @@ public class Pet extends AppCompatActivity {
         setTitle("View My Pet");
 
         //GET Request - get id/auth
-        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
-        String clientID = pref.getString("id", "");
-        String clientAuth = pref.getString("auth", "");
+        pref = PreferenceManager.getDefaultSharedPreferences(this);
+        clientID = pref.getString("id", "");
+        clientAuth = pref.getString("auth", "");
 
-        String pet_id = getIntent().getStringExtra("pet_id");
+        pet_id = getIntent().getStringExtra("pet_id");
 
         //Url connection
         UrlGet userInfo = new UrlGet("http://aiji.cs.loyola.edu/petinfo?id=" + clientID + "&pet_id=" + pet_id +"&auth=" + clientAuth ,"pet.userInfo", this);
@@ -99,7 +105,7 @@ public class Pet extends AppCompatActivity {
         }
 
         //Parse attributes
-        String other_type="";
+        String other_type="", other_info="";
         int pet_type = 0;
         boolean energetic=false, noisy=false, trained=false;
         try {
@@ -109,6 +115,7 @@ public class Pet extends AppCompatActivity {
             energetic = data.getBoolean("energetic");
             noisy = data.getBoolean("noisy");
             trained = data.getBoolean("trained");
+            other_info = data.getString("other_info");
 
         } catch (JSONException json_e2) {
             Log.w("MA", json_e2.toString());
@@ -151,6 +158,13 @@ public class Pet extends AppCompatActivity {
         switch_trained.setTextSize(view.getSwitchTextSize());
         switch_trained.setChecked(trained);
 
+        other_pet_info = (TextView) findViewById(R.id.other_pet_info);
+        other_pet_info.setTextSize(view.getLabelTextSize());
+
+        other_info_field = (EditText) findViewById(R.id.other_animal_type_field_TextEdit);
+        other_info_field.setTextSize(view.getEditTextSize());
+        other_info_field.setText(other_info);
+
         settings_save_button = (Button) findViewById(R.id.settings_save_button_edit);
         settings_save_button.setTextSize(view.getButtonTextSize());
     }
@@ -170,6 +184,7 @@ public class Pet extends AppCompatActivity {
             attr.put("energetic", switch_energetic.isChecked());
             attr.put("noisy", switch_noisy.isChecked());
             attr.put("trained", switch_trained.isChecked());
+            attr.put("other_info", other_info_field.getText().toString());
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -183,9 +198,25 @@ public class Pet extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        //TODO check this link later
-        UrlPut saveInfo = new UrlPut("http://aiji.cs.loyola.edu/petmodify", data.toString(), this, "pet.response");
-        saveInfo.start();
+        //Post - create a new pet
+        if(pet_id.equals(null)){
+            UrlPut saveInfo = new UrlPut("http://aiji.cs.loyola.edu/petcreate", data.toString(), this, "pet.response");
+            saveInfo.start();
+        }
+
+        //Put - modify an existing pet
+        else {
+            //TODO check this link later
+            UrlPut saveInfo = new UrlPut("http://aiji.cs.loyola.edu/petmodify", data.toString(), this, "pet.response");
+            saveInfo.start();
+        }
+
+        //give persistent data time to write
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         startActivity(new Intent(this, Pets.class));
         finish();

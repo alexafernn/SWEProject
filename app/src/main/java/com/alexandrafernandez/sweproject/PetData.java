@@ -14,32 +14,16 @@ public class PetData {
     /**
      * Animal information strings
      */
-    String name, animal, other_type, id;
-
-    /**
-     * Boolean variables for saving pet preferences
-     */
-    boolean energetic, noisy, trained, inside_only;
+    String name, id;
 
     /**
      * Pet Data constructor
      * Initializes the data for a pet entry
      * @param name the name of the pet
-     * @param animal the species of the pet
-     * @param other_type custom species
-     * @param energetic is the pet energetic
-     * @param noisy is the pet noisy
-     * @param trained is the pet trained
-     * @param inside_only does the pet only stay at owner's home
+     * @param id the id of the pet, given by the server
      */
-    public PetData(String name, String animal, String other_type, boolean energetic, boolean noisy, boolean trained, boolean inside_only, String id) {
+    public PetData(String name, String id) {
         this.name = name;
-        this.animal = animal;
-        this.other_type = other_type;
-        this.energetic = energetic;
-        this.noisy = noisy;
-        this.trained = trained;
-        this.inside_only = inside_only;
         this.id = id;
     }
 
