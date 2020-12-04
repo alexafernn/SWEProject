@@ -96,7 +96,8 @@ public class Pets extends AppCompatActivity {
             while(keys.hasNext()) {
                 id = keys.next();
                 petName = jsonObject.getString(id);
-                petList.add(new PetData(petName, id));
+                if(!id.equals("success"))
+                    petList.add(new PetData(petName, id));
             }
         } catch( JSONException json_e ) {
             Log.w("MA", json_e.toString());

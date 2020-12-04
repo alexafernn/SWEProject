@@ -228,6 +228,11 @@ public class Pet extends AppCompatActivity {
 
         //Put - modify an existing pet
         else {
+            try {
+                data.put("pet_id", pet_id);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
             UrlPut saveInfo = new UrlPut("http://aiji.cs.loyola.edu/petmodify", data.toString(), this, "pet.response");
             saveInfo.start();
         }
@@ -247,7 +252,7 @@ public class Pet extends AppCompatActivity {
             success = jsonObject1.getBoolean("success");
         } catch( JSONException json_e ) {
             if(!success) {
-                showError();
+                //showError();
                 //return;
             }
         }
@@ -281,7 +286,7 @@ public class Pet extends AppCompatActivity {
                             e.printStackTrace();
                         }
 
-                        UrlPost saveInfo = new UrlPost("http://aiji.cs.loyola.edu/petdelete", data.toString(), getContext(), "pet.response");
+                        UrlDelete saveInfo = new UrlDelete("http://aiji.cs.loyola.edu/petdelete", data.toString(), "pet.response", getContext());
                         saveInfo.start();
 
                         //give persistent data time to write
@@ -299,8 +304,8 @@ public class Pet extends AppCompatActivity {
                             success = jsonObject1.getBoolean("success");
                         } catch( JSONException json_e ) {
                             if(!success) {
-                                showError();
-                                return;
+                                //showError();
+                                //return;
                             }
                         }
                         startActivity(i);
