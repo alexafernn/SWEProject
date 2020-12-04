@@ -1,6 +1,8 @@
 package com.alexandrafernandez.sweproject;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -14,6 +16,7 @@ import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import org.json.JSONArray;
@@ -245,22 +248,48 @@ public class Pet extends AppCompatActivity {
      */
     public void deletePet(View view) {
 
-        //TODO implement server connection to delete pet here
+        final Intent i = new Intent(this, Pets.class);
 
-        JSONObject data = new JSONObject();
-        try {
-            data.put("id", clientID);
-            data.put("auth", clientAuth);
-            data.put("pet_id", pet_id);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        new AlertDialog.Builder(this)
+                .setTitle("Delete Pet")
+                .setMessage("Are you sure you want to delete " + pet_name_field.getText() + "?")
+                .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
 
-        UrlPost saveInfo = new UrlPost("http://aiji.cs.loyola.edu/petdelete", data.toString(), this, "pet.response");
-        saveInfo.start();
+                        //TODO implement server connection to delete pet here
 
-        startActivity(new Intent(this, Pets.class));
-        finish();
+                        JSONObject data = new JSONObject();
+                        try {
+                            data.put("id", clientID);
+                            data.put("auth", clientAuth);
+                            data.put("pet_id", pet_id);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                        UrlPost saveInfo = new UrlPost("http://aiji.cs.loyola.edu/petdelete", data.toString(), getContext(), "pet.response");
+                        saveInfo.start();
+
+                        startActivity(i);
+                        finish();
+                    }
+                })
+
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                })
+                .setIcon(android.R.drawable.ic_menu_delete)
+                .show();
+    }
+
+    /**
+     * Get Context
+     * @return the activity
+     */
+    public Context getContext(){
+        return this;
     }
 }
 
