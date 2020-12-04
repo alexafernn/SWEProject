@@ -83,42 +83,47 @@ public class Pet extends AppCompatActivity {
 
         pet_id = getIntent().getStringExtra("pet_id");
 
-        //Url connection
-        UrlGet userInfo = new UrlGet("http://aiji.cs.loyola.edu/petinfo?id=" + clientID + "&pet_id=" + pet_id +"&auth=" + clientAuth ,"pet.userInfo", this);
-        userInfo.start();
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        //Save response
-        String json = pref.getString("pet.userInfo", "");
-        Log.w("MA", "json: " + json);
-        String name="", attributes="";
-        try {
-            JSONObject jsonObject1 = new JSONObject(json);
-            name = jsonObject1.getString( "name" );
-            attributes = jsonObject1.getString("attributes");
-        } catch( JSONException json_e ) {
-            Log.w("MA", json_e.toString());
-        }
-
-        //Parse attributes
-        String other_type="", other_info="";
+        String other_type = "", other_info = "";
         int pet_type = 0;
-        boolean energetic=false, noisy=false, trained=false;
-        try {
-            JSONObject data = new JSONObject(attributes);
-            pet_type = data.getInt("pet_type");
-            other_type = data.getString("other_type");
-            energetic = data.getBoolean("energetic");
-            noisy = data.getBoolean("noisy");
-            trained = data.getBoolean("trained");
-            other_info = data.getString("other_info");
+        boolean energetic = false, noisy = false, trained = false;
+        String name = "", attributes = "";
 
-        } catch (JSONException json_e2) {
-            Log.w("MA", json_e2.toString());
+        if(pet_id != null) {
+
+            //Url connection
+            UrlGet userInfo = new UrlGet("http://aiji.cs.loyola.edu/petinfo?id=" + clientID + "&pet_id=" + pet_id + "&auth=" + clientAuth, "pet.userInfo", this);
+            userInfo.start();
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            //Save response
+            String json = pref.getString("pet.userInfo", "");
+            Log.w("MA", "json: " + json);
+
+            try {
+                JSONObject jsonObject1 = new JSONObject(json);
+                name = jsonObject1.getString("name");
+                attributes = jsonObject1.getString("attributes");
+            } catch (JSONException json_e) {
+                Log.w("MA", json_e.toString());
+            }
+
+            //Parse attributes
+            try {
+                JSONObject data = new JSONObject(attributes);
+                pet_type = data.getInt("pet_type");
+                other_type = data.getString("other_type");
+                energetic = data.getBoolean("energetic");
+                noisy = data.getBoolean("noisy");
+                trained = data.getBoolean("trained");
+                other_info = data.getString("other_info");
+
+            } catch (JSONException json_e2) {
+                Log.w("MA", json_e2.toString());
+            }
         }
 
         ScreenSize view = new ScreenSize(this);
@@ -194,13 +199,15 @@ public class Pet extends AppCompatActivity {
         try {
             data.put("name", pet_name_field.getText().toString());
             data.put("attributes", attributes);
+            data.put("id", clientID);
+            data.put("auth", clientAuth);
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
         //Post - create a new pet
-        if(pet_id.equals(null)){
-            UrlPut saveInfo = new UrlPut("http://aiji.cs.loyola.edu/petcreate", data.toString(), this, "pet.response");
+        if(pet_id == null){
+            UrlPost saveInfo = new UrlPost("http://aiji.cs.loyola.edu/petcreation", data.toString(), this, "pet.response");
             saveInfo.start();
         }
 

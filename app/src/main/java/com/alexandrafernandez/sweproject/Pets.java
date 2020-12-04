@@ -21,6 +21,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * Pets Class
@@ -76,7 +77,7 @@ public class Pets extends AppCompatActivity {
         clientAuth = pref.getString("auth", "");
 
         //Url connection
-        UrlGet userInfo = new UrlGet("http://aiji.cs.loyola.edu/petlist?id" + clientID + "&auth=" + clientAuth,"pets.list", this);
+        UrlGet userInfo = new UrlGet("http://aiji.cs.loyola.edu/petlist?id=" + clientID + "&auth=" + clientAuth,"pets.list", this);
         userInfo.start();
         try {
             Thread.sleep(500);
@@ -88,15 +89,13 @@ public class Pets extends AppCompatActivity {
 
         //Save response
         String json = pref.getString("pets.list", "");
-        JSONArray json_array;
-        JSONObject json_obj;
         String id="", petName="";
         try {
-            json_array = new JSONArray(json);
-            for(int i=0; i<json_array.length(); i++) {
-                json_obj = (JSONObject) json_array.get(i);
-                id = json_obj.keys().next();
-                petName = json_obj.getString(id);
+            JSONObject jsonObject = new JSONObject(json);
+            Iterator<String> keys = jsonObject.keys();
+            while(keys.hasNext()) {
+                id = keys.next();
+                petName = jsonObject.getString(id);
                 petList.add(new PetData(petName, id));
             }
         } catch( JSONException json_e ) {
