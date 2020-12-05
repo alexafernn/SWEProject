@@ -53,27 +53,27 @@ public class Sitter extends AppCompatActivity {
         final Sitting[] sitting = {MainActivity.sitting};
         final Sitting test = new Sitting("04/03/2021", "04/04/2022", false,true, "sheds a lot ");
 
+        //if(sitting[0] !=null)
+        //{
+
 
         if (sitting[0].getNumberOfSittings() == 0)
         {
             Toast.makeText(getApplicationContext(),"No reservations open for sitting",Toast.LENGTH_SHORT).show();
         }
-        else
-        {
+       // else {
 
             sittingList = new ArrayList<Sitting>();
-           // sittingList.add(new Sitting("04/03/2021", "04/04/2022", false,true, "sheds a lot "));
+            // sittingList.add(new Sitting("04/03/2021", "04/04/2022", false,true, "sheds a lot "));
             sittingList.add(test);
             sittings_listView = (ListView) findViewById(R.id.sitting2_listview);
             ArrayAdapter<Sitting> adapter = new ArrayAdapter<Sitting>(this, android.R.layout.simple_list_item_1, sittingList);
-           // CustomAdapter myAdapter = new CustomAdapter(getApplicationContext(), sittingList);
+            // CustomAdapter myAdapter = new CustomAdapter(getApplicationContext(), sittingList);
             sittings_listView.setAdapter(adapter);
 
-            sittings_listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
-            {
+            sittings_listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
-                public void onItemClick(AdapterView parent, View v, int position, long id)
-                {
+                public void onItemClick(AdapterView parent, View v, int position, long id) {
 //                    Sitting list_row = sittingList.get(position);
 //                    //if position = 0
 //                    Intent intent = new Intent(Sitter.this, approveSitting.class); //idk
@@ -87,12 +87,13 @@ public class Sitter extends AppCompatActivity {
 
                 }
             });
+       // }
             // do something when u click on the sitting
 
             //TODO clean up / add server connections
         }
 
-    }
+
 
     /**
      * on Create Options Menu
@@ -100,7 +101,8 @@ public class Sitter extends AppCompatActivity {
      * @param menu the appropriate menu object for this view (sitter_menu.xml)
      * @return true if successful creation of menu
      */
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.sitter_menu, menu);
         return true;

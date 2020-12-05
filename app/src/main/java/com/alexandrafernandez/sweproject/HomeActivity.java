@@ -1,6 +1,7 @@
 package com.alexandrafernandez.sweproject;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import java.util.ArrayList;
@@ -35,6 +36,14 @@ public class HomeActivity extends AppCompatActivity {
      */
     ListView sittings_listView;
 
+    NeedSitterEvent sittingData;
+
+    Sitting sitData;
+    /**
+     * Activity and View data
+     */
+    private Context context;
+
     /**
      * On Create Method
      * Initializes the home activity View and instantiates other view objects for later use
@@ -65,7 +74,9 @@ public class HomeActivity extends AppCompatActivity {
         }
         else
         {
-
+            Intent intent2 = getIntent();
+            int positionDeleting = intent2.getIntExtra("position_value", -1);
+            System.out.println("position + value is " + positionDeleting);
             noSittings.setVisibility(View.INVISIBLE);
 
             sittingList = new ArrayList<Sitting>();
@@ -74,7 +85,26 @@ public class HomeActivity extends AppCompatActivity {
             ArrayAdapter<Sitting> adapter = new ArrayAdapter<Sitting>(this, android.R.layout.simple_list_item_1, sittingList);
             sittings_listView.setAdapter(adapter);
 
+            if (positionDeleting != -1)
+            {
+                adapter.remove(sittingList.get(positionDeleting));
+            }
+
+
            // do something when u click on the sitting
+            context = this;
+            sittings_listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    sitData = sittingList.get(i);
+                    System.out.println("i is = " + i);
+                    Intent intent = new Intent(context, ViewSitting.class);
+                    intent.putExtra("position_in_list", i);
+                    startActivity(intent);
+
+                    finish();
+                }
+            });
 
          }
     }

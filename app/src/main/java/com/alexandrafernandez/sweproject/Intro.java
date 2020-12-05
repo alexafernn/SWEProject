@@ -161,7 +161,7 @@ public class Intro extends AppCompatActivity {
                     }
                 };
                 AlertDialog.Builder builder = new AlertDialog.Builder(Intro.this);
-                builder.setMessage("Which sitting appointments would you like to see?").setPositiveButton("I am Sitter", dClickListener).setNegativeButton("I am owner", dClickListener).show();
+                builder.setMessage("Which sitting appointments would you like to see?").setPositiveButton("I'm a Sitter", dClickListener).setNegativeButton("I'm an Owner", dClickListener).show();
 
                 return true;
             case R.id.profile:

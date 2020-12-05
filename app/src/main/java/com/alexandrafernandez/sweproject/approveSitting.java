@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -25,6 +26,12 @@ import java.util.ArrayList;
 public class approveSitting extends AppCompatActivity {
 
     /**
+     * Buttons used to confirm data and/or move to another activity
+     */
+    Button confirm_sitting_button, cancel_button;
+
+
+    /**
      * On Create Method
      * Initializes the approve sitting View and instantiates other view objects for later use
      * @param savedInstanceState android system parameter
@@ -36,26 +43,21 @@ public class approveSitting extends AppCompatActivity {
         setContentView(R.layout.confirm);
         setTitle("Approve Sitting");
 
-        //need to get this working : right now it only prints out the value of startDate from that object but need it to print the other instance variables
-        //so that we can set the edit texts from those values down below
-        //checked toString and that wasnt the problem
-        //talked to herve but he's not sure about this either
+        ScreenSize view = new ScreenSize(this);
+
+        confirm_sitting_button = (Button) findViewById(R.id.confirm_availability_button);
+        cancel_button = (Button) findViewById(R.id.cancel_button);
+
+
 
         Intent i = getIntent();
         Sitting result = (Sitting) i.getSerializableExtra("Test");
         String value = result.toString();
         System.out.println("the result is "+ value);
 
-//        try {
-//            Sitting result = (Sitting) getIntent().getExtras().get("Myobject");
-//            System.out.println("let's see " + result.toString());
-//        }
-//        catch(Exception e)
-//        {
-//            Log.e("GETTING EXTRAS", e.toString());
-//        }
 
 
+        //will  need to change this to pull data from the server
         TextView startDate = (TextView) findViewById(R.id.start_date_label);
         startDate.setText("04/03/2021");
 
@@ -101,11 +103,17 @@ public class approveSitting extends AppCompatActivity {
      */
     public void onConfirm(View v)
     {
-        Intent i = new Intent(this, HomeActivity.class);
-        startActivity(i);
+//        Intent i = new Intent(this, HomeActivity.class);
+//        startActivity(i);
+         finish();
         //need to actually pass the confirmed sitting
         //this.finish();
         //change this to a confirmed page
     }
 
+    public void onViewSittingPets(View v)
+    {
+        Intent i = new Intent(this, petsSittingList.class);
+        startActivity(i);
+    }
 }
