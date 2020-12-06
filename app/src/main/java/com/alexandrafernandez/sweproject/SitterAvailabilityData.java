@@ -36,4 +36,11 @@ public class SitterAvailabilityData {
     public String toString() {
         return startDate + " - " + endDate;
     }
+
+    /**
+     * Additional testing methods
+     */
+    public String getNotes() {
+        return notes;
+    }
 }
