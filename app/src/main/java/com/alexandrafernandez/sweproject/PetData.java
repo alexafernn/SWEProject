@@ -35,4 +35,9 @@ public class PetData {
     public String toString() {
         return name;
     }
+
+    /**
+     * Additional testing methods
+     */
+    public String getId() { return id; }
 }
