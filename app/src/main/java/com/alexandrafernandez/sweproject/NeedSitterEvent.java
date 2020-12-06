@@ -50,7 +50,7 @@ public class NeedSitterEvent extends AppCompatActivity {
      * Switches used to characteristics of need sitter events
      */
     @SuppressLint("UseSwitchCompatOrMaterialCode")
-    Switch switch9;
+    Switch switch9,timePreference1, timePreference2;
 
     /**
      * Buttons used to confirm data and/or move to another activity
@@ -62,6 +62,7 @@ public class NeedSitterEvent extends AppCompatActivity {
      */
     SharedPreferences pref;
     String clientID, clientAuth, job_id;
+
 
     /**
      * On Create Method
@@ -156,6 +157,12 @@ public class NeedSitterEvent extends AppCompatActivity {
         switch9 = (Switch) findViewById(R.id.switch9);
         switch9.setTextSize(view.getSwitchTextSize());
         switch9.setChecked(is_at_owner);
+
+        timePreference1 = (Switch) findViewById(R.id.timeSpecification1);
+        timePreference1.setTextSize(view.getSwitchTextSize());
+
+        timePreference2 = (Switch) findViewById(R.id.timeSpecification2);
+        timePreference2.setTextSize(view.getSwitchTextSize());
 
         other_notes_info = (TextView) findViewById(R.id.other_notes_info);
         other_notes_info.setTextSize((float) (0.75*view.getLabelTextSize()));

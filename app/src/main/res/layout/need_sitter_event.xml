@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/ScrollView01"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
     android:scrollbars="none" >
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/colorWhite">
 
     <TextView
@@ -50,11 +50,22 @@
         style="@style/MarginStyle"
         />
 
+    <Switch
+        android:id="@+id/timeSpecification1"
+        style="@style/MarginStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/start_time"
+        android:layout_marginTop="2dp"
+        android:background="@color/colorWhite"
+        android:text="Flip on for AM, off for PM"
+        />
+
     <TextView
         android:id="@+id/calendar_title_info2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/start_time"
+        android:layout_below="@id/timeSpecification1"
         android:text="Select End Date"
         android:textColor="@color/colorBlack"
         style="@style/MarginStyle"
@@ -90,12 +101,22 @@
         />
 
     <Switch
+        android:id="@+id/timeSpecification2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        android:text="Flip on for AM, off for PM"
+        android:layout_below="@id/end_time"
+        style="@style/MarginStyle"
+        />
+
+    <Switch
         android:id="@+id/switch9"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorWhite"
         android:text="Pet Sitting Must Occur At My Location"
-        android:layout_below="@id/end_time"
+        android:layout_below="@id/timeSpecification2"
         tools:ignore="UseSwitchCompatOrMaterialXml"
         style="@style/MarginStyle"
         />
