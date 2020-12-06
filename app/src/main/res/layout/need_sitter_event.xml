@@ -141,5 +141,18 @@
         style="@style/MarginStyle"
         />
 
+    <Button
+        android:id="@+id/job_delete_button"
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/confirm_sitter_request_button"
+        android:text="Remove Request"
+        android:background="#F13B14"
+        android:textColor="@color/colorWhite"
+        android:onClick="deletePet"
+        android:layout_margin="10dp"
+        />
+
 </RelativeLayout>
 </ScrollView>

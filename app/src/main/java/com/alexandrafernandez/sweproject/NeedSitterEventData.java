@@ -14,32 +14,19 @@ public class NeedSitterEventData {
     /**
      * Date, time, and notes variables
      */
-    String start_date, start_time, end_date, end_time, other_notes;
-
-    /**
-     * Boolean variables for saving user choices
-     */
-    boolean allPets, stayHome;
+    String start_dateTime, end_dateTime, id;
 
     /**
      * Need Sitter Event Data constructor
      * Initializes the data for a sitting event
-     * @param start_date start date of the sitting event
-     * @param start_time start time of the sitting event
-     * @param end_date end date of the sitting event
-     * @param end_time end time of the sitting event
-     * @param allPets whether all pets need to be sat
-     * @param stayHome whether the pets will stay at the owners home
-     * @param other_notes user entered details about the sitting event
+     * @param id the id of the job
+     * @param start_dateTime start date of job
+     * @param end_dateTime end date of job
      */
-    public NeedSitterEventData(String start_date, String start_time, String end_date, String end_time, boolean allPets, boolean stayHome, String other_notes) {
-        this.start_date = start_date;
-        this.start_time = start_time;
-        this.end_date = end_date;
-        this.end_time = end_time;
-        this.allPets = allPets;
-        this.stayHome = stayHome;
-        this.other_notes = other_notes;
+    public NeedSitterEventData(String start_dateTime, String end_dateTime, String id) {
+        this.start_dateTime = start_dateTime;
+        this.end_dateTime = end_dateTime;
+        this.id = id;
     }
 
     /**
@@ -48,6 +35,6 @@ public class NeedSitterEventData {
      * @return start and end dat
      */
     public String toString() {
-        return start_date + " - " + end_date;
+        return start_dateTime + " - " + end_dateTime;
     }
 }

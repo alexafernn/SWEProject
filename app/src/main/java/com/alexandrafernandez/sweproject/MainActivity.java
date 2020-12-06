@@ -181,5 +181,6 @@ public class MainActivity extends Activity {
     public void signUp(View v)
     {
         startActivity(new Intent(this, SignUp.class));
+        finish();
     }
 }

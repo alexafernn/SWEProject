@@ -126,6 +126,11 @@ public class SignUp extends AppCompatActivity {
         saveButton = (Button) findViewById(R.id.saveButton);
         saveButton.setTextSize(view.getButtonTextSize());
 
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putBoolean("loginSwitchChecked", false);
+        editor.apply();
+
     }
 
     /**
@@ -178,6 +183,7 @@ public class SignUp extends AppCompatActivity {
             }
         }
 
+        startActivity(new Intent(this, MainActivity.class));
         finish();
     }
 }

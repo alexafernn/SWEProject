@@ -2,9 +2,12 @@ package com.alexandrafernandez.sweproject;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Point;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -15,10 +18,15 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * Owner Class
@@ -62,6 +70,12 @@ public class Owner extends AppCompatActivity {
     private Context context;
 
     /**
+     * Server interaction objects
+     */
+    SharedPreferences pref;
+    String clientID, clientAuth, job_id;
+
+    /**
      * On Create Method
      * Initializes the owner View and instantiates other view objects for later use
      * @param savedInstanceState android system parameter
@@ -72,8 +86,46 @@ public class Owner extends AppCompatActivity {
         setContentView(R.layout.owner);
         setTitle("OWNER");
 
+        //GET Request - get id/auth
+        pref = PreferenceManager.getDefaultSharedPreferences(this);
+        clientID = pref.getString("id", "");
+        clientAuth = pref.getString("auth", "");
 
+        //Url connection
+        UrlGet userInfo = new UrlGet("http://aiji.cs.loyola.edu/ownerjoblist?id=" + clientID + "&auth=" + clientAuth + "&is_accepted=" + false,"requests.list", this);
+        userInfo.start();
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
+        requestList = new ArrayList<NeedSitterEventData>();
+        boolean success = false;
+
+        //Save response
+        String json = pref.getString("requests.list", "");
+        String id="", startDateTime="", endDateTime="";
+        JSONObject jobData;
+        try {
+            JSONObject jsonObject = new JSONObject(json);
+            Iterator<String> keys = jsonObject.keys();
+            while(keys.hasNext()) {
+                id = keys.next();
+                jobData = jsonObject.getJSONObject(id);
+                startDateTime = jobData.getString("start_datetime");
+                endDateTime = jobData.getString("end_datetime");
+                if(!id.equals("success"))
+                    requestList.add(new NeedSitterEventData(startDateTime, endDateTime, id));
+                else success = true;
+            }
+        } catch( JSONException json_e ) {
+            Log.w("MA", json_e.toString());
+        }
+
+        if(!success) {
+            Toast.makeText(this, "No pets found.", Toast.LENGTH_SHORT).show();
+        }
         ScreenSize view = new ScreenSize(this);
 
         sitter_request_button = findViewById(R.id.sitter_request_button);
@@ -85,8 +137,7 @@ public class Owner extends AppCompatActivity {
         noSittingsLabel = (TextView) findViewById(R.id.noSittings);
         noSittingsLabel.setTextSize(view.getLabelTextSize());
 
-        requestList = new ArrayList<NeedSitterEventData>(); //replace with server pull
-        requestList.add(new NeedSitterEventData("01/01/2021","12:00", "02/02/2021", "1:00", true, false, ""));
+        requestList = new ArrayList<NeedSitterEventData>();
 
         owner_listview = (ListView) findViewById(R.id.owner_listview);
         ArrayAdapter<NeedSitterEventData> adapter = new ArrayAdapter<NeedSitterEventData>(this, android.R.layout.simple_list_item_1, requestList);
@@ -100,9 +151,7 @@ public class Owner extends AppCompatActivity {
                 event = requestList.get(i);
 
                 Intent intent = new Intent(context, NeedSitterEvent.class);
-                intent.putExtra("viewRequest.dateStart", event.start_date);
-                intent.putExtra("viewRequest.dateEnd", event.end_date);
-                intent.putExtra("viewRequest.notes", event.other_notes);
+                intent.putExtra("job_id", event.id);
                 startActivity(intent);
                 finish();
             }
