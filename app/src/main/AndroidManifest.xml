@@ -32,9 +32,6 @@
         <activity android:name=".PastSittings" />
         <activity android:name=".Feedback" />
         <activity android:name=".Rewards" />
-        <activity android:name=".AddPet" />
-        <activity android:name=".Adopt" />
-        <activity android:name=".AdoptionStatus" />
         <activity android:name=".SitterAvailability" />
         <activity android:name=".NeedSitterEvent" />
         <activity android:name=".approveSitting" />

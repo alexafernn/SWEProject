@@ -25,7 +25,7 @@
         android:gravity="center"
         android:id="@+id/pet_listview"
         android:textColor="@color/colorBlack"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/roundedcorners"
         android:dividerHeight="10.0sp"
         android:divider="@color/colorWhite"
         />

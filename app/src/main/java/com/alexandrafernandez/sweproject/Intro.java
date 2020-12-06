@@ -138,22 +138,28 @@ public class Intro extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_favorite:
-                DialogInterface.OnClickListener dClickListener = new DialogInterface.OnClickListener()
-                {
-                    @Override
-                    public void onClick(DialogInterface dialog, int choice) {
-                        switch(choice) {
-                            case DialogInterface.BUTTON_POSITIVE:
-                                startActivity(new Intent(Intro.this, HomeActivity.class)); // i am sitter
-                                break;
-                            case DialogInterface.BUTTON_NEGATIVE:
-                                startActivity(new Intent(Intro.this, sittingsForMyPet.class)); // i am owner
-                        }
-                    }
-                };
-                AlertDialog.Builder builder = new AlertDialog.Builder(Intro.this);
-                builder.setMessage("Which sitting appointments would you like to see?").setPositiveButton("I'm a Sitter", dClickListener).setNegativeButton("I'm an Owner", dClickListener).show();
+                if(pref.getBoolean("ownerSwitchChecked", true) && !pref.getBoolean("sitterSwitchChecked", true))
+                    startActivity(new Intent(Intro.this, sittingsForMyPet.class));
 
+                else if(pref.getBoolean("sitterSwitchChecked", true) && !pref.getBoolean("ownerSwitchChecked", true))
+                    startActivity(new Intent(Intro.this, HomeActivity.class));
+
+                else {
+                    DialogInterface.OnClickListener dClickListener = new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int choice) {
+                            switch (choice) {
+                                case DialogInterface.BUTTON_POSITIVE:
+                                    startActivity(new Intent(Intro.this, HomeActivity.class)); // i am sitter
+                                    break;
+                                case DialogInterface.BUTTON_NEGATIVE:
+                                    startActivity(new Intent(Intro.this, sittingsForMyPet.class)); // i am owner
+                            }
+                        }
+                    };
+                    AlertDialog.Builder builder = new AlertDialog.Builder(Intro.this);
+                    builder.setMessage("Which sitting appointments would you like to see?").setPositiveButton("I'm a Sitter", dClickListener).setNegativeButton("I'm an Owner", dClickListener).show();
+                }
                 return true;
             case R.id.profile:
                 startActivity(new Intent(this, Profile.class));
