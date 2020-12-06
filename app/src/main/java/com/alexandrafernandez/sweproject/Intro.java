@@ -94,20 +94,28 @@ public class Intro extends AppCompatActivity {
         greeting.setText(greetMe);
         greeting.setTextSize(view.getLabelTextSize());
 
-        /*
         owner = findViewById(R.id.owner_main_button); //i need a sitter
         owner.setTextSize(view.getButtonTextSize());
         if(pref.getBoolean("ownerSwitchChecked", false))
-            owner.setVisibility(View.INVISIBLE);
-        else owner.setVisibility(View.VISIBLE);
+            owner.setVisibility(View.VISIBLE);
+        else owner.setVisibility(View.INVISIBLE);
 
         sitter = findViewById(R.id.sitter_main_button); //i want to sit
         sitter.setTextSize(view.getButtonTextSize());
         if(pref.getBoolean("sitterSwitchChecked", false))
-            sitter.setVisibility(View.INVISIBLE);
-        else sitter.setVisibility(View.VISIBLE);
+            sitter.setVisibility(View.VISIBLE);
+        else sitter.setVisibility(View.INVISIBLE);
+    }
 
-         */
+    /**
+     * On Restart method
+     * Called only when re-starting an activity
+     */
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        finish();
+        startActivity(getIntent());
     }
 
     /**

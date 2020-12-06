@@ -80,6 +80,48 @@ public class NeedSitterEvent extends AppCompatActivity {
         job_delete_button = (Button) findViewById(R.id.job_delete_button);
         job_delete_button.setTextSize(view.getButtonTextSize());
 
+        start_date_label = (TextView) findViewById(R.id.calendar_title_info);
+        start_date_label.setTextSize((float) (0.5*view.getLabelTextSize()));
+
+        start_date = (EditText) findViewById(R.id.start_date);
+        start_date.setTextSize(view.getEditTextSize());
+
+        start_time_info = (TextView) findViewById(R.id.start_time_info);
+        start_time_info.setTextSize((float) (0.5*view.getLabelTextSize()));
+
+        start_time = (EditText) findViewById(R.id.start_time);
+        start_time.setTextSize(view.getEditTextSize());
+
+        end_date_label = (TextView) findViewById(R.id.calendar_title_info2);
+        end_date_label.setTextSize((float) (0.5*view.getLabelTextSize()));
+
+        end_date = (EditText) findViewById(R.id.end_date);
+        end_date.setTextSize(view.getEditTextSize());
+
+        end_time_info = (TextView) findViewById(R.id.end_time_info);
+        end_time_info.setTextSize((float) (0.5*view.getLabelTextSize()));
+
+        end_time = (EditText) findViewById(R.id.end_time);
+        end_time.setTextSize(view.getEditTextSize());
+
+        switch9 = (Switch) findViewById(R.id.switch9);
+        switch9.setTextSize(view.getSwitchTextSize());
+
+        timePreference1 = (Switch) findViewById(R.id.timeSpecification1);
+        timePreference1.setTextSize(view.getSwitchTextSize());
+
+        timePreference2 = (Switch) findViewById(R.id.timeSpecification2);
+        timePreference2.setTextSize(view.getSwitchTextSize());
+
+        other_notes_info = (TextView) findViewById(R.id.other_notes_info);
+        other_notes_info.setTextSize((float) (0.75*view.getLabelTextSize()));
+
+        additional_info_text_field = (EditText) findViewById(R.id.additional_info_text_field);
+        additional_info_text_field.setTextSize(view.getEditTextSize());
+
+        confirm_sitter_request_button = (Button) findViewById(R.id.confirm_sitter_request_button);
+        confirm_sitter_request_button.setTextSize(view.getButtonTextSize());
+
         //GET Request - get id/auth
         pref = PreferenceManager.getDefaultSharedPreferences(this);
         clientID = pref.getString("id", "");
@@ -111,8 +153,13 @@ public class NeedSitterEvent extends AppCompatActivity {
                 lat = Float.parseFloat(jsonObject.getString("lat"));
                 lon = Float.parseFloat(jsonObject.getString("long"));
                 is_at_owner = jsonObject.getBoolean("is_at_owner");
+                switch9.setChecked(is_at_owner);
                 startDateTime = jsonObject.getString("start_datetime");
+                start_date.setText(startDateTime.substring(0, startDateTime.indexOf(" ")));
+                start_time.setText(startDateTime.substring(startDateTime.indexOf(" ")+1));
                 endDateTime = jsonObject.getString("end_datetime");
+                end_date.setText(endDateTime.substring(0, endDateTime.indexOf(" ")));
+                end_time.setText(endDateTime.substring(endDateTime.indexOf(" ")+1));
                 success = jsonObject.getBoolean("success");
             } catch (JSONException json_e) {
                 Log.w("MA", json_e.toString());
@@ -126,52 +173,7 @@ public class NeedSitterEvent extends AppCompatActivity {
             job_delete_button.setVisibility(View.INVISIBLE);
         }
 
-        start_date_label = (TextView) findViewById(R.id.calendar_title_info);
-        start_date_label.setTextSize((float) (0.5*view.getLabelTextSize()));
 
-        start_date = (EditText) findViewById(R.id.start_date);
-        start_date.setTextSize(view.getEditTextSize());
-        start_date.setText(startDateTime.substring(0, startDateTime.indexOf(" ")));
-
-        start_time_info = (TextView) findViewById(R.id.start_time_info);
-        start_time_info.setTextSize((float) (0.5*view.getLabelTextSize()));
-
-        start_time = (EditText) findViewById(R.id.start_time);
-        start_time.setTextSize(view.getEditTextSize());
-        start_time.setText(startDateTime.substring(startDateTime.indexOf(" ")+1));
-
-        end_date_label = (TextView) findViewById(R.id.calendar_title_info2);
-        end_date_label.setTextSize((float) (0.5*view.getLabelTextSize()));
-
-        end_date = (EditText) findViewById(R.id.end_date);
-        end_date.setTextSize(view.getEditTextSize());
-        end_date.setText(endDateTime.substring(0, endDateTime.indexOf(" ")));
-
-        end_time_info = (TextView) findViewById(R.id.end_time_info);
-        end_time_info.setTextSize((float) (0.5*view.getLabelTextSize()));
-
-        end_time = (EditText) findViewById(R.id.end_time);
-        end_time.setTextSize(view.getEditTextSize());
-        end_time.setText(endDateTime.substring(endDateTime.indexOf(" ")+1));
-
-        switch9 = (Switch) findViewById(R.id.switch9);
-        switch9.setTextSize(view.getSwitchTextSize());
-        switch9.setChecked(is_at_owner);
-
-        timePreference1 = (Switch) findViewById(R.id.timeSpecification1);
-        timePreference1.setTextSize(view.getSwitchTextSize());
-
-        timePreference2 = (Switch) findViewById(R.id.timeSpecification2);
-        timePreference2.setTextSize(view.getSwitchTextSize());
-
-        other_notes_info = (TextView) findViewById(R.id.other_notes_info);
-        other_notes_info.setTextSize((float) (0.75*view.getLabelTextSize()));
-
-        additional_info_text_field = (EditText) findViewById(R.id.additional_info_text_field);
-        additional_info_text_field.setTextSize(view.getEditTextSize());
-
-        confirm_sitter_request_button = (Button) findViewById(R.id.confirm_sitter_request_button);
-        confirm_sitter_request_button.setTextSize(view.getButtonTextSize());
 
     }
 
