@@ -37,4 +37,9 @@ public class NeedSitterEventData {
     public String toString() {
         return start_dateTime + " - " + end_dateTime;
     }
+
+    /**
+     * Additional testing methods
+     */
+    public String getId() { return id; }
 }
