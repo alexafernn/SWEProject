@@ -60,7 +60,6 @@ public class Intro extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         setTitle("HOME");
 
-        //adding
         //GET Request - get id/auth
         pref = PreferenceManager.getDefaultSharedPreferences(this);
         clientID = pref.getString("id", "");
@@ -68,7 +67,6 @@ public class Intro extends AppCompatActivity {
 
         //Url connection
         UrlGet userInfo = new UrlGet("http://aiji.cs.loyola.edu/accountinfo?id=" + clientID + "&auth=" + clientAuth ,"profile.userInfo", this);
-        Log.w("MA", "--------Profile URL GET------------");
         userInfo.start();
         try {
             Thread.sleep(500);
@@ -88,18 +86,7 @@ public class Intro extends AppCompatActivity {
             Log.w("MA", json_e.toString());
         }
 
-
-
-
-
-
         ScreenSize view = new ScreenSize(this);
-
-        //SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
-        //String myName = pref.getString("username", "username");
-
-        // need to get myName from the server
-
 
         //String greetMe = "Hi, " + myName;
         String greetMe = "HI " + first_name.toUpperCase() + "!";
@@ -107,24 +94,20 @@ public class Intro extends AppCompatActivity {
         greeting.setText(greetMe);
         greeting.setTextSize(view.getLabelTextSize());
 
-//        status_messages = (TextView) findViewById(R.id.status_messages);
-//        status_messages.setTextSize(view.getLabelTextSize());
-//        status_messages.setHeight(view.getHeight()/3);
-
+        /*
         owner = findViewById(R.id.owner_main_button); //i need a sitter
         owner.setTextSize(view.getButtonTextSize());
-        if(pref.getBoolean("ownerProfileSwitch", false))
+        if(pref.getBoolean("ownerSwitchChecked", false))
             owner.setVisibility(View.INVISIBLE);
+        else owner.setVisibility(View.VISIBLE);
 
         sitter = findViewById(R.id.sitter_main_button); //i want to sit
         sitter.setTextSize(view.getButtonTextSize());
-        if(pref.getBoolean("sitterProfileSwitch", false))
+        if(pref.getBoolean("sitterSwitchChecked", false))
             sitter.setVisibility(View.INVISIBLE);
+        else sitter.setVisibility(View.VISIBLE);
 
-//        adoption = findViewById(R.id.adoption_main_button); //adoption
-//        adoption.setTextSize(view.getButtonTextSize());
-//        if(pref.getBoolean("adoptionProfileSwitch", false))
-//            adoption.setVisibility(View.INVISIBLE);
+         */
     }
 
     /**
@@ -166,7 +149,6 @@ public class Intro extends AppCompatActivity {
                 return true;
             case R.id.profile:
                 startActivity(new Intent(this, Profile.class));
-                finish();
                 return true;
             case R.id.feedback:
                 startActivity(new Intent(this, Feedback.class));
@@ -175,7 +157,7 @@ public class Intro extends AppCompatActivity {
                 SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
                 SharedPreferences.Editor editor = pref.edit();
                 editor.putBoolean("loginSwitchChecked", false);
-                editor.commit();
+                editor.apply();
                 startActivity(new Intent(this, MainActivity.class));
                 //clear all profile data
 
@@ -201,14 +183,5 @@ public class Intro extends AppCompatActivity {
      */
     public void toSitterProfile(View view) {
         startActivity(new Intent(this, Sitter.class));
-    }
-
-    /**
-     * To Adoption Page method
-     * Sends to adoption activity
-     * @param view the reference object calling this method
-     */
-    public void toAdoptionPage(View view) {
-        startActivity(new Intent(this, Adopt.class));
     }
 }

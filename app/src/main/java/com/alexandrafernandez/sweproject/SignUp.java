@@ -129,6 +129,8 @@ public class SignUp extends AppCompatActivity {
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor editor = pref.edit();
         editor.putBoolean("loginSwitchChecked", false);
+        editor.putBoolean("ownerSwitchChecked", userTypePetOwner.isChecked());
+        editor.putBoolean("sitterSwitchChecked", userTypeSitter.isChecked());
         editor.apply();
 
     }

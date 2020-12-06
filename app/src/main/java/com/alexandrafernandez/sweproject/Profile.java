@@ -190,7 +190,17 @@ public class Profile extends AppCompatActivity {
             }
         }
 
-        startActivity(new Intent(this, Intro.class));
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putBoolean("ownerSwitchChecked", owner.isChecked());
+        editor.putBoolean("sitterSwitchChecked", sitter.isChecked());
+        editor.apply();
+
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         finish();
     }
 }
