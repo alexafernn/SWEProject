@@ -3,11 +3,15 @@ package com.alexandrafernandez.sweproject;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.util.TypedValue;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -82,7 +86,18 @@ public class HomeActivity extends AppCompatActivity {
             sittingList = new ArrayList<Sitting>();
             sittingList.add(new Sitting("04/03/2021", "04/04/2022", false,true, "sheds a lot "));
             sittings_listView = (ListView) findViewById(R.id.sitting_listview);
-            ArrayAdapter<Sitting> adapter = new ArrayAdapter<Sitting>(this, android.R.layout.simple_list_item_1, sittingList);
+            ArrayAdapter<Sitting> adapter = new ArrayAdapter<Sitting>(this, android.R.layout.simple_list_item_1, sittingList)
+            {
+                @Override
+                public View getView(int position, View convertView, ViewGroup parent) {
+                    TextView textView = (TextView) super.getView(position, convertView, parent);
+                    textView.setTextColor(Color.WHITE);
+                    textView.setTypeface(textView.getTypeface(), Typeface.BOLD);
+                    textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 22);
+                    return textView;
+
+                }
+            };
             sittings_listView.setAdapter(adapter);
 
             if (positionDeleting != -1)

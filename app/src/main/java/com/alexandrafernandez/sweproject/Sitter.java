@@ -1,12 +1,16 @@
 package com.alexandrafernandez.sweproject;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -67,7 +71,22 @@ public class Sitter extends AppCompatActivity {
             // sittingList.add(new Sitting("04/03/2021", "04/04/2022", false,true, "sheds a lot "));
             sittingList.add(test);
             sittings_listView = (ListView) findViewById(R.id.sitting2_listview);
-            ArrayAdapter<Sitting> adapter = new ArrayAdapter<Sitting>(this, android.R.layout.simple_list_item_1, sittingList);
+            ArrayAdapter<Sitting> adapter = new ArrayAdapter<Sitting>(this, android.R.layout.simple_list_item_1, sittingList)
+            {
+                @Override
+                public View getView(int position, View convertView, ViewGroup parent)
+                {
+                    TextView textView = (TextView) super.getView(position, convertView, parent);
+                    textView.setTextColor(Color.WHITE);
+                    textView.setTypeface(textView.getTypeface(), Typeface.BOLD);
+                    textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 22);
+                    return textView;
+
+                }
+            };
+
+
+            //ArrayAdapter<Sitting> adapter = new ArrayAdapter<Sitting>(this, R.layout.list_view_details, sittingList);
             // CustomAdapter myAdapter = new CustomAdapter(getApplicationContext(), sittingList);
             sittings_listView.setAdapter(adapter);
 

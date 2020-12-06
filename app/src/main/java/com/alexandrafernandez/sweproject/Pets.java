@@ -3,13 +3,17 @@ package com.alexandrafernandez.sweproject;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -112,7 +116,17 @@ public class Pets extends AppCompatActivity {
         }
 
         pet_listview = (ListView) findViewById(R.id.pet_listview);
-        ArrayAdapter<PetData> adapter = new ArrayAdapter<PetData>(this, android.R.layout.simple_list_item_1, petList);
+        ArrayAdapter<PetData> adapter = new ArrayAdapter<PetData>(this, android.R.layout.simple_list_item_1, petList) {
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+                TextView textView = (TextView) super.getView(position, convertView, parent);
+                textView.setTextColor(Color.WHITE);
+                textView.setTypeface(textView.getTypeface(), Typeface.BOLD);
+                textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 22);
+                return textView;
+
+            }
+        };
         pet_listview.setAdapter(adapter);
 
         context = this;

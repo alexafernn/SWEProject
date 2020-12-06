@@ -61,7 +61,8 @@ public class SitterAvailability extends AppCompatActivity {
         availabilityList.add(new SitterAvailabilityData("01/01/2021","02/02/2021", ""));
 
         sitter_availability_listview = (ListView) findViewById(R.id.sitter_availabilty_listview);
-        ArrayAdapter<SitterAvailabilityData> adapter = new ArrayAdapter<SitterAvailabilityData>(this, android.R.layout.simple_list_item_1, availabilityList);
+        ArrayAdapter<SitterAvailabilityData> adapter = new ArrayAdapter<SitterAvailabilityData>(this, android.R.layout.simple_list_item_1, availabilityList)
+                ;
         sitter_availability_listview.setAdapter(adapter);
 
         context = this;
