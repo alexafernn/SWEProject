@@ -84,7 +84,7 @@ public class HomeActivity extends AppCompatActivity {
             noSittings.setVisibility(View.INVISIBLE);
 
             sittingList = new ArrayList<Sitting>();
-            sittingList.add(new Sitting("04/03/2021", "04/04/2022", false,true, "sheds a lot "));
+            //sittingList.add(new Sitting("04/03/2021", "04/04/2022", false,true, "sheds a lot "));
             sittings_listView = (ListView) findViewById(R.id.sitting_listview);
             ArrayAdapter<Sitting> adapter = new ArrayAdapter<Sitting>(this, android.R.layout.simple_list_item_1, sittingList)
             {

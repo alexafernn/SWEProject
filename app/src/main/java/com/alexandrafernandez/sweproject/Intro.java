@@ -96,13 +96,13 @@ public class Intro extends AppCompatActivity {
 
         owner = findViewById(R.id.owner_main_button); //i need a sitter
         owner.setTextSize(view.getButtonTextSize());
-        if(pref.getBoolean("ownerSwitchChecked", false))
+        if(pref.getBoolean("ownerSwitchChecked", true))
             owner.setVisibility(View.VISIBLE);
         else owner.setVisibility(View.INVISIBLE);
 
         sitter = findViewById(R.id.sitter_main_button); //i want to sit
         sitter.setTextSize(view.getButtonTextSize());
-        if(pref.getBoolean("sitterSwitchChecked", false))
+        if(pref.getBoolean("sitterSwitchChecked", true))
             sitter.setVisibility(View.VISIBLE);
         else sitter.setVisibility(View.INVISIBLE);
     }

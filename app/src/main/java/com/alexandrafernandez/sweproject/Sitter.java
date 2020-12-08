@@ -1,10 +1,14 @@
 package com.alexandrafernandez.sweproject;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.preference.PreferenceManager;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -19,7 +23,11 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * Sitter Class
@@ -43,6 +51,22 @@ public class Sitter extends AppCompatActivity {
     ListView sittings_listView;
 
     /**
+     * Event to be selected and accessed after assignment
+     */
+    Sitting event;
+
+    /**
+     * Activity and View data
+     */
+    private Context context;
+
+    /**
+     * Server interaction objects
+     */
+    SharedPreferences pref;
+    String clientID, clientAuth, job_id;
+
+    /**
      * On Create Method
      * Initializes the sitter View and instantiates other view objects for later use
      * @param savedInstanceState android system parameter
@@ -55,24 +79,58 @@ public class Sitter extends AppCompatActivity {
 
         Bundle b;
         final Sitting[] sitting = {MainActivity.sitting};
-        final Sitting test = new Sitting("04/03/2021", "04/04/2022", false,true, "sheds a lot ");
-
-        //if(sitting[0] !=null)
-        //{
-
 
         if (sitting[0].getNumberOfSittings() == 0)
         {
             Toast.makeText(getApplicationContext(),"No reservations open for sitting",Toast.LENGTH_SHORT).show();
         }
-       // else {
 
-            sittingList = new ArrayList<Sitting>();
-            // sittingList.add(new Sitting("04/03/2021", "04/04/2022", false,true, "sheds a lot "));
-            sittingList.add(test);
-            sittings_listView = (ListView) findViewById(R.id.sitting2_listview);
-            ArrayAdapter<Sitting> adapter = new ArrayAdapter<Sitting>(this, android.R.layout.simple_list_item_1, sittingList)
-            {
+        //GET Request - get id/auth
+        pref = PreferenceManager.getDefaultSharedPreferences(this);
+        clientID = pref.getString("id", "");
+        clientAuth = pref.getString("auth", "");
+
+        //Url connection
+        UrlGet userInfo = new UrlGet("http://aiji.cs.loyola.edu/availablejoblist?id=" + clientID + "&auth=" + clientAuth,"available.sitter", this);
+        userInfo.start();
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        sittingList = new ArrayList<Sitting>();
+        boolean success = false;
+
+        //Save response
+        String json = pref.getString("available.sitter", "");
+        String id="", startDateTime="", endDateTime="", ownerName="";
+        JSONObject jobData;
+        try {
+            JSONObject jsonObject = new JSONObject(json);
+            Iterator<String> keys = jsonObject.keys();
+            while(keys.hasNext()) {
+                id = keys.next();
+                jobData = jsonObject.getJSONObject(id);
+                ownerName = jobData.getString("owner_name");
+                startDateTime = jobData.getString("start_datetime");
+                endDateTime = jobData.getString("end_datetime");
+                if(!id.equals("success"))
+                    sittingList.add(new Sitting(startDateTime, endDateTime, ownerName, id));
+                else success = true;
+            }
+        } catch( JSONException json_e ) {
+            Log.w("MA", json_e.toString());
+        }
+
+        if(!success) {
+            Toast.makeText(this, "No sittings found.", Toast.LENGTH_SHORT).show();
+        }
+
+        context = this;
+
+        ArrayAdapter<Sitting> adapter = new ArrayAdapter<Sitting>(this, android.R.layout.simple_list_item_1, sittingList)
+        {
                 @Override
                 public View getView(int position, View convertView, ViewGroup parent)
                 {
@@ -83,34 +141,22 @@ public class Sitter extends AppCompatActivity {
                     return textView;
 
                 }
-            };
+        };
 
+        sittings_listView = (ListView) findViewById(R.id.sitting2_listview);
+        sittings_listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                event = sittingList.get(i);
 
-            //ArrayAdapter<Sitting> adapter = new ArrayAdapter<Sitting>(this, R.layout.list_view_details, sittingList);
-            // CustomAdapter myAdapter = new CustomAdapter(getApplicationContext(), sittingList);
-            sittings_listView.setAdapter(adapter);
-
-            sittings_listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView parent, View v, int position, long id) {
-//                    Sitting list_row = sittingList.get(position);
-//                    //if position = 0
-//                    Intent intent = new Intent(Sitter.this, approveSitting.class); //idk
-//                    intent.putExtra("Myobject", test);
-//                    startActivity(intent);
-//                    //else if postion == 1
-
-                    Intent i = new Intent(Sitter.this, approveSitting.class);
-                    i.putExtra("Test", test);
-                    startActivity(i);
-
-                }
-            });
-       // }
-            // do something when u click on the sitting
-
-            //TODO clean up / add server connections
-        }
+                Intent intent = new Intent(context, Sitting.class);
+                intent.putExtra("job_id", event.id);
+                startActivity(intent);
+                finish();
+            }
+        });
+        sittings_listView.setAdapter(adapter);
+    }
 
 
 

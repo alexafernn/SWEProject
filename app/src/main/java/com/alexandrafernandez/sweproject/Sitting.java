@@ -27,29 +27,28 @@ public class Sitting implements Serializable/*implements Parcelable*/ {
     private int numberOfSittings;
     private String startDate;
     private String endDate;
-    private boolean allMyPets;
     private boolean mustOccurAtMyLocation;
     private String notesForSitter;
+    private String ownerName;
+    protected String id;
 
     public Sitting(Context context)
     {
 
     }
 
-    public Sitting(String startDate, String endDate, boolean allMyPets, boolean mustOccurAtMyLocation, String notesForSitter) /*select specific pets*/
+    public Sitting(String startDate, String endDate, String ownerName, String id)
     {
         this.startDate=startDate;
         this.endDate=endDate;
-        this.allMyPets=allMyPets;
-        this.mustOccurAtMyLocation = mustOccurAtMyLocation;
-        this.notesForSitter=notesForSitter;
+        this.ownerName=ownerName;
+        this.id = id;
     }
 
     protected Sitting(Parcel in) {
         numberOfSittings = in.readInt();
         startDate = in.readString();
         endDate = in.readString();
-        allMyPets = in.readByte() != 0;
         mustOccurAtMyLocation = in.readByte() != 0;
         notesForSitter = in.readString();
     }
@@ -88,11 +87,6 @@ public class Sitting implements Serializable/*implements Parcelable*/ {
         return endDate;
     }
 
-    public boolean isAllMyPets()
-    {
-        return allMyPets;
-    }
-
     public boolean isMustOccurAtMyLocation()
     {
         return mustOccurAtMyLocation;
@@ -108,7 +102,6 @@ public class Sitting implements Serializable/*implements Parcelable*/ {
         StringBuilder sb = new StringBuilder();
         sb.append("Start Date: ").append(startDate).append(System.getProperty("line.separator"));
         sb.append("End Date: ").append(endDate).append(System.getProperty("line.separator"));
-        sb.append("All of Owners Pets: ").append(allMyPets).append(System.getProperty("line.separator"));
         sb.append("Must Occur at Owner's House: ").append(mustOccurAtMyLocation).append(System.getProperty("line.separator"));
         sb.append("Notes for Sitter: ").append(notesForSitter);
         return sb.toString();

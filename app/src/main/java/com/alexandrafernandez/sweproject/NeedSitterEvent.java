@@ -92,6 +92,8 @@ public class NeedSitterEvent extends AppCompatActivity {
         start_time = (EditText) findViewById(R.id.start_time);
         start_time.setTextSize(view.getEditTextSize());
 
+        //timeSpecification1
+
         end_date_label = (TextView) findViewById(R.id.calendar_title_info2);
         end_date_label.setTextSize((float) (0.5*view.getLabelTextSize()));
 

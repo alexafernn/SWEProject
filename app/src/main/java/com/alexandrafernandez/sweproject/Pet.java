@@ -78,7 +78,7 @@ public class Pet extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pet);
-        setTitle("View My Pet");
+        setTitle("New Pet");
 
         ScreenSize view = new ScreenSize(this);
 
@@ -98,6 +98,7 @@ public class Pet extends AppCompatActivity {
         String name = "", attributes = "";
 
         if(pet_id != null) {
+            setTitle("View My Pet");
 
             //Url connection
             UrlGet userInfo = new UrlGet("http://aiji.cs.loyola.edu/petinfo?id=" + clientID + "&pet_id=" + pet_id + "&auth=" + clientAuth, "pet.userInfo", this);

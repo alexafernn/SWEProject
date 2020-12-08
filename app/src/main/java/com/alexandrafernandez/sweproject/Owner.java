@@ -124,8 +124,9 @@ public class Owner extends AppCompatActivity {
         }
 
         if(!success) {
-            Toast.makeText(this, "No pets found.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "No sittings found.", Toast.LENGTH_SHORT).show();
         }
+
         ScreenSize view = new ScreenSize(this);
 
         sitter_request_button = findViewById(R.id.sitter_request_button);
