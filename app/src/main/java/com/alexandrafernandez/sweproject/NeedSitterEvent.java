@@ -96,7 +96,8 @@ public class NeedSitterEvent extends AppCompatActivity implements LocationListen
         start_time = (EditText) findViewById(R.id.start_time);
         start_time.setTextSize(view.getEditTextSize());
 
-        //timeSpecification1
+        timePreference1 = (Switch) findViewById(R.id.timeSpecification1);
+        timePreference1.setTextSize(view.getSwitchTextSize());
 
         end_date_label = (TextView) findViewById(R.id.calendar_title_info2);
         end_date_label.setTextSize((float) (0.5*view.getLabelTextSize()));
@@ -109,6 +110,9 @@ public class NeedSitterEvent extends AppCompatActivity implements LocationListen
 
         end_time = (EditText) findViewById(R.id.end_time);
         end_time.setTextSize(view.getEditTextSize());
+
+        timePreference2 = (Switch) findViewById(R.id.timeSpecification2);
+        timePreference2.setTextSize(view.getSwitchTextSize());
 
         switch9 = (Switch) findViewById(R.id.switch9);
         switch9.setTextSize(view.getSwitchTextSize());
