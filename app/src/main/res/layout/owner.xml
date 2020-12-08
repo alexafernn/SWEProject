@@ -47,7 +47,6 @@
         android:layout_below="@id/sitter_request_label"
         android:layout_marginTop="15dp"
         android:layout_margin="10dp"
-        android:text="No pets? Add a pet to get started."
         android:textSize="24sp"
         android:gravity="center"
         android:id="@+id/owner_listview"

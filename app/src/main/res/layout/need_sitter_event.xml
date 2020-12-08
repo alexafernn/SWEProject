@@ -150,17 +150,16 @@
 
     <Button
         android:id="@+id/confirm_sitter_request_button"
+        style="@style/MarginStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/additional_info_text_field"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:background="@color/colorPrimary"
-        android:textColor="@color/colorWhite"
-        android:text="Confirm Request"
         android:onClick="onCreateRequestSitterEvent"
-        android:layout_margin="10dp"
-        style="@style/MarginStyle"
-        />
+        android:text="Confirm Request"
+        android:textColor="@color/colorWhite" />
 
     <Button
         android:id="@+id/job_delete_button"

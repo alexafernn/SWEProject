@@ -48,6 +48,8 @@ public class HomeActivity extends AppCompatActivity {
      */
     private Context context;
 
+    //sitters view
+
     /**
      * On Create Method
      * Initializes the home activity View and instantiates other view objects for later use
