@@ -125,14 +125,6 @@ public class SignUp extends AppCompatActivity {
 
         saveButton = (Button) findViewById(R.id.saveButton);
         saveButton.setTextSize(view.getButtonTextSize());
-
-        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
-        SharedPreferences.Editor editor = pref.edit();
-        editor.putBoolean("loginSwitchChecked", false);
-        editor.putBoolean("ownerSwitchChecked", userTypePetOwner.isChecked());
-        editor.putBoolean("sitterSwitchChecked", userTypeSitter.isChecked());
-        editor.apply();
-
     }
 
     /**
@@ -142,6 +134,18 @@ public class SignUp extends AppCompatActivity {
      */
     public void save(View v)
     {
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putBoolean("loginSwitchChecked", false);
+        editor.putBoolean("ownerSwitchChecked", userTypePetOwner.isChecked());
+        editor.putBoolean("sitterSwitchChecked", userTypeSitter.isChecked());
+        editor.commit();
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         startActivity(new Intent(this, MainActivity.class));
 
         //POST REQUEST - json
@@ -172,7 +176,7 @@ public class SignUp extends AppCompatActivity {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
+
         String response = pref.getString("signup.response", "");
         boolean success = false;
         try {

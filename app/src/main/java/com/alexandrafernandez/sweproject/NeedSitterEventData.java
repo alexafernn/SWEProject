@@ -1,5 +1,7 @@
 package com.alexandrafernandez.sweproject;
 
+import android.location.Location;
+
 /**
  * Need Sitter Event Data Class
  * This class allows serves as the model for the Need Sitter Event class

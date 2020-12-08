@@ -4,6 +4,8 @@ import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.location.Location;
+import android.location.LocationListener;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -34,7 +36,7 @@ import java.util.Locale;
  * @author Alexandra Fernandez
  * @version 3.0 Final Release
  */
-public class NeedSitterEvent extends AppCompatActivity {
+public class NeedSitterEvent extends AppCompatActivity implements LocationListener{
 
     /**
      * Text Views for identifying field components
@@ -62,6 +64,8 @@ public class NeedSitterEvent extends AppCompatActivity {
      */
     SharedPreferences pref;
     String clientID, clientAuth, job_id;
+
+    Location location;
 
 
     /**
@@ -138,7 +142,7 @@ public class NeedSitterEvent extends AppCompatActivity {
         if(job_id != null) {
 
             //Url connection
-            UrlGet userInfo = new UrlGet("http://aiji.cs.loyola.edu/joblist?id=" + clientID + "&auth=" + clientAuth + "&job_id=" + job_id, "requests.list", this);
+            UrlGet userInfo = new UrlGet("http://aiji.cs.loyola.edu/jobinfo?id=" + clientID + "&auth=" + clientAuth + "&job_id=" + job_id, "requests.list", this);
             userInfo.start();
             try {
                 Thread.sleep(500);
@@ -151,9 +155,6 @@ public class NeedSitterEvent extends AppCompatActivity {
             //Save response
             try {
                 JSONObject jsonObject = new JSONObject(json);
-                location = jsonObject.getString("location");
-                lat = Float.parseFloat(jsonObject.getString("lat"));
-                lon = Float.parseFloat(jsonObject.getString("long"));
                 is_at_owner = jsonObject.getBoolean("is_at_owner");
                 switch9.setChecked(is_at_owner);
                 startDateTime = jsonObject.getString("start_datetime");
@@ -188,13 +189,18 @@ public class NeedSitterEvent extends AppCompatActivity {
     {
         Intent i = new Intent(this, Owner.class);
 
+        Toast.makeText(this, "Getting Current Location", Toast.LENGTH_SHORT).show();
+        while(location.getLatitude() == 0 || location.getLongitude() == 0) {
+            //wait
+        }
+
         JSONObject data = new JSONObject();
         try {
             data.put("id", clientID);
             data.put("auth", clientAuth);
             data.put("location", ""); //address
-            data.put("lat", 0.0); //latitude
-            data.put("long", 0.0); //longitude
+            data.put("lat", location.getLatitude()); //latitude
+            data.put("long", location.getLongitude()); //longitude
             data.put("is_at_owner", switch9.isChecked());
             data.put("start_datetime", start_date.getText().toString() + " " + start_time.getText().toString());
             data.put("end_datetime", end_date.getText().toString() + " " + end_time.getText().toString());
@@ -250,6 +256,24 @@ public class NeedSitterEvent extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onLocationChanged(Location location) {
+        this.location = location;
+    }
 
+    @Override
+    public void onStatusChanged(String s, int i, Bundle bundle) {
+
+    }
+
+    @Override
+    public void onProviderEnabled(String s) {
+
+    }
+
+    @Override
+    public void onProviderDisabled(String s) {
+
+    }
 }
 

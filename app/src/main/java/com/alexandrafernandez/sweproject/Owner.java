@@ -95,7 +95,7 @@ public class Owner extends AppCompatActivity {
         UrlGet userInfo = new UrlGet("http://aiji.cs.loyola.edu/ownerjoblist?id=" + clientID + "&auth=" + clientAuth + "&is_accepted=" + false,"requests.list", this);
         userInfo.start();
         try {
-            Thread.sleep(500);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -112,11 +112,12 @@ public class Owner extends AppCompatActivity {
             Iterator<String> keys = jsonObject.keys();
             while(keys.hasNext()) {
                 id = keys.next();
-                jobData = jsonObject.getJSONObject(id);
-                startDateTime = jobData.getString("start_datetime");
-                endDateTime = jobData.getString("end_datetime");
-                if(!id.equals("success"))
+                if(!id.equals("success")) {
+                    jobData = jsonObject.getJSONObject(id);
+                    startDateTime = jobData.getString("start_datetime");
+                    endDateTime = jobData.getString("end_datetime");
                     requestList.add(new NeedSitterEventData(startDateTime, endDateTime, id));
+                }
                 else success = true;
             }
         } catch( JSONException json_e ) {
@@ -138,11 +139,14 @@ public class Owner extends AppCompatActivity {
         noSittingsLabel = (TextView) findViewById(R.id.noSittings);
         noSittingsLabel.setTextSize(view.getLabelTextSize());
 
-        requestList = new ArrayList<NeedSitterEventData>();
-
         owner_listview = (ListView) findViewById(R.id.owner_listview);
         ArrayAdapter<NeedSitterEventData> adapter = new ArrayAdapter<NeedSitterEventData>(this, android.R.layout.simple_list_item_1, requestList);
         owner_listview.setAdapter(adapter);
+
+        for(int i=0; i<requestList.size(); i++) {
+            Log.w("MA", "REquestList arary");
+            Log.w("MA" , requestList.get(i).toString());
+        }
 
         context = this;
 
@@ -214,5 +218,6 @@ public class Owner extends AppCompatActivity {
      */
     public void onRequestSitterEvent(View view) {
         startActivity(new Intent(this, NeedSitterEvent.class));
+        finish();
     }
 }

@@ -36,12 +36,12 @@ public class Intro extends AppCompatActivity {
     /**
      * Text Views for identifying field components
      */
-    TextView greeting, status_messages;
+    TextView greeting;
 
     /**
      * Buttons used to confirm data and/or move to another activity
      */
-    Button owner, sitter, adoption;
+    Button owner, sitter;
 
     /**
      * Server interaction objects
@@ -94,14 +94,20 @@ public class Intro extends AppCompatActivity {
         greeting.setText(greetMe);
         greeting.setTextSize(view.getLabelTextSize());
 
+        boolean own = pref.getBoolean("ownerSwitchChecked", true);
+        boolean sit = pref.getBoolean("sitterSwitchChecked", true);
+        Log.w("MA", sit + " " + own);
+
         owner = findViewById(R.id.owner_main_button); //i need a sitter
         owner.setTextSize(view.getButtonTextSize());
+
         if(pref.getBoolean("ownerSwitchChecked", true))
             owner.setVisibility(View.VISIBLE);
         else owner.setVisibility(View.INVISIBLE);
 
         sitter = findViewById(R.id.sitter_main_button); //i want to sit
         sitter.setTextSize(view.getButtonTextSize());
+
         if(pref.getBoolean("sitterSwitchChecked", true))
             sitter.setVisibility(View.VISIBLE);
         else sitter.setVisibility(View.INVISIBLE);
