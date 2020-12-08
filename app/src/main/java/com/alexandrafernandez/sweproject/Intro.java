@@ -202,7 +202,9 @@ public class Intro extends AppCompatActivity {
      * Sends to sitter activity
      * @param view the reference object calling this method
      */
-    public void toSitterProfile(View view) {
-        startActivity(new Intent(this, Sitter.class));
+    public void toSitterProfile(View view)
+    {
+        startActivity(new Intent(this, SitterSittings.class));
+       // startActivity(new Intent(this, Sitter.class));
     }
 }

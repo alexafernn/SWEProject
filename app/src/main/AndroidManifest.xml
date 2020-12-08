@@ -44,6 +44,8 @@
         <activity android:name=".petBeingSat"/>
         <activity android:name=".OwnerSitting"/>
         <activity android:name=".OwnerSittings"/>
+        <activity android:name=".SitterSitting"/>
+        <activity android:name=".SitterSittings"/>
     </application>
 
 </manifest>

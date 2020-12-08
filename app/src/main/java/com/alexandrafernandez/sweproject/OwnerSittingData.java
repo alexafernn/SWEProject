@@ -46,17 +46,6 @@ public class OwnerSittingData
          this.success = success;
      }
 
-//    /**
-//     * Owner Sitting Data constructor
-//     * Initializes the data for a owner sitting  entry
-//     * @param name the name of the pet
-//     * @param id the id of the sitting, given by the server
-//     */
-//    public PetData(String name, String id) {
-//        this.name = name;
-//        this.id = id;
-//    }
-
     /**
      * to String method
      * Prints location, startTime, endTime, details, sitterName for list view display purposes
