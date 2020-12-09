@@ -28,7 +28,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class SitterSittings extends AppCompatActivity
+public class SitterAccepted extends AppCompatActivity
 {
     /**
      * List managing the sittings the sitter has
@@ -72,7 +72,7 @@ public class SitterSittings extends AppCompatActivity
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.current_sittings);
-        setTitle("SITTER SITTINGS");
+        setTitle("ACCEPTED SITTINGS");
 
         //GET Request - get id/auth
         pref = PreferenceManager.getDefaultSharedPreferences(this);
@@ -110,7 +110,7 @@ public class SitterSittings extends AppCompatActivity
                     startDateTime = jobData.getString("start_datetime");
                     endDateTime = jobData.getString("end_datetime");
                     ownerName =jobData.getString("owner_name");
-                    sitterSittingList.add(new SitterSittingData(startDateTime, endDateTime, id, ownerName)); //TODO finish the rest of this class
+                    sitterSittingList.add(new SitterSittingData(id, startDateTime, endDateTime, ownerName)); //TODO finish the rest of this class
                 }
                 else success = true;
             }
@@ -154,7 +154,7 @@ public class SitterSittings extends AppCompatActivity
                 sitterSitting = sitterSittingList.get(position);
 
                 Intent intent = new Intent(context, SitterSitting.class);
-                intent.putExtra("sitter_sitting_id", sitterSitting.sittingID);
+                intent.putExtra("job_id", sitterSitting.sittingID);
                 startActivity(intent);
                 finish();
             }

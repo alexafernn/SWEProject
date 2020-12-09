@@ -10,14 +10,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 
 public class SitterSitting extends AppCompatActivity
@@ -161,7 +159,7 @@ public class SitterSitting extends AppCompatActivity
      */
     public void onConfirm(View v)
     {
-        final Intent i = new Intent(this, SitterSittings.class);
+        final Intent i = new Intent(this, SitterAccepted.class);
 
         new AlertDialog.Builder(this)
                 .setTitle("Accept Job")
@@ -223,7 +221,7 @@ public class SitterSitting extends AppCompatActivity
     public void onCancel(View v)
     {
 
-        final Intent i = new Intent(this, SitterSittings.class);
+        final Intent i = new Intent(this, SitterAccepted.class);
 
         new AlertDialog.Builder(this)
                 .setTitle("Un-Accept Job")

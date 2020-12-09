@@ -196,7 +196,7 @@ public class Sitter extends AppCompatActivity implements LocationListener {
                 finish();
                 return true;
             case R.id.action_favorite:
-                startActivity(new Intent(this, HomeActivity.class));
+                startActivity(new Intent(this, SitterAccepted.class));
                 return true;
             case R.id.rewards_menu:
                 startActivity(new Intent(this, Rewards.class));

@@ -156,7 +156,7 @@ public class Intro extends AppCompatActivity {
                         public void onClick(DialogInterface dialog, int choice) {
                             switch (choice) {
                                 case DialogInterface.BUTTON_POSITIVE:
-                                    startActivity(new Intent(Intro.this, HomeActivity.class)); // i am sitter
+                                    startActivity(new Intent(Intro.this, SitterAccepted.class)); // i am sitter
                                     break;
                                 case DialogInterface.BUTTON_NEGATIVE:
                                     startActivity(new Intent(Intro.this, sittingsForMyPet.class)); // i am owner

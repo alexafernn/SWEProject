@@ -36,7 +36,6 @@
         <activity android:name=".Rewards" />
         <activity android:name=".SitterAvailability" />
         <activity android:name=".NeedSitterEvent" />
-        <activity android:name=".approveSitting" />
         <activity android:name=".SitterAvailabilityEvent" />
         <activity android:name=".SignUp"/>
         <activity android:name=".ViewSitting"/>
@@ -45,7 +44,7 @@
         <activity android:name=".OwnerSitting"/>
         <activity android:name=".OwnerSittings"/>
         <activity android:name=".SitterSitting"/>
-        <activity android:name=".SitterSittings"/>
+        <activity android:name=".SitterAccepted"/>
     </application>
 
 </manifest>
