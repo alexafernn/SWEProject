@@ -120,13 +120,14 @@ public class Sitter extends AppCompatActivity implements LocationListener {
             Iterator<String> keys = jsonObject.keys();
             while(keys.hasNext()) {
                 id = keys.next();
-                jobData = jsonObject.getJSONObject(id);
-                ownerName = jobData.getString("owner_name");
-                startDateTime = jobData.getString("start_datetime");
-                endDateTime = jobData.getString("end_datetime");
-                if(!id.equals("success"))
+                if(!id.equals("success")) {
+                    jobData = jsonObject.getJSONObject(id);
+                    ownerName = jobData.getString("owner_name");
+                    startDateTime = jobData.getString("start_datetime");
+                    endDateTime = jobData.getString("end_datetime");
                     sittingList.add(new Sitting(startDateTime, endDateTime, ownerName, id));
-                else success = true;
+                }
+
             }
         } catch( JSONException json_e ) {
             Log.w("MA", json_e.toString());
@@ -161,6 +162,7 @@ public class Sitter extends AppCompatActivity implements LocationListener {
 
                 Intent intent = new Intent(context, SitterSitting.class);
                 intent.putExtra("job_id", event.id);
+                Log.w("MA", "----------------------Event ID: " + event.id);
                 startActivity(intent);
                 finish();
             }

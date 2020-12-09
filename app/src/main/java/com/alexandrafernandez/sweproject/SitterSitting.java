@@ -111,7 +111,7 @@ public class SitterSitting extends AppCompatActivity
         clientID = pref.getString("id", "");
         clientAuth = pref.getString("auth", "");
 
-        job_id = getIntent().getStringExtra("sitter_sitting_id");
+        job_id = getIntent().getStringExtra("job_id");
 
         String startDateTime = "", endDateTime = "", details ="";
         boolean success = false, is_at_owner = false;
@@ -227,7 +227,7 @@ public class SitterSitting extends AppCompatActivity
 
         new AlertDialog.Builder(this)
                 .setTitle("Un-Accept Job")
-                .setMessage("Are you sure you want to un-accept this job?")
+                .setMessage("Are you sure you want to ignore this job?")
                 .setPositiveButton("Un-Accept", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
 
