@@ -111,7 +111,7 @@ public class SitterSitting extends AppCompatActivity
         clientID = pref.getString("id", "");
         clientAuth = pref.getString("auth", "");
 
-        job_id = getIntent().getStringExtra("job_id");
+        job_id = getIntent().getStringExtra("sitter_sitting_id");
 
         String startDateTime = "", endDateTime = "", details ="";
         boolean success = false, is_at_owner = false;
