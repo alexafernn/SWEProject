@@ -193,8 +193,8 @@ public class Intro extends AppCompatActivity {
      * @param view the reference object calling this method
      */
     public void toOwnerProfile(View view) {
-       // startActivity(new Intent(this, Owner.class));
-        startActivity(new Intent (this, OwnerSittings.class));
+        startActivity(new Intent(this, Owner.class));
+        //startActivity(new Intent (this, OwnerSittings.class));
     }
 
     /**
@@ -204,7 +204,7 @@ public class Intro extends AppCompatActivity {
      */
     public void toSitterProfile(View view)
     {
-        startActivity(new Intent(this, SitterSittings.class));
-       // startActivity(new Intent(this, Sitter.class));
+        //startActivity(new Intent(this, SitterSittings.class));
+        startActivity(new Intent(this, Sitter.class));
     }
 }

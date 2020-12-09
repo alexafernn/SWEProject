@@ -2,6 +2,8 @@ package com.alexandrafernandez.sweproject;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.location.Location;
@@ -17,6 +19,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import org.json.JSONException;
@@ -139,9 +142,12 @@ public class NeedSitterEvent extends AppCompatActivity implements LocationListen
 
         job_id = getIntent().getStringExtra("job_id");
 
-        String startDateTime = "", endDateTime = "", location = "";
+        String startDateTime = "", endDateTime = "";
         boolean success = false, is_at_owner = false;
         float lat=0, lon=0;
+
+        Log.w("MA", "Creating NEED SITTER EVENT");
+        location = new Location("");
 
         if(job_id != null) {
 
@@ -179,9 +185,6 @@ public class NeedSitterEvent extends AppCompatActivity implements LocationListen
         else {
             job_delete_button.setVisibility(View.INVISIBLE);
         }
-
-
-
     }
 
     /**
@@ -193,10 +196,10 @@ public class NeedSitterEvent extends AppCompatActivity implements LocationListen
     {
         Intent i = new Intent(this, Owner.class);
 
-        Toast.makeText(this, "Getting Current Location", Toast.LENGTH_SHORT).show();
-        while(location.getLatitude() == 0 || location.getLongitude() == 0) {
+        //while(location.getLatitude() == 0 || location.getLongitude() == 0) {
             //wait
-        }
+        //}
+        Log.w("MA", location.getLatitude() + " " + location.getLongitude());
 
         JSONObject data = new JSONObject();
         try {
@@ -259,6 +262,75 @@ public class NeedSitterEvent extends AppCompatActivity implements LocationListen
         finish();
     }
 
+    public void deletePet(View view) {
+        final Intent i = new Intent(this, Owner.class);
+
+        new AlertDialog.Builder(this)
+                .setTitle("Delete Job")
+                .setMessage("Are you sure you want to delete this job?")
+                .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        JSONObject data = new JSONObject();
+                        try {
+                            data.put("id", clientID);
+                            data.put("auth", clientAuth);
+                            data.put("job_id", job_id);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                        UrlDelete saveInfo = new UrlDelete("http://aiji.cs.loyola.edu/jobdelete", data.toString(), "job.response", getContext());
+                        saveInfo.start();
+
+                        //give persistent data time to write
+                        try {
+                            Thread.sleep(500);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+
+                        //check response
+                        String response = pref.getString("job.response", "");
+                        boolean success = false;
+                        try {
+                            JSONObject jsonObject1 = new JSONObject(response);
+                            success = jsonObject1.getBoolean("success");
+                        } catch( JSONException json_e ) {
+                            if(!success) {
+                                showError();
+                                //return;
+                            }
+                        }
+                        startActivity(i);
+                        finish();
+                    }
+                })
+
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                })
+                .setIcon(android.R.drawable.ic_menu_delete)
+                .show();
+    }
+
+    /**
+     * Get Context
+     * @return the activity
+     */
+    public Context getContext(){
+        return this;
+    }
+
+    /**
+     * Show error method
+     * Shows a toast with the issue
+     */
+    public void showError() {
+        Toast.makeText(this, "Unable to complete request.", Toast.LENGTH_LONG).show();
+    }
 
     @Override
     public void onLocationChanged(Location location) {

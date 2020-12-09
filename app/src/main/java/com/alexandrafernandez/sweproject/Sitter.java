@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.location.Location;
+import android.location.LocationListener;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.preference.PreferenceManager;
@@ -38,7 +40,7 @@ import java.util.Iterator;
  * @author Alexandra Fernandez
  * @version 3.0 Final Release
  */
-public class Sitter extends AppCompatActivity {
+public class Sitter extends AppCompatActivity implements LocationListener {
 
     /**
      * List managing the sittings nearby owners have requested
@@ -60,6 +62,8 @@ public class Sitter extends AppCompatActivity {
      */
     private Context context;
 
+    Location location;
+
     /**
      * Server interaction objects
      */
@@ -77,6 +81,7 @@ public class Sitter extends AppCompatActivity {
         setContentView(R.layout.sitter);
         setTitle("SITTER");
 
+        /*
         Bundle b;
         final Sitting[] sitting = {MainActivity.sitting};
 
@@ -85,13 +90,17 @@ public class Sitter extends AppCompatActivity {
             Toast.makeText(getApplicationContext(),"No reservations open for sitting",Toast.LENGTH_SHORT).show();
         }
 
+         */
+
         //GET Request - get id/auth
         pref = PreferenceManager.getDefaultSharedPreferences(this);
         clientID = pref.getString("id", "");
         clientAuth = pref.getString("auth", "");
 
+        location = new Location("");
+
         //Url connection
-        UrlGet userInfo = new UrlGet("http://aiji.cs.loyola.edu/availablejoblist?id=" + clientID + "&auth=" + clientAuth,"available.sitter", this);
+        UrlGet userInfo = new UrlGet("http://aiji.cs.loyola.edu/jobsearch?id=" + clientID + "&auth=" + clientAuth + "&lat=" + location.getLatitude() + "&lon=" + location.getLongitude(),"available.sitter" , this);
         userInfo.start();
         try {
             Thread.sleep(500);
@@ -128,6 +137,7 @@ public class Sitter extends AppCompatActivity {
         }
 
         context = this;
+
 
         ArrayAdapter<Sitting> adapter = new ArrayAdapter<Sitting>(this, android.R.layout.simple_list_item_1, sittingList)
         {
@@ -201,6 +211,26 @@ public class Sitter extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    public void onLocationChanged(Location location) {
+        this.location = location;
+    }
+
+    @Override
+    public void onStatusChanged(String s, int i, Bundle bundle) {
+
+    }
+
+    @Override
+    public void onProviderEnabled(String s) {
+
+    }
+
+    @Override
+    public void onProviderDisabled(String s) {
+
     }
 }
 

@@ -103,6 +103,8 @@ public class Owner extends AppCompatActivity {
         requestList = new ArrayList<NeedSitterEventData>();
         boolean success = false;
 
+        Log.w("MA", "CREATED OWNER");
+
         //Save response
         String json = pref.getString("requests.list", "");
         String id="", startDateTime="", endDateTime="";
