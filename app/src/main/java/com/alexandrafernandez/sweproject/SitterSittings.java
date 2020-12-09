@@ -3,13 +3,19 @@ package com.alexandrafernandez.sweproject;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -83,13 +89,16 @@ public class SitterSittings extends AppCompatActivity
         }
 
         sitterSittingList = new ArrayList<SitterSittingData>();
-        boolean success = false;
 
         Log.w("MA", "CREATED OWNER");
 
         //Save response
         String json = pref.getString("requests.list", "");
-        String id="", startDateTime="", endDateTime="";
+
+        String startDateTime = "", endDateTime = "", details ="", id="", ownerName ="";
+        boolean success = false, is_at_owner = false;
+        float lat=0, lon=0;
+
         JSONObject jobData;
         try {
             JSONObject jsonObject = new JSONObject(json);
@@ -100,7 +109,8 @@ public class SitterSittings extends AppCompatActivity
                     jobData = jsonObject.getJSONObject(id);
                     startDateTime = jobData.getString("start_datetime");
                     endDateTime = jobData.getString("end_datetime");
-                    //sitterSittingList.add(new SitterSittingData(startDateTime, endDateTime, id)); //TODO finish the rest of this class
+                    ownerName =jobData.getString("owner_name");
+                    sitterSittingList.add(new SitterSittingData(startDateTime, endDateTime, id, ownerName)); //TODO finish the rest of this class
                 }
                 else success = true;
             }
@@ -117,39 +127,38 @@ public class SitterSittings extends AppCompatActivity
 
 
         sitterSitting_listview = (ListView) findViewById(R.id.sitting_listview);
-        sitterSitting_listview.setVisibility(View.INVISIBLE); /** FOR NOW, But after it will check if they are sittigns and base visibility on that **/
+        //sitterSitting_listview.setVisibility(View.INVISIBLE); /** FOR NOW, But after it will check if they are sittigns and base visibility on that **/
 
 
         /** Currently commented out so it can work with not server connection  **/
-//        ArrayAdapter<SitterSittingData> adapter = new ArrayAdapter<SitterSittingData>(this, android.R.layout.simple_expandable_list_item_1,sitterSittingList)
-//        {
-//        @Override
-//           public View getView(int position, View convertView, ViewGroup parent)
-//            {
-//                TextView textView = (TextView) super.getView(position, convertView, parent);
-//                textView.setTextColor(Color.WHITE);
-//                textView.setTypeface(textView.getTypeface(), Typeface.BOLD);
-//                textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP,22);
-//                return textView;
-//
-//            }
-//        };
-//        sitterSitting_listview.setAdapter(adapter);
+        ArrayAdapter<SitterSittingData> adapter = new ArrayAdapter<SitterSittingData>(this, android.R.layout.simple_expandable_list_item_1,sitterSittingList)
+        {
+        @Override
+           public View getView(int position, View convertView, ViewGroup parent)
+            {
+                TextView textView = (TextView) super.getView(position, convertView, parent);
+                textView.setTextColor(Color.WHITE);
+                textView.setTypeface(textView.getTypeface(), Typeface.BOLD);
+                textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP,22);
+                return textView;
+            }
+        };
+        sitterSitting_listview.setAdapter(adapter);
 
         context=this;
 
         /** Currently commented out so it can work with not server connection  **/
-//        sitterSitting_listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                //ownerSitting = sitterSittingList.get(position);
-//
-//                Intent intent = new Intent(context, SitterSitting.class);
-//                //intent.putExtra("sitter_sitting_id", sitterSitting.sittingID);
-//                startActivity(intent);
-//                finish();
-//            }
-//        });
+        sitterSitting_listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                sitterSitting = sitterSittingList.get(position);
+
+                Intent intent = new Intent(context, SitterSitting.class);
+                intent.putExtra("sitter_sitting_id", sitterSitting.sittingID);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         ScreenSize view = new ScreenSize(this);
         textViewNoCurrentSittings = (TextView) findViewById(R.id.noSittings);

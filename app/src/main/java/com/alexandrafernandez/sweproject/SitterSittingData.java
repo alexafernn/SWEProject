@@ -16,17 +16,18 @@ public class SitterSittingData
      * Sitter Sitting information strings
      * (based off what it says on the wiki);
      */
-    String sittingID, startDateTime, endDateTime;
+    String sittingID, startDateTime, endDateTime, ownerName;
 
     /**
      * Sitter Sitting Data constructor
      * Initializes the data for a owner sitting  entry
      */
-    public SitterSittingData(String sittingID, String startDateTime, String endDateTime)
+    public SitterSittingData(String sittingID, String startDateTime, String endDateTime, String ownerName)
     {
         this.sittingID = sittingID;
         this.startDateTime = startDateTime;
         this.endDateTime = endDateTime;
+        this.ownerName = ownerName;
     }
 
 
