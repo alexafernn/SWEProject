@@ -161,7 +161,7 @@ public class SitterSitting extends AppCompatActivity
      */
     public void onConfirm(View v)
     {
-        final Intent i = new Intent(this, Owner.class);
+        final Intent i = new Intent(this, SitterSittings.class);
 
         new AlertDialog.Builder(this)
                 .setTitle("Accept Job")
@@ -210,7 +210,7 @@ public class SitterSitting extends AppCompatActivity
 
                     }
                 })
-                .setIcon(android.R.drawable.ic_menu_delete)
+                .setIcon(android.R.drawable.ic_menu_save)
                 .show();
 
         finish();
@@ -225,12 +225,12 @@ public class SitterSitting extends AppCompatActivity
     public void onCancel(View v)
     {
 
-        final Intent i = new Intent(this, Owner.class);
+        final Intent i = new Intent(this, SitterSittings.class);
 
         new AlertDialog.Builder(this)
-                .setTitle("Delete Job")
-                .setMessage("Are you sure you want to delete this job?")
-                .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                .setTitle("Un-Accept Job")
+                .setMessage("Are you sure you want to un-accept this job?")
+                .setPositiveButton("Un-Accept", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
 
                         JSONObject data = new JSONObject();
@@ -242,7 +242,7 @@ public class SitterSitting extends AppCompatActivity
                             e.printStackTrace();
                         }
 
-                        UrlDelete saveInfo = new UrlDelete("http://aiji.cs.loyola.edu/jobdelete", data.toString(), "job.delete", getContext());
+                        UrlDelete saveInfo = new UrlDelete("http://aiji.cs.loyola.edu/jobunaccept", data.toString(), "job.unaccept", getContext());
                         saveInfo.start();
 
                         //give persistent data time to write
@@ -253,7 +253,7 @@ public class SitterSitting extends AppCompatActivity
                         }
 
                         //check response
-                        String response = pref.getString("job.delete", "");
+                        String response = pref.getString("job.unaccept", "");
                         boolean success = false;
                         try {
                             JSONObject jsonObject1 = new JSONObject(response);
