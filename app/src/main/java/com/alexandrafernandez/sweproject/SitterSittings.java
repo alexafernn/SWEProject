@@ -4,16 +4,23 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class SitterSittings extends AppCompatActivity
 {
@@ -45,7 +52,7 @@ public class SitterSittings extends AppCompatActivity
      * Server interaction objects
      */
     SharedPreferences pref;
-    String clientId, clientAuth;
+    String clientID, clientAuth;
 
 
     /**
@@ -61,7 +68,53 @@ public class SitterSittings extends AppCompatActivity
         setContentView(R.layout.current_sittings);
         setTitle("SITTER SITTINGS");
 
-        //TODO get request, url connection, save response
+        //GET Request - get id/auth
+        pref = PreferenceManager.getDefaultSharedPreferences(this);
+        clientID = pref.getString("id", "");
+        clientAuth = pref.getString("auth", "");
+
+        //Url connection
+        UrlGet userInfo = new UrlGet("http://aiji.cs.loyola.edu/sitterjoblist?id=" + clientID + "&auth=" + clientAuth + "&is_canceled=" + false,"requests.list", this);
+        userInfo.start();
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        sitterSittingList = new ArrayList<SitterSittingData>();
+        boolean success = false;
+
+        Log.w("MA", "CREATED OWNER");
+
+        //Save response
+        String json = pref.getString("requests.list", "");
+        String id="", startDateTime="", endDateTime="";
+        JSONObject jobData;
+        try {
+            JSONObject jsonObject = new JSONObject(json);
+            Iterator<String> keys = jsonObject.keys();
+            while(keys.hasNext()) {
+                id = keys.next();
+                if(!id.equals("success")) {
+                    jobData = jsonObject.getJSONObject(id);
+                    startDateTime = jobData.getString("start_datetime");
+                    endDateTime = jobData.getString("end_datetime");
+                    //sitterSittingList.add(new SitterSittingData(startDateTime, endDateTime, id)); //TODO update model
+                }
+                else success = true;
+            }
+        } catch( JSONException json_e ) {
+            Log.w("MA", json_e.toString());
+        }
+
+        if(!success) {
+            Toast.makeText(this, "No sittings found.", Toast.LENGTH_SHORT).show();
+        }
+
+
+
+
 
         sitterSitting_listview = (ListView) findViewById(R.id.sitting_listview);
         sitterSitting_listview.setVisibility(View.INVISIBLE); /** FOR NOW, But after it will check if they are sittigns and base visibility on that **/
