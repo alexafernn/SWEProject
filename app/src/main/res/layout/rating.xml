@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite">
+
+    <TextView
+        android:id="@+id/calendar_title_info5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Choose Rating (1-5 stars)"
+        android:textColor="@color/colorBlack"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp" />
+
+    <RatingBar
+        android:id="@+id/rating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="?android:attr/ratingBarStyleSmall"
+        android:numStars="5"
+        android:stepSize="0.1"
+        android:isIndicator="true"
+        android:layout_margin="20dp"
+        android:layout_below="@id/calendar_title_info5"
+        android:scaleX="3.5"
+        android:scaleY="3.5"
+        android:layout_centerHorizontal="true"
+        />
+
+    <TextView
+        android:id="@+id/other_notes_info3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rating"
+        android:layout_marginTop="15dp"
+        android:text="Note(s) about this user:"
+        android:textColor="@color/colorBlack"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp" />
+
+    <EditText
+        android:id="@+id/additional_info_text_field2"
+        android:inputType="textMultiLine"
+        android:lines="3"
+        android:minLines="3"
+        android:gravity="top|start"
+        android:maxLines="10"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:scrollbars="vertical"
+        android:layout_below="@id/other_notes_info3"
+        android:background="@color/colorWhite"
+        android:hint="Enter details here..."
+        android:layout_margin="10dp"
+        />
+
+    <Button
+        android:id="@+id/rating_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/additional_info_text_field2"
+        android:layout_marginTop="15dp"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/colorWhite"
+        android:text="Submit Rating"
+        android:onClick="onSubmitRating"
+        android:layout_margin="10dp"
+        />
+
+</RelativeLayout>
