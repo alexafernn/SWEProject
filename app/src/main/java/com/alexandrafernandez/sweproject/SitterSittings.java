@@ -100,7 +100,7 @@ public class SitterSittings extends AppCompatActivity
                     jobData = jsonObject.getJSONObject(id);
                     startDateTime = jobData.getString("start_datetime");
                     endDateTime = jobData.getString("end_datetime");
-                    //sitterSittingList.add(new SitterSittingData(startDateTime, endDateTime, id)); //TODO update model
+                    //sitterSittingList.add(new SitterSittingData(startDateTime, endDateTime, id)); //TODO finish the rest of this class
                 }
                 else success = true;
             }
