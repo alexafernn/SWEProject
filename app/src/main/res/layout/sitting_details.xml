@@ -63,36 +63,14 @@
         android:layout_width="match_parent"
         android:layout_toRightOf="@+id/end_date"
         android:layout_alignRight="@id/end_date"
-        android:layout_alignEnd="@id/confirm_availability_button2"
-        android:layout_above="@id/all_my_pets"/>
-
-    <TextView
-        android:id="@+id/all_my_pets"
-        android:layout_below="@id/end_date"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:text="All My Pets:"
-        android:textColor="@color/colorBlack"
-        android:gravity="center"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        />
-
-
-    <TextView
-        android:id="@+id/all_my_pet_label2"
-        android:layout_toEndOf="@+id/all_my_pets"
-        android:layout_height="wrap_content"
-        android:inputType="text"
-        android:layout_width="match_parent"
-        android:layout_toRightOf="@+id/all_my_pets"
-        android:layout_alignRight="@id/all_my_pets"
-        android:layout_alignEnd="@id/confirm_availability_button2"
+        android:layout_alignEnd="@id/delete_button"
         android:layout_above="@id/must_occur_at_my_location"/>
+
+
 
     <TextView
         android:id="@+id/must_occur_at_my_location"
-        android:layout_below="@id/all_my_pets"
+        android:layout_below="@id/end_date"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:text="Must Occur at My Location:"
@@ -111,7 +89,7 @@
         android:layout_width="match_parent"
         android:layout_toRightOf="@+id/must_occur_at_my_location"
         android:layout_alignRight="@id/must_occur_at_my_location"
-        android:layout_alignEnd="@id/confirm_availability_button2"
+        android:layout_alignEnd="@id/delete_button"
         android:layout_above="@id/notes_for_sitter"/>
 
     <TextView
@@ -135,27 +113,16 @@
         android:layout_width="match_parent"
         android:layout_toRightOf="@+id/notes_for_sitter"
         android:layout_alignRight="@id/notes_for_sitter"
-        android:layout_alignEnd="@id/confirm_availability_button2"
-        android:layout_above="@id/confirm_availability_button2"/>
-    <Button
-        android:id="@+id/confirm_availability_button2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/notes_for_sitter"
-        android:layout_marginTop="15dp"
-        android:background="@color/colorPrimary"
-        android:textColor="@color/colorWhite"
-        android:text="Confirm Sitting"
-        android:onClick="onConfirm2"
-        android:layout_margin="10dp"
-        />
+        android:layout_alignEnd="@id/delete_button"
+        android:layout_above="@id/delete_button"/>
+
 
 
     <Button
         android:id="@+id/delete_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/confirm_availability_button2"
+        android:layout_below="@id/notes_for_sitter"
         android:layout_marginTop="15dp"
         android:background="#F13B14"
         android:textColor="@color/colorWhite"
