@@ -38,7 +38,7 @@
         android:layout_width="match_parent"
         android:layout_toRightOf="@+id/start_date"
         android:layout_alignRight="@id/start_date"
-        android:layout_alignEnd="@id/confirm_availability_button"
+        android:layout_alignEnd="@id/confirm_availability_button2"
         android:layout_above="@id/end_date"/>
 
 
@@ -62,7 +62,7 @@
         android:layout_width="match_parent"
         android:layout_toRightOf="@+id/end_date"
         android:layout_alignRight="@id/end_date"
-        android:layout_alignEnd="@id/confirm_availability_button"
+        android:layout_alignEnd="@id/confirm_availability_button2"
         android:layout_above="@id/all_my_pets"/>
 
     <TextView
@@ -86,7 +86,7 @@
         android:layout_width="match_parent"
         android:layout_toRightOf="@+id/all_my_pets"
         android:layout_alignRight="@id/all_my_pets"
-        android:layout_alignEnd="@id/confirm_availability_button"
+        android:layout_alignEnd="@id/confirm_availability_button2"
         android:layout_above="@id/must_occur_at_my_location"/>
 
     <TextView
@@ -110,7 +110,7 @@
         android:layout_width="match_parent"
         android:layout_toRightOf="@+id/must_occur_at_my_location"
         android:layout_alignRight="@id/must_occur_at_my_location"
-        android:layout_alignEnd="@id/confirm_availability_button"
+        android:layout_alignEnd="@id/confirm_availability_button2"
         android:layout_above="@id/notes_for_sitter"/>
 
     <TextView
@@ -134,13 +134,13 @@
         android:layout_width="match_parent"
         android:layout_toRightOf="@+id/notes_for_sitter"
         android:layout_alignRight="@id/notes_for_sitter"
-        android:layout_alignEnd="@id/confirm_availability_button"
-        android:layout_above="@id/view_pets_button"/>
+        android:layout_alignEnd="@id/confirm_availability_button2"
+        android:layout_above="@id/view_pets_button2"/>
     <Button
-        android:id="@+id/confirm_availability_button"
+        android:id="@+id/confirm_availability_button2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/view_pets_button"
+        android:layout_below="@id/view_pets_button2"
         android:layout_marginTop="15dp"
         android:background="@color/colorPrimary"
         android:textColor="@color/colorWhite"
@@ -150,10 +150,10 @@
         />
 
     <Button
-        android:id="@+id/cancel_button"
+        android:id="@+id/cancel_button2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/confirm_availability_button"
+        android:layout_below="@id/confirm_availability_button2"
         android:layout_marginTop="15dp"
         android:background="@color/colorPrimary"
         android:textColor="@color/colorWhite"
@@ -163,7 +163,7 @@
         />
 
     <Button
-    android:id="@+id/view_pets_button"
+    android:id="@+id/view_pets_button2"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_below="@id/notes_for_sitter"

@@ -56,51 +56,52 @@ public class SitterSitting extends AppCompatActivity
         ScreenSize view  = new ScreenSize(this);
 
         //setting up buttons
-        buttonConfirm = (Button) findViewById(R.id.confirm_availability_button);
+        buttonConfirm = (Button) findViewById(R.id.confirm_availability_button2);
         buttonConfirm.setTextSize(view.getButtonTextSize());
 
-        buttonCancel = (Button) findViewById(R.id.cancel_button);
+        buttonCancel = (Button) findViewById(R.id.cancel_button2);
         buttonCancel.setTextSize(view.getButtonTextSize());
 
-        buttonViewPets = (Button) findViewById(R.id.view_pets_button);
+        buttonViewPets = (Button) findViewById(R.id.view_pets_button2);
         buttonViewPets.setTextSize(view.getButtonTextSize());
 
 
         //setting up textViews
 
 
-        textViewNotesFromOwnerLabel = (TextView) findViewById(R.id.notes_for_sitter);
-        textViewNotesFromOwnerLabel.setTextSize(view.getLabelTextSize());
-
         //exist
         textViewStartDateLabel = (TextView) findViewById(R.id.start);
-        textViewStartDateLabel.setTextSize(view.getLabelTextSize());
+        //textViewStartDateLabel.setTextSize(view.getLabelTextSize());
 
         //exist
         textViewStartDate = (TextView) findViewById(R.id.start_date_label);
-        textViewStartDate.setTextSize(view.getLabelTextSize());
+//        textViewStartDate.setTextSize(view.getLabelTextSize());
 
         //exist
         textViewEndDateLabel = (TextView) findViewById(R.id.end);
-        textViewEndDateLabel.setTextSize(view.getLabelTextSize());
+       // textViewEndDateLabel.setTextSize(view.getLabelTextSize());
 
         //exist
         textViewEndDate = (TextView) findViewById(R.id.end_date_label);
-        textViewEndDate.setTextSize(view.getLabelTextSize());
+//        textViewEndDate.setTextSize(view.getLabelTextSize());
+
+        //exist
+        textViewMustOccurAtOwnerLocationLabel = (TextView) findViewById(R.id.must_occur_at_my_location);
+        //textViewMustOccurAtOwnerLocationLabel.setTextSize(view.getLabelTextSize());
 
         //exist
         textViewMustOccurAtOwnerLocation = (TextView) findViewById(R.id.must_occur_at_my_location_label);
-        textViewMustOccurAtOwnerLocation.setTextSize(view.getLabelTextSize());
+//        textViewMustOccurAtOwnerLocationLabel.setTextSize(view.getLabelTextSize());
 
-        textViewMustOccurAtOwnerLocationLabel = (TextView) findViewById(R.id.must_occur_at_my_location);
-        textViewMustOccurAtOwnerLocationLabel.setTextSize(view.getLabelTextSize());
-
-
+        //exist
         textViewNotesFromOwner = (TextView) findViewById(R.id.notes_for_sitter_label);
-        textViewNotesFromOwner.setTextSize(view.getLabelTextSize());
+//        textViewNotesFromOwner.setTextSize(view.getLabelTextSize());
 
-        textViewAllMyPets = (TextView) findViewById(R.id.all_my_pet_label);
-        textViewAllMyPets.setTextSize(view.getLabelTextSize());
+//        textViewAllMyPets = (TextView) findViewById(R.id.all_my_pet_label);
+//        textViewAllMyPets.setTextSize(view.getLabelTextSize());
+
+        textViewNotesFromOwnerLabel = (TextView) findViewById(R.id.notes_for_sitter);
+        //textViewNotesFromOwnerLabel.setTextSize(view.getLabelTextSize());
 
         //TODO get from server
         /**Things commented out are so it can work without server connection**/
@@ -148,7 +149,9 @@ public class SitterSitting extends AppCompatActivity
             Log.w("MA", json_e.toString());
         }
 
-
+        textViewStartDate.setTextSize(view.getLabelTextSize());
+        textViewEndDate.setTextSize(view.getLabelTextSize());
+        textViewNotesFromOwner.setTextSize(view.getLabelTextSize());
 
     }
 
@@ -163,7 +166,7 @@ public class SitterSitting extends AppCompatActivity
         Intent i = new Intent(this, SitterSittings.class);
 
         //TODO Json object, communicate it was accepted
-
+        //job accept, id auth
         startActivity(i);
         finish();
     }
