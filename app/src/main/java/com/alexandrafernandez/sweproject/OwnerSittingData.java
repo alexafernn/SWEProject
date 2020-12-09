@@ -27,23 +27,23 @@ public class OwnerSittingData
      * Owner Sitting Data constructor
      * Initializes the data for a owner sitting  entry
     */
-     public OwnerSittingData(String sittingID, String location, String startDateTime, String endDateTime, String petId, String details, String ownerName, String sitterName, float lat, float longitude,
-                             boolean isAtOwnerLocation, boolean accepted, boolean canceled, boolean success)
+     public OwnerSittingData(String sittingID, String location, String startDateTime, String endDateTime,
+                              boolean accepted)
      {
          this.sittingID = sittingID;
          this.location = location;
          this.startDateTime = startDateTime;
          this.endDateTime = endDateTime;
-         this.petBeingSittedID = petId;
-         this.details = details;
-         this.ownerName = ownerName;
-         this.sitterName = sitterName;
-         this.lat = lat;
-         this.longitude = longitude;
-         this.isAtOwnerLocation = isAtOwnerLocation;
+//         this.petBeingSittedID = petId;
+//         this.details = details;
+//         this.ownerName = ownerName;
+//         this.sitterName = sitterName;
+//         this.lat = lat;
+//         this.longitude = longitude;
+//         this.isAtOwnerLocation = isAtOwnerLocation;
          this.accepted = accepted;
-         this.canceled = canceled;
-         this.success = success;
+//         this.canceled = canceled;
+//         this.success = success;
      }
 
     /**
