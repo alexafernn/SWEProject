@@ -157,7 +157,7 @@ public class SitterSitting extends AppCompatActivity
     /**
      * Go to sittins requested method
      * After saving data to device/server, returns to main mySittings (for sitter) view
-     * @param view the reference object calling this method
+     * @param v the reference object calling this method
      */
     public void onConfirm(View v)
     {
@@ -220,7 +220,7 @@ public class SitterSitting extends AppCompatActivity
     /**
      * Go to sittins requested method
      * dont save anything to server, returns to main mySittings (for sitter) view
-     * @param view the reference object calling this method
+     * @param v the reference object calling this method
      */
     public void onCancel(View v)
     {
@@ -283,7 +283,7 @@ public class SitterSitting extends AppCompatActivity
     /**
      * Go to view pets in sitting view
      * dont save anything to server, goes to pets in sitting view
-     * @param view the reference object calling this method
+     * @param v the reference object calling this method
      */
     public void onViewSittingPets(View v)
     {
