@@ -212,8 +212,6 @@ public class SitterSitting extends AppCompatActivity
                 })
                 .setIcon(android.R.drawable.ic_menu_save)
                 .show();
-
-        finish();
     }
 
 
@@ -276,8 +274,6 @@ public class SitterSitting extends AppCompatActivity
                 })
                 .setIcon(android.R.drawable.ic_menu_delete)
                 .show();
-
-        finish();
     }
 
     /**
