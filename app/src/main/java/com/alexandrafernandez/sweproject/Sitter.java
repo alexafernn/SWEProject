@@ -159,7 +159,7 @@ public class Sitter extends AppCompatActivity implements LocationListener {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 event = sittingList.get(i);
 
-                Intent intent = new Intent(context, Sitting.class);
+                Intent intent = new Intent(context, SitterSitting.class);
                 intent.putExtra("job_id", event.id);
                 startActivity(intent);
                 finish();
