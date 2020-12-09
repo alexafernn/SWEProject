@@ -1,6 +1,7 @@
 package com.alexandrafernandez.sweproject;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import org.json.JSONException;
@@ -174,7 +176,60 @@ public class SitterSitting extends AppCompatActivity
      */
     public void onCancel(View v)
     {
-      finish();
+
+        final Intent i = new Intent(this, Owner.class);
+
+        new AlertDialog.Builder(this)
+                .setTitle("Delete Job")
+                .setMessage("Are you sure you want to delete this job?")
+                .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        JSONObject data = new JSONObject();
+                        try {
+                            data.put("id", clientID);
+                            data.put("auth", clientAuth);
+                            data.put("job_id", job_id);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                        UrlDelete saveInfo = new UrlDelete("http://aiji.cs.loyola.edu/jobdelete", data.toString(), "job.response", getContext());
+                        saveInfo.start();
+
+                        //give persistent data time to write
+                        try {
+                            Thread.sleep(500);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+
+                        //check response
+                        String response = pref.getString("job.response", "");
+                        boolean success = false;
+                        try {
+                            JSONObject jsonObject1 = new JSONObject(response);
+                            success = jsonObject1.getBoolean("success");
+                        } catch( JSONException json_e ) {
+                            if(!success) {
+                                showError();
+                                //return;
+                            }
+                        }
+                        startActivity(i);
+                        finish();
+                    }
+                })
+
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                })
+                .setIcon(android.R.drawable.ic_menu_delete)
+                .show();
+
+        finish();
     }
 
     /**
