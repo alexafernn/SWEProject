@@ -27,11 +27,11 @@ public class OwnerSittingData
      * Owner Sitting Data constructor
      * Initializes the data for a owner sitting  entry
     */
-     public OwnerSittingData(String sittingID, String location, String startDateTime, String endDateTime,
+     public OwnerSittingData(String sittingID,  String startDateTime, String endDateTime,
                               boolean accepted)
      {
          this.sittingID = sittingID;
-         this.location = location;
+         //this.location = location;
          this.startDateTime = startDateTime;
          this.endDateTime = endDateTime;
 //         this.petBeingSittedID = petId;
@@ -54,7 +54,6 @@ public class OwnerSittingData
     public String toString() {
         return("appointment start: " + startDateTime
                 + " appointment end: " + endDateTime
-                + " location: " + location
                 + " accepted: " + accepted);
     }
 

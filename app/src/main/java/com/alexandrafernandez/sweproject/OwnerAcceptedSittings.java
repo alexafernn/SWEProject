@@ -3,8 +3,6 @@ package com.alexandrafernandez.sweproject;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Resources;
-import android.graphics.Point;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -12,10 +10,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,71 +24,68 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-/**
- * Owner Class
- * This class allows serves as the main activity for Pet Owner usage
- * CS482 Software Engineering
- * Prof. Mehri
- * @author Jack Cannon
- * @author Alexandra Fernandez
- * @version 3.0 Final Release
- */
-public class Owner extends AppCompatActivity {
+public class OwnerAcceptedSittings extends AppCompatActivity
+{
 
     /**
-     * Buttons used to confirm data and/or move to another activity
+     * List managing the sittings the has been accepted - OWNER
      */
-    Button sitter_request_button;
+    ArrayList<OwnerSittingData> ownerAcceptedSittingList;
 
     /**
-     * Text Views for identifying field components
+     * List View for managing multiple instance of an ownerSitting accepted
      */
-    TextView requestLabel, noSittingsLabel;
+    ListView ownerSitting_listview;
 
     /**
-     * List View for managing multiple content instances of sitting requests
+     *  Owner Sitting information to be selected and accessed after request
      */
-    ListView owner_listview;
-
-    /**
-     * List managing the sittings an owner has requested
-     */
-    ArrayList<NeedSitterEventData> requestList;
-
-    /**
-     * Event to be selected and accessed after assignment
-     */
-    NeedSitterEventData event;
+    OwnerSittingData ownerSitting;
 
     /**
      * Activity and View data
      */
     private Context context;
+    /**
+     * Text Views for identifying field components
+     */
+    TextView textViewCurrentSittingsLabel;
+
+    /**
+     * seeing one instance of this
+     */
+    OwnerSittingData acceptedSitting;
 
     /**
      * Server interaction objects
      */
     SharedPreferences pref;
-    String clientID, clientAuth, job_id;
+    String clientId, clientAuth;
 
     /**
      * On Create Method
-     * Initializes the owner View and instantiates other view objects for later use
-     * @param savedInstanceState android system parameter
+     * Initializes the ownerSittings View and instantiates other view objects for later use
+     * @param savedInstanceState
      */
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.owner);
+        setContentView(R.layout.owner_accepted);
         setTitle("OWNER");
+
+        ScreenSize view = new ScreenSize(this);
+
+        textViewCurrentSittingsLabel = findViewById(R.id.accepted_sittings_label);
+        textViewCurrentSittingsLabel.setTextSize(view.getLabelTextSize());
 
         //GET Request - get id/auth
         pref = PreferenceManager.getDefaultSharedPreferences(this);
-        clientID = pref.getString("id", "");
+        clientId = pref.getString("id", "");
         clientAuth = pref.getString("auth", "");
 
         //Url connection
-        UrlGet userInfo = new UrlGet("http://aiji.cs.loyola.edu/ownerjoblist?id=" + clientID + "&auth=" + clientAuth + "&is_accepted=" + false,"requests.list", this);
+        UrlGet userInfo = new UrlGet("http://aiji.cs.loyola.edu/ownerjoblist?id=" + clientId + "&auth=" + clientAuth + "&is_accepted=" + true,"requests.list", this);
         userInfo.start();
         try {
             Thread.sleep(1000);
@@ -100,7 +93,8 @@ public class Owner extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        requestList = new ArrayList<NeedSitterEventData>();
+
+        ownerAcceptedSittingList = new ArrayList<OwnerSittingData>();
         boolean success = false;
 
         //Save response
@@ -116,7 +110,8 @@ public class Owner extends AppCompatActivity {
                     jobData = jsonObject.getJSONObject(id);
                     startDateTime = jobData.getString("start_datetime");
                     endDateTime = jobData.getString("end_datetime");
-                    requestList.add(new NeedSitterEventData(startDateTime, endDateTime, id));
+
+                    ownerAcceptedSittingList.add(new OwnerSittingData(id , startDateTime, endDateTime, true));
                 }
                 else success = true;
             }
@@ -128,44 +123,23 @@ public class Owner extends AppCompatActivity {
             Toast.makeText(this, "No sittings found.", Toast.LENGTH_SHORT).show();
         }
 
-        ScreenSize view = new ScreenSize(this);
-
-        sitter_request_button = findViewById(R.id.sitter_request_button);
-        sitter_request_button.setTextSize(view.getButtonTextSize());
-
-        requestLabel = (TextView) findViewById(R.id.sitter_request_label);
-        requestLabel.setTextSize(view.getLabelTextSize());
-
-        noSittingsLabel = (TextView) findViewById(R.id.noSittings);
-        noSittingsLabel.setTextSize(view.getLabelTextSize());
-
-        owner_listview = (ListView) findViewById(R.id.owner_listview);
-        ArrayAdapter<NeedSitterEventData> adapter = new ArrayAdapter<NeedSitterEventData>(this, android.R.layout.simple_list_item_1, requestList);
-        owner_listview.setAdapter(adapter);
-
-        for(int i=0; i<requestList.size(); i++) {
-            Log.w("MA", "REquestList arary");
-            Log.w("MA" , requestList.get(i).toString());
-        }
+        ownerSitting_listview = (ListView) findViewById(R.id.accepted_owner_sittings_listview);
+        ArrayAdapter<OwnerSittingData> adapter = new ArrayAdapter<OwnerSittingData>(this, android.R.layout.simple_list_item_1, ownerAcceptedSittingList);
+        ownerSitting_listview.setAdapter(adapter);
 
         context = this;
 
-        owner_listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        ownerSitting_listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                event = requestList.get(i);
+                acceptedSitting = ownerAcceptedSittingList.get(i);
 
-                Intent intent = new Intent(context, NeedSitterEvent.class);
-                intent.putExtra("job_id", event.id);
+                Intent intent = new Intent(context, OwnerAcceptedSitting.class);
+                intent.putExtra("job_id", acceptedSitting.sittingID);
                 startActivity(intent);
                 finish();
             }
         });
-
-        ViewGroup.LayoutParams params = owner_listview.getLayoutParams();
-        params.height = (int) (requestList.size()*view.getLabelTextSize()*4.5);
-        owner_listview.setLayoutParams(params);
-        owner_listview.requestLayout();
     }
 
     /**
@@ -192,8 +166,7 @@ public class Owner extends AppCompatActivity {
                 return true;
             case R.id.action_favorite:
                 //startActivity(new Intent(this, HomeActivity.class));
-                //startActivity(new Intent(this, sittingsForMyPet.class));
-                startActivity(new Intent(this, OwnerAcceptedSittings.class));
+                startActivity(new Intent(this, sittingsForMyPet.class));
                 return true;
             case R.id.my_pets_menu:
                 startActivity(new Intent(this, Pets.class));
@@ -212,13 +185,6 @@ public class Owner extends AppCompatActivity {
         }
     }
 
-    /**
-     * Request Sitter Event method
-     * Performs appropriate actions and completes activity
-     * @param view the reference object calling this method
-     */
-    public void onRequestSitterEvent(View view) {
-        startActivity(new Intent(this, NeedSitterEvent.class));
-        finish();
-    }
+
+
 }

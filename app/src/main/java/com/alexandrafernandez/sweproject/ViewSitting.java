@@ -58,8 +58,8 @@ public class ViewSitting extends AppCompatActivity
         endDate = (TextView) findViewById(R.id.end_date_label2);
         endDate.setText("04/04/2022");
 
-        allMyPets = (TextView) findViewById(R.id.all_my_pet_label2);
-        allMyPets.setText("false");
+//        allMyPets = (TextView) findViewById(R.id.all_my_pet_label2);
+//        allMyPets.setText("false");
 
         mustOccurLocation = (TextView) findViewById(R.id.must_occur_at_my_location_label2);
         mustOccurLocation.setText("true");

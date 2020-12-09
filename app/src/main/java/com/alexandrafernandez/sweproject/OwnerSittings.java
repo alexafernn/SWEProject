@@ -24,7 +24,7 @@ import java.util.ArrayList;
 public class OwnerSittings extends AppCompatActivity
 {
     /**
-     * List managing the sittings the owner has
+     * List managing the sittings the owner has accepted
      */
     ArrayList<OwnerSittingData> ownerSittingList;
 
