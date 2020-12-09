@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -156,33 +157,16 @@ public class SitterSitting extends AppCompatActivity
     /**
      * Go to sittins requested method
      * After saving data to device/server, returns to main mySittings (for sitter) view
-     * @param view the reference object calling this method
+     * @param v the reference object calling this method
      */
     public void onConfirm(View v)
     {
-        Intent i = new Intent(this, SitterSittings.class);
-
-        //TODO Json object, communicate it was accepted
-
-        startActivity(i);
-        finish();
-    }
-
-
-    /**
-     * Go to sittins requested method
-     * dont save anything to server, returns to main mySittings (for sitter) view
-     * @param view the reference object calling this method
-     */
-    public void onCancel(View v)
-    {
-
-        final Intent i = new Intent(this, Owner.class);
+        final Intent i = new Intent(this, SitterSittings.class);
 
         new AlertDialog.Builder(this)
-                .setTitle("Delete Job")
-                .setMessage("Are you sure you want to delete this job?")
-                .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                .setTitle("Un-Accept Sitting")
+                .setMessage("Are you sure you want to give up this job?")
+                .setPositiveButton("YES", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
 
                         JSONObject data = new JSONObject();
@@ -194,7 +178,7 @@ public class SitterSitting extends AppCompatActivity
                             e.printStackTrace();
                         }
 
-                        UrlDelete saveInfo = new UrlDelete("http://aiji.cs.loyola.edu/jobdelete", data.toString(), "job.response", getContext());
+                        UrlPost saveInfo = new UrlPost("http://aiji.cs.loyola.edu/jobaccept", data.toString(), getContext(),"sitter.accept");
                         saveInfo.start();
 
                         //give persistent data time to write
@@ -205,7 +189,7 @@ public class SitterSitting extends AppCompatActivity
                         }
 
                         //check response
-                        String response = pref.getString("job.response", "");
+                        String response = pref.getString("sitter.accept", "");
                         boolean success = false;
                         try {
                             JSONObject jsonObject1 = new JSONObject(response);
@@ -221,7 +205,70 @@ public class SitterSitting extends AppCompatActivity
                     }
                 })
 
-                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                })
+                .setIcon(android.R.drawable.ic_menu_delete)
+                .show();
+        finish();
+    }
+
+
+    /**
+     * Go to sittins requested method
+     * dont save anything to server, returns to main mySittings (for sitter) view
+     * @param v the reference object calling this method
+     */
+    public void onCancel(View v)
+    {
+
+        final Intent i = new Intent(this, SitterSittings.class);
+
+        new AlertDialog.Builder(this)
+                .setTitle("Un-Accept Sitting")
+                .setMessage("Are you sure you want to give up this job?")
+                .setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        JSONObject data = new JSONObject();
+                        try {
+                            data.put("id", clientID);
+                            data.put("auth", clientAuth);
+                            data.put("job_id", job_id);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                        UrlDelete saveInfo = new UrlDelete("http://aiji.cs.loyola.edu/jobunaccept", data.toString(), "sitter.cancel", getContext());
+                        saveInfo.start();
+
+                        //give persistent data time to write
+                        try {
+                            Thread.sleep(500);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+
+                        //check response
+                        String response = pref.getString("sitter.cancel", "");
+                        boolean success = false;
+                        try {
+                            JSONObject jsonObject1 = new JSONObject(response);
+                            success = jsonObject1.getBoolean("success");
+                        } catch( JSONException json_e ) {
+                            if(!success) {
+                                showError();
+                                //return;
+                            }
+                        }
+                        startActivity(i);
+                        finish();
+                    }
+                })
+
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
 
                     }
@@ -235,14 +282,13 @@ public class SitterSitting extends AppCompatActivity
     /**
      * Go to view pets in sitting view
      * dont save anything to server, goes to pets in sitting view
-     * @param view the reference object calling this method
+     * @param v the reference object calling this method
      */
     public void onViewSittingPets(View v)
     {
         Intent i= new Intent(this, petsSittingList.class); //TODO: fix petSittingList to account with server and show properly
         startActivity(i);
     }
-
 
     /**
      * Get context
@@ -253,6 +299,13 @@ public class SitterSitting extends AppCompatActivity
         return this;
     }
 
+    /**
+     * Show error method
+     * Shows a toast with the issue
+     */
+    public void showError() {
+        Toast.makeText(this, "Unable to complete request.", Toast.LENGTH_LONG).show();
+    }
 
 
 }
