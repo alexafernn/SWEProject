@@ -161,11 +161,58 @@ public class SitterSitting extends AppCompatActivity
      */
     public void onConfirm(View v)
     {
-        Intent i = new Intent(this, SitterSittings.class);
+        final Intent i = new Intent(this, Owner.class);
 
-        //TODO Json object, communicate it was accepted
+        new AlertDialog.Builder(this)
+                .setTitle("Accept Job")
+                .setMessage("Are you sure you want to accept this job?")
+                .setPositiveButton("Accept", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
 
-        startActivity(i);
+                        JSONObject data = new JSONObject();
+                        try {
+                            data.put("id", clientID);
+                            data.put("auth", clientAuth);
+                            data.put("job_id", job_id);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                        UrlPost saveInfo = new UrlPost("http://aiji.cs.loyola.edu/jobaccept", data.toString(), getContext(),"job.accept");
+                        saveInfo.start();
+
+                        //give persistent data time to write
+                        try {
+                            Thread.sleep(500);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+
+                        //check response
+                        String response = pref.getString("job.accept", "");
+                        boolean success = false;
+                        try {
+                            JSONObject jsonObject1 = new JSONObject(response);
+                            success = jsonObject1.getBoolean("success");
+                        } catch( JSONException json_e ) {
+                            if(!success) {
+                                //showError();
+                                //return;
+                            }
+                        }
+                        startActivity(i);
+                        finish();
+                    }
+                })
+
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                })
+                .setIcon(android.R.drawable.ic_menu_delete)
+                .show();
+
         finish();
     }
 
@@ -195,7 +242,7 @@ public class SitterSitting extends AppCompatActivity
                             e.printStackTrace();
                         }
 
-                        UrlDelete saveInfo = new UrlDelete("http://aiji.cs.loyola.edu/jobdelete", data.toString(), "job.response", getContext());
+                        UrlDelete saveInfo = new UrlDelete("http://aiji.cs.loyola.edu/jobdelete", data.toString(), "job.delete", getContext());
                         saveInfo.start();
 
                         //give persistent data time to write
@@ -206,7 +253,7 @@ public class SitterSitting extends AppCompatActivity
                         }
 
                         //check response
-                        String response = pref.getString("job.response", "");
+                        String response = pref.getString("job.delete", "");
                         boolean success = false;
                         try {
                             JSONObject jsonObject1 = new JSONObject(response);
