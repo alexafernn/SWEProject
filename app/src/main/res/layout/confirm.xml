@@ -63,35 +63,13 @@
         android:layout_toRightOf="@+id/end_date"
         android:layout_alignRight="@id/end_date"
         android:layout_alignEnd="@id/confirm_availability_button2"
-        android:layout_above="@id/all_my_pets"/>
-
-    <TextView
-        android:id="@+id/all_my_pets"
-        android:layout_below="@id/end_date"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:text="All My Pets:"
-        android:textColor="@color/colorBlack"
-        android:gravity="center"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        />
-
-
-    <TextView
-        android:id="@+id/all_my_pet_label"
-        android:layout_toEndOf="@+id/all_my_pets"
-        android:layout_height="wrap_content"
-        android:inputType="text"
-        android:layout_width="match_parent"
-        android:layout_toRightOf="@+id/all_my_pets"
-        android:layout_alignRight="@id/all_my_pets"
-        android:layout_alignEnd="@id/confirm_availability_button2"
         android:layout_above="@id/must_occur_at_my_location"/>
+
+
 
     <TextView
         android:id="@+id/must_occur_at_my_location"
-        android:layout_below="@id/all_my_pets"
+        android:layout_below="@id/end_date"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:text="Must Occur at My Location:"
