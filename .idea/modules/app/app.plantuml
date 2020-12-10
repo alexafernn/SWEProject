@@ -1,0 +1,377 @@
+@startuml
+
+title __SWEPROJECT.APP's Class Diagram__\n
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.BuildConfig {
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.Feedback {
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.HomeActivity {
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.Intro {
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.MainActivity {
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.ManageAcceptedSitting {
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.NeedSitterEvent {
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.NeedSitterEventData {
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.Owner {
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.OwnerAcceptedSitting {
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.OwnerAcceptedSittings {
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.OwnerSitting {
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.OwnerSittingData {
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.OwnerSittings {
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.PastSittings {
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.Pet {
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.PetData {
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.Pets {
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.Profile {
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.Rating {
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.Rewards {
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.ScreenSize {
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.SignUp {
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.Sitter {
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.SitterAccepted {
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.SitterAvailability {
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.SitterAvailabilityData {
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.SitterAvailabilityEvent {
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.SitterSitting {
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.SitterSittingData {
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.Sitting {
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.Subscription {
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.UrlDelete {
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.UrlGet {
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.UrlPost {
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.UrlPut {
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.ViewSitting {
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.petBeingSat {
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.petsSittingList {
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.sittingsForMyPet {
+      }
+    }
+  }
+  
+
+  com.alexandrafernandez.sweproject.Feedback -up-|> androidx.appcompat.app.AppCompatActivity
+  com.alexandrafernandez.sweproject.HomeActivity -up-|> androidx.appcompat.app.AppCompatActivity
+  com.alexandrafernandez.sweproject.HomeActivity o-- com.alexandrafernandez.sweproject.Sitting : sitData
+  com.alexandrafernandez.sweproject.HomeActivity o-- com.alexandrafernandez.sweproject.NeedSitterEvent : sittingData
+  com.alexandrafernandez.sweproject.Intro -up-|> androidx.appcompat.app.AppCompatActivity
+  com.alexandrafernandez.sweproject.MainActivity -up-|> android.app.Activity
+  com.alexandrafernandez.sweproject.ManageAcceptedSitting -up-|> androidx.appcompat.app.AppCompatActivity
+  com.alexandrafernandez.sweproject.NeedSitterEvent .up.|> android.location.LocationListener
+  com.alexandrafernandez.sweproject.NeedSitterEvent -up-|> androidx.appcompat.app.AppCompatActivity
+  com.alexandrafernandez.sweproject.Owner -up-|> androidx.appcompat.app.AppCompatActivity
+  com.alexandrafernandez.sweproject.Owner o-- com.alexandrafernandez.sweproject.NeedSitterEventData : event
+  com.alexandrafernandez.sweproject.OwnerAcceptedSitting -up-|> androidx.appcompat.app.AppCompatActivity
+  com.alexandrafernandez.sweproject.OwnerAcceptedSittings -up-|> androidx.appcompat.app.AppCompatActivity
+  com.alexandrafernandez.sweproject.OwnerAcceptedSittings o-- com.alexandrafernandez.sweproject.OwnerSittingData : acceptedSitting
+  com.alexandrafernandez.sweproject.OwnerAcceptedSittings o-- com.alexandrafernandez.sweproject.OwnerSittingData : ownerSitting
+  com.alexandrafernandez.sweproject.OwnerSitting -up-|> androidx.appcompat.app.AppCompatActivity
+  com.alexandrafernandez.sweproject.OwnerSittings -up-|> androidx.appcompat.app.AppCompatActivity
+  com.alexandrafernandez.sweproject.OwnerSittings o-- com.alexandrafernandez.sweproject.OwnerSittingData : ownerSitting
+  com.alexandrafernandez.sweproject.PastSittings -up-|> androidx.appcompat.app.AppCompatActivity
+  com.alexandrafernandez.sweproject.Pet -up-|> androidx.appcompat.app.AppCompatActivity
+  com.alexandrafernandez.sweproject.Pets -up-|> androidx.appcompat.app.AppCompatActivity
+  com.alexandrafernandez.sweproject.Pets o-- com.alexandrafernandez.sweproject.PetData : pet
+  com.alexandrafernandez.sweproject.Profile -up-|> androidx.appcompat.app.AppCompatActivity
+  com.alexandrafernandez.sweproject.Rating -up-|> androidx.appcompat.app.AppCompatActivity
+  com.alexandrafernandez.sweproject.Rewards -up-|> androidx.appcompat.app.AppCompatActivity
+  com.alexandrafernandez.sweproject.SignUp -up-|> androidx.appcompat.app.AppCompatActivity
+  com.alexandrafernandez.sweproject.Sitter .up.|> android.location.LocationListener
+  com.alexandrafernandez.sweproject.Sitter -up-|> androidx.appcompat.app.AppCompatActivity
+  com.alexandrafernandez.sweproject.Sitter o-- com.alexandrafernandez.sweproject.Sitting : event
+  com.alexandrafernandez.sweproject.SitterAccepted -up-|> androidx.appcompat.app.AppCompatActivity
+  com.alexandrafernandez.sweproject.SitterAccepted o-- com.alexandrafernandez.sweproject.SitterSittingData : sitterSitting
+  com.alexandrafernandez.sweproject.SitterAvailability -up-|> androidx.appcompat.app.AppCompatActivity
+  com.alexandrafernandez.sweproject.SitterAvailability o-- com.alexandrafernandez.sweproject.SitterAvailabilityData : event
+  com.alexandrafernandez.sweproject.SitterAvailabilityEvent -up-|> androidx.appcompat.app.AppCompatActivity
+  com.alexandrafernandez.sweproject.SitterSitting -up-|> androidx.appcompat.app.AppCompatActivity
+  com.alexandrafernandez.sweproject.Sitting .up.|> java.io.Serializable
+  com.alexandrafernandez.sweproject.Subscription -up-|> androidx.appcompat.app.AppCompatActivity
+  com.alexandrafernandez.sweproject.ViewSitting -up-|> androidx.appcompat.app.AppCompatActivity
+  com.alexandrafernandez.sweproject.petBeingSat -up-|> androidx.appcompat.app.AppCompatActivity
+  com.alexandrafernandez.sweproject.petsSittingList -up-|> androidx.appcompat.app.AppCompatActivity
+  com.alexandrafernandez.sweproject.petsSittingList o-- com.alexandrafernandez.sweproject.PetData : pet
+  com.alexandrafernandez.sweproject.petsSittingList o-- com.alexandrafernandez.sweproject.PetData : petData
+  com.alexandrafernandez.sweproject.sittingsForMyPet -up-|> androidx.appcompat.app.AppCompatActivity
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

@@ -1,0 +1,835 @@
+@startuml
+
+title __SWEPROJECT's Class Diagram__\n
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.Feedback {
+          ~ feedback_button : Button
+          ~ feedback_notes : TextView
+          ~ feedback_text : TextView
+          ~ feedback_text_field : EditText
+          ~ rating_select : TextView
+          ~ star_rating_spinner : Spinner
+          + doSendFeedback()
+          # onCreate()
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.HomeActivity {
+          ~ sittingList : ArrayList<Sitting>
+          ~ sittings_listView : ListView
+          - context : Context
+          # onCreate()
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.Intro {
+          ~ clientAuth : String
+          ~ clientID : String
+          ~ greeting : TextView
+          ~ owner : Button
+          ~ pref : SharedPreferences
+          ~ sitter : Button
+          + onCreateOptionsMenu()
+          + onOptionsItemSelected()
+          + toOwnerProfile()
+          + toSitterProfile()
+          # onCreate()
+          # onRestart()
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.MainActivity {
+          {static} + sitting : Sitting
+          ~ loginButton : Button
+          ~ loginSwitch : Switch
+          ~ login_text : TextView
+          ~ password : TextView
+          ~ passwordEditText : EditText
+          ~ signUpButton : Button
+          ~ username : TextView
+          ~ usernameEditText : EditText
+          + signUp()
+          + verifyLogin()
+          # onCreate()
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.ManageAcceptedSitting {
+          ~ backButton : Button
+          ~ buttonCancel : Button
+          ~ buttonConfirm : Button
+          ~ buttonViewPets : Button
+          ~ clientAuth : String
+          ~ clientID : String
+          ~ job_id : String
+          ~ owner_id : String
+          ~ owner_phone : TextView
+          ~ pref : SharedPreferences
+          ~ textViewAllMyPets : TextView
+          ~ textViewAllMyPetsLabel : TextView
+          ~ textViewEndDate : TextView
+          ~ textViewEndDateLabel : TextView
+          ~ textViewMustOccurAtOwnerLocation : TextView
+          ~ textViewMustOccurAtOwnerLocationLabel : TextView
+          ~ textViewNotesFromOwner : TextView
+          ~ textViewNotesFromOwnerLabel : TextView
+          ~ textViewStartDate : TextView
+          ~ textViewStartDateLabel : TextView
+          + back()
+          + getContext()
+          + onCancel()
+          + onConfirm()
+          + onViewSittingPets()
+          + rate()
+          # onCreate()
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.NeedSitterEvent {
+          ~ additional_info_text_field : EditText
+          ~ clientAuth : String
+          ~ clientID : String
+          ~ confirm_sitter_request_button : Button
+          ~ end_date : EditText
+          ~ end_date_label : TextView
+          ~ end_time : EditText
+          ~ end_time_info : TextView
+          ~ job_delete_button : Button
+          ~ job_id : String
+          ~ location : Location
+          ~ other_notes_info : TextView
+          ~ pref : SharedPreferences
+          ~ start_date : EditText
+          ~ start_date_label : TextView
+          ~ start_time : EditText
+          ~ start_time_info : TextView
+          ~ switch9 : Switch
+          ~ timePreference1 : Switch
+          ~ timePreference2 : Switch
+          + deletePet()
+          + getContext()
+          + onCreateRequestSitterEvent()
+          + onLocationChanged()
+          + onProviderDisabled()
+          + onProviderEnabled()
+          + onStatusChanged()
+          + showError()
+          # onCreate()
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.NeedSitterEventData {
+          ~ end_dateTime : String
+          ~ id : String
+          ~ start_dateTime : String
+          + NeedSitterEventData()
+          + getId()
+          + toString()
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.Owner {
+          ~ clientAuth : String
+          ~ clientID : String
+          ~ job_id : String
+          ~ noSittingsLabel : TextView
+          ~ owner_listview : ListView
+          ~ pref : SharedPreferences
+          ~ requestLabel : TextView
+          ~ requestList : ArrayList<NeedSitterEventData>
+          ~ sitter_request_button : Button
+          - context : Context
+          + onCreateOptionsMenu()
+          + onOptionsItemSelected()
+          + onRequestSitterEvent()
+          # onCreate()
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.OwnerAcceptedSitting {
+          ~ cancelButton : Button
+          ~ clientAuth : String
+          ~ clientId : String
+          ~ endDate : TextView
+          ~ endDateLabel : TextView
+          ~ job_id : String
+          ~ location : TextView
+          ~ locationLabel : TextView
+          ~ modifyButton : Button
+          ~ notes : TextView
+          ~ notesLabel : TextView
+          ~ pref : SharedPreferences
+          ~ sitterInformation : TextView
+          ~ sitterInformationLabel : TextView
+          ~ startDate : TextView
+          ~ startDateLabel : TextView
+          + getContext()
+          + onOwnerCancel()
+          + onOwnerModify()
+          # onCreate()
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.OwnerAcceptedSittings {
+          ~ clientAuth : String
+          ~ clientId : String
+          ~ ownerAcceptedSittingList : ArrayList<OwnerSittingData>
+          ~ ownerSitting_listview : ListView
+          ~ pref : SharedPreferences
+          ~ textViewCurrentSittingsLabel : TextView
+          - context : Context
+          + onCreateOptionsMenu()
+          + onOptionsItemSelected()
+          # onCreate()
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.OwnerSitting {
+          ~ at_owner_location_switch : Switch
+          ~ buttonConfirm : Button
+          ~ buttonDelete : Button
+          ~ clientAuth : String
+          ~ clientID : String
+          ~ editTextDetails : EditText
+          ~ editTextEndDate : EditText
+          ~ editTextEndTime : EditText
+          ~ editTextStartDate : EditText
+          ~ editTextStartTime : EditText
+          ~ end_am_or_pm_switch : Switch
+          ~ pet_id : String
+          ~ pref : SharedPreferences
+          ~ start_am_or_pm_switch : Switch
+          ~ textViewDetails : TextView
+          ~ textViewEndDate : TextView
+          ~ textViewEndTime : TextView
+          ~ textViewStartDate : TextView
+          ~ textViewStartTime : TextView
+          + getContext()
+          + onCreateRequestSitterEvent()
+          # onCreate()
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.OwnerSittingData {
+          ~ accepted : boolean
+          ~ canceled : boolean
+          ~ details : String
+          ~ endDateTime : String
+          ~ isAtOwnerLocation : boolean
+          ~ lat : float
+          ~ location : String
+          ~ longitude : float
+          ~ ownerName : String
+          ~ petBeingSittedID : String
+          ~ sitterName : String
+          ~ sittingID : String
+          ~ startDateTime : String
+          ~ success : boolean
+          + OwnerSittingData()
+          + toString()
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.OwnerSittings {
+          ~ clientAuth : String
+          ~ clientId : String
+          ~ ownerSittingList : ArrayList<OwnerSittingData>
+          ~ ownerSitting_listview : ListView
+          ~ pref : SharedPreferences
+          ~ textViewCurrentSittings : TextView
+          ~ textViewNoCurrentSittings : TextView
+          - context : Context
+          + onCreateOptionsMenu()
+          + onOptionsItemSelected()
+          + onRequestSitterEvent()
+          # onCreate()
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.PastSittings {
+          # onCreate()
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.Pet {
+          ~ animal : TextView
+          ~ clientAuth : String
+          ~ clientID : String
+          ~ other_animal_type_field : EditText
+          ~ other_info_field : EditText
+          ~ other_pet_info : TextView
+          ~ petTypeSpinner : Spinner
+          ~ pet_delete_button : Button
+          ~ pet_id : String
+          ~ pet_name : TextView
+          ~ pet_name_field : EditText
+          ~ pet_qualities : TextView
+          ~ pref : SharedPreferences
+          ~ settings_save_button : Button
+          ~ switch_energetic : Switch
+          ~ switch_noisy : Switch
+          ~ switch_trained : Switch
+          + deletePet()
+          + getContext()
+          + goToPets()
+          + showError()
+          # onCreate()
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.PetData {
+          ~ id : String
+          ~ name : String
+          + PetData()
+          + getId()
+          + toString()
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.Pets {
+          ~ clientAuth : String
+          ~ clientID : String
+          ~ petList : ArrayList<PetData>
+          ~ pet_listview : ListView
+          ~ pref : SharedPreferences
+          - context : Context
+          + onCreateOptionsMenu()
+          + onOptionsItemSelected()
+          # onCreate()
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.Profile {
+          ~ account_info : TextView
+          ~ address_field : EditText
+          ~ clientAuth : String
+          ~ clientID : String
+          ~ email_field : EditText
+          ~ first_name_field : EditText
+          ~ last_name_field : EditText
+          ~ owner : Switch
+          ~ password_field : EditText
+          ~ phone_field : EditText
+          ~ pref : SharedPreferences
+          ~ profile_types : TextView
+          ~ save : Button
+          ~ sitter : Switch
+          + goHome()
+          # onCreate()
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.Rating {
+          ~ b : Button
+          + onSubmitRating()
+          # onCreate()
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.Rewards {
+          ~ amount_select : TextView
+          ~ reward_select : TextView
+          ~ reward_types : TextView
+          ~ rewards_delivery_info : TextView
+          ~ rewards_menu_top : TextView
+          ~ rewards_points_total : TextView
+          ~ rewards_request_button : Button
+          ~ spinner : Spinner
+          ~ spinner2 : Spinner
+          + onRequestReward()
+          # onCreate()
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.ScreenSize {
+          ~ buttonTextSize : int
+          ~ editTextSize : int
+          ~ height : int
+          ~ labelTextSize : int
+          ~ switchTextSize : int
+          ~ width : int
+          + ScreenSize()
+          + getButtonTextSize()
+          + getEditTextSize()
+          + getHeight()
+          + getLabelTextSize()
+          + getSwitchTextSize()
+          + getWidth()
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.SignUp {
+          ~ address : TextView
+          ~ addyEditText : EditText
+          ~ email : TextView
+          ~ emailEditText : EditText
+          ~ firstNameEditText : EditText
+          ~ first_name : String
+          ~ lastNameEditText : EditText
+          ~ last_name : String
+          ~ myEmail : String
+          ~ password : TextView
+          ~ passwordEditText : EditText
+          ~ phoneEditText : EditText
+          ~ phoneNumber : TextView
+          ~ profile_types : TextView
+          ~ saveButton : Button
+          ~ signupFirstName : TextView
+          ~ signupLastName : TextView
+          ~ userTypePetOwner : Switch
+          ~ userTypeSitter : Switch
+          + save()
+          # onCreate()
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.Sitter {
+          ~ clientAuth : String
+          ~ clientID : String
+          ~ job_id : String
+          ~ location : Location
+          ~ pref : SharedPreferences
+          ~ sittingList : ArrayList<Sitting>
+          ~ sittings_listView : ListView
+          - context : Context
+          + onCreateOptionsMenu()
+          + onLocationChanged()
+          + onOptionsItemSelected()
+          + onProviderDisabled()
+          + onProviderEnabled()
+          + onStatusChanged()
+          # onCreate()
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.SitterAccepted {
+          ~ clientAuth : String
+          ~ clientID : String
+          ~ pref : SharedPreferences
+          ~ sitterSittingList : ArrayList<SitterSittingData>
+          ~ sitterSitting_listview : ListView
+          ~ textViewNoCurrentSittings : TextView
+          - context : Context
+          + onCreateOptionsMenu()
+          + onOptionsItemSelected()
+          + onRequestSitterEvent()
+          # onCreate()
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.SitterAvailability {
+          ~ availabilityList : ArrayList<SitterAvailabilityData>
+          ~ sitter_availability_listview : ListView
+          - context : Context
+          + onCreateOptionsMenu()
+          + onOptionsItemSelected()
+          # onCreate()
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.SitterAvailabilityData {
+          ~ endDate : String
+          ~ notes : String
+          ~ startDate : String
+          + SitterAvailabilityData()
+          + getNotes()
+          + toString()
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.SitterAvailabilityEvent {
+          ~ availabilityList : ArrayList<SitterAvailabilityData>
+          ~ confirmAvailability : Button
+          ~ dateEnd : TextView
+          ~ dateEndField : EditText
+          ~ dateStart : TextView
+          ~ dateStartField : EditText
+          ~ notesInfo : TextView
+          ~ notesInfoField : EditText
+          + onCreateAvailabilityEvent()
+          # onCreate()
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.SitterSitting {
+          ~ backButton : Button
+          ~ buttonCancel : Button
+          ~ buttonConfirm : Button
+          ~ buttonViewPets : Button
+          ~ clientAuth : String
+          ~ clientID : String
+          ~ job_id : String
+          ~ ownerPhoneField : TextView
+          ~ pref : SharedPreferences
+          ~ textViewAllMyPets : TextView
+          ~ textViewAllMyPetsLabel : TextView
+          ~ textViewEndDate : TextView
+          ~ textViewEndDateLabel : TextView
+          ~ textViewMustOccurAtOwnerLocation : TextView
+          ~ textViewMustOccurAtOwnerLocationLabel : TextView
+          ~ textViewNotesFromOwner : TextView
+          ~ textViewNotesFromOwnerLabel : TextView
+          ~ textViewStartDate : TextView
+          ~ textViewStartDateLabel : TextView
+          + back()
+          + getContext()
+          + onConfirm()
+          + onViewSittingPets()
+          # onCreate()
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.SitterSittingData {
+          ~ endDateTime : String
+          ~ ownerName : String
+          ~ sittingID : String
+          ~ startDateTime : String
+          + SitterSittingData()
+          + toString()
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.Sitting {
+          # id : String
+          - endDate : String
+          - mustOccurAtMyLocation : boolean
+          - notesForSitter : String
+          - numberOfSittings : int
+          - ownerName : String
+          - startDate : String
+          + Sitting()
+          + Sitting()
+          + getEndDate()
+          + getNotesForSitter()
+          + getNumberOfSittings()
+          + getStartDate()
+          + isMustOccurAtMyLocation()
+          + toString()
+          + updateNumberOfSittings()
+          # Sitting()
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.Subscription {
+          ~ extend_title : TextView
+          ~ payment_select : TextView
+          ~ plan_select : TextView
+          ~ spinner3 : Spinner
+          ~ spinner4 : Spinner
+          ~ subscription_expiration : TextView
+          ~ subscription_extend_button : Button
+          ~ subscription_menu_top : TextView
+          ~ subscription_payment_info : TextView
+          ~ subscription_status : TextView
+          + doSubscriptionUpdate()
+          # onCreate()
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.UrlDelete {
+          ~ context : Context
+          ~ data : String
+          ~ my_url : String
+          ~ responseLocation : String
+          + UrlDelete()
+          + run()
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.UrlGet {
+          ~ context : Context
+          ~ dataLocation : String
+          ~ my_url : String
+          + UrlGet()
+          + run()
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.UrlPost {
+          ~ context : Context
+          ~ data : String
+          ~ my_url : String
+          ~ responseLocation : String
+          + UrlPost()
+          + run()
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.UrlPut {
+          ~ context : Context
+          ~ data : String
+          ~ my_url : String
+          ~ responseLocation : String
+          + UrlPut()
+          + run()
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.ViewSitting {
+          ~ allMyPets : TextView
+          ~ confirm_sitting_button : Button
+          ~ delete_button : Button
+          ~ endDate : TextView
+          ~ mustOccurLocation : TextView
+          ~ notes : TextView
+          ~ startDate : TextView
+          - context : Context
+          - intent : Intent
+          - position : int
+          + onConfirm2()
+          + onDelete()
+          # onCreate()
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.petBeingSat {
+          ~ animal_label : TextView
+          ~ animal_label_value : TextView
+          ~ clientAuth : String
+          ~ clientID : String
+          ~ energetic_value : Switch
+          ~ goBackValue : Button
+          ~ name_label : TextView
+          ~ name_label_value : TextView
+          ~ noisy_value : Switch
+          ~ other_label : TextView
+          ~ other_label_value : TextView
+          ~ pet_id : String
+          ~ pet_qualities_label : TextView
+          ~ pref : SharedPreferences
+          ~ trained_value : Switch
+          + onGoBack()
+          # onCreate()
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.petsSittingList {
+          ~ clientAuth : String
+          ~ clientID : String
+          ~ noPetsInReservation : TextView
+          ~ ownerId : String
+          ~ petList : ArrayList<PetData>
+          ~ petReservation_listview : ListView
+          ~ pref : SharedPreferences
+          - context : Context
+          # onCreate()
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.alexandrafernandez.sweproject {
+      class com.alexandrafernandez.sweproject.sittingsForMyPet {
+          ~ noAppointments : TextView
+          ~ sittingList : ArrayList<Sitting>
+          ~ sittings_listView : ListView
+          # onCreate()
+      }
+    }
+  }
+  
+
+  com.alexandrafernandez.sweproject.Feedback -up-|> androidx.appcompat.app.AppCompatActivity
+  com.alexandrafernandez.sweproject.HomeActivity -up-|> androidx.appcompat.app.AppCompatActivity
+  com.alexandrafernandez.sweproject.HomeActivity o-- com.alexandrafernandez.sweproject.Sitting : sitData
+  com.alexandrafernandez.sweproject.HomeActivity o-- com.alexandrafernandez.sweproject.NeedSitterEvent : sittingData
+  com.alexandrafernandez.sweproject.Intro -up-|> androidx.appcompat.app.AppCompatActivity
+  com.alexandrafernandez.sweproject.MainActivity -up-|> android.app.Activity
+  com.alexandrafernandez.sweproject.ManageAcceptedSitting -up-|> androidx.appcompat.app.AppCompatActivity
+  com.alexandrafernandez.sweproject.NeedSitterEvent .up.|> android.location.LocationListener
+  com.alexandrafernandez.sweproject.NeedSitterEvent -up-|> androidx.appcompat.app.AppCompatActivity
+  com.alexandrafernandez.sweproject.Owner -up-|> androidx.appcompat.app.AppCompatActivity
+  com.alexandrafernandez.sweproject.Owner o-- com.alexandrafernandez.sweproject.NeedSitterEventData : event
+  com.alexandrafernandez.sweproject.OwnerAcceptedSitting -up-|> androidx.appcompat.app.AppCompatActivity
+  com.alexandrafernandez.sweproject.OwnerAcceptedSittings -up-|> androidx.appcompat.app.AppCompatActivity
+  com.alexandrafernandez.sweproject.OwnerAcceptedSittings o-- com.alexandrafernandez.sweproject.OwnerSittingData : acceptedSitting
+  com.alexandrafernandez.sweproject.OwnerAcceptedSittings o-- com.alexandrafernandez.sweproject.OwnerSittingData : ownerSitting
+  com.alexandrafernandez.sweproject.OwnerSitting -up-|> androidx.appcompat.app.AppCompatActivity
+  com.alexandrafernandez.sweproject.OwnerSittings -up-|> androidx.appcompat.app.AppCompatActivity
+  com.alexandrafernandez.sweproject.OwnerSittings o-- com.alexandrafernandez.sweproject.OwnerSittingData : ownerSitting
+  com.alexandrafernandez.sweproject.PastSittings -up-|> androidx.appcompat.app.AppCompatActivity
+  com.alexandrafernandez.sweproject.Pet -up-|> androidx.appcompat.app.AppCompatActivity
+  com.alexandrafernandez.sweproject.Pets -up-|> androidx.appcompat.app.AppCompatActivity
+  com.alexandrafernandez.sweproject.Pets o-- com.alexandrafernandez.sweproject.PetData : pet
+  com.alexandrafernandez.sweproject.Profile -up-|> androidx.appcompat.app.AppCompatActivity
+  com.alexandrafernandez.sweproject.Rating -up-|> androidx.appcompat.app.AppCompatActivity
+  com.alexandrafernandez.sweproject.Rewards -up-|> androidx.appcompat.app.AppCompatActivity
+  com.alexandrafernandez.sweproject.SignUp -up-|> androidx.appcompat.app.AppCompatActivity
+  com.alexandrafernandez.sweproject.Sitter .up.|> android.location.LocationListener
+  com.alexandrafernandez.sweproject.Sitter -up-|> androidx.appcompat.app.AppCompatActivity
+  com.alexandrafernandez.sweproject.Sitter o-- com.alexandrafernandez.sweproject.Sitting : event
+  com.alexandrafernandez.sweproject.SitterAccepted -up-|> androidx.appcompat.app.AppCompatActivity
+  com.alexandrafernandez.sweproject.SitterAccepted o-- com.alexandrafernandez.sweproject.SitterSittingData : sitterSitting
+  com.alexandrafernandez.sweproject.SitterAvailability -up-|> androidx.appcompat.app.AppCompatActivity
+  com.alexandrafernandez.sweproject.SitterAvailability o-- com.alexandrafernandez.sweproject.SitterAvailabilityData : event
+  com.alexandrafernandez.sweproject.SitterAvailabilityEvent -up-|> androidx.appcompat.app.AppCompatActivity
+  com.alexandrafernandez.sweproject.SitterSitting -up-|> androidx.appcompat.app.AppCompatActivity
+  com.alexandrafernandez.sweproject.Sitting .up.|> java.io.Serializable
+  com.alexandrafernandez.sweproject.Subscription -up-|> androidx.appcompat.app.AppCompatActivity
+  com.alexandrafernandez.sweproject.ViewSitting -up-|> androidx.appcompat.app.AppCompatActivity
+  com.alexandrafernandez.sweproject.petBeingSat -up-|> androidx.appcompat.app.AppCompatActivity
+  com.alexandrafernandez.sweproject.petsSittingList -up-|> androidx.appcompat.app.AppCompatActivity
+  com.alexandrafernandez.sweproject.petsSittingList o-- com.alexandrafernandez.sweproject.PetData : pet
+  com.alexandrafernandez.sweproject.petsSittingList o-- com.alexandrafernandez.sweproject.PetData : petData
+  com.alexandrafernandez.sweproject.sittingsForMyPet -up-|> androidx.appcompat.app.AppCompatActivity
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml
