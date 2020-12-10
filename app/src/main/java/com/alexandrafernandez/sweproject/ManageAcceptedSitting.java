@@ -83,7 +83,7 @@ public class ManageAcceptedSitting extends AppCompatActivity
         backButton = (Button) findViewById(R.id.confirm_back_button3);
         backButton.setTextSize(view.getButtonTextSize());
 
-        owner_phone = findViewById(R.id.owner_phone_field);
+        owner_phone = (TextView) findViewById(R.id.owner_phone_field2);
 
         //TODO get from server
         /**Things commented out are so it can work without server connection**/
@@ -96,6 +96,7 @@ public class ManageAcceptedSitting extends AppCompatActivity
         job_id = getIntent().getStringExtra("job_id");
 
         String startDateTime = "", endDateTime = "", details ="";owner_id="";
+        String ownerPhone="";
         boolean success = false, is_at_owner = false;
         float lat=0, lon=0;
 
@@ -127,6 +128,9 @@ public class ManageAcceptedSitting extends AppCompatActivity
             details = jsonObject.getString("details");
             textViewNotesFromOwner.setText(details);
             owner_id = jsonObject.getString("owner_id");
+            ownerPhone = jsonObject.getString("owner_number");
+            Log.w("MA", "OWNER PHONE: " + ownerPhone);
+            owner_phone.setText(ownerPhone);
 
         } catch (JSONException json_e) {
             Log.w("MA", json_e.toString());

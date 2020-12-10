@@ -28,22 +28,13 @@ public class OwnerSittingData
      * Initializes the data for a owner sitting  entry
     */
      public OwnerSittingData(String sittingID,  String startDateTime, String endDateTime,
-                              boolean accepted)
+                              boolean accepted, String sitterName)
      {
          this.sittingID = sittingID;
-         //this.location = location;
          this.startDateTime = startDateTime;
          this.endDateTime = endDateTime;
-//         this.petBeingSittedID = petId;
-//         this.details = details;
-//         this.ownerName = ownerName;
-//         this.sitterName = sitterName;
-//         this.lat = lat;
-//         this.longitude = longitude;
-//         this.isAtOwnerLocation = isAtOwnerLocation;
          this.accepted = accepted;
-//         this.canceled = canceled;
-//         this.success = success;
+         this.sitterName = sitterName;
      }
 
     /**
@@ -52,9 +43,7 @@ public class OwnerSittingData
      * @return the print statement
      */
     public String toString() {
-        return("appointment start: " + startDateTime
-                + " appointment end: " + endDateTime
-                + " accepted: " + accepted);
+        return("Start: " + startDateTime + "\nEnd: " + endDateTime + "\nSitter: " + sitterName);
     }
 
 

@@ -188,7 +188,7 @@
         android:layout_marginTop="15dp"
         android:background="#F13B14"
         android:textColor="@color/colorWhite"
-        android:text="Cancel Sitting"
+        android:text="Un-accept Sitting"
         android:onClick="onCancel"
         android:layout_margin="10dp"
         />

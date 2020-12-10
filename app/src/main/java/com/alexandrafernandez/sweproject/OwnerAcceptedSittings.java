@@ -103,7 +103,7 @@ public class OwnerAcceptedSittings extends AppCompatActivity
 
         //Save response
         String json = pref.getString("requests.list", "");
-        String id="", startDateTime="", endDateTime="";
+        String id="", startDateTime="", endDateTime="", sitterName;
         JSONObject jobData;
         try {
             JSONObject jsonObject = new JSONObject(json);
@@ -114,8 +114,9 @@ public class OwnerAcceptedSittings extends AppCompatActivity
                     jobData = jsonObject.getJSONObject(id);
                     startDateTime = jobData.getString("start_datetime");
                     endDateTime = jobData.getString("end_datetime");
+                    sitterName =jobData.getString("sitter_name");
 
-                    ownerAcceptedSittingList.add(new OwnerSittingData(id , startDateTime, endDateTime, true));
+                    ownerAcceptedSittingList.add(new OwnerSittingData(id , startDateTime, endDateTime, true, sitterName));
                 }
                 else success = true;
             }

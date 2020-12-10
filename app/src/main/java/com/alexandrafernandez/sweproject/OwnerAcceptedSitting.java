@@ -79,7 +79,7 @@ public class OwnerAcceptedSitting extends AppCompatActivity {
 
         job_id = getIntent().getStringExtra("the_job_id");
 
-        String startDateTime = "", endDateTime = "", sitterName = "";
+        String startDateTime = "", endDateTime = "", sitterName = "", sitterPhone="";
         boolean success = false;
         boolean is_at_owner = false;
         float lat = 0, lon = 0;
@@ -106,6 +106,9 @@ public class OwnerAcceptedSitting extends AppCompatActivity {
             sitterInformation.setText(sitterName);
             //grab phone number
             //need line for sitter information
+            sitterPhone = jsonObject.getString("sitter_number");
+            sitterPhoneNumber.setText(sitterPhone);
+
 
         } catch (JSONException json_e) {
             System.out.println("in the catch");

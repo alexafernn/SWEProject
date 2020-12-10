@@ -98,7 +98,7 @@
         android:layout_below="@id/accepted_owner_sitter_information_label"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:text="Sitter Phone Number:"
+        android:text="Sitter Phone:"
         android:textColor="@color/colorBlack"
         android:gravity="center"
         android:layout_marginTop="10dp"
