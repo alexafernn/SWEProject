@@ -108,27 +108,27 @@ public class Profile extends AppCompatActivity {
         account_info.setTextSize(view.getLabelTextSize());
 
         first_name_field = (EditText) findViewById(R.id.first_name_field_editText);
-        first_name_field.setTextSize(view.getEditTextSize());
+        first_name_field.setTextSize((float) (0.9*view.getEditTextSize()));
         //adding the information from server
         first_name_field.setText(first_name);
 
 
         last_name_field = (EditText) findViewById(R.id.LastNameEditText);
-        last_name_field.setTextSize(view.getEditTextSize());
+        last_name_field.setTextSize((float) (0.9*view.getEditTextSize()));
         //adding the information from server
         last_name_field.setText(last_name);
 
         email_field = (EditText) findViewById(R.id.emailEditText);
-        email_field.setTextSize(view.getEditTextSize());
+        email_field.setTextSize((float) (0.9*view.getEditTextSize()));
         //adding info from the server
         email_field.setText(email);
 
         phone_field = (EditText) findViewById(R.id.phoneFieldEditText);
-        phone_field.setTextSize(view.getEditTextSize());
+        phone_field.setTextSize((float) (0.9*view.getEditTextSize()));
         phone_field.setText(phone_number);
 
         address_field = (EditText) findViewById(R.id.addressEditText);
-        address_field.setTextSize(view.getEditTextSize());
+        address_field.setTextSize((float) (0.9*view.getEditTextSize()));
         address_field.setText(my_address);
 
         save = (Button) findViewById(R.id.settings_save_button);
