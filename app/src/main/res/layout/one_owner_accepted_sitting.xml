@@ -165,4 +165,17 @@
         android:text="Cancel"
         android:layout_margin="10dp"
         android:textColor="@color/colorWhite" />
+
+    <Button
+        android:id="@+id/back_button_owner_accepted"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/owner_accepted_cancel"
+        android:layout_marginTop="15dp"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/colorWhite"
+        android:text="Back"
+        android:onClick="goBack"
+        android:layout_margin="10dp"
+        />
 </RelativeLayout>

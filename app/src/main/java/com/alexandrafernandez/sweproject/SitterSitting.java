@@ -236,6 +236,10 @@ public class SitterSitting extends AppCompatActivity
     }
 
 
+    /**
+     * Go Back method
+     * @param view the view calling the method
+     */
     public void back(View view) {
         startActivity(new Intent(this, Sitter.class));
         finish();

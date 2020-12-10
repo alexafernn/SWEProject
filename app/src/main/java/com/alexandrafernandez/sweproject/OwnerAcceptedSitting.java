@@ -28,7 +28,7 @@ public class OwnerAcceptedSitting extends AppCompatActivity {
     /**
      * Buttons
      */
-    Button cancelButton, ratingButton;
+    Button cancelButton, ratingButton, backButton;
 
     /**
      * Server interaction objects
@@ -50,6 +50,8 @@ public class OwnerAcceptedSitting extends AppCompatActivity {
         cancelButton = (Button) findViewById(R.id.owner_accepted_cancel);
 
         ratingButton = (Button) findViewById(R.id.rate_sitter__button);
+
+        backButton = (Button) findViewById(R.id.back_button_owner_accepted);
 
 
         //textView setup
@@ -172,10 +174,13 @@ public class OwnerAcceptedSitting extends AppCompatActivity {
 
     }
 
-
-    public void onRateSitter()
+    /**
+     * On Rate Sitter method
+     *
+     */
+    public void onRateSitter(View v)
     {
-        //need to take to the class that Jack is making
+        startActivity(new Intent(this, Rating.class));
     }
     /**
      * Get context
@@ -187,4 +192,12 @@ public class OwnerAcceptedSitting extends AppCompatActivity {
     }
 
 
+    /**
+     * Go Back method
+     * @param view the view calling the method
+     */
+    public void goBack(View view) {
+        startActivity(new Intent(this, OwnerAcceptedSittings.class));
+        finish();
+    }
 }
