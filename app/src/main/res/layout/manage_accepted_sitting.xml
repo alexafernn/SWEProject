@@ -12,14 +12,14 @@
         android:textSize="24sp"
         android:gravity="center"
         android:textColor="@color/colorBlack"
-        android:text="Sitting Appointment Details: "
-        android:id="@+id/label"
+        android:text="Confirmed Sitting Details: "
+        android:id="@+id/label2"
         android:layout_marginLeft="10dp"
         />
 
     <TextView
-        android:id="@+id/start_date"
-        android:layout_below="@id/label"
+        android:id="@+id/start_date2"
+        android:layout_below="@id/label2"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:text="Start Date:"
@@ -36,15 +36,15 @@
         android:layout_height="wrap_content"
         android:inputType="text"
         android:layout_width="match_parent"
-        android:layout_toRightOf="@+id/start_date"
-        android:layout_alignRight="@id/start_date"
+        android:layout_toRightOf="@+id/start_date2"
+        android:layout_alignRight="@id/start_date2"
         android:layout_alignEnd="@id/confirm_availability_button2"
-        android:layout_above="@id/end_date"/>
+        android:layout_above="@id/end_date2"/>
 
 
     <TextView
-        android:id="@+id/end_date"
-        android:layout_below="@id/start_date"
+        android:id="@+id/end_date2"
+        android:layout_below="@id/start_date2"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:text="End Date:"
@@ -55,21 +55,21 @@
         />
 
     <TextView
-        android:id="@+id/end_date_label"
-        android:layout_toEndOf="@+id/end_date"
+        android:id="@+id/end_date_label2"
+        android:layout_toEndOf="@+id/end_date2"
         android:layout_height="wrap_content"
         android:inputType="text"
         android:layout_width="match_parent"
-        android:layout_toRightOf="@+id/end_date"
-        android:layout_alignRight="@id/end_date"
+        android:layout_toRightOf="@+id/end_date2"
+        android:layout_alignRight="@id/end_date2"
         android:layout_alignEnd="@id/confirm_availability_button2"
-        android:layout_above="@id/must_occur_at_my_location"/>
+        android:layout_above="@id/must_occur_at_my_location2"/>
 
 
 
     <TextView
-        android:id="@+id/must_occur_at_my_location"
-        android:layout_below="@id/end_date"
+        android:id="@+id/must_occur_at_my_location2"
+        android:layout_below="@id/end_date2"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:text="Sitting Location:"
@@ -81,19 +81,19 @@
 
 
     <TextView
-        android:id="@+id/must_occur_at_my_location_label"
+        android:id="@+id/must_occur_at_my_location_label2"
         android:layout_toEndOf="@+id/must_occur_at_my_location"
         android:layout_height="wrap_content"
         android:inputType="text"
         android:layout_width="match_parent"
-        android:layout_toRightOf="@+id/must_occur_at_my_location"
-        android:layout_alignRight="@id/must_occur_at_my_location"
-        android:layout_alignEnd="@id/confirm_availability_button2"
-        android:layout_above="@id/notes_for_sitter"/>
+        android:layout_toRightOf="@+id/must_occur_at_my_location2"
+        android:layout_alignRight="@id/must_occur_at_my_location2"
+        android:layout_alignEnd="@id/confirm_availability_button3"
+        android:layout_above="@id/notes_for_sitter2"/>
 
     <TextView
-        android:id="@+id/notes_for_sitter"
-        android:layout_below="@id/must_occur_at_my_location"
+        android:id="@+id/notes_for_sitter2"
+        android:layout_below="@id/must_occur_at_my_location2"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:text="Notes from Owner: "
@@ -104,8 +104,8 @@
         />
 
     <TextView
-        android:id="@+id/owner_rating"
-        android:layout_below="@id/notes_for_sitter"
+        android:id="@+id/owner_rating2"
+        android:layout_below="@id/notes_for_sitter2"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:text="Owner Rating: "
@@ -116,75 +116,75 @@
         />
 
     <TextView
-        android:id="@+id/owner_rating_field"
-        android:layout_toEndOf="@+id/notes_for_sitter"
+        android:id="@+id/owner_rating_field2"
+        android:layout_toEndOf="@+id/notes_for_sitter2"
         android:layout_height="wrap_content"
         android:inputType="text"
         android:layout_width="match_parent"
-        android:layout_toRightOf="@+id/owner_rating"
-        android:layout_alignRight="@id/owner_rating"
-        android:layout_alignEnd="@id/confirm_availability_button2"
-        android:layout_above="@id/view_pets_button2"
+        android:layout_toRightOf="@+id/owner_rating2"
+        android:layout_alignRight="@id/owner_rating2"
+        android:layout_alignEnd="@id/confirm_availability_button3"
+        android:layout_above="@id/view_pets_button3"
         android:layout_marginTop="10dp"
         android:text="5.0"
         />
 
 
     <TextView
-        android:id="@+id/notes_for_sitter_label"
-        android:layout_toEndOf="@+id/notes_for_sitter"
+        android:id="@+id/notes_for_sitter_label2"
+        android:layout_toEndOf="@+id/notes_for_sitter2"
         android:layout_height="wrap_content"
         android:inputType="text"
         android:layout_width="match_parent"
-        android:layout_toRightOf="@+id/notes_for_sitter"
-        android:layout_alignRight="@id/notes_for_sitter"
-        android:layout_alignEnd="@id/confirm_availability_button2"
-        android:layout_above="@id/owner_rating_field"
+        android:layout_toRightOf="@+id/notes_for_sitter2"
+        android:layout_alignRight="@id/notes_for_sitter2"
+        android:layout_alignEnd="@id/confirm_availability_button3"
+        android:layout_above="@id/owner_rating_field2"
         />
     <Button
-        android:id="@+id/confirm_availability_button2"
+        android:id="@+id/confirm_availability_button3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/view_pets_button2"
+        android:layout_below="@id/view_pets_button3"
         android:layout_marginTop="15dp"
         android:background="@color/colorPrimary"
         android:textColor="@color/colorWhite"
-        android:text="Accept Sitting"
-        android:onClick="onConfirm"
+        android:text="Rate Owner"
+        android:onClick="rate"
         android:layout_margin="10dp"
         />
 
     <Button
-        android:id="@+id/cancel_button2"
+        android:id="@+id/cancel_button3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/confirm_availability_button2"
+        android:layout_below="@id/confirm_availability_button3"
         android:layout_marginTop="15dp"
         android:background="#F13B14"
         android:textColor="@color/colorWhite"
-        android:text="Ignore"
+        android:text="Cancel Sitting"
         android:onClick="onCancel"
         android:layout_margin="10dp"
         />
 
     <Button
-    android:id="@+id/view_pets_button2"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_below="@id/owner_rating"
-    android:layout_marginTop="15dp"
-    android:background="@color/colorPrimary"
-    android:textColor="@color/colorWhite"
-    android:text="View Pets"
-    android:onClick="onViewSittingPets"
-    android:layout_margin="10dp"
-    />
-
-    <Button
-        android:id="@+id/confirm_back_button"
+        android:id="@+id/view_pets_button3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/cancel_button2"
+        android:layout_below="@id/owner_rating2"
+        android:layout_marginTop="15dp"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/colorWhite"
+        android:text="View Pets"
+        android:onClick="onViewSittingPets"
+        android:layout_margin="10dp"
+        />
+
+    <Button
+        android:id="@+id/confirm_back_button3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cancel_button3"
         android:layout_marginTop="15dp"
         android:background="@color/colorPrimary"
         android:textColor="@color/colorWhite"

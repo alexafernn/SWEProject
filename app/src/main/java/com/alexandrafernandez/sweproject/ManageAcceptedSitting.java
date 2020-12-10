@@ -18,14 +18,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 
-public class SitterSitting extends AppCompatActivity
+public class ManageAcceptedSitting extends AppCompatActivity
 {
     /**
      * Text Views for identifying field components
      */
     TextView textViewStartDateLabel, textViewEndDateLabel, textViewAllMyPetsLabel, textViewMustOccurAtOwnerLocationLabel,
-             textViewNotesFromOwnerLabel, textViewStartDate, textViewEndDate, textViewAllMyPets, textViewMustOccurAtOwnerLocation,
-             textViewNotesFromOwner;
+            textViewNotesFromOwnerLabel, textViewStartDate, textViewEndDate, textViewAllMyPets, textViewMustOccurAtOwnerLocation,
+            textViewNotesFromOwner;
 
     /**
      * Buttons used to confirm data and/or move to another activity
@@ -49,59 +49,46 @@ public class SitterSitting extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.confirm);
-        setTitle("Approve Sitting");
+        setContentView(R.layout.manage_accepted_sitting);
+        setTitle("Manage Sitting");
 
         ScreenSize view  = new ScreenSize(this);
 
         //setting up buttons
-        buttonConfirm = (Button) findViewById(R.id.confirm_availability_button2);
+        buttonConfirm = (Button) findViewById(R.id.confirm_availability_button3);
         buttonConfirm.setTextSize(view.getButtonTextSize());
 
-        buttonCancel = (Button) findViewById(R.id.cancel_button2);
+        buttonCancel = (Button) findViewById(R.id.cancel_button3);
         buttonCancel.setTextSize(view.getButtonTextSize());
 
-        buttonViewPets = (Button) findViewById(R.id.view_pets_button2);
+        buttonViewPets = (Button) findViewById(R.id.view_pets_button3);
         buttonViewPets.setTextSize(view.getButtonTextSize());
 
+        textViewNotesFromOwnerLabel = (TextView) findViewById(R.id.notes_for_sitter2);
+        textViewNotesFromOwnerLabel.setTextSize(view.getLabelTextSize());
 
-        //setting up textViews
+        textViewStartDateLabel = (TextView) findViewById(R.id.start_date2);
+        textViewStartDateLabel.setTextSize(view.getLabelTextSize());
 
+        textViewStartDate = (TextView) findViewById(R.id.start_date_label2);
+        textViewStartDate.setTextSize(view.getLabelTextSize());
 
-        textViewNotesFromOwnerLabel = (TextView) findViewById(R.id.notes_for_sitter);
-       // textViewNotesFromOwnerLabel.setTextSize(view.getLabelTextSize());
+        textViewEndDateLabel = (TextView) findViewById(R.id.end_date2);
+        textViewEndDateLabel.setTextSize(view.getLabelTextSize());
 
-        //exist
-        textViewStartDateLabel = (TextView) findViewById(R.id.start);
-        //textViewStartDateLabel.setTextSize(view.getLabelTextSize());
+        textViewEndDate = (TextView) findViewById(R.id.end_date_label2);
+        textViewEndDate.setTextSize(view.getLabelTextSize());
 
-        //exist
-        textViewStartDate = (TextView) findViewById(R.id.start_date_label);
-        //textViewStartDate.setTextSize(view.getLabelTextSize());
+        textViewMustOccurAtOwnerLocation = (TextView) findViewById(R.id.must_occur_at_my_location_label2);
+        textViewMustOccurAtOwnerLocation.setTextSize(view.getLabelTextSize());
 
-        //exist
-        textViewEndDateLabel = (TextView) findViewById(R.id.end);
-       // textViewEndDateLabel.setTextSize(view.getLabelTextSize());
+        textViewMustOccurAtOwnerLocationLabel = (TextView) findViewById(R.id.must_occur_at_my_location2);
+        textViewMustOccurAtOwnerLocationLabel.setTextSize(view.getLabelTextSize());
 
-        //exist
-        textViewEndDate = (TextView) findViewById(R.id.end_date_label);
-        //textViewEndDate.setTextSize(view.getLabelTextSize());
+        textViewNotesFromOwner = (TextView) findViewById(R.id.notes_for_sitter_label2);
+        textViewNotesFromOwner.setTextSize(view.getLabelTextSize());
 
-        //exist
-        textViewMustOccurAtOwnerLocation = (TextView) findViewById(R.id.must_occur_at_my_location_label);
-       // textViewMustOccurAtOwnerLocation.setTextSize(view.getLabelTextSize());
-
-        textViewMustOccurAtOwnerLocationLabel = (TextView) findViewById(R.id.must_occur_at_my_location);
-        //textViewMustOccurAtOwnerLocationLabel.setTextSize(view.getLabelTextSize());
-
-
-        textViewNotesFromOwner = (TextView) findViewById(R.id.notes_for_sitter_label);
-        //textViewNotesFromOwner.setTextSize(view.getLabelTextSize());
-
-//        textViewAllMyPets = (TextView) findViewById(R.id.all_my_pet_label);
-//        textViewAllMyPets.setTextSize(view.getLabelTextSize());
-
-        backButton = (Button) findViewById(R.id.confirm_back_button);
+        backButton = (Button) findViewById(R.id.confirm_back_button3);
         backButton.setTextSize(view.getButtonTextSize());
 
         //TODO get from server
@@ -131,7 +118,7 @@ public class SitterSitting extends AppCompatActivity
         try {
             JSONObject jsonObject = new JSONObject(json);
             is_at_owner = jsonObject.getBoolean("is_at_owner");
-            if(is_at_owner== true)
+            if(is_at_owner)
             {
                 textViewMustOccurAtOwnerLocation.setText("Owner's House");
             }
@@ -302,5 +289,9 @@ public class SitterSitting extends AppCompatActivity
     public void back(View view) {
         startActivity(new Intent(this, Sitter.class));
         finish();
+    }
+
+    public void rate(View view) {
+        startActivity(new Intent(this, Rating.class));
     }
 }

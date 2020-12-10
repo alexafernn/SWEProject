@@ -114,6 +114,7 @@ public class Sitter extends AppCompatActivity implements LocationListener {
         //Save response
         String json = pref.getString("available.sitter", "");
         String id="", startDateTime="", endDateTime="", ownerName="";
+        boolean is_at_owner = false;
         JSONObject jobData;
         try {
             JSONObject jsonObject = new JSONObject(json);
@@ -127,6 +128,7 @@ public class Sitter extends AppCompatActivity implements LocationListener {
                     endDateTime = jobData.getString("end_datetime");
                     sittingList.add(new Sitting(startDateTime, endDateTime, ownerName, id));
                 }
+                else success = true;
 
             }
         } catch( JSONException json_e ) {

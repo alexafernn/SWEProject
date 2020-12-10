@@ -153,7 +153,7 @@ public class SitterAccepted extends AppCompatActivity
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 sitterSitting = sitterSittingList.get(position);
 
-                Intent intent = new Intent(context, SitterSitting.class);
+                Intent intent = new Intent(context, ManageAcceptedSitting.class);
                 intent.putExtra("job_id", sitterSitting.sittingID);
                 startActivity(intent);
                 finish();
