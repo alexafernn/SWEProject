@@ -90,8 +90,6 @@ public class SitterAccepted extends AppCompatActivity
 
         sitterSittingList = new ArrayList<SitterSittingData>();
 
-        Log.w("MA", "CREATED OWNER");
-
         //Save response
         String json = pref.getString("requests.list", "");
 

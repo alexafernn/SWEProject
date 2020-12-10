@@ -155,19 +155,6 @@
         />
 
     <Button
-        android:id="@+id/cancel_button2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/confirm_availability_button2"
-        android:layout_marginTop="15dp"
-        android:background="#F13B14"
-        android:textColor="@color/colorWhite"
-        android:text="Ignore"
-        android:onClick="onCancel"
-        android:layout_margin="10dp"
-        />
-
-    <Button
     android:id="@+id/view_pets_button2"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -184,7 +171,7 @@
         android:id="@+id/confirm_back_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/cancel_button2"
+        android:layout_below="@id/confirm_availability_button2"
         android:layout_marginTop="15dp"
         android:background="@color/colorPrimary"
         android:textColor="@color/colorWhite"

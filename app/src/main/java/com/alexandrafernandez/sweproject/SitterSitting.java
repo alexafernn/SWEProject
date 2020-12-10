@@ -58,9 +58,6 @@ public class SitterSitting extends AppCompatActivity
         buttonConfirm = (Button) findViewById(R.id.confirm_availability_button2);
         buttonConfirm.setTextSize(view.getButtonTextSize());
 
-        buttonCancel = (Button) findViewById(R.id.cancel_button2);
-        buttonCancel.setTextSize(view.getButtonTextSize());
-
         buttonViewPets = (Button) findViewById(R.id.view_pets_button2);
         buttonViewPets.setTextSize(view.getButtonTextSize());
 
@@ -212,68 +209,6 @@ public class SitterSitting extends AppCompatActivity
                     }
                 })
                 .setIcon(android.R.drawable.ic_menu_save)
-                .show();
-    }
-
-
-    /**
-     * Go to sittins requested method
-     * dont save anything to server, returns to main mySittings (for sitter) view
-     * @param v the reference object calling this method
-     */
-    public void onCancel(View v)
-    {
-
-        final Intent i = new Intent(this, Sitter.class);
-
-        new AlertDialog.Builder(this)
-                .setTitle("Un-Accept Job")
-                .setMessage("Are you sure you want to ignore this job?")
-                .setPositiveButton("Un-Accept", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-
-                        JSONObject data = new JSONObject();
-                        try {
-                            data.put("id", clientID);
-                            data.put("auth", clientAuth);
-                            data.put("job_id", job_id);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-
-                        UrlDelete saveInfo = new UrlDelete("http://aiji.cs.loyola.edu/jobunaccept", data.toString(), "job.unaccept", getContext());
-                        saveInfo.start();
-
-                        //give persistent data time to write
-                        try {
-                            Thread.sleep(500);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-
-                        //check response
-                        String response = pref.getString("job.unaccept", "");
-                        boolean success = false;
-                        try {
-                            JSONObject jsonObject1 = new JSONObject(response);
-                            success = jsonObject1.getBoolean("success");
-                        } catch( JSONException json_e ) {
-                            if(!success) {
-                                //showError();
-                                //return;
-                            }
-                        }
-                        startActivity(i);
-                        finish();
-                    }
-                })
-
-                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-
-                    }
-                })
-                .setIcon(android.R.drawable.ic_menu_delete)
                 .show();
     }
 

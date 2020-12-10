@@ -37,7 +37,7 @@ public class ManageAcceptedSitting extends AppCompatActivity
      * Server interaction objects
      */
     SharedPreferences pref;
-    String clientID, clientAuth, job_id;
+    String clientID, clientAuth, job_id, owner_id;
 
 
     /**
@@ -93,7 +93,7 @@ public class ManageAcceptedSitting extends AppCompatActivity
 
         job_id = getIntent().getStringExtra("job_id");
 
-        String startDateTime = "", endDateTime = "", details ="";
+        String startDateTime = "", endDateTime = "", details ="";owner_id="";
         boolean success = false, is_at_owner = false;
         float lat=0, lon=0;
 
@@ -124,6 +124,7 @@ public class ManageAcceptedSitting extends AppCompatActivity
             textViewEndDate.setText(endDateTime);
             details = jsonObject.getString("details");
             textViewNotesFromOwner.setText(details);
+            owner_id = jsonObject.getString("owner_id");
 
         } catch (JSONException json_e) {
             Log.w("MA", json_e.toString());
@@ -263,8 +264,10 @@ public class ManageAcceptedSitting extends AppCompatActivity
      */
     public void onViewSittingPets(View v)
     {
-        Intent i= new Intent(this, petsSittingList.class); //TODO: fix petSittingList to account with server and show properly
+        Intent i= new Intent(this, petsSittingList.class);
+        i.putExtra("owner_id", owner_id);
         startActivity(i);
+        finish();
     }
 
 
