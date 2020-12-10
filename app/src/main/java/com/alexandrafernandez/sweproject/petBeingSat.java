@@ -147,9 +147,9 @@ public class petBeingSat extends AppCompatActivity {
     }
 
 
-    public void onGoBack()
+    public void onGoBack(View v)
     {
-        startActivity(new Intent(this, petsSittingList.class));
+        startActivity(new Intent(this, SitterSitting.class));
         finish();
     }
 

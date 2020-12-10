@@ -130,6 +130,7 @@ public class petsSittingList extends AppCompatActivity
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 petData = petList.get(i);
+
                 Intent intent = new Intent(context, petBeingSat.class);
                 intent.putExtra("pet_id", petData.id);
                 startActivity(intent);
