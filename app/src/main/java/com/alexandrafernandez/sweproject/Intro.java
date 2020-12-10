@@ -159,7 +159,7 @@ public class Intro extends AppCompatActivity {
                                     startActivity(new Intent(Intro.this, SitterAccepted.class)); // i am sitter
                                     break;
                                 case DialogInterface.BUTTON_NEGATIVE:
-                                    startActivity(new Intent(Intro.this, sittingsForMyPet.class)); // i am owner
+                                    startActivity(new Intent(Intro.this, OwnerAcceptedSittings.class)); // i am owner
                             }
                         }
                     };
