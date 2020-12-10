@@ -126,7 +126,7 @@
         android:layout_alignEnd="@id/confirm_availability_button2"
         android:layout_above="@id/owner_rating_field"
         android:layout_marginTop="10dp"
-        android:text="5.0"
+        android:text="410-617-2000"
         />
 
     <TextView

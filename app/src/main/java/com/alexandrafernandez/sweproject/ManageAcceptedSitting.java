@@ -25,7 +25,7 @@ public class ManageAcceptedSitting extends AppCompatActivity
      */
     TextView textViewStartDateLabel, textViewEndDateLabel, textViewAllMyPetsLabel, textViewMustOccurAtOwnerLocationLabel,
             textViewNotesFromOwnerLabel, textViewStartDate, textViewEndDate, textViewAllMyPets, textViewMustOccurAtOwnerLocation,
-            textViewNotesFromOwner;
+            textViewNotesFromOwner, owner_phone;
 
     /**
      * Buttons used to confirm data and/or move to another activity
@@ -82,6 +82,8 @@ public class ManageAcceptedSitting extends AppCompatActivity
 
         backButton = (Button) findViewById(R.id.confirm_back_button3);
         backButton.setTextSize(view.getButtonTextSize());
+
+        owner_phone = findViewById(R.id.owner_phone_field);
 
         //TODO get from server
         /**Things commented out are so it can work without server connection**/

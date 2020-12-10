@@ -104,8 +104,34 @@
         />
 
     <TextView
-        android:id="@+id/owner_rating2"
+        android:id="@+id/owner_phone2"
         android:layout_below="@id/notes_for_sitter2"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:text="Owner Phone: "
+        android:textColor="@color/colorBlack"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        />
+
+    <TextView
+        android:id="@+id/owner_phone_field2"
+        android:layout_toEndOf="@+id/notes_for_sitter2"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:layout_width="match_parent"
+        android:layout_toRightOf="@+id/owner_phone2"
+        android:layout_alignRight="@id/owner_phone2"
+        android:layout_alignEnd="@id/confirm_availability_button3"
+        android:layout_above="@id/owner_rating_field2"
+        android:layout_marginTop="10dp"
+        android:text="410-617-2000"
+        />
+
+    <TextView
+        android:id="@+id/owner_rating2"
+        android:layout_below="@id/owner_phone2"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:text="Owner Rating: "
@@ -139,7 +165,7 @@
         android:layout_toRightOf="@+id/notes_for_sitter2"
         android:layout_alignRight="@id/notes_for_sitter2"
         android:layout_alignEnd="@id/confirm_availability_button3"
-        android:layout_above="@id/owner_rating_field2"
+        android:layout_above="@id/owner_phone_field2"
         />
     <Button
         android:id="@+id/confirm_availability_button3"

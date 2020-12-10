@@ -3,6 +3,7 @@ package com.alexandrafernandez.sweproject;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -32,6 +33,7 @@ public class Rating extends AppCompatActivity {
      * @param view the reference object calling this method
      */
     public void onSubmitRating(View view) {
+        Toast.makeText(this, "Rating Submitted.", Toast.LENGTH_SHORT).show();
         finish();
     }
 }

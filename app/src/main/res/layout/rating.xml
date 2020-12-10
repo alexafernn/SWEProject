@@ -20,12 +20,12 @@
         style="?android:attr/ratingBarStyleSmall"
         android:numStars="5"
         android:stepSize="0.1"
-        android:isIndicator="true"
         android:layout_margin="20dp"
         android:layout_below="@id/calendar_title_info5"
         android:scaleX="3.5"
         android:scaleY="3.5"
         android:layout_centerHorizontal="true"
+        android:isIndicator="false"
         />
 
     <TextView
