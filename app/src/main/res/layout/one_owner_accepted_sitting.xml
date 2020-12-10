@@ -40,7 +40,7 @@
         android:layout_width="match_parent"
         android:layout_toRightOf="@+id/accepted_owner_sitting_start_date_label"
         android:layout_alignRight="@id/accepted_owner_sitting_start_date_label"
-        android:layout_alignEnd="@id/owner_accepted_delete_button"
+        android:layout_alignEnd="@id/rate_sitter__button"
         android:layout_above="@id/accepted_owner_sitting_end_date"/>
 
 
@@ -65,107 +65,104 @@
         android:layout_width="match_parent"
         android:layout_toRightOf="@id/accepted_owner_sitting_end_date_label"
         android:layout_alignRight="@id/accepted_owner_sitting_end_date_label"
-        android:layout_alignEnd="@id/owner_accepted_delete_button"
-        android:layout_above="@id/accepted_owner_sitter_information"/>
+        android:layout_alignEnd="@id/rate_sitter__button"
+       />
 
     <TextView
         android:id="@+id/accepted_owner_sitter_information_label"
         android:layout_below="@id/accepted_owner_sitting_end_date_label"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:text="Sitter information:"
+        android:text="Sitter Name:"
         android:textColor="@color/colorBlack"
         android:gravity="center"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
         />
+
 
     <TextView
         android:id="@+id/accepted_owner_sitter_information"
-        android:layout_toEndOf="@+id/accepted_owner_sitter_information_label"
+        android:layout_toEndOf="@id/accepted_owner_sitter_information_label"
         android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/accepted_owner_sitter_information_label"
         android:layout_width="match_parent"
-        android:layout_toRightOf="@+id/accepted_owner_sitter_information_label"
+        android:layout_toRightOf="@id/accepted_owner_sitter_information_label"
         android:layout_alignRight="@id/accepted_owner_sitter_information_label"
-        android:layout_alignEnd="@id/owner_accepted_delete_button"
-        android:layout_above="@id/owner_accepted_must_occur_at_my_location_label"/>
+        android:layout_alignEnd="@id/rate_sitter__button"
+        />
 
 
     <TextView
-        android:id="@+id/owner_accepted_must_occur_at_my_location_label"
+        android:id="@+id/accepted_owner_sitter_phone_number_label"
         android:layout_below="@id/accepted_owner_sitter_information_label"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:text="Must Occur at My Location:"
+        android:text="Sitter Phone Number:"
         android:textColor="@color/colorBlack"
         android:gravity="center"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
         />
 
-
     <TextView
-        android:id="@+id/owner_accepted_must_occur_at_my_location"
-        android:layout_toEndOf="@+id/owner_accepted_must_occur_at_my_location_label"
+        android:id="@+id/accepted_owner_sitter_phone_number"
+        android:layout_toEndOf="@id/accepted_owner_sitter_phone_number_label"
         android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/accepted_owner_sitter_phone_number_label"
         android:layout_width="match_parent"
-        android:layout_toRightOf="@+id/owner_accepted_must_occur_at_my_location_label"
-        android:layout_alignRight="@id/owner_accepted_must_occur_at_my_location_label"
-        android:layout_alignEnd="@id/owner_accepted_delete_button"
-        android:layout_alignBottom="@+id/owner_accepted_must_occur_at_my_location_label"
-        android:layout_above="@id/owner_accepted_notes_from_owner"/>
+        android:layout_toRightOf="@id/accepted_owner_sitter_phone_number_label"
+        android:layout_alignRight="@id/accepted_owner_sitter_phone_number_label"
+        android:layout_alignEnd="@id/rate_sitter__button"
+        />
 
     <TextView
-        android:id="@+id/owner_accepted_notes_from_owner_label"
-        android:layout_below="@id/owner_accepted_must_occur_at_my_location_label"
+        android:id="@+id/accepted_owner_sitter_rating_label"
+        android:layout_below="@id/accepted_owner_sitter_phone_number_label"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:text="Notes from Owner: "
+        android:text="Sitter Rating:"
         android:textColor="@color/colorBlack"
         android:gravity="center"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
         />
 
-
     <TextView
-        android:id="@+id/owner_accepted_notes_from_owner"
-        android:layout_toEndOf="@+id/owner_accepted_notes_from_owner_label"
+        android:id="@+id/accepted_owner_sitter_rating"
+        android:layout_toEndOf="@id/accepted_owner_sitter_rating_label"
         android:layout_height="wrap_content"
-        android:inputType="text"
+        android:layout_alignBottom="@id/accepted_owner_sitter_rating_label"
         android:layout_width="match_parent"
-        android:layout_toRightOf="@+id/owner_accepted_notes_from_owner_label"
-        android:layout_alignRight="@id/owner_accepted_notes_from_owner_label"
-        android:layout_alignEnd="@id/owner_accepted_delete_button"
-        android:layout_above="@id/owner_accepted_modify_button"/>
-
+        android:layout_toRightOf="@id/accepted_owner_sitter_rating_label"
+        android:layout_alignRight="@id/accepted_owner_sitter_rating_label"
+        android:layout_alignEnd="@id/rate_sitter__button"
+        />
 
 
 
     <Button
-        android:id="@+id/owner_accepted_modify_button"
+        android:id="@+id/rate_sitter__button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below = "@id/owner_accepted_notes_from_owner_label"
+        android:layout_below="@id/accepted_owner_sitter_rating_label"
         android:layout_marginTop="15dp"
         android:background="@color/colorPrimary"
         android:textColor="@color/colorWhite"
-        android:text="Modify Sitting"
-        android:onClick="onOwnerModify"
+        android:text="Rate Sitter"
+        android:onClick="onRateSitter"
         android:layout_margin="10dp"
         />
-
 
     <Button
-        android:id="@+id/owner_accepted_delete_button"
+        android:id="@+id/owner_accepted_cancel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/owner_accepted_modify_button"
+        android:layout_below="@id/rate_sitter__button"
         android:layout_marginTop="15dp"
         android:background="#F13B14"
-        android:textColor="@color/colorWhite"
-        android:text="Cancel Sitting"
         android:onClick="onOwnerCancel"
+        android:text="Cancel"
         android:layout_margin="10dp"
-        />
+        android:textColor="@color/colorWhite" />
 </RelativeLayout>

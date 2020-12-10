@@ -18,17 +18,17 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.w3c.dom.Text;
 
-public class OwnerAcceptedSitting extends AppCompatActivity
-{
+public class OwnerAcceptedSitting extends AppCompatActivity {
     /**
      * TextViews
      */
-    TextView startDateLabel, startDate, endDateLabel, endDate, sitterInformationLabel, sitterInformation, locationLabel, location, notesLabel, notes;
+    TextView startDateLabel, startDate, endDateLabel, endDate, sitterInformationLabel, sitterInformation, sitterPhoneNumberLabel, sitterPhoneNumber,
+            sitterRatingLabel, sitterRating;
 
     /**
      * Buttons
      */
-    Button modifyButton, cancelButton;
+    Button cancelButton, ratingButton;
 
     /**
      * Server interaction objects
@@ -38,19 +38,19 @@ public class OwnerAcceptedSitting extends AppCompatActivity
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.one_owner_accepted_sitting);
         setTitle("Sitting Details");
 
 
-        ScreenSize view  = new ScreenSize(this);
+        ScreenSize view = new ScreenSize(this);
 
         //setting up buttons
-        modifyButton = (Button) findViewById(R.id.owner_accepted_modify_button);
+        cancelButton = (Button) findViewById(R.id.owner_accepted_cancel);
 
-        cancelButton = (Button) findViewById(R.id.owner_accepted_delete_button);
+        ratingButton = (Button) findViewById(R.id.rate_sitter__button);
+
 
         //textView setup
         startDateLabel = (TextView) findViewById(R.id.accepted_owner_sitting_start_date_label);
@@ -62,27 +62,29 @@ public class OwnerAcceptedSitting extends AppCompatActivity
         sitterInformationLabel = (TextView) findViewById(R.id.accepted_owner_sitter_information_label);
         sitterInformation = (TextView) findViewById(R.id.accepted_owner_sitter_information);
 
-        locationLabel = (TextView) findViewById(R.id.owner_accepted_must_occur_at_my_location_label);
-        location = (TextView) findViewById(R.id.must_occur_at_my_location);
+        sitterPhoneNumberLabel = (TextView) findViewById(R.id.accepted_owner_sitter_phone_number_label);
+        sitterPhoneNumber = (TextView) findViewById(R.id.accepted_owner_sitter_phone_number);
 
-        notesLabel = (TextView) findViewById(R.id.owner_accepted_notes_from_owner_label);
-        notes = (TextView) findViewById(R.id.owner_accepted_notes_from_owner);
+        sitterRatingLabel = (TextView) findViewById(R.id.accepted_owner_sitter_rating_label);
+        sitterRating = (TextView) findViewById(R.id.accepted_owner_sitter_rating);
+        sitterRating.setText("5.0");
+
 
         //GET Request - get id/auth
         pref = PreferenceManager.getDefaultSharedPreferences(this);
         clientId = pref.getString("id", "");
         clientAuth = pref.getString("auth", "");
 
-        job_id = getIntent().getStringExtra("job_id");
+        job_id = getIntent().getStringExtra("the_job_id");
 
-        String startDateTime = "", endDateTime = "", sitterInformation ="",
-                notesFromOwner ="";
-        boolean success = false, is_at_owner = false;
-        float lat=0, lon=0;
+        String startDateTime = "", endDateTime = "", sitterName = "";
+        boolean success = false;
+        boolean is_at_owner = false;
+        float lat = 0, lon = 0;
 
 
         //Url connection
-        UrlGet userInfo = new UrlGet("http://aiji.cs.loyola.edu/ownerjoblist?id=" + clientId + "&auth=" + clientAuth + "&is_accepted=" + true,"requests.list", this);
+        UrlGet userInfo = new UrlGet("http://aiji.cs.loyola.edu/jobinfo?id=" + clientId + "&auth=" + clientAuth + "&job_id=" + job_id, "requests.list", this);
         userInfo.start();
         try {
             Thread.sleep(500);
@@ -93,24 +95,18 @@ public class OwnerAcceptedSitting extends AppCompatActivity
         String json = pref.getString("requests.list", "");
         try {
             JSONObject jsonObject = new JSONObject(json);
-            is_at_owner = jsonObject.getBoolean("is_at_owner");
-            if(is_at_owner== true)
-            {
-                location.setText("true");
-            }
-            else
-            {
-                location.setText("false");
-            }
             startDateTime = jsonObject.getString("start_datetime");
+            System.out.println("the startDate time is " + startDateTime);
             startDate.setText(startDateTime);
             endDateTime = jsonObject.getString("end_datetime");
             endDate.setText(endDateTime);
-            notesFromOwner = jsonObject.getString("details");
-            notes.setText(notesFromOwner);
+            sitterName = jsonObject.getString("sitter_name");
+            sitterInformation.setText(sitterName);
+            //grab phone number
             //need line for sitter information
 
         } catch (JSONException json_e) {
+            System.out.println("in the catch");
             Log.w("MA", json_e.toString());
         }
 
@@ -119,64 +115,67 @@ public class OwnerAcceptedSitting extends AppCompatActivity
 
     public void onOwnerCancel(View v)
     {
+        final Intent i = new Intent(this, OwnerAcceptedSittings.class);
 
-//        final Intent i = new Intent(this, OwnerAcceptedSittings.class);
-//
-//        new AlertDialog.Builder(this)
-//                .setTitle("Un-Accept Job")
-//                .setMessage("Are you sure you want to ignore this job?")
-//                .setPositiveButton("Un-Accept", new DialogInterface.OnClickListener() {
-//                    public void onClick(DialogInterface dialog, int which) {
-//
-//                        JSONObject data = new JSONObject();
-//                        try {
-//                            data.put("id", clientId);
-//                            data.put("auth", clientAuth);
-//                            data.put("job_id", job_id);
-//                        } catch (JSONException e) {
-//                            e.printStackTrace();
-//                        }
-//
-//                        UrlDelete saveInfo = new UrlDelete("http://aiji.cs.loyola.edu/jobunaccept", data.toString(), "job.unaccept", getContext());
-//                        saveInfo.start();
-//
-//                        //give persistent data time to write
-//                        try {
-//                            Thread.sleep(500);
-//                        } catch (InterruptedException e) {
-//                            e.printStackTrace();
-//                        }
-//
-//                        //check response
-//                        String response = pref.getString("job.unaccept", "");
-//                        boolean success = false;
-//                        try {
-//                            JSONObject jsonObject1 = new JSONObject(response);
-//                            success = jsonObject1.getBoolean("success");
-//                        } catch( JSONException json_e ) {
-//                            if(!success) {
-//                                //showError();
-//                                //return;
-//                            }
-//                        }
-//                        startActivity(i);
-//                        finish();
-//                    }
-//                })
-//
-//                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-//                    public void onClick(DialogInterface dialog, int which) {
-//
-//                    }
-//                })
-//                .setIcon(android.R.drawable.ic_menu_delete)
-//                .show();
+        new AlertDialog.Builder(this)
+                .setTitle("Cancel Job")
+                .setMessage("Are you sure you want to cancel this job?")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        JSONObject data = new JSONObject();
+                        try {
+                            data.put("id", clientId);
+                            data.put("auth", clientAuth);
+                            data.put("the_job_id", job_id);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Log.w("MA" ," the exception is ",  e);
+                        }
+
+                        UrlDelete saveInfo = new UrlDelete("http://aiji.cs.loyola.edu/jobdelete", data.toString(), "job.delete", getContext());
+                        saveInfo.start();
+
+                        //give persistent data time to write
+                        try {
+                            Thread.sleep(500);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+
+                        //check response
+                        String response = pref.getString("job.delete", "");
+                        boolean success = false;
+                        try {
+                            JSONObject jsonObject1 = new JSONObject(response);
+                            success = jsonObject1.getBoolean("success");
+                        } catch( JSONException json_e ) {
+                            if(!success) {
+                               // showError();
+                                //return;
+                                Log.w("MA" ," the exception is ",  json_e);
+
+                            }
+                         }
+                        startActivity(i);
+                        finish();
+                    }
+                })
+
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                })
+                .setIcon(android.R.drawable.ic_menu_delete)
+                .show();
+
     }
 
 
-    public void onOwnerModify(View v)
+    public void onRateSitter()
     {
-
+        //need to take to the class that Jack is making
     }
     /**
      * Get context

@@ -3,13 +3,17 @@ package com.alexandrafernandez.sweproject;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -124,8 +128,21 @@ public class OwnerAcceptedSittings extends AppCompatActivity
         }
 
         ownerSitting_listview = (ListView) findViewById(R.id.accepted_owner_sittings_listview);
-        ArrayAdapter<OwnerSittingData> adapter = new ArrayAdapter<OwnerSittingData>(this, android.R.layout.simple_list_item_1, ownerAcceptedSittingList);
+        ArrayAdapter<OwnerSittingData> adapter = new ArrayAdapter<OwnerSittingData>(this, android.R.layout.simple_list_item_1, ownerAcceptedSittingList)
+        {
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent)
+            {
+                TextView textView = (TextView) super.getView(position, convertView, parent);
+                textView.setTextColor(Color.WHITE);
+                textView.setTypeface(textView.getTypeface(), Typeface.BOLD);
+                textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 22);
+                return textView;
+
+            }
+        };
         ownerSitting_listview.setAdapter(adapter);
+
 
         context = this;
 
@@ -135,11 +152,13 @@ public class OwnerAcceptedSittings extends AppCompatActivity
                 acceptedSitting = ownerAcceptedSittingList.get(i);
 
                 Intent intent = new Intent(context, OwnerAcceptedSitting.class);
-                intent.putExtra("job_id", acceptedSitting.sittingID);
+                intent.putExtra("the_job_id", acceptedSitting.sittingID);
                 startActivity(intent);
                 finish();
             }
         });
+
+
     }
 
     /**
@@ -150,39 +169,26 @@ public class OwnerAcceptedSittings extends AppCompatActivity
      */
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.owner_menu, menu);
+        inflater.inflate(R.menu.owner_accepted_menu, menu);
         return true;
     }
+
 
     /**
      * On Options Item Selected method
      * @param item the option selected by the user
      * @return true once an action is taken regarding this selection
      */
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
         switch (item.getItemId()) {
             case R.id.home:
                 finish();
                 return true;
-            case R.id.action_favorite:
-                //startActivity(new Intent(this, HomeActivity.class));
-                startActivity(new Intent(this, sittingsForMyPet.class));
-                return true;
-            case R.id.my_pets_menu:
-                startActivity(new Intent(this, Pets.class));
-                return true;
-            case R.id.subscription_menu:
-                startActivity(new Intent(this, Subscription.class));
-                return true;
-            case R.id.past_sittings_menu:
-                startActivity(new Intent(this, PastSittings.class));
-                return true;
-            case R.id.feedback_menu:
-                startActivity(new Intent(this, Feedback.class));
-                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
+
     }
 
 
