@@ -50,11 +50,6 @@ public class SitterAccepted extends AppCompatActivity
     private Context context;
 
     /**
-     * Text Views for identifying field components
-     */
-    TextView textViewNoCurrentSittings;
-
-    /**
      * Server interaction objects
      */
     SharedPreferences pref;
@@ -72,7 +67,7 @@ public class SitterAccepted extends AppCompatActivity
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.current_sittings);
-        setTitle("ACCEPTED SITTINGS");
+        setTitle("ACCEPTED SITTINGS - Sitter");
 
         //GET Request - get id/auth
         pref = PreferenceManager.getDefaultSharedPreferences(this);
@@ -158,11 +153,6 @@ public class SitterAccepted extends AppCompatActivity
             }
         });
 
-        ScreenSize view = new ScreenSize(this);
-        textViewNoCurrentSittings = (TextView) findViewById(R.id.noSittings);
-        textViewNoCurrentSittings.setTextSize(view.getLabelTextSize());
-
-        //TODO if there are no current sittines show textViewNoCurrentSittings and make the list view invisible
     }
 
 

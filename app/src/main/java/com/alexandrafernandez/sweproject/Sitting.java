@@ -100,9 +100,10 @@ public class Sitting implements Serializable/*implements Parcelable*/ {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Owner Name: ").append(ownerName).append(System.getProperty("line.separator"));
-        sb.append("Start: ").append(startDate).append(System.getProperty("line.separator"));
-        sb.append("End: ").append(endDate);
+
+        sb.append("Start:   ").append(startDate).append(System.getProperty("line.separator"));
+        sb.append("End:     ").append(endDate).append(System.getProperty("line.separator"));
+        sb.append("Owner: ").append(ownerName);
         return sb.toString();
         //return startDate;
 //        return

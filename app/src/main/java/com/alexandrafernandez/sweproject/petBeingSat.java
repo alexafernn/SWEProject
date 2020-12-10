@@ -149,7 +149,7 @@ public class petBeingSat extends AppCompatActivity {
 
     public void onGoBack(View v)
     {
-        startActivity(new Intent(this, SitterSitting.class));
+        startActivity(new Intent(this, ManageAcceptedSitting.class));
         finish();
     }
 

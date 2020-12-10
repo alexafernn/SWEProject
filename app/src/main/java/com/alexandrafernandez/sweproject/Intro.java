@@ -145,10 +145,10 @@ public class Intro extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.action_favorite:
                 if(pref.getBoolean("ownerSwitchChecked", true) && !pref.getBoolean("sitterSwitchChecked", true))
-                    startActivity(new Intent(Intro.this, sittingsForMyPet.class));
+                    startActivity(new Intent(Intro.this, OwnerAcceptedSittings.class));
 
                 else if(pref.getBoolean("sitterSwitchChecked", true) && !pref.getBoolean("ownerSwitchChecked", true))
-                    startActivity(new Intent(Intro.this, HomeActivity.class));
+                    startActivity(new Intent(Intro.this, SitterAccepted.class));
 
                 else {
                     DialogInterface.OnClickListener dClickListener = new DialogInterface.OnClickListener() {

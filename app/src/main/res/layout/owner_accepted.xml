@@ -4,23 +4,21 @@
     android:layout_height="match_parent"
     android:background="@color/colorWhite">
 
-
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
+        android:text="No Accepted Sittings"
+        android:layout_margin="10dp"
         android:textSize="24sp"
         android:gravity="center"
-        android:id="@+id/accepted_sittings_label"
+        android:id="@+id/noSittingsOwner"
         android:textColor="@color/colorBlack"
-        android:text="Current Accepted Sittings"
         />
-
 
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/accepted_sittings_label"
         android:layout_marginTop="15dp"
         android:layout_margin="10dp"
         android:textSize="24sp"

@@ -4,10 +4,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.graphics.Point;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -140,7 +143,19 @@ public class Owner extends AppCompatActivity {
         noSittingsLabel.setTextSize(view.getLabelTextSize());
 
         owner_listview = (ListView) findViewById(R.id.owner_listview);
-        ArrayAdapter<NeedSitterEventData> adapter = new ArrayAdapter<NeedSitterEventData>(this, android.R.layout.simple_list_item_1, requestList);
+        ArrayAdapter<NeedSitterEventData> adapter = new ArrayAdapter<NeedSitterEventData>(this, android.R.layout.simple_list_item_1, requestList)
+        {
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent)
+            {
+                TextView textView = (TextView) super.getView(position, convertView, parent);
+                textView.setTextColor(Color.WHITE);
+                textView.setTypeface(textView.getTypeface(), Typeface.BOLD);
+                textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 22);
+                return textView;
+
+            }
+        };
         owner_listview.setAdapter(adapter);
 
         for(int i=0; i<requestList.size(); i++) {

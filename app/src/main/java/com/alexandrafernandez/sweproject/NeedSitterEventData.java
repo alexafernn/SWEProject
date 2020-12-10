@@ -37,7 +37,7 @@ public class NeedSitterEventData {
      * @return start and end dat
      */
     public String toString() {
-        return start_dateTime + " - " + end_dateTime;
+        return "Start: " + start_dateTime + "\nEnd:   " + end_dateTime;
     }
 
     /**

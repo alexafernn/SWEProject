@@ -161,7 +161,7 @@ public class SitterSitting extends AppCompatActivity
      */
     public void onConfirm(View v)
     {
-        final Intent i = new Intent(this, SitterAccepted.class);
+        final Intent i = new Intent(this, Sitter.class);
 
         new AlertDialog.Builder(this)
                 .setTitle("Accept Job")

@@ -48,6 +48,11 @@ public class Sitter extends AppCompatActivity implements LocationListener {
     ArrayList<Sitting> sittingList;
 
     /**
+     * Text View identifying sittings
+     */
+    TextView info;
+
+    /**
      * List View for managing multiple content instances of sitting requests
      */
     ListView sittings_listView;
@@ -81,16 +86,7 @@ public class Sitter extends AppCompatActivity implements LocationListener {
         setContentView(R.layout.sitter);
         setTitle("SITTER");
 
-        /*
-        Bundle b;
-        final Sitting[] sitting = {MainActivity.sitting};
-
-        if (sitting[0].getNumberOfSittings() == 0)
-        {
-            Toast.makeText(getApplicationContext(),"No reservations open for sitting",Toast.LENGTH_SHORT).show();
-        }
-
-         */
+        info = (TextView) findViewById(R.id.sittingRequests);
 
         //GET Request - get id/auth
         pref = PreferenceManager.getDefaultSharedPreferences(this);
@@ -141,6 +137,8 @@ public class Sitter extends AppCompatActivity implements LocationListener {
 
         context = this;
 
+        if(sittingList.isEmpty())
+            info.setText("No available sittings.");
 
         ArrayAdapter<Sitting> adapter = new ArrayAdapter<Sitting>(this, android.R.layout.simple_list_item_1, sittingList)
         {

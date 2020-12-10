@@ -50,10 +50,6 @@ public class OwnerAcceptedSittings extends AppCompatActivity
      * Activity and View data
      */
     private Context context;
-    /**
-     * Text Views for identifying field components
-     */
-    TextView textViewCurrentSittingsLabel;
 
     /**
      * seeing one instance of this
@@ -69,19 +65,14 @@ public class OwnerAcceptedSittings extends AppCompatActivity
     /**
      * On Create Method
      * Initializes the ownerSittings View and instantiates other view objects for later use
-     * @param savedInstanceState
+     * @param savedInstanceState the state of the device
      */
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.owner_accepted);
-        setTitle("OWNER");
-
-        ScreenSize view = new ScreenSize(this);
-
-        textViewCurrentSittingsLabel = findViewById(R.id.accepted_sittings_label);
-        textViewCurrentSittingsLabel.setTextSize(view.getLabelTextSize());
+        setTitle("ACCEPTED SITTINGS - Owner");
 
         //GET Request - get id/auth
         pref = PreferenceManager.getDefaultSharedPreferences(this);
