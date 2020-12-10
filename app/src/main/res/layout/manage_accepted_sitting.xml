@@ -31,14 +31,14 @@
 
 
     <TextView
-        android:id="@+id/start_date_label"
-        android:layout_toEndOf="@+id/start_date"
+        android:id="@+id/start_date_label2"
+        android:layout_toEndOf="@+id/start_date2"
         android:layout_height="wrap_content"
         android:inputType="text"
         android:layout_width="match_parent"
         android:layout_toRightOf="@+id/start_date2"
         android:layout_alignRight="@id/start_date2"
-        android:layout_alignEnd="@id/confirm_availability_button2"
+        android:layout_alignEnd="@id/confirm_availability_button3"
         android:layout_above="@id/end_date2"/>
 
 
@@ -62,7 +62,7 @@
         android:layout_width="match_parent"
         android:layout_toRightOf="@+id/end_date2"
         android:layout_alignRight="@id/end_date2"
-        android:layout_alignEnd="@id/confirm_availability_button2"
+        android:layout_alignEnd="@id/confirm_availability_button3"
         android:layout_above="@id/must_occur_at_my_location2"/>
 
 
@@ -82,7 +82,7 @@
 
     <TextView
         android:id="@+id/must_occur_at_my_location_label2"
-        android:layout_toEndOf="@+id/must_occur_at_my_location"
+        android:layout_toEndOf="@+id/must_occur_at_my_location2"
         android:layout_height="wrap_content"
         android:inputType="text"
         android:layout_width="match_parent"

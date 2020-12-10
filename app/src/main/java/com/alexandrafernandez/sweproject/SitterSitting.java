@@ -131,7 +131,7 @@ public class SitterSitting extends AppCompatActivity
         try {
             JSONObject jsonObject = new JSONObject(json);
             is_at_owner = jsonObject.getBoolean("is_at_owner");
-            if(is_at_owner== true)
+            if(is_at_owner)
             {
                 textViewMustOccurAtOwnerLocation.setText("Owner's House");
             }
@@ -224,7 +224,7 @@ public class SitterSitting extends AppCompatActivity
     public void onCancel(View v)
     {
 
-        final Intent i = new Intent(this, SitterAccepted.class);
+        final Intent i = new Intent(this, Sitter.class);
 
         new AlertDialog.Builder(this)
                 .setTitle("Un-Accept Job")

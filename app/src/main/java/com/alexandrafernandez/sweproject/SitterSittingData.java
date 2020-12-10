@@ -37,8 +37,9 @@ public class SitterSittingData
      * @return the print statement
      */
     public String toString() {
-        return("appointment start: " + startDateTime
-                + " appointment end: " + endDateTime);
+        return("Start: " + startDateTime
+                + "\nEnd: " + endDateTime
+                + "\nOwner: " + ownerName);
     }
 
 }

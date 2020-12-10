@@ -31,6 +31,7 @@
         android:background="@color/colorPrimary"
         android:dividerHeight="10.0sp"
         android:divider="@color/colorWhite"
+        android:inputType="textMultiLine"
         >
 
 

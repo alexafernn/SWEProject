@@ -47,6 +47,7 @@
         <activity android:name=".SitterAccepted"/>
         <activity android:name=".OwnerAcceptedSittings"/>
         <activity android:name=".OwnerAcceptedSitting"/>
+        <activity android:name=".ManageAcceptedSitting"/>
     </application>
 
 </manifest>

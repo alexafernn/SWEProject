@@ -131,7 +131,7 @@ public class SitterAccepted extends AppCompatActivity
 
 
         /** Currently commented out so it can work with not server connection  **/
-        ArrayAdapter<SitterSittingData> adapter = new ArrayAdapter<SitterSittingData>(this, android.R.layout.simple_expandable_list_item_1,sitterSittingList)
+        ArrayAdapter<SitterSittingData> adapter = new ArrayAdapter<SitterSittingData>(this, android.R.layout.simple_list_item_1,sitterSittingList)
         {
         @Override
            public View getView(int position, View convertView, ViewGroup parent)
@@ -187,7 +187,7 @@ public class SitterAccepted extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu)
     {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.sitter_menu, menu);
+        inflater.inflate(R.menu.sitter_accepted_menu, menu);
         return true;
     }
 
@@ -201,21 +201,6 @@ public class SitterAccepted extends AppCompatActivity
             case R.id.home:
                 finish();
                 return true;
-            case R.id.action_favorite:
-                startActivity(new Intent(this, HomeActivity.class));
-                return true;
-            case R.id.rewards_menu:
-                startActivity(new Intent(this, Rewards.class));
-                return true;
-            case R.id.past_sittings_menu:
-                startActivity(new Intent(this, PastSittings.class));
-                return true;
-            case R.id.feedback_menu:
-                startActivity(new Intent(this, Feedback.class));
-                return true;
-            case R.id.sitter_Availability:
-                startActivity(new Intent(this, SitterAvailability.class));
-
             default:
                 return super.onOptionsItemSelected(item);
         }

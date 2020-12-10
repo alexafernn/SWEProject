@@ -65,28 +65,20 @@ public class ManageAcceptedSitting extends AppCompatActivity
         buttonViewPets.setTextSize(view.getButtonTextSize());
 
         textViewNotesFromOwnerLabel = (TextView) findViewById(R.id.notes_for_sitter2);
-        textViewNotesFromOwnerLabel.setTextSize(view.getLabelTextSize());
 
         textViewStartDateLabel = (TextView) findViewById(R.id.start_date2);
-        textViewStartDateLabel.setTextSize(view.getLabelTextSize());
 
         textViewStartDate = (TextView) findViewById(R.id.start_date_label2);
-        textViewStartDate.setTextSize(view.getLabelTextSize());
 
         textViewEndDateLabel = (TextView) findViewById(R.id.end_date2);
-        textViewEndDateLabel.setTextSize(view.getLabelTextSize());
 
         textViewEndDate = (TextView) findViewById(R.id.end_date_label2);
-        textViewEndDate.setTextSize(view.getLabelTextSize());
 
         textViewMustOccurAtOwnerLocation = (TextView) findViewById(R.id.must_occur_at_my_location_label2);
-        textViewMustOccurAtOwnerLocation.setTextSize(view.getLabelTextSize());
 
         textViewMustOccurAtOwnerLocationLabel = (TextView) findViewById(R.id.must_occur_at_my_location2);
-        textViewMustOccurAtOwnerLocationLabel.setTextSize(view.getLabelTextSize());
 
         textViewNotesFromOwner = (TextView) findViewById(R.id.notes_for_sitter_label2);
-        textViewNotesFromOwner.setTextSize(view.getLabelTextSize());
 
         backButton = (Button) findViewById(R.id.confirm_back_button3);
         backButton.setTextSize(view.getButtonTextSize());
