@@ -25,7 +25,7 @@ public class SitterSitting extends AppCompatActivity
      */
     TextView textViewStartDateLabel, textViewEndDateLabel, textViewAllMyPetsLabel, textViewMustOccurAtOwnerLocationLabel,
              textViewNotesFromOwnerLabel, textViewStartDate, textViewEndDate, textViewAllMyPets, textViewMustOccurAtOwnerLocation,
-             textViewNotesFromOwner;
+             textViewNotesFromOwner, ownerPhoneField;
 
     /**
      * Buttons used to confirm data and/or move to another activity
@@ -100,6 +100,8 @@ public class SitterSitting extends AppCompatActivity
 
         backButton = (Button) findViewById(R.id.confirm_back_button);
         backButton.setTextSize(view.getButtonTextSize());
+
+        ownerPhoneField = (TextView) findViewById(R.id.owner_phone_field);
 
         //TODO get from server
         /**Things commented out are so it can work without server connection**/
