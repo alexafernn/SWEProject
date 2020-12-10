@@ -177,10 +177,10 @@ public class Owner extends AppCompatActivity {
             }
         });
 
-        ViewGroup.LayoutParams params = owner_listview.getLayoutParams();
-        params.height = (int) (requestList.size()*view.getLabelTextSize()*4.5);
-        owner_listview.setLayoutParams(params);
-        owner_listview.requestLayout();
+//        ViewGroup.LayoutParams params = owner_listview.getLayoutParams();
+//        params.height = (int) (requestList.size()*view.getLabelTextSize());
+//        owner_listview.setLayoutParams(params);
+//        owner_listview.requestLayout();
     }
 
     /**
