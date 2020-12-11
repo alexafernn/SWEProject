@@ -89,7 +89,7 @@ public class SitterAvailabilityDataTest extends TestCase {
      */
     public void testTestCombo3() {
         SitterAvailabilityData data = new SitterAvailabilityData("12/6/2020 9:00", "12/7/2020 10:00", "ds4klj2432n4l6n42ds");
-        assertTrue(data.startDate.equals("12/6/2020 9:00") && data.startDate.equals("12/7/2020 10:00") && data.notes.equals("ds4klj2432n4l6n42ds"));
+        assertTrue(data.startDate.equals("12/6/2020 9:00") && data.endDate.equals("12/7/2020 10:00") && data.notes.equals("ds4klj2432n4l6n42ds"));
     }
 
     /**
