@@ -223,7 +223,7 @@ public class SitterSitting extends AppCompatActivity
     public void onViewSittingPets(View v)
     {
         Intent i= new Intent(this, petsSittingList.class);
-        i.putExtra("owner_id", "");
+        i.putExtra("owner_id", owner_id);
         startActivity(i);
     }
 
