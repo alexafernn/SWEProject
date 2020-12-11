@@ -150,10 +150,15 @@ public class MainActivity extends Activity {
         String response = pref.getString("login.response", "");
         String id="";
         String auth="";
+        boolean goodAuth = true;
         try {
             JSONObject jsonObject1 = new JSONObject(response);
             id = jsonObject1.getString("id");
-            auth = jsonObject1.getString("auth");
+            try {
+                auth = jsonObject1.getString("auth");
+            } catch (JSONException json_2) {
+                goodAuth = false;
+            }
         } catch( JSONException json_e ) {
             Toast.makeText(this, "Username/Password don't match an existing account", Toast.LENGTH_LONG).show();
             Log.w("MA", "JSON error: " + json_e.getMessage());
@@ -171,7 +176,9 @@ public class MainActivity extends Activity {
             e.printStackTrace();
         }
 
-        startActivity(new Intent(this, Intro.class));
+        if(goodAuth)
+            startActivity(new Intent(this, Intro.class));
+        else Toast.makeText(this, "Username/Password don't match an existing account", Toast.LENGTH_LONG).show();
     }
 
     /**
