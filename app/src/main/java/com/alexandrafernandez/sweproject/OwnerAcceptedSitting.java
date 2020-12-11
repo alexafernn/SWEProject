@@ -132,7 +132,7 @@ public class OwnerAcceptedSitting extends AppCompatActivity {
                         try {
                             data.put("id", clientId);
                             data.put("auth", clientAuth);
-                            data.put("the_job_id", job_id);
+                            data.put("job_id", job_id);
                         } catch (JSONException e) {
                             e.printStackTrace();
                             Log.w("MA" ," the exception is ",  e);

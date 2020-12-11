@@ -56,6 +56,11 @@ public class UrlPost extends Thread {
      */
     public void run( ) {
 
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putString(responseLocation,"");
+        editor.apply();
+
         Log.w("MA", "POST: " + my_url + " --> " + data);
 
         try {
@@ -81,8 +86,7 @@ public class UrlPost extends Thread {
             }
             Log.w("MA", "POST SUCCESSFUL - response: " + s.toString());
 
-            SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
-            SharedPreferences.Editor editor = pref.edit();
+
             editor.putString(responseLocation, s.toString());
             editor.apply();
 

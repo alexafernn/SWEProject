@@ -154,15 +154,11 @@ public class MainActivity extends Activity {
         try {
             JSONObject jsonObject1 = new JSONObject(response);
             id = jsonObject1.getString("id");
-            try {
-                auth = jsonObject1.getString("auth");
-            } catch (JSONException json_2) {
-                goodAuth = false;
-            }
+            auth = jsonObject1.getString("auth");
         } catch( JSONException json_e ) {
+            goodAuth = false;
             Toast.makeText(this, "Username/Password don't match an existing account", Toast.LENGTH_LONG).show();
             Log.w("MA", "JSON error: " + json_e.getMessage());
-            return;
         }
 
         //Save identification for use throughout app
