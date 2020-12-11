@@ -37,7 +37,7 @@ public class SitterSitting extends AppCompatActivity
      * Server interaction objects
      */
     SharedPreferences pref;
-    String clientID, clientAuth, job_id;
+    String clientID, clientAuth, job_id, owner_id;
 
 
     /**
@@ -144,6 +144,7 @@ public class SitterSitting extends AppCompatActivity
             textViewEndDate.setText(endDateTime);
             details = jsonObject.getString("details");
             textViewNotesFromOwner.setText(details);
+            owner_id = jsonObject.getString("owner_id");
 
         } catch (JSONException json_e) {
             Log.w("MA", json_e.toString());
@@ -221,7 +222,8 @@ public class SitterSitting extends AppCompatActivity
      */
     public void onViewSittingPets(View v)
     {
-        Intent i= new Intent(this, petsSittingList.class); //TODO: fix petSittingList to account with server and show properly
+        Intent i= new Intent(this, petsSittingList.class);
+        i.putExtra("owner_id", "");
         startActivity(i);
     }
 
