@@ -9,7 +9,7 @@ public class NeedSitterEventDataTest extends TestCase {
      */
     public void testTestToString() {
         NeedSitterEventData data = new NeedSitterEventData("12/6/2020 9:00", "12/7/2020 10:00", "26246fg4632r63");
-        assertEquals("NeedSitterEventData toString Failed", data.toString(), "12/6/2020 9:00 - 12/7/2020 10:00");
+        assertEquals("NeedSitterEventData toString Failed", data.toString(), "Start: 12/6/2020 9:00\nEnd:   12/7/2020 10:00");
     }
 
     /**
@@ -17,7 +17,7 @@ public class NeedSitterEventDataTest extends TestCase {
      */
     public void testTestToString2() {
         NeedSitterEventData data  = new NeedSitterEventData("12/6/2020 9:00", "12/6/2020 9:00", "26246fg4632r63");
-        assertEquals("NeedSitterEventData toString Failed", data.toString(),"12/6/2020 9:00 - 12/6/2020 9:00");
+        assertEquals("NeedSitterEventData toString Failed", data.toString(),"Start: 12/6/2020 9:00\nEnd:   12/6/2020 9:00");
     }
 
     /**
